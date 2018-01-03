@@ -112,6 +112,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
         }
         
         HATDataOffersService.claimOffer(
+            userDomain: userDomain,
             applicationToken: appToken,
             offerID: (receivedOffer?.dataOfferID)!,
             succesfulCallBack: success,
@@ -159,7 +160,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
                 serviceName: Constants.ApplicationToken.DataBuyer.name,
                 userDomain: self.userDomain,
                 token: self.userToken,
-                resource: Constants.ApplicationToken.DataBuyer.source,
+                resource: Constants.ApplicationToken.DataBuyer(userDomain: userDomain).source,
                 succesfulCallBack: gotApplicationToken,
                 failCallBack: failedGettingAppToken)
         } else if remaining > 0 {

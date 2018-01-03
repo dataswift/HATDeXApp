@@ -135,36 +135,20 @@ internal struct EducationCachingWrapperHelper {
                     
                     let education = HATProfileEducationObject(fromCache: dictionary[0])
                     
-                    func gotApplicationToken(appToken: String, newUserToken: String?) {
-                        
-                        HATProfileService.postEducationToHAT(
-                            userDomain: userDomain,
-                            userToken: userToken,
-                            education: education,
-                            successCallback: { _ in
-                                
-                                CachingHelper.deleteFromRealm(type: "education-Post")
-                                completion?()
-                            },
-                            failCallback: { error in
-                                
-                                errorCallback?(error)
-                            }
-                        )
-                    }
-                    
-                    func gotErrorWhenGettingApplicationToken(error: JSONParsingError) {
-                        
-                        CrashLoggerHelper.JSONParsingErrorLog(error: error)
-                    }
-                    
-                    HATService.getApplicationTokenFor(
-                        serviceName: Constants.ApplicationToken.Rumpel.name,
+                    HATProfileService.postEducationToHAT(
                         userDomain: userDomain,
-                        token: userToken,
-                        resource: Constants.ApplicationToken.Rumpel.source,
-                        succesfulCallBack: gotApplicationToken,
-                        failCallBack: gotErrorWhenGettingApplicationToken)
+                        userToken: userToken,
+                        education: education,
+                        successCallback: { _ in
+                            
+                            CachingHelper.deleteFromRealm(type: "education-Post")
+                            completion?()
+                        },
+                        failCallback: { error in
+                            
+                            errorCallback?(error)
+                        }
+                    )
                 }
             }
             

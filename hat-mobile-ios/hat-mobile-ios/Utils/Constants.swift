@@ -749,28 +749,25 @@ internal class Constants {
             static let source: String = "https://dex.hubofallthings.com"
         }
         
-        struct Marketsquare {
-            
-            static let name: String = "MarketSquare"
-            static let source: String = "https://marketsquare.hubofallthings.com"
-        }
-        
-        struct Rumpel {
-            
-            static let name: String = "Rumpel"
-            static let source: String = "https://rumpel.hubofallthings.com"
-        }
-        
-        struct Facebook {
-            
-            static let name: String = "Facebook"
-            static let source: String = "https://social-plug.hubofallthings.com"
-        }
-        
         struct DataBuyer {
             
+            private var userDomain: String = ""
+            
+            init(userDomain: String) {
+                
+                self.userDomain = userDomain
+            }
             static let name: String = "DataBuyer"
-            static let source: String = "https://databuyer.hubofallthings.com/"
+            var source: String {
+            
+                if userDomain.contains("hubat") {
+                    
+                    return "https://databuyer.hubat.net/"
+                } else {
+                    
+                    return "https://databuyer.hubofallthings.com/"
+                }
+            }
         }
     }
     

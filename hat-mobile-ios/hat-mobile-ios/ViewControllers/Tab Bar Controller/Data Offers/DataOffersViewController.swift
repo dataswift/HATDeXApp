@@ -230,6 +230,7 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
                 if specificMerchant == "" {
                     
                     HATDataOffersService.getAvailableDataOffers(
+                        userDomain: userDomain,
                         applicationToken: appToken,
                         merchants: merchants,
                         succesfulCallBack: fetchedOffers,
@@ -237,6 +238,7 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
                 } else {
                     
                     HATDataOffersService.getAvailableDataOffers(
+                        userDomain: userDomain,
                         applicationToken: appToken,
                         merchants: [specificMerchant],
                         succesfulCallBack: fetchedOffers,
@@ -267,7 +269,7 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
                 serviceName: Constants.ApplicationToken.DataBuyer.name,
                 userDomain: self.userDomain,
                 token: self.userToken,
-                resource: Constants.ApplicationToken.DataBuyer.source,
+                resource: Constants.ApplicationToken.DataBuyer(userDomain: userDomain).source,
                 succesfulCallBack: applicationTokenReceived,
                 failCallBack: failedToFetchApplicationToken)
         }
@@ -701,6 +703,7 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
                             }
                             
                             HATDataOffersService.redeemOffer(
+                                userDomain: userDomain,
                                 appToken: self.appToken!,
                                 succesfulCallBack: success,
                                 failCallBack: error)

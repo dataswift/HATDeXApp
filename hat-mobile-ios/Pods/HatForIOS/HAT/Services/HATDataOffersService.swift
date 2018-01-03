@@ -24,9 +24,16 @@ public struct HATDataOffersService {
      - parameter succesfulCallBack: A function of type ([HATDataPlugObject]) -> Void, executed on a successful result
      - parameter failCallBack: A function of type (Void) -> Void, executed on an unsuccessful result
      */
-    public static func getAvailableDataOffers(applicationToken: String, merchants: [String]?, succesfulCallBack: @escaping ([DataOfferObject], String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
+    public static func getAvailableDataOffers(userDomain: String, applicationToken: String, merchants: [String]?, succesfulCallBack: @escaping ([DataOfferObject], String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
         
-        let mutableURL: NSMutableString = "http://databuyer.hubat.net/api/v2/offersWithClaims"
+        let mutableURL: NSMutableString
+        if userDomain.contains("hubat") {
+            
+            mutableURL = "http://databuyer.hubat.net/api/v2/offersWithClaims"
+        } else {
+            
+            mutableURL = "http://databuyer.hubofallthings.net/api/v2/offersWithClaims"
+        }
         
         for (index, merchant) in (merchants?.enumerated())! {
             
@@ -89,9 +96,16 @@ public struct HATDataOffersService {
      - parameter succesfulCallBack: A function of type ([HATDataPlugObject]) -> Void, executed on a successful result
      - parameter failCallBack: A function of type (Void) -> Void, executed on an unsuccessful result
      */
-    public static func claimOffer(applicationToken: String, offerID: String, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
+    public static func claimOffer(userDomain: String, applicationToken: String, offerID: String, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
         
-        let url: String = "http://databuyer.hubat.net/api/v2/offer/\(offerID)/claim"
+        let url: String
+        if userDomain.contains("hubat") {
+            
+            url = "http://databuyer.hubat.net/api/v2/offer/\(offerID)/claim"
+        } else {
+            
+            url = "http://databuyer.hubofallthings.net/api/v2/offer/\(offerID)/claim"
+        }
         let headers: Dictionary<String, String> = ["X-Auth-Token": applicationToken]
         
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: [:], headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
@@ -142,9 +156,16 @@ public struct HATDataOffersService {
      - parameter succesfulCallBack: A function to execute on successful response returning the server message and the renewed user's token
      - parameter failCallBack: A function to execute on failed response returning the error
      */
-    public static func redeemOffer(appToken: String, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
+    public static func redeemOffer(userDomain: String, appToken: String, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
         
-        let url = "https://databuyer.hubat.net/api/v2/user/redeem/cash"
+        let url: String
+        if userDomain.contains("hubat") {
+            
+            url = "https://databuyer.hubat.net/api/v2/user/redeem/cash"
+        } else {
+            
+            url = "https://databuyer.hubofallthings.net/api/v2/user/redeem/cash"
+        }
         
         HATNetworkHelper.asynchronousRequest(
             url,

@@ -152,66 +152,6 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
         HATDataPlugsService.getAvailableDataPlugs(
             succesfulCallBack: successfullCallBack,
             failCallBack: failureCallBack)
-        
-        self.checkFacebookPlugIfExpired()
-    }
-    
-    // MARK: - Check facebook if expired
-    
-    /**
-     Checks facebook plug if expired and sets up a notification
-     */
-    private func checkFacebookPlugIfExpired() {
-        
-        func appTokenReceived(appToken: String, usersToken: String?) {
-            
-            func setUpNotificationOnExpiry(date: String) {
-                
-                if let notifications = UIApplication.shared.scheduledLocalNotifications {
-                    
-                    for notification in notifications where notification.userInfo?["notificationReason"] as? String == "facebook plug expired" {
-                        
-                        UIApplication.shared.cancelLocalNotification(notification)
-                    }
-                    
-                    if notifications.count > 1 {
-                        
-                        UIApplication.shared.cancelAllLocalNotifications()
-                    }
-                }
-                
-                if let date = HATFormatterHelper.formatStringToDate(string: date) {
-                    
-                    let notification = UILocalNotification()
-                    notification.fireDate = date
-                    notification.userInfo = ["notificationReason": "facebook plug expired"]
-                    notification.alertBody = "Facebook Data Plug expired!"
-                    notification.alertAction = "Please enable it!"
-                    notification.soundName = UILocalNotificationDefaultSoundName
-                    UIApplication.shared.scheduleLocalNotification(notification)
-                }
-            }
-            
-            HATDataPlugsService.checkSocialPlugExpiry(
-                succesfulCallBack: setUpNotificationOnExpiry,
-                failCallBack: {(error) -> Void in
-                
-                    CrashLoggerHelper.dataPlugErrorLog(error: error)
-                }
-            )(appToken)
-        }
-        
-        HATService.getApplicationTokenFor(
-            serviceName: Constants.ApplicationToken.Facebook.name,
-            userDomain: self.userDomain,
-            token: self.userToken,
-            resource: Constants.ApplicationToken.Facebook.source,
-            succesfulCallBack: appTokenReceived,
-            failCallBack: {error in
-            
-                CrashLoggerHelper.JSONParsingErrorLog(error: error)
-            }
-        )
     }
     
     // MARK: - Notification observer method
@@ -226,7 +166,6 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
         
         // check that safari is not nil, if it's not hide it
         self.safariVC?.dismissSafari(animated: true, completion: nil)
-        self.checkFacebookPlugIfExpired()
     }
 
     // MARK: - UICollectionView methods
@@ -282,7 +221,6 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
                 
                 HATTwitterService.getAppTokenForTwitter(plug: dataPlug, userDomain: userDomain, token: userToken, successful: appToken, failed: error)
             } else if dataPlug.plug.name == "Fitbit" {
-                
                 
                 HATFitbitService.getApplicationTokenForFitbit(userDomain: userDomain, userToken: userToken, dataPlugURL: dataPlug.plug.url, successCallback: appToken, errorCallback: error)
             }

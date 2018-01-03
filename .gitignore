@@ -80,3 +80,6 @@ build
 
 # GPS Related file to simulate movement
 *.gpx
+
+#temp files
+*.swp

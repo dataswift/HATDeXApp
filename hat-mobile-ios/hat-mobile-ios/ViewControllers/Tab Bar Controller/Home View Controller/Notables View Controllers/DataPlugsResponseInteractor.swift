@@ -71,10 +71,10 @@ internal class DataPlugsResponseInteractor: NSObject, UserCredentialsProtocol {
         }
         
         HATService.getApplicationTokenFor(
-            serviceName: Constants.ApplicationToken.Marketsquare.name,
+            serviceName: Constants.ApplicationToken.DataBuyer.name,
             userDomain: userDomain,
             token: userToken,
-            resource: Constants.ApplicationToken.Marketsquare.source,
+            resource: Constants.ApplicationToken.DataBuyer(userDomain: userDomain).source,
             succesfulCallBack: success,
             failCallBack: {(error) in
                 
