@@ -1,0 +1,6 @@
+framework module Pods_HATDeX {
+  umbrella header "Pods-HATDeX-umbrella.h"
+
+  export *
+  module * { export * }
+}
