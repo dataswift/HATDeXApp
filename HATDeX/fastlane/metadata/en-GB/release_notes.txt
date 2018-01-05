@@ -1,3 +1,0 @@
-• Added photo caching. 
-• UI Fixes
-• Performance Improvements

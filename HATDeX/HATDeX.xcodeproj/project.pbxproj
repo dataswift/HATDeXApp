@@ -107,7 +107,6 @@
 		604D68DE1DFAD2B300D7FFED /* HATCapabilitiesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604D68DD1DFAD2B300D7FFED /* HATCapabilitiesPageViewController.swift */; };
 		604D68E01DFAD2CC00D7FFED /* HATCapabilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604D68DF1DFAD2CC00D7FFED /* HATCapabilitiesViewController.swift */; };
 		604DF81E1EC3B6F500805F8E /* PHATASettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DF81D1EC3B6F500805F8E /* PHATASettingsTableViewController.swift */; };
-		604E0C921F643CF5007DA3AA /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E0C901F643CF5007DA3AA /* SnapshotHelperXcode8.swift */; };
 		604E0C951F644948007DA3AA /* FastlaneScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E0C941F644948007DA3AA /* FastlaneScreenshots.swift */; };
 		604E0C961F644FF1007DA3AA /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDE16E1E30FCD200AB9E18 /* KeychainHelper.swift */; };
 		604E0C981F64500E007DA3AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59136841D19D3BB00E9EDD0 /* Constants.swift */; };
@@ -570,6 +569,7 @@
 		60D8DAA61F31E3960055CEAC /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D8DAA51F31E3960055CEAC /* NotificationsTableViewController.swift */; };
 		60D8DAB21F3215520055CEAC /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D8DAB11F3215520055CEAC /* NotificationsTableViewCell.swift */; };
 		60D8DAB41F3219C20055CEAC /* NotificationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D8DAB31F3219C20055CEAC /* NotificationDetailsViewController.swift */; };
+		60DCF69C1FFE8AAC00A929FD /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DCF69A1FFE88FF00A929FD /* SnapshotHelperXcode8.swift */; };
 		60DDE16D1E30E19300AB9E18 /* CompletePurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDE16C1E30E19300AB9E18 /* CompletePurchaseViewController.swift */; };
 		60DDE16F1E30FCD200AB9E18 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDE16E1E30FCD200AB9E18 /* KeychainHelper.swift */; };
 		60DDE1711E31006600AB9E18 /* MapsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDE1701E31006600AB9E18 /* MapsHelper.swift */; };
@@ -720,7 +720,6 @@
 		604D68DD1DFAD2B300D7FFED /* HATCapabilitiesPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HATCapabilitiesPageViewController.swift; sourceTree = "<group>"; };
 		604D68DF1DFAD2CC00D7FFED /* HATCapabilitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HATCapabilitiesViewController.swift; sourceTree = "<group>"; };
 		604DF81D1EC3B6F500805F8E /* PHATASettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHATASettingsTableViewController.swift; sourceTree = "<group>"; };
-		604E0C901F643CF5007DA3AA /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelperXcode8.swift; path = fastlane/SnapshotHelperXcode8.swift; sourceTree = "<group>"; };
 		604E0C941F644948007DA3AA /* FastlaneScreenshots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastlaneScreenshots.swift; sourceTree = "<group>"; };
 		604EAC101EB8C5F20084EEC8 /* UserCredentialsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCredentialsProtocol.swift; sourceTree = "<group>"; };
 		604F32E31F3DEA7F00F48201 /* ListDataOffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDataOffersCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -811,6 +810,7 @@
 		60D8DAA51F31E3960055CEAC /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		60D8DAB11F3215520055CEAC /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		60D8DAB31F3219C20055CEAC /* NotificationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDetailsViewController.swift; sourceTree = "<group>"; };
+		60DCF69A1FFE88FF00A929FD /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelperXcode8.swift; sourceTree = "<group>"; };
 		60DDE16C1E30E19300AB9E18 /* CompletePurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletePurchaseViewController.swift; sourceTree = "<group>"; };
 		60DDE16E1E30FCD200AB9E18 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		60DDE1701E31006600AB9E18 /* MapsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsHelper.swift; sourceTree = "<group>"; };
@@ -1138,7 +1138,7 @@
 		604E0C8F1F643CC4007DA3AA /* Fastlane */ = {
 			isa = PBXGroup;
 			children = (
-				604E0C901F643CF5007DA3AA /* SnapshotHelperXcode8.swift */,
+				60DCF69A1FFE88FF00A929FD /* SnapshotHelperXcode8.swift */,
 			);
 			name = Fastlane;
 			sourceTree = "<group>";
@@ -2199,6 +2199,7 @@
 				60905AB41F645A63004EBB63 /* UIColorExtension.swift in Sources */,
 				60905B7E1F645AB3004EBB63 /* MoreTableViewController.swift in Sources */,
 				60905A6F1F645A55004EBB63 /* ShareOptionsSelectedImageCollectionViewCell.swift in Sources */,
+				60DCF69C1FFE8AAC00A929FD /* SnapshotHelperXcode8.swift in Sources */,
 				60905B7C1F645AB3004EBB63 /* EmailTableViewController.swift in Sources */,
 				60905A6A1F645A55004EBB63 /* HomeHeaderCollectionReusableView.swift in Sources */,
 				6079A2661F6BCE5400F3884F /* LocationsWrapperHelper.swift in Sources */,
@@ -2345,7 +2346,6 @@
 				60DE414D1F697130003F0E02 /* JSONCacheObject.swift in Sources */,
 				60905BB71F645AC1004EBB63 /* DataStoreForDataOffersTableViewController.swift in Sources */,
 				60905B171F645A79004EBB63 /* UpdateLocationsDelegate.swift in Sources */,
-				604E0C921F643CF5007DA3AA /* SnapshotHelperXcode8.swift in Sources */,
 				60905ABE1F645A64004EBB63 /* HATAccountServiceExtension.swift in Sources */,
 				60905BCD1F645AD1004EBB63 /* PhotoFullScreenViewerViewController.swift in Sources */,
 				60905B4B1F645A8A004EBB63 /* DataPointsTableView.swift in Sources */,
