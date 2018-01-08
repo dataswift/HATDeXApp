@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -56,6 +56,7 @@ internal struct NotesCachingWrapperHelper {
      */
     static func getNotes(userToken: String, userDomain: String, cacheTypeID: String, parameters: Dictionary<String, String>, successRespond: @escaping ([HATNotesV2Object], String?) -> Void, failRespond: @escaping (HATTableError) -> Void) {
         
+        NotesCachingWrapperHelper.checkForUnsyncedNotesToPost(userDomain: userDomain, userToken: userToken)
         // Decide to get data from cache or network
         AsyncCachingHelper.decider(
             type: cacheTypeID,
@@ -83,7 +84,7 @@ internal struct NotesCachingWrapperHelper {
         
         // remove note from notes
         NotesCachingWrapperHelper.checkForNotesInCacheToBeDeleted(cacheTypeID: "notes", noteID: noteID)
-
+        
         let dictionary = ["id": noteID]
         
         // adding note to be deleted in cache
@@ -95,7 +96,7 @@ internal struct NotesCachingWrapperHelper {
                 
                 return
             }
-
+            
             try realm.write {
                 
                 realm.add(jsonObject)
@@ -137,7 +138,7 @@ internal struct NotesCachingWrapperHelper {
         }
         
         // creating note to be posted in cache
-        var dictionary = note.data.toJSON()
+        var dictionary = note.toJSON()
         if let photo = note.data.photov1 {
             
             if photo.link != "" && photo.link != nil {
@@ -163,7 +164,7 @@ internal struct NotesCachingWrapperHelper {
                             
                             dictionary.updateValue(imageData, forKey: "imageData")
                         }
-                    },
+                },
                     failure: { _ in return },
                     update: { _ in return })
             }
@@ -176,7 +177,7 @@ internal struct NotesCachingWrapperHelper {
                 
                 return
             }
-
+            
             try realm.write {
                 
                 let jsonObject = JSONCacheObject(dictionary: [dictionary], type: "notes", expiresIn: .hour, value: 1)
@@ -223,14 +224,14 @@ internal struct NotesCachingWrapperHelper {
                         dictionary.remove(at: index)
                         
                         do {
-
+                            
                             guard let realm = RealmHelper.getRealm() else {
                                 
                                 return
                             }
-
+                            
                             try realm.write {
-
+                                
                                 realm.delete(element)
                                 
                                 let jsonObject = JSONCacheObject(dictionary: dictionary, type: "notes", expiresIn: .hour, value: 1)
@@ -271,7 +272,7 @@ internal struct NotesCachingWrapperHelper {
                         tkn: userToken,
                         userDomain: userDomain,
                         success: { _ in
-                        
+                            
                             do {
                                 
                                 guard let realm = RealmHelper.getRealm() else {
@@ -287,7 +288,7 @@ internal struct NotesCachingWrapperHelper {
                                 
                                 print("error deleting from cache")
                             }
-                        },
+                    },
                         failed: { error in
                             
                             CrashLoggerHelper.hatTableErrorLog(error: error)
@@ -310,6 +311,8 @@ internal struct NotesCachingWrapperHelper {
         
         // Try deleting the notes
         func tryPosting(notes: [JSONCacheObject]) {
+            
+            completion?()
             
             // for each note parse it and try to delete it
             for tempNote in notes where tempNote.jsonData != nil && Reachability.isConnectedToNetwork() {
@@ -345,14 +348,11 @@ internal struct NotesCachingWrapperHelper {
                                     
                                     print("error deleting from cache")
                                 }
-                                
-                                completion?()
-                            },
+                        },
                             errorCallback: { error in
                                 
-                                completion?()
                                 CrashLoggerHelper.hatTableErrorLog(error: error)
-                            }
+                        }
                         )
                     }
                     
@@ -372,11 +372,11 @@ internal struct NotesCachingWrapperHelper {
                     
                     let dictionary = JSON(tempDict)
                     var note = HATNotesV2Object()
-                    note.data.inititialize(dict: dictionary.arrayValue[0].dictionaryValue)
+                    note.inititialize(dict: dictionary.arrayValue[0].dictionaryValue)
                     
                     if note.data.photov1?.link == "" {
                         
-                        if let data = tempDict[0]["imageData"] as? Data {
+                        if (tempDict[0]["imageData"] as? Data) != nil {
                             
                             let imageView = UIImageView()
                             let url = URL(string: note.data.photov1!.link!)
@@ -399,9 +399,9 @@ internal struct NotesCachingWrapperHelper {
                                         success: {
                                             
                                             postNote(note)
-                                        }
+                                    }
                                     )
-                                },
+                            },
                                 errorCallBack: nil
                             )
                         } else {
@@ -487,7 +487,7 @@ internal struct NotesCachingWrapperHelper {
                             success: { image in
                                 
                                 saveImage(image: image, index: index, dict: tempDict)
-                            },
+                        },
                             failure: nil,
                             update: nil)
                     }
@@ -495,10 +495,10 @@ internal struct NotesCachingWrapperHelper {
             }
         }
     }
-
+    
     /**
      Checks for unsynced cache
- 
+     
      - parameter userDomain: The user's domain
      - parameter userToken: The user's token
      */

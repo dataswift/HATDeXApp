@@ -278,8 +278,13 @@ public struct HATNotablesService {
             // check if the arrayToReturn it contains that value and if not add it
             let result = arrayToReturn.contains(where: {(note2: HATNotesV2Object) -> Bool in
                 
+                // unsynced notes have empty recordid
                 if note.recordId == note2.recordId {
                     
+                    if note.recordId == "" && note.data.updated_time != note2.data.updated_time {
+                        
+                        return false
+                    }
                     return true
                 }
                 

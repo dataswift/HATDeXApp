@@ -64,13 +64,13 @@ Carthage/Build
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
-hat-mobile-ios/fastlane/report.xml
-hat-mobile-ios/fastlane/Preview.html
-hat-mobile-ios/fastlane/screenshots
-hat-mobile-ios/fastlane/test_output
-hat-mobile-ios/fastlane/Gymfile
-hat-mobile-ios/fastlane/Appfile
-hat-mobile-ios/fastlane/Deliverfile
+HATDeX/fastlane/report.xml
+HATDeX/fastlane/Preview.html
+HATDeX/fastlane/screenshots
+HATDeX/fastlane/test_output
+HATDeX/fastlane/Gymfile
+HATDeX/fastlane/Appfile
+HATDeX/fastlane/Deliverfile
 
 ### Xcode ###
 build
@@ -81,5 +81,5 @@ build
 # GPS Related file to simulate movement
 *.gpx
 
-#temp files
+# temp files
 *.swp

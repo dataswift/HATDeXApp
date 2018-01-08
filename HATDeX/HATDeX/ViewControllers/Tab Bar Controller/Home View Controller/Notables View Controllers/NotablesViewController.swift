@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -54,9 +54,9 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
     
     /// A static let variable pointing to the AuthoriseUserViewController for checking if token is active or not
     private static let authoriseVC: AuthoriseUserViewController = AuthoriseUserViewController()
-
+    
     // MARK: - IBOutlets
-
+    
     /// An IBOutlet for handling the table view
     @IBOutlet private weak var tableView: UITableView!
     
@@ -70,7 +70,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
     
     /// An IBOutlet for handling the retry connecting button when an error has occured
     @IBOutlet private weak var retryConnectingButton: UIButton!
-
+    
     @IBOutlet private weak var infoPopUpButton: UIButton!
     
     // MARK: - IBActions
@@ -172,7 +172,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
                             y: weakSelf.tableView.frame.maxY + (calculatedHeight * 0.3) - calculatedHeight,
                             width: weakSelf.view.frame.width - 30,
                             height: calculatedHeight)
-                    },
+                },
                     completion: { _ in return }
                 )
             }
@@ -237,7 +237,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
             selector: #selector(hidePopUp),
             name: NSNotification.Name(Constants.NotificationNames.hideDataServicesInfo),
             object: nil)
-                
+        
         self.createNewNoteButton.addBorderToButton(width: 0.5, color: .white)
         
         NotesCachingWrapperHelper.checkForUnsyncedCache(userDomain: userDomain, userToken: userToken)
@@ -247,11 +247,15 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         
         super.viewWillAppear(animated)
         
+        NotesCachingWrapperHelper.checkForUnsyncedCache(userDomain: userDomain, userToken: userToken)
+        
         // check token
         self.addChildViewController(NotablesViewController.authoriseVC)
+        NotablesViewController.authoriseVC.completionFunc = { _ in
+            
+            self.ensureNotablesPlugEnabled()
+        }
         NotablesViewController.authoriseVC.checkToken(viewController: self)
-        
-        self.ensureNotablesPlugEnabled()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -261,7 +265,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         // fetch notes
         self.connectToServerToGetNotes(result: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()
@@ -366,7 +370,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
             }
         }
     }
-
+    
     // MARK: - Table View Methods
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -485,7 +489,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         // check token
         self.addChildViewController(NotablesViewController.authoriseVC)
         NotablesViewController.authoriseVC.completionFunc = success(token:)
-
+        
         NotablesViewController.authoriseVC.checkToken(viewController: self)
     }
     
@@ -525,19 +529,6 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
                     }
                     self.connectToServerToGetNotes(result: nil)
                 }
-                
-            case .tableDoesNotExist:
-                
-                HATAccountService.createHatTable(
-                    userDomain: self.userDomain,
-                    token: self.userToken,
-                    notablesTableStructure: HATJSONHelper.createNotablesTableJSON(),
-                    failed: {(createTableError: HATTableError) -> Void in
-                        
-                        CrashLoggerHelper.hatTableErrorLog(error: createTableError)
-                    }
-                    )({}())
-                
             case .noInternetConnection:
                 
                 self.showEmptyTableLabelWith(message: "No Notes available. Working offline.")
@@ -565,13 +556,13 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is ShareOptionsViewController {
             
             weak var destinationVC = segue.destination as? ShareOptionsViewController
-
+            
             if segue.identifier == Constants.Segue.editNoteSegue || segue.identifier == Constants.Segue.editNoteSegueWithImage {
                 
                 if let senderAsCell = sender as? UITableViewCell {
