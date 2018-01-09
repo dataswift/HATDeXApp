@@ -19,6 +19,7 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+*.cer
 
 ## Other
 *.xccheckout
@@ -69,7 +70,6 @@ HATDeX/fastlane/Preview.html
 HATDeX/fastlane/screenshots
 HATDeX/fastlane/test_output
 HATDeX/fastlane/Gymfile
-HATDeX/fastlane/Appfile
 HATDeX/fastlane/Deliverfile
 
 ### Xcode ###

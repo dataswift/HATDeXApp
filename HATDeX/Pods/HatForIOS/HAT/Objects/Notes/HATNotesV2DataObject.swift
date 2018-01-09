@@ -26,6 +26,7 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
         static let public_until: String = "public_until"
         static let updated_time: String = "updated_time"
         static let shared: String = "shared"
+        static let currenlty_shared: String = "currenlty_shared"
         static let shared_on: String = "shared_on"
         static let message: String = "message"
         static let kind: String = "kind"
@@ -51,6 +52,8 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
     
     /// if true this note is shared to facebook etc.
     public var shared: Bool = false
+    /// if true this note is shared to facebook etc.
+    public var currenlty_shared: Bool = false
     
     /// If shared, where is it shared? Coma seperated string (don't know if it's optional or not)
     public var shared_on: [String] = []
@@ -118,6 +121,10 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
         if let tempShared = dict[Fields.shared]?.boolValue {
             
             shared = tempShared
+        }
+        if let tempCurrentlyShared = dict[Fields.currenlty_shared]?.boolValue {
+            
+            currenlty_shared = tempCurrentlyShared
         }
         
         if let tempMessage = dict[Fields.message]?.string {

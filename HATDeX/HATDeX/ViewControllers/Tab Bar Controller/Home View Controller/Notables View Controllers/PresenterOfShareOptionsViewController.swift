@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -15,9 +15,9 @@ import HatForIOS
 // MARK: Class
 
 internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsProtocol {
-
+    
     // MARK: - Create Upload Options Alert
-        
+    
     class func createUploadPhotoOptionsAlert(sourceRect: CGRect, sourceView: UIView, viewController: ShareOptionsViewController, photosViewController: PhotosHelperViewController) -> UIAlertController {
         
         let alertController = UIAlertController(title: "Select options", message: "Select from where to upload image", preferredStyle: .actionSheet)
@@ -163,29 +163,29 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
         }
     }
     
-    class func test(viewController: ShareOptionsViewController, receivedNote: HATNotesV2Object, imagesToUpload: [UIImage], isEditingExistingNote: Bool, cachedIsNoteShared: Bool, textViewText: String, publishButton: UIButton, previousPublishButtonTitle: String, imageSelected: UIImageView) {
+    class func test(viewController: ShareOptionsViewController, receivedNote: HATNotesV2Object, imagesToUpload: [UIImage], isEditingExistingNote: Bool, cachedIsNoteShared: [String], textViewText: String, publishButton: UIButton, previousPublishButtonTitle: String, imageSelected: UIImageView) {
         
         // if note is shared and users have not selected any social networks to share show alert message
-        if receivedNote.data.shared && receivedNote.data.shared_on.isEmpty {
+        if receivedNote.data.currenlty_shared && receivedNote.data.shared_on.isEmpty {
             
             viewController.createClassicOKAlertWith(
                 alertMessage: "Please select at least one shared destination",
                 alertTitle: "",
                 okTitle: "OK",
                 proceedCompletion: {
-            
-                        PresenterOfShareOptionsViewController.restorePublishButtonToPreviousState(
+                    
+                    PresenterOfShareOptionsViewController.restorePublishButtonToPreviousState(
                         isUserInteractionEnabled: true,
                         previousTitle: previousPublishButtonTitle,
                         publishButton: publishButton)
-                }
+            }
             )
         }
         
         // not editing note
         if !isEditingExistingNote {
             
-            if receivedNote.data.shared && imagesToUpload.isEmpty {
+            if receivedNote.data.currenlty_shared && imagesToUpload.isEmpty {
                 
                 viewController.createClassicAlertWith(
                     alertMessage: "You are about to share your post. \n\nTip: to remove a note from the external site, edit the note and make it private.",
@@ -195,16 +195,16 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                     proceedCompletion: {
                         
                         viewController.postNote()
-                    },
+                },
                     cancelCompletion: {
                         
                         PresenterOfShareOptionsViewController.restorePublishButtonToPreviousState(
                             isUserInteractionEnabled: true,
                             previousTitle: previousPublishButtonTitle,
                             publishButton: publishButton)
-                    }
+                }
                 )
-            } else if receivedNote.data.shared {
+            } else if receivedNote.data.currenlty_shared {
                 
                 viewController.createClassicAlertWith(
                     alertMessage: "You are about to share your post. \n\nTip: to remove a note from the external site, edit the note and make it private.",
@@ -212,19 +212,19 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                     cancelTitle: "Cancel",
                     proceedTitle: "Share now",
                     proceedCompletion: {
-                
+                        
                         PresenterOfShareOptionsViewController.checkForImageAndUpload(
                             imagesToUpload: imagesToUpload,
                             viewController: viewController,
                             imageSelected: imageSelected)
-                    },
+                },
                     cancelCompletion: {
-                    
+                        
                         PresenterOfShareOptionsViewController.restorePublishButtonToPreviousState(
                             isUserInteractionEnabled: true,
                             previousTitle: previousPublishButtonTitle,
                             publishButton: publishButton)
-                    }
+                }
                 )
             } else {
                 
@@ -245,7 +245,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
             }
             
             // if note is shared and user has changed the text show alert message
-            if cachedIsNoteShared && (receivedNote.data.message != textViewText) {
+            if !cachedIsNoteShared.isEmpty && (receivedNote.data.message != textViewText) {
                 
                 viewController.createClassicAlertWith(
                     alertMessage: "Your post would not be edited at the destination.",
@@ -259,10 +259,10 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                             isUserInteractionEnabled: true,
                             previousTitle: previousPublishButtonTitle,
                             publishButton: publishButton)
-                    }
+                }
                 )
                 // if note is shared show message
-            } else if receivedNote.data.shared {
+            } else if receivedNote.data.currenlty_shared {
                 
                 viewController.createClassicAlertWith(
                     alertMessage: "You are about to share your post. \n\nTip: to remove a note from the external site, edit the note and make it private.",
@@ -276,7 +276,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                             isUserInteractionEnabled: true,
                             previousTitle: previousPublishButtonTitle,
                             publishButton: publishButton)
-                    }
+                }
                 )
             } else {
                 
@@ -307,10 +307,10 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
         }
     }
     
-    class func checkNoteIsDeletable(viewController: ShareOptionsViewController, cachedIsNoteShared: Bool, proceedCompletion: @escaping () -> Void) {
+    class func checkNoteIsDeletable(viewController: ShareOptionsViewController, cachedIsNoteShared: [String], proceedCompletion: @escaping () -> Void) {
         
         // if note shared show message
-        if cachedIsNoteShared {
+        if !cachedIsNoteShared.isEmpty {
             
             viewController.createClassicAlertWith(
                 alertMessage: "Deleting a note that has already been shared will not delete it at the destination. \n\nTo remove a note from the external site, first make it private. You may then choose to delete it.",
@@ -325,9 +325,9 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
         }
     }
     
-    class func checkIfNoteIsShared(viewController: ShareOptionsViewController, cachedIsNoteShared: Bool, publicSwitchState: Bool, cancelCompletion: @escaping () -> Void, proccedCompletion: @escaping () -> Void) {
+    class func checkIfNoteIsShared(viewController: ShareOptionsViewController, cachedIsNoteShared: [String], publicSwitchState: Bool, cancelCompletion: @escaping () -> Void, proccedCompletion: @escaping () -> Void) {
         
-        if cachedIsNoteShared && !publicSwitchState {
+        if !cachedIsNoteShared.isEmpty && !publicSwitchState {
             
             viewController.createClassicAlertWith(alertMessage: "This will remove your post at the shared destinations. \n\nWarning: any comments at the destinations would also be deleted.", alertTitle: "", cancelTitle: "Cancel", proceedTitle: "Proceed", proceedCompletion: proccedCompletion, cancelCompletion: cancelCompletion)
         } else {
@@ -405,7 +405,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
             return
         }
         
-        if locationData.accuracy != 0 && locationData.latitude != 0 && locationData.latitude != 0 {
+        if (locationData.accuracy != 0 && locationData.latitude != 0 && locationData.latitude != 0) && (locationData.accuracy != nil && locationData.latitude != nil && locationData.latitude != nil) {
             
             locationButton.setImage(UIImage(named: Constants.ImageNames.gpsFilledImage), for: .normal)
         }
@@ -464,9 +464,9 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                         userToken: userToken,
                         progressUpdater: nil,
                         completion: {
-                        
+                            
                             completion(imageSelected.image!)
-                        }
+                    }
                     )
                 }
             }
@@ -475,7 +475,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
     
     class func checkFilePublicOrPrivate(fileUploaded: FileUploadObject, receivedNote: HATNotesV2Object, viewController: ShareOptionsViewController?, success: (() -> Void)? = nil) {
         
-        if receivedNote.data.shared {
+        if receivedNote.data.currenlty_shared {
             
             // do another call to make image public
             HATFileService.makeFilePublic(
@@ -483,18 +483,18 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                 token: userToken,
                 userDomain: userDomain,
                 successCallback: { boolResult in
-            
+                    
                     if boolResult {
                         
                         success?()
                         // post note
                         viewController?.postNote(updatedLink: Constants.HATEndpoints.fileInfoURL(fileID: fileUploaded.fileID, userDomain: userDomain))
                     }
-                },
+            },
                 errorCallBack: {(error) -> Void in
-                
+                    
                     CrashLoggerHelper.hatErrorLog(error: error)
-                }
+            }
             )
         } else {
             

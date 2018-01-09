@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -39,11 +39,11 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 collectionView: self.collectionView,
                 imagesToUpload: &self.imagesToUpload,
                 completion: {image in
-                
+                    
                     self.imagesToUpload.append(self.imageSelected.image!)
                     self.collectionView.isHidden = false
                     self.collectionView.reloadData()
-                }
+            }
             )
         }
     }
@@ -60,7 +60,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             self.collectionView.reloadData()
         }
     }
-
+    
     // MARK: - Variables
     
     /// A dark view covering the collection view cell
@@ -102,7 +102,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
     var receivedNote: HATNotesV2Object?
     
     /// the cached received note to edit from notables view controller
-    private var cachedIsNoteShared: Bool = false
+    private var cachedIsNoteShared: [String] = []
     /// a bool value to determine if the user is editing an existing value
     var isEditingExistingNote: Bool = false
     /// a flag to define if the keyboard is visible
@@ -252,7 +252,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                         token: appToken,
                         renewedUserToken: renewedUserToken,
                         isPlugEnabledResult: { [weak self] _ in
-                    
+                            
                             if let weakSelf = self {
                                 
                                 weakSelf.shareOnSocial.append("twitter")
@@ -279,7 +279,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                         successful: { appToken, newToken in
                             
                             checkDataPlug(plug: plug, appToken: appToken, renewedUserToken: newToken)
-                        },
+                    },
                         failed: { [weak self] (error) in
                             
                             // if something wrong show error
@@ -327,6 +327,11 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         
         // save text
         self.receivedNote?.data.message = self.textView.text!
+        
+        if !(self.receivedNote?.data.shared_on.isEmpty)! {
+            
+            self.receivedNote?.data.shared = true
+        }
         
         NotesCachingWrapperHelper.postNote(
             note: self.receivedNote!,
@@ -476,13 +481,13 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             // update the ui accordingly
             self.turnUIElementsOn()
             self.turnImagesOn()
-            self.receivedNote?.data.shared = true
+            self.receivedNote?.data.currenlty_shared = true
         } else {
             
             // update the ui accordingly
             self.turnUIElementsOff()
             self.turnImagesOff()
-            self.receivedNote?.data.shared = false
+            self.receivedNote?.data.currenlty_shared = false
             self.durationSharedForLabel.text = "Forever"
         }
     }
@@ -530,7 +535,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 self.shareOnSocial.removeThe(string: "facebook")
                 PresenterOfShareOptionsViewController.turnButtonOff(button: self.facebookButton)
                 self.receivedNote?.data.shared_on = self.shareOnSocial
-            // else select it and add it to the array
+                // else select it and add it to the array
             } else {
                 
                 func facebookTokenReceived(plug: HATDataPlugObject, token: String, renewedUserToken: String?) {
@@ -544,7 +549,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                         token: token,
                         renewedUserToken: renewedUserToken,
                         isPlugEnabledResult: { [weak self] _ in
-                        
+                            
                             if let weakSelf = self {
                                 
                                 weakSelf.shareOnSocial.append("facebook")
@@ -556,7 +561,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 }
                 
                 self.publishButton.setTitle("Please Wait..", for: .normal)
-            
+                
                 for plug in self.dataPlugs where plug.plug.name == "facebook" {
                     
                     HATFacebookService.getAppTokenForFacebook(
@@ -676,7 +681,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                     
                     failCallBack()
                 }
-            }
+        }
         )
     }
     
@@ -727,10 +732,10 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         if isEditingExistingNote {
             
             self.setUpUIElementsFromReceivedNote(self.receivedNote!)
-            self.cachedIsNoteShared = (self.receivedNote?.data.shared)!
+            self.cachedIsNoteShared = (self.receivedNote?.data.shared_on)!
             
             PresenterOfShareOptionsViewController.setTitleOnPublishButtonBasedOn(
-                isShared: (self.receivedNote?.data.shared)!,
+                isShared: (self.receivedNote?.data.currenlty_shared)!,
                 button: self.publishButton)
             
             PresenterOfShareOptionsViewController.handleImageInit(
@@ -744,8 +749,8 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             
             guard let publicUntil = self.receivedNote?.data.public_until,
                 let publicUntilAsDouble = Double(publicUntil) else {
-                
-                return
+                    
+                    return
             }
             
             let date = Date(timeIntervalSince1970: publicUntilAsDouble)
@@ -754,8 +759,8 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 date: date,
                 durationLabel: self.durationSharedForLabel,
                 shareForLabel: self.shareForLabel,
-                isNoteShared: self.receivedNote!.data.shared)
-        // else init a new value
+                isNoteShared: self.receivedNote!.data.currenlty_shared)
+            // else init a new value
         } else {
             
             self.receivedNote = HATNotesV2Object()
@@ -841,7 +846,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         
         self.loadingScr?.view.frame = CGRect(x: self.view.frame.midX - 75, y: self.view.frame.midY - 160, width: 150, height: 160)
-
+        
         self.viewWillLayoutSubviews()
     }
     
@@ -879,7 +884,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         self.textView.text = receivedNote.data.message
         // set public switch state
         self.publicSwitch.isOn = true
-        self.publicSwitch.setOn(receivedNote.data.shared, animated: false)
+        self.publicSwitch.setOn(receivedNote.data.currenlty_shared, animated: false)
         // if switch is on update the ui accordingly
         if self.publicSwitch.isOn {
             
@@ -1198,7 +1203,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                             y: weakSelf.view.frame.maxY + (calculatedHeight * 0.1) - calculatedHeight,
                             width: weakSelf.view.frame.width - 30,
                             height: calculatedHeight)
-                    },
+                },
                     completion: { _ in return }
                 )
             }

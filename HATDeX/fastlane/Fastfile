@@ -31,6 +31,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
 
+    setup_travis
     build_app(scheme: "HATDeX Testing") # more options available
 
     changelog = File.read("../fastlane/Changelog.txt")
