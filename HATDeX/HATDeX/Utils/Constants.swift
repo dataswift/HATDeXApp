@@ -701,7 +701,7 @@ internal class Constants {
         
         // MARK: - Variables
         
-        static let offerID: String = "8438fcf0-cfec-4d79-8338-f0987056352f"
+        static let offerID: String = "92e4a135-cd81-4c5e-bbf8-57bea3b7d9e0"
         
         // MARK: - Construct URLs
         

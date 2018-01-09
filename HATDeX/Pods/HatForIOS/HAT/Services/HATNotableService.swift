@@ -205,8 +205,17 @@ public struct HATNotablesService {
      */
     public static func postNoteV2(userDomain: String, userToken: String, note: HATNotesV2Object, successCallBack: @escaping (JSON, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
+        var tempNote = note
+        if tempNote.data.locationv1?.latitude == nil {
+            
+            tempNote.data.locationv1 = nil
+        }
+        if tempNote.data.photov1?.link == "" {
+            
+            tempNote.data.photov1 = nil
+        }
         // update JSON file with the values needed
-        let hatData = HATNotesV2DataObject.encode(from: note.data)!
+        let hatData = HATNotesV2DataObject.encode(from: tempNote.data)!
         
         HATAccountService.createTableValuev2(
             token: userToken,

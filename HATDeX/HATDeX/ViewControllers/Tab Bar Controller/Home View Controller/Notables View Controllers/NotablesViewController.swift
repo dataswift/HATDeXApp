@@ -247,8 +247,6 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         
         super.viewWillAppear(animated)
         
-        NotesCachingWrapperHelper.checkForUnsyncedCache(userDomain: userDomain, userToken: userToken)
-        
         // check token
         self.addChildViewController(NotablesViewController.authoriseVC)
         NotablesViewController.authoriseVC.completionFunc = { _ in

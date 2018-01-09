@@ -481,13 +481,13 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             // update the ui accordingly
             self.turnUIElementsOn()
             self.turnImagesOn()
-            self.receivedNote?.data.currenlty_shared = true
+            self.receivedNote?.data.currently_shared = true
         } else {
             
             // update the ui accordingly
             self.turnUIElementsOff()
             self.turnImagesOff()
-            self.receivedNote?.data.currenlty_shared = false
+            self.receivedNote?.data.currently_shared = false
             self.durationSharedForLabel.text = "Forever"
         }
     }
@@ -731,11 +731,15 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         // if user is editing existing note set up the values accordingly
         if isEditingExistingNote {
             
+            if self.receivedNote != nil && self.receivedNote?.data.currently_shared == nil {
+                
+                self.receivedNote?.data.currently_shared = self.receivedNote?.data.shared
+            }
             self.setUpUIElementsFromReceivedNote(self.receivedNote!)
             self.cachedIsNoteShared = (self.receivedNote?.data.shared_on)!
             
             PresenterOfShareOptionsViewController.setTitleOnPublishButtonBasedOn(
-                isShared: (self.receivedNote?.data.currenlty_shared)!,
+                isShared: (self.receivedNote?.data.currently_shared)!,
                 button: self.publishButton)
             
             PresenterOfShareOptionsViewController.handleImageInit(
@@ -759,7 +763,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 date: date,
                 durationLabel: self.durationSharedForLabel,
                 shareForLabel: self.shareForLabel,
-                isNoteShared: self.receivedNote!.data.currenlty_shared)
+                isNoteShared: self.receivedNote!.data.currently_shared!)
             // else init a new value
         } else {
             
@@ -884,7 +888,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         self.textView.text = receivedNote.data.message
         // set public switch state
         self.publicSwitch.isOn = true
-        self.publicSwitch.setOn(receivedNote.data.currenlty_shared, animated: false)
+        self.publicSwitch.setOn(receivedNote.data.currently_shared!, animated: false)
         // if switch is on update the ui accordingly
         if self.publicSwitch.isOn {
             

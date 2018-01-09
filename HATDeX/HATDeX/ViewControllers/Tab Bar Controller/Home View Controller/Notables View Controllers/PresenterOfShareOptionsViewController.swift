@@ -166,7 +166,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
     class func test(viewController: ShareOptionsViewController, receivedNote: HATNotesV2Object, imagesToUpload: [UIImage], isEditingExistingNote: Bool, cachedIsNoteShared: [String], textViewText: String, publishButton: UIButton, previousPublishButtonTitle: String, imageSelected: UIImageView) {
         
         // if note is shared and users have not selected any social networks to share show alert message
-        if receivedNote.data.currenlty_shared && receivedNote.data.shared_on.isEmpty {
+        if receivedNote.data.currently_shared != nil && receivedNote.data.currently_shared! && receivedNote.data.shared_on.isEmpty {
             
             viewController.createClassicOKAlertWith(
                 alertMessage: "Please select at least one shared destination",
@@ -178,14 +178,14 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                         isUserInteractionEnabled: true,
                         previousTitle: previousPublishButtonTitle,
                         publishButton: publishButton)
-            }
+                }
             )
         }
         
         // not editing note
         if !isEditingExistingNote {
             
-            if receivedNote.data.currenlty_shared && imagesToUpload.isEmpty {
+            if receivedNote.data.currently_shared != nil && receivedNote.data.currently_shared! && imagesToUpload.isEmpty {
                 
                 viewController.createClassicAlertWith(
                     alertMessage: "You are about to share your post. \n\nTip: to remove a note from the external site, edit the note and make it private.",
@@ -204,7 +204,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                             publishButton: publishButton)
                 }
                 )
-            } else if receivedNote.data.currenlty_shared {
+            } else if receivedNote.data.currently_shared != nil && receivedNote.data.currently_shared! {
                 
                 viewController.createClassicAlertWith(
                     alertMessage: "You are about to share your post. \n\nTip: to remove a note from the external site, edit the note and make it private.",
@@ -262,7 +262,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                 }
                 )
                 // if note is shared show message
-            } else if receivedNote.data.currenlty_shared {
+            } else if receivedNote.data.currently_shared != nil && receivedNote.data.currently_shared! {
                 
                 viewController.createClassicAlertWith(
                     alertMessage: "You are about to share your post. \n\nTip: to remove a note from the external site, edit the note and make it private.",
@@ -475,7 +475,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
     
     class func checkFilePublicOrPrivate(fileUploaded: FileUploadObject, receivedNote: HATNotesV2Object, viewController: ShareOptionsViewController?, success: (() -> Void)? = nil) {
         
-        if receivedNote.data.currenlty_shared {
+        if receivedNote.data.currently_shared! {
             
             // do another call to make image public
             HATFileService.makeFilePublic(

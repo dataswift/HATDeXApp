@@ -30,7 +30,7 @@ internal struct KeychainHelper {
     @discardableResult
     static func setKeychainValue(key: String?, value: String?) -> Bool {
         
-        if value != nil && key != nil {
+        if value != nil && key != nil && value != "" {
             
             return KeychainSwift().set(value!, forKey: key!, withAccess: .accessibleWhenUnlocked)
         }

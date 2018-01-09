@@ -80,20 +80,17 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
      */
     private func updateCellUI(newCell: NotablesTableViewCell, note: HATNotesV2Object, indexPath: IndexPath) {
         
-        guard note.data.photov1 != nil,
-            note.data.photov1?.link != nil else {
+        if note.data.photov1 != nil && note.data.photov1?.link != nil {
             
-            return
-        }
-        
-        if let url = URL(string: (note.data.photov1?.link!)!) {
-            
-            self.downloadAttachedImage(
-                cell: newCell,
-                url: url,
-                row: indexPath.row,
-                note: note,
-                weakSelf: self)
+            if let url = URL(string: (note.data.photov1?.link!)!) {
+                
+                self.downloadAttachedImage(
+                    cell: newCell,
+                    url: url,
+                    row: indexPath.row,
+                    note: note,
+                    weakSelf: self)
+            }
         }
         
         // if the note is shared get the shared on string as well

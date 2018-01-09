@@ -288,7 +288,7 @@ internal struct NotesCachingWrapperHelper {
                                 
                                 print("error deleting from cache")
                             }
-                    },
+                        },
                         failed: { error in
                             
                             CrashLoggerHelper.hatTableErrorLog(error: error)
@@ -338,21 +338,21 @@ internal struct NotesCachingWrapperHelper {
                                         
                                         realm.delete(tempNote)
                                         
-                                        guard let resuts = CachingHelper.getFromRealm(type: "notes") else {
-                                            
-                                            return
-                                        }
-                                        realm.delete(resuts)
+//                                        guard let resuts = CachingHelper.getFromRealm(type: "notes") else {
+//
+//                                            return
+//                                        }
+//                                        realm.delete(resuts)
                                     }
                                 } catch {
                                     
                                     print("error deleting from cache")
                                 }
-                        },
+                            },
                             errorCallback: { error in
                                 
                                 CrashLoggerHelper.hatTableErrorLog(error: error)
-                        }
+                            }
                         )
                     }
                     

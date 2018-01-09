@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -26,7 +26,7 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
         static let public_until: String = "public_until"
         static let updated_time: String = "updated_time"
         static let shared: String = "shared"
-        static let currenlty_shared: String = "currenlty_shared"
+        static let currently_shared: String = "currently_shared"
         static let shared_on: String = "shared_on"
         static let message: String = "message"
         static let kind: String = "kind"
@@ -53,7 +53,7 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
     /// if true this note is shared to facebook etc.
     public var shared: Bool = false
     /// if true this note is shared to facebook etc.
-    public var currenlty_shared: Bool = false
+    public var currently_shared: Bool?
     
     /// If shared, where is it shared? Coma seperated string (don't know if it's optional or not)
     public var shared_on: [String] = []
@@ -122,16 +122,14 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
             
             shared = tempShared
         }
-        if let tempCurrentlyShared = dict[Fields.currenlty_shared]?.boolValue {
+        if let tempCurrentlyShared = dict[Fields.currently_shared]?.boolValue {
             
-            currenlty_shared = tempCurrentlyShared
+            currently_shared = tempCurrentlyShared
         }
-        
         if let tempMessage = dict[Fields.message]?.string {
             
             message = tempMessage
         }
-        
         if let tempKind = dict[Fields.kind]?.string {
             
             kind = tempKind
@@ -150,6 +148,7 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
             Fields.public_until: public_until ?? "",
             Fields.updated_time: updated_time,
             Fields.shared: shared,
+            Fields.currently_shared: currently_shared ?? shared,
             Fields.shared_on: shared_on,
             Fields.message: message,
             Fields.kind: kind
