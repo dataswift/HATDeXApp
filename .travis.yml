@@ -10,10 +10,10 @@ install:
 - sudo gem install cocoapods
 - sudo gem install bundler
 - bundle install
-after_install:
 - bundle update
 script: #xcodebuild clean build -workspace HATDeX/HATDeX.xcworkspace
   #-scheme HATDeX -destination 'platform=iOS Simulator,name=iPhone 8'
+    cd HATDeX/
     bundle exec fastlane beta
 env:
   global:
