@@ -4,6 +4,7 @@ xcode_workspace: HATDeX.xcworkspace
 xcode_scheme: HATDeX
 xcode_sdk: iphonesimulator11
 before_install:
+- rvm install "ruby-2.4.3"
 - rvm use 2.4.3
 install:
 - sudo gem install cocoapods
