@@ -352,6 +352,11 @@ extension HATDataPlugsService: UserCredentialsProtocol {
      */
     public static func filterAvailableDataPlugs(dataPlugs: [HATDataPlugObject]) -> [HATDataPlugObject] {
         
+        guard !dataPlugs.isEmpty else {
+            
+            return []
+        }
+        
         var tempDataPlugs = dataPlugs
         // remove the existing dataplugs from array
         tempDataPlugs.removeAll()

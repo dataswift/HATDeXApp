@@ -8,11 +8,11 @@
 
 import HatForIOS
 
-struct FieldInfo<T: HATObject> {
+internal struct FieldInfo<T: HATObject> {
 
     var string: WritableKeyPath<T, String>?
     var tag: Int = 0
-    var placeholder = ""
+    var placeholder: String = ""
     
     init(string: WritableKeyPath<T, String>, tag: Int, placeholder: String) {
         

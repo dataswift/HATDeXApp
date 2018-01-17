@@ -11,6 +11,7 @@
  */
 
 import HatForIOS
+import SwiftyJSON
 
 // MARK: Class
 
@@ -20,6 +21,8 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
     // MARK: - Protocol's Methods
     
     func locationDataReceived(latitude: Double, longitude: Double, accuracy: Double) {
+        
+        self.receivedNote?.data.locationv1 = HATNotesV2LocationObject()
         
         self.receivedNote?.data.locationv1?.latitude = latitude
         self.receivedNote?.data.locationv1?.longitude = longitude
@@ -184,6 +187,8 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
      */
     @IBAction func addImageButtonAction(_ sender: Any) {
         
+        self.receivedNote?.data.photov1?.link = nil
+        
         let alertController = PresenterOfShareOptionsViewController.createUploadPhotoOptionsAlert(
             sourceRect: self.addImageButton.bounds,
             sourceView: self.addImageButton,
@@ -203,12 +208,12 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         
         if self.receivedNote?.data.locationv1?.latitude != 0 && self.receivedNote?.data.locationv1?.longitude != 0 && self.receivedNote?.data.locationv1?.accuracy != 0 {
             
-            self.receivedNote?.data.locationv1?.latitude = 0
-            self.receivedNote?.data.locationv1?.longitude = 0
-            self.receivedNote?.data.locationv1?.accuracy = 0
+            self.receivedNote?.data.locationv1 = nil
             
             self.addLocationButton.setImage(UIImage(named: Constants.ImageNames.addLocation), for: .normal)
-        } else if Reachability.isConnectedToNetwork() {
+        }
+        
+        if Reachability.isConnectedToNetwork() {
             
             self.performSegue(withIdentifier: Constants.Segue.checkInSegue, sender: self)
         } else {
@@ -325,6 +330,11 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             self.receivedNote?.data.photov1?.link = updatedLink!
         }
         
+        if self.receivedNote?.data.locationv1?.latitude == nil || (self.receivedNote?.data.locationv1?.latitude == 0 && self.receivedNote?.data.locationv1?.longitude == nil && self.receivedNote?.data.locationv1?.accuracy == 0) {
+            
+            self.receivedNote?.data.locationv1 = nil
+        }
+        
         // save text
         self.receivedNote?.data.message = self.textView.text!
         
@@ -353,60 +363,160 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.NotificationNames.reloadTable), object: nil)
                     weakSelf.isEditingExistingNote = false
                 }
+                
+                NotesCachingWrapperHelper.checkForUnsyncedNotesToPost(userDomain: weakSelf.userDomain, userToken: weakSelf.userToken)
             },
             errorCallback: { _ in return }
         )
     }
     
-    func uploadImage() {
+    private func checkIfNoteIsSyncedWithHAT(completion: (() -> Void)? = nil) {
         
-        PresenterOfShareOptionsViewController.showProgressRing(loadingScr: &self.loadingScr, viewController: self)
-        
-        //self.receivedNote?.data.photoData.image = self.imageSelected.image
-        
-        HATFileService.uploadFileToHATWrapper(
-            token: userToken,
-            userDomain: userDomain,
-            fileToUpload: self.imageSelected.image!,
-            tags: ["iphone", "notes", "photo"],
-            progressUpdater: {[weak self](completion) -> Void in
+        if self.receivedNote?.recordId == "" && self.isEditingExistingNote {
+            
+            if let results = CachingHelper.getFromRealm(type: "notes") {
                 
-                PresenterOfShareOptionsViewController.updateProgressRing(loadingScr: self?.loadingScr, completion: completion)
-            },
-            completion: {[weak self](fileUploaded, renewedUserToken) -> Void in
-                
-                if let weakSelf = self {
+                for item in results where item.jsonData != nil {
                     
-                    PresenterOfShareOptionsViewController.checkFilePublicOrPrivate(fileUploaded: fileUploaded, receivedNote: weakSelf.receivedNote!, viewController: weakSelf)
+                    if let object = NSKeyedUnarchiver.unarchiveObject(with: item.jsonData!) as? [Dictionary<String, Any>], !object.isEmpty {
+                        
+                        let json = JSON(object[0])
+                        let note = HATNotesV2Object(dict: json.dictionaryValue)
+                        
+                        if note.data.created_time == self.receivedNote!.data.created_time && note.data.message == self.receivedNote!.data.message {
+                            
+                            guard let realm = RealmHelper.getRealm() else {
+                                
+                                return
+                            }
+                            
+                            do {
+                                
+                                try realm.write { [weak self] in
+                                    
+                                    self?.isEditingExistingNote = false
+                                    realm.delete(item)
+                                }
+                                completion?()
+                            } catch {
+                                
+                                print("deletion failed")
+                            }
+                        }
+                    }
                 }
-                // refresh user token
-                KeychainHelper.setKeychainValue(key: Constants.Keychain.userToken, value: renewedUserToken)
-            },
-            errorCallBack: {[weak self](error) -> Void in
+            } else {
                 
-                switch error {
-                    
-                case .noInternetConnection:
-                    
-                    self?.loadingScr?.removeFromParentViewController()
-                    self?.loadingScr?.view.removeFromSuperview()
-                    
-                    self?.postNote()
-                default:
-                    
-                    self?.loadingScr?.removeFromParentViewController()
-                    self?.loadingScr?.view.removeFromSuperview()
-                    
-                    self?.createClassicOKAlertWith(alertMessage: "There was an error with the uploading of the file, please try again later", alertTitle: "Upload failed", okTitle: "OK", proceedCompletion: {})
-                    
-                    PresenterOfShareOptionsViewController.restorePublishButtonToPreviousState(
-                        isUserInteractionEnabled: true,
-                        previousTitle: (self?.previousPublishButtonTitle!)!,
-                        publishButton: (self?.publishButton)!)
-                    CrashLoggerHelper.hatTableErrorLog(error: error)
-                }
+                completion?()
             }
+        } else {
+            
+            completion?()
+        }
+    }
+    
+    func updateNote(updatedLink: String? = nil) {
+        
+        if updatedLink != nil {
+            
+            self.receivedNote?.data.photov1 = HATNotesV2PhotoObject()
+            self.receivedNote?.data.photov1?.link = updatedLink!
+        }
+        
+        if self.receivedNote?.data.locationv1?.latitude != nil {
+            
+            self.receivedNote?.data.locationv1 = nil
+        }
+        
+        // save text
+        self.receivedNote?.data.message = self.textView.text!
+        
+        if !(self.receivedNote?.data.shared_on.isEmpty)! {
+            
+            self.receivedNote?.data.shared = true
+        }
+        
+        NotesCachingWrapperHelper.updateNote(
+            note: self.receivedNote!,
+            userToken: userToken,
+            userDomain: userDomain,
+            successCallback: { [weak self] in
+                
+                guard let weakSelf = self else {
+                    
+                    return
+                }
+                
+                weakSelf.loadingScr?.removeFromParentViewController()
+                weakSelf.loadingScr?.view.removeFromSuperview()
+                _ = weakSelf.navigationController?.popViewController(animated: true)
+                
+                if weakSelf.isEditingExistingNote {
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.NotificationNames.reloadTable), object: nil)
+                    weakSelf.isEditingExistingNote = false
+                }
+                
+                NotesCachingWrapperHelper.checkForUnsyncedNotesToUpdate(userDomain: weakSelf.userDomain, userToken: weakSelf.userToken)
+            },
+            errorCallback: { _ in return }
         )
+    }
+    
+    func uploadImage(completion: ((String?) -> Void)? = nil) {
+        
+        if self.imageSelected.image != nil {
+            
+            PresenterOfShareOptionsViewController.showProgressRing(loadingScr: &self.loadingScr, viewController: self)
+            
+            HATFileService.uploadFileToHATWrapper(
+                token: userToken,
+                userDomain: userDomain,
+                fileToUpload: self.imageSelected.image!,
+                tags: ["iphone", "notes", "photo"],
+                progressUpdater: {[weak self](completion) -> Void in
+                    
+                    PresenterOfShareOptionsViewController.updateProgressRing(loadingScr: self?.loadingScr, completion: completion)
+                },
+                completion: {[weak self](fileUploaded, renewedUserToken) -> Void in
+                    
+                    if let weakSelf = self {
+                        
+                        PresenterOfShareOptionsViewController.checkFilePublicOrPrivate(fileUploaded: fileUploaded, receivedNote: weakSelf.receivedNote!, viewController: weakSelf, success: completion)
+                    }
+                    // refresh user token
+                    KeychainHelper.setKeychainValue(key: Constants.Keychain.userToken, value: renewedUserToken)
+                },
+                errorCallBack: {[weak self](error) -> Void in
+                    
+                    switch error {
+                        
+                    case .noInternetConnection:
+                        
+                        self?.loadingScr?.removeFromParentViewController()
+                        self?.loadingScr?.view.removeFromSuperview()
+                        
+                        completion?(nil)
+                    default:
+                        
+                        self?.loadingScr?.removeFromParentViewController()
+                        self?.loadingScr?.view.removeFromSuperview()
+                        
+                        self?.createClassicOKAlertWith(alertMessage: "There was an error with the uploading of the file, please try again later", alertTitle: "Upload failed", okTitle: "OK", proceedCompletion: {})
+                        
+                        PresenterOfShareOptionsViewController.restorePublishButtonToPreviousState(
+                            isUserInteractionEnabled: true,
+                            previousTitle: (self?.previousPublishButtonTitle!)!,
+                            publishButton: (self?.publishButton)!)
+                        CrashLoggerHelper.hatTableErrorLog(error: error)
+                    }
+                }
+            )
+        } else {
+            
+            self.receivedNote?.data.photov1 = nil
+            completion?(nil)
+        }
     }
     
     /**
@@ -427,7 +537,15 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 publishButton: self.publishButton,
                 previousTitle: &self.previousPublishButtonTitle!)
             
-            PresenterOfShareOptionsViewController.test(viewController: self, receivedNote: self.receivedNote!, imagesToUpload: self.imagesToUpload, isEditingExistingNote: self.isEditingExistingNote, cachedIsNoteShared: self.cachedIsNoteShared, textViewText: self.textView.text!, publishButton: self.publishButton, previousPublishButtonTitle: self.previousPublishButtonTitle!, imageSelected: self.imageSelected)
+            self.checkIfNoteIsSyncedWithHAT(completion: { [weak self] in
+                
+                guard let weakSelf = self else {
+                    
+                    return
+                }
+                
+                PresenterOfShareOptionsViewController.test(viewController: weakSelf, receivedNote: weakSelf.receivedNote!, imagesToUpload: weakSelf.imagesToUpload, isEditingExistingNote: weakSelf.isEditingExistingNote, cachedIsNoteShared: weakSelf.cachedIsNoteShared, textViewText: weakSelf.textView.text!, publishButton: weakSelf.publishButton, previousPublishButtonTitle: weakSelf.previousPublishButtonTitle!, imageSelected: weakSelf.imageSelected)
+            })
         }
         
         // check if the token has expired
@@ -488,6 +606,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             self.turnUIElementsOff()
             self.turnImagesOff()
             self.receivedNote?.data.currently_shared = false
+            self.receivedNote?.data.shared_on.removeAll()
             self.durationSharedForLabel.text = "Forever"
         }
     }
@@ -637,6 +756,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             
             self.imageSelected.image = image
             
+            self.receivedNote?.data.photov1 = HATNotesV2PhotoObject()
             self.imagesToUpload.append(image)
             self.collectionView.isHidden = false
             self.collectionView.reloadData()
@@ -657,8 +777,8 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         let failCallBack = { [weak self] () -> Void in
             
             self?.createClassicOKAlertWith(
-                alertMessage: "There was an error enabling data plugs, please go to web rumpel to enable the data plugs",
-                alertTitle: "Data Plug Error",
+                alertMessage: "There was an error enabling Notables, please go to web rumpel to enable Notables",
+                alertTitle: "Notables Error",
                 okTitle: "OK",
                 proceedCompletion: {})
         }
@@ -667,7 +787,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         HATDataPlugsService.ensureOffersReady(
             succesfulCallBack: { _ in },
             tokenErrorCallback: failCallBack,
-            failCallBack: {error in
+            failCallBack: { error in
                 
                 switch error {
                     
@@ -733,7 +853,8 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             
             if self.receivedNote != nil && self.receivedNote?.data.currently_shared == nil {
                 
-                self.receivedNote?.data.currently_shared = self.receivedNote?.data.shared
+                let shared = self.receivedNote?.data.shared
+                self.receivedNote?.data.currently_shared = shared
             }
             self.setUpUIElementsFromReceivedNote(self.receivedNote!)
             self.cachedIsNoteShared = (self.receivedNote?.data.shared_on)!
@@ -768,6 +889,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         } else {
             
             self.receivedNote = HATNotesV2Object()
+            self.receivedNote?.data.currently_shared = false
             self.deleteButtonOutlet.isHidden = true
         }
         
@@ -781,6 +903,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name:NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide2), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showAlertForDataPlug), name: Notification.Name("dataPlugMessage"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showAlertForDataPlug), name: Notification.Name(Constants.NotificationNames.dismissSafari), object: nil)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(hidePopUp),
@@ -1115,6 +1238,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         return (cell?.setUpCell(imagesToUpload: self.imagesToUpload, imageLink: self.receivedNote?.data.photov1?.link, indexPath: indexPath, completion: { image in
             
             self.imagesToUpload[0] = image
+            self.imageSelected.image = image
             self.selectedImage = image
         }))!
     }

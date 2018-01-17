@@ -30,12 +30,12 @@ public struct HATNotesV2PhotoObject: HATObject, HatApiType {
     /// the link to the photo
     public var link: String?
     /// the source of the photo
-    public var source: String?
+    public var source: String? = "rumpel"
     /// the caption of the photo
     public var caption: String?
     
     /// if photo is shared
-    public var shared: Bool?
+    public var shared: Bool? = false
     
     // MARK: - Initialiser
     
@@ -59,12 +59,9 @@ public struct HATNotesV2PhotoObject: HATObject, HatApiType {
     public mutating func inititialize(dict: Dictionary<String, JSON>) {
         
         // check if shared exists and if is empty
-        if let tempShared = dict[Fields.shared]?.string {
+        if let tempShared = dict[Fields.shared]?.bool {
             
-            if let boolResult = Bool(tempShared) {
-                
-                shared = boolResult
-            }
+            shared = tempShared
         }
         
         if let tempLink = dict[Fields.link]?.string {

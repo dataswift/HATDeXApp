@@ -108,7 +108,7 @@ internal class PhataTableViewCell: UITableViewCell, UITextFieldDelegate, UITextV
             let countries = self.getCountries()
             var found = false
             
-            for country in countries where !text.characters.isEmpty {
+            for country in countries where !text.isEmpty {
                 
                 if country.lowercased().hasPrefix(text.lowercased()) {
                     
@@ -139,7 +139,7 @@ internal class PhataTableViewCell: UITableViewCell, UITextFieldDelegate, UITextV
                 textField.text = text
             }
             
-            if text.characters.count < 1 {
+            if text.count < 1 {
                 
                 textField.text = ""
             }
@@ -252,6 +252,15 @@ internal class PhataTableViewCell: UITableViewCell, UITextFieldDelegate, UITextV
         
         if self.textField != nil {
             
+            if self.textField.tag == 10 {
+                
+                if let text = self.textField.text?.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "+", with: "-") {
+                    
+                    return text
+                }
+                
+                return ""
+            }
             return self.textField.text!
         } else if self.textView != nil {
             

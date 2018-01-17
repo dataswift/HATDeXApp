@@ -84,4 +84,30 @@ public struct HATNotesV2Object: HATObject, HatApiType {
         let dictionary = JSON(fromCache)
         self.inititialize(dict: dictionary.dictionaryValue)
     }
+    
+    // MARK: - Override decoding code to parse old notes as well
+    
+    public static func decode<T: HATObject>(from: Dictionary<String, JSON>) -> T? {
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            
+            let data = try JSON(from).rawData()
+            let object = try decoder.decode(T.self, from: data)
+            return object
+        } catch {
+            
+            // Maybe note is v1 format, try to parse v1 format note else return nil
+            if let _ = from["data"]?["notablesv1"].dictionaryValue {
+                
+                let tst = self.init(dict: from) as? T
+                return tst!
+            } else {
+                
+                print("error decoding")
+                return nil
+            }
+        }
+    }
 }

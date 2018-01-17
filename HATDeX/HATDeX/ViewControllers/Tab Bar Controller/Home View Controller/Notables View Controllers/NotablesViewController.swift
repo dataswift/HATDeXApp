@@ -25,6 +25,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
     private var cachedNotesArray: [HATNotesV2Object] = []
     /// an array of the notes to work on without touching the cachedNotesArray
     private var notesArray: [HATNotesV2Object] = []
+    private var profileImageURL: String?
     
     /// A dark view covering the collection view cell
     private var darkView: UIVisualEffectView?
@@ -93,8 +94,6 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         
         // fetch notes
         self.connectToServerToGetNotes(result: nil)
-        
-        self.ensureNotablesPlugEnabled()
     }
     
     /**
@@ -179,45 +178,6 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
-    // MARK: - Ensure notables plug is enabled
-    
-    /**
-     Checks if notables plug is enabled before use
-     */
-    private func ensureNotablesPlugEnabled() {
-        
-        // if something wrong show error
-        let failCallBack = { [weak self] () -> Void in
-            
-            self?.createClassicOKAlertWith(
-                alertMessage: "There was an error enabling data plugs, please go to web rumpel to enable the data plugs",
-                alertTitle: "Data Plug Error",
-                okTitle: "OK",
-                proceedCompletion: {})
-        }
-        
-        // check if data plug is ready
-        HATDataPlugsService.ensureOffersReady(
-            succesfulCallBack: { _ in },
-            tokenErrorCallback: failCallBack,
-            failCallBack: { [weak self] error in
-                
-                switch error {
-                    
-                case .offerClaimed:
-                    
-                    break
-                case .noInternetConnection:
-                    
-                    self?.showEmptyTableLabelWith(message: "No internet connection and no cached notes found.")
-                default:
-                    
-                    failCallBack()
-                }
-            }
-        )
-    }
-    
     // MARK: - View Methods
     
     override func viewDidLoad() {
@@ -249,16 +209,14 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         
         // check token
         self.addChildViewController(NotablesViewController.authoriseVC)
-        NotablesViewController.authoriseVC.completionFunc = { _ in
-            
-            self.ensureNotablesPlugEnabled()
-        }
         NotablesViewController.authoriseVC.checkToken(viewController: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+        
+        self.tableView.tableFooterView = UIView(frame: .zero)
         
         // fetch notes
         self.connectToServerToGetNotes(result: nil)
@@ -386,12 +344,12 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
             
             if let tempCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellReuseIDs.cellDataWithImage, for: indexPath) as? NotablesTableViewCell {
                 
-                return controller.setUpCell(tempCell, note: self.cachedNotesArray[indexPath.row], indexPath: indexPath)
+                return controller.setUpCell(tempCell, note: self.cachedNotesArray[indexPath.row], indexPath: indexPath, profileImageURL: profileImageURL)
             }
         }
         
         let tempCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellReuseIDs.cellData, for: indexPath) as? NotablesTableViewCell
-        return controller.setUpCell(tempCell!, note: self.cachedNotesArray[indexPath.row], indexPath: indexPath)
+        return controller.setUpCell(tempCell!, note: self.cachedNotesArray[indexPath.row], indexPath: indexPath, profileImageURL: profileImageURL)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -536,6 +494,21 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
             }
         }
         
+        HATProfileService.getProfile(
+            userDomain: userDomain,
+            userToken: userToken,
+            successCallback: { [weak self] (profile, newToken) in
+                
+                if profile.data.photo.avatar != "" {
+                    
+                    self?.profileImageURL = profile.data.photo.avatar
+                    self?.tableView.reloadData()
+                }
+                
+                KeychainHelper.setKeychainValue(key: Constants.Keychain.userToken, value: newToken)
+            },
+            failCallback: failed)
+        
         NotesCachingWrapperHelper.getNotes(
             userToken: userToken,
             userDomain: userDomain,
@@ -560,7 +533,9 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         if segue.destination is ShareOptionsViewController {
             
             weak var destinationVC = segue.destination as? ShareOptionsViewController
-            
+            let backItem = UIBarButtonItem()
+            backItem.title = "Cancel"
+            navigationItem.backBarButtonItem = backItem
             if segue.identifier == Constants.Segue.editNoteSegue || segue.identifier == Constants.Segue.editNoteSegueWithImage {
                 
                 if let senderAsCell = sender as? UITableViewCell {

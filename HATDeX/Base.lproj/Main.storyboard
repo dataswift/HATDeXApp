@@ -32,7 +32,7 @@
         <!--Login-->
         <scene sceneID="ZJX-os-OGv">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vvb-vK-6GZ" customClass="LoginViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vvb-vK-6GZ" customClass="LoginViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y4i-Sb-UOA"/>
                         <viewControllerLayoutGuide type="bottom" id="YqD-Hw-r6C"/>
@@ -273,7 +273,7 @@
         <!--Data Services-->
         <scene sceneID="zaW-uK-1jb">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2Rp-ZF-e2I" customClass="HomeViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2Rp-ZF-e2I" customClass="HomeViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lbA-wG-VSh"/>
                         <viewControllerLayoutGuide type="bottom" id="GcH-7g-A72"/>
@@ -292,7 +292,7 @@
                                     <constraint firstAttribute="height" constant="55" id="y8w-vI-77X"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X84-1q-WTC" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X84-1q-WTC" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="-2" y="80" width="139" height="110"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -317,7 +317,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58j-bY-Mme">
-                                <rect key="frame" x="130" y="88" width="174" height="17.5"/>
+                                <rect key="frame" x="130" y="88" width="174" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -332,7 +332,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeScreenCell" id="EXJ-00-qOt" customClass="HomeCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeScreenCell" id="EXJ-00-qOt" customClass="HomeCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="32" width="160" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -378,7 +378,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeHeader" id="jbf-ND-a7Q" customClass="HomeHeaderCollectionReusableView" customModule="hat_mobile_ios" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeHeader" id="jbf-ND-a7Q" customClass="HomeHeaderCollectionReusableView" customModule="HATDeX" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -467,7 +467,7 @@
         <!--Parent Page View Controller-->
         <scene sceneID="JOe-0X-75u">
             <objects>
-                <pageViewController storyboardIdentifier="PageController" autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="K1Y-nh-x1V" customClass="ParentPageViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="PageController" autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="K1Y-nh-x1V" customClass="ParentPageViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </pageViewController>
@@ -478,7 +478,7 @@
         <!--Page View Controller-->
         <scene sceneID="9zh-2c-IWh">
             <objects>
-                <viewController storyboardIdentifier="ItemController" id="JMP-UG-881" customClass="PageViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemController" id="JMP-UG-881" customClass="PageViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q3P-g5-ub8"/>
                         <viewControllerLayoutGuide type="bottom" id="99S-M9-NYc"/>
@@ -581,7 +581,7 @@
         <!--Info Hat Providers View Controller-->
         <scene sceneID="M71-us-Obg">
             <objects>
-                <viewController storyboardIdentifier="HATInfo" id="Pv9-j9-2TI" customClass="InfoHatProvidersViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HATInfo" id="Pv9-j9-2TI" customClass="InfoHatProvidersViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vkG-nL-q9g"/>
                         <viewControllerLayoutGuide type="bottom" id="MTX-WE-pDH"/>
@@ -631,7 +631,7 @@
         <!--Capabilities Page View Controller-->
         <scene sceneID="jFL-DA-G4Z">
             <objects>
-                <pageViewController storyboardIdentifier="CapabilitiesPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Id8-2f-a9Y" customClass="HATCapabilitiesPageViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="CapabilitiesPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Id8-2f-a9Y" customClass="HATCapabilitiesPageViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </pageViewController>
@@ -642,7 +642,7 @@
         <!--Capabilities View Controller-->
         <scene sceneID="Lck-5k-mv2">
             <objects>
-                <viewController storyboardIdentifier="CapabilitiesViewController" id="odT-vh-nZh" customClass="HATCapabilitiesViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CapabilitiesViewController" id="odT-vh-nZh" customClass="HATCapabilitiesViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cKj-pp-YOe"/>
                         <viewControllerLayoutGuide type="bottom" id="Xup-Ye-KeO"/>
@@ -758,7 +758,7 @@
         <!--Complete Purchase View Controller-->
         <scene sceneID="esf-Ak-TL9">
             <objects>
-                <viewController id="aWE-iq-qje" customClass="CompletePurchaseViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aWE-iq-qje" customClass="CompletePurchaseViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Abh-YO-8ZC"/>
                         <viewControllerLayoutGuide type="bottom" id="DgC-hn-pwS"/>
@@ -868,17 +868,17 @@
         <!--Terms And Conditions View Controller-->
         <scene sceneID="vL1-vM-xJZ">
             <objects>
-                <viewController id="mGN-jg-bh9" customClass="TermsAndConditionsViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mGN-jg-bh9" customClass="TermsAndConditionsViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BQv-vu-n4i"/>
                         <viewControllerLayoutGuide type="bottom" id="aLe-Q1-bh4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6Lh-7Q-jCL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMB-Yn-iPC" customClass="MarkdownView" customModule="MarkdownView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -903,7 +903,7 @@
         <!--First Onboarding Page View Controller-->
         <scene sceneID="Xgl-Xr-eTK">
             <objects>
-                <pageViewController storyboardIdentifier="firstTimeOnboarding" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fLW-np-KMC" customClass="FirstOnboardingPageViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="firstTimeOnboarding" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fLW-np-KMC" customClass="FirstOnboardingPageViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -915,7 +915,7 @@
         <!--First Onboarding View Controller-->
         <scene sceneID="NWi-Ek-uBm">
             <objects>
-                <viewController storyboardIdentifier="firstOnboardingViewController" id="NzE-gs-SLU" customClass="FirstOnboardingViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstOnboardingViewController" id="NzE-gs-SLU" customClass="FirstOnboardingViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zHy-vW-fnD"/>
                         <viewControllerLayoutGuide type="bottom" id="oel-G5-cvM"/>
@@ -1015,7 +1015,7 @@
         <!--Learn MorePHATA View Controller-->
         <scene sceneID="yyv-o9-tjf">
             <objects>
-                <viewController storyboardIdentifier="learnMorePHATA" id="8GQ-fP-xW2" customClass="LearnMorePHATAViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="learnMorePHATA" id="8GQ-fP-xW2" customClass="LearnMorePHATAViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TqS-ik-WBD"/>
                         <viewControllerLayoutGuide type="bottom" id="TYQ-kj-CFq"/>
@@ -1108,7 +1108,7 @@
         <!--Text Pop Up View Controller-->
         <scene sceneID="QaB-rg-2CN">
             <objects>
-                <viewController storyboardIdentifier="textPopUpViewController" id="MMX-hP-DIM" customClass="TextPopUpViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="textPopUpViewController" id="MMX-hP-DIM" customClass="TextPopUpViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j6w-sN-w2X"/>
                         <viewControllerLayoutGuide type="bottom" id="cFX-Hl-WfC"/>
@@ -1168,7 +1168,7 @@
         <!--Image Pop Up View Controller-->
         <scene sceneID="BpB-jV-1w2">
             <objects>
-                <pageViewController storyboardIdentifier="ImagePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="4k7-bt-4Uc" customClass="ImagePopUpViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="ImagePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="4k7-bt-4Uc" customClass="ImagePopUpViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnD-VB-1M0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="946" y="-6163"/>
@@ -1176,7 +1176,7 @@
         <!--Image Slide Pop Up View Controller-->
         <scene sceneID="RsR-Tm-vnA">
             <objects>
-                <viewController storyboardIdentifier="ImagePopUpViewController" id="ZKo-1X-COA" customClass="ImageSlidePopUpViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImagePopUpViewController" id="ZKo-1X-COA" customClass="ImageSlidePopUpViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wmh-kS-r9b"/>
                         <viewControllerLayoutGuide type="bottom" id="Mtz-nK-cCr"/>
@@ -1236,7 +1236,7 @@
         <!--Location-->
         <scene sceneID="xFw-eM-6lT">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="VSO-tC-6mG" userLabel="Location" customClass="MapViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="VSO-tC-6mG" userLabel="Location" customClass="MapViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A54-qd-Vik"/>
                         <viewControllerLayoutGuide type="bottom" id="5i8-hV-d5G"/>
@@ -1406,7 +1406,7 @@
         <!--Data Offers-->
         <scene sceneID="bQo-rd-FMy">
             <objects>
-                <viewController id="Zep-yl-2cH" customClass="DataOffersViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zep-yl-2cH" customClass="DataOffersViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="00E-75-2hE"/>
                         <viewControllerLayoutGuide type="bottom" id="LqK-QM-cVQ"/>
@@ -1428,7 +1428,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="offerCell" id="JmH-ww-NCt" customClass="DataOffersCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="offerCell" id="JmH-ww-NCt" customClass="DataOffersCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="280" height="280"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1443,18 +1443,18 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpx-yG-Ccj">
-                                                            <rect key="frame" x="20" y="160" width="240" height="20"/>
+                                                            <rect key="frame" x="20" y="160" width="240" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8U-To-Bxz">
-                                                            <rect key="frame" x="20" y="196" width="240" height="16.5"/>
+                                                            <rect key="frame" x="20" y="199.5" width="240" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZY-C6-Fwm" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZY-C6-Fwm" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
                                                             <rect key="frame" x="78" y="20" width="124" height="124"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -1486,7 +1486,7 @@
                                                     <outlet property="titleLabel" destination="zpx-yG-Ccj" id="Fgs-f0-49Z"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="listDataOffersCell" id="OMR-gF-4am" customClass="ListDataOffersCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="listDataOffersCell" id="OMR-gF-4am" customClass="ListDataOffersCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="340" width="280" height="280"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1514,7 +1514,7 @@
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                                 </textView>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeZ-yA-IfC" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeZ-yA-IfC" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
                                                                     <rect key="frame" x="8" y="8" width="90" height="90"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
@@ -1541,13 +1541,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecz-Op-dp1">
-                                                                    <rect key="frame" x="106" y="8" width="34.5" height="16.5"/>
+                                                                    <rect key="frame" x="106" y="8" width="35.5" height="19.5"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mE-Mm-xLb">
-                                                                    <rect key="frame" x="106" y="39" width="34.5" height="19"/>
+                                                                    <rect key="frame" x="106" y="39" width="35.5" height="19"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="19" id="1DM-G7-hRq"/>
                                                                     </constraints>
@@ -1590,7 +1590,7 @@
                                                     <outlet property="ringProgressBar" destination="xeZ-yA-IfC" id="K89-Ya-bUl"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="summaryOfferCell" id="aMz-el-i8z" customClass="DataOffersSummaryCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="summaryOfferCell" id="aMz-el-i8z" customClass="DataOffersSummaryCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="660" width="280" height="280"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1892,7 +1892,7 @@
         <!--Data Offer Details View Controller-->
         <scene sceneID="lst-Oj-r7x">
             <objects>
-                <viewController id="F5Z-1y-uMq" customClass="DataOfferDetailsViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="F5Z-1y-uMq" customClass="DataOfferDetailsViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jOx-dV-83U"/>
                         <viewControllerLayoutGuide type="bottom" id="d7c-5a-ilS"/>
@@ -2179,7 +2179,7 @@
         <!--Data View Controller-->
         <scene sceneID="GOc-83-IhQ">
             <objects>
-                <viewController id="bvB-RA-s02" customClass="DataViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bvB-RA-s02" customClass="DataViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E29-Pg-FlE"/>
                         <viewControllerLayoutGuide type="bottom" id="Jea-hN-NLg"/>
@@ -2188,11 +2188,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DKV-Bg-kw6" customClass="DataPointsTableView" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DKV-Bg-kw6" customClass="DataPointsTableView" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataPointTableViewCell" rowHeight="93" id="LdH-ds-X5d" customClass="DataPointTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataPointTableViewCell" rowHeight="93" id="LdH-ds-X5d" customClass="DataPointTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LdH-ds-X5d" id="LQv-MZ-c2s">
@@ -2280,7 +2280,7 @@
         <!--Settings View Controller-->
         <scene sceneID="gF1-FR-wJC">
             <objects>
-                <viewController id="ArB-7q-wad" customClass="SettingsViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ArB-7q-wad" customClass="SettingsViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VK7-An-16d"/>
                         <viewControllerLayoutGuide type="bottom" id="4wC-r4-cUF"/>
@@ -2352,7 +2352,7 @@
         <!--GetAHAT View Controller-->
         <scene sceneID="ApI-b9-Jot">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="TSy-7L-1oP" customClass="GetAHATViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="TSy-7L-1oP" customClass="GetAHATViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="diy-HZ-ac0"/>
                         <viewControllerLayoutGuide type="bottom" id="F3b-97-oAE"/>
@@ -2371,7 +2371,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="onboardingTile" id="Aip-Zx-DFQ" customClass="OnboardingTileCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="onboardingTile" id="Aip-Zx-DFQ" customClass="OnboardingTileCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="425"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2507,7 +2507,7 @@
         <!--GetAHAT Info View Controller-->
         <scene sceneID="xYv-XN-NFj">
             <objects>
-                <viewController storyboardIdentifier="HATProviderInfo" id="9Sr-Ka-vcX" customClass="GetAHATInfoViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HATProviderInfo" id="9Sr-Ka-vcX" customClass="GetAHATInfoViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CTU-Nq-T0s"/>
                         <viewControllerLayoutGuide type="bottom" id="9Hp-gZ-ip9"/>
@@ -2624,7 +2624,7 @@
         <!--Stripe View Controller-->
         <scene sceneID="HPB-b3-ydu">
             <objects>
-                <viewController id="F41-Tp-8LH" customClass="StripeViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="F41-Tp-8LH" customClass="StripeViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SQg-cg-vcn"/>
                         <viewControllerLayoutGuide type="bottom" id="2jz-7X-H4d"/>
@@ -2718,7 +2718,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jjF-td-UZ7">
-                                                <rect key="frame" x="8" y="417" width="305" height="30"/>
+                                                <rect key="frame" x="8" y="421" width="305" height="30"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5hN-3U-K6o"/>
@@ -2728,7 +2728,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your HAT Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sg-Yy-gsF">
-                                                <rect key="frame" x="8" y="336" width="124" height="26"/>
+                                                <rect key="frame" x="8" y="336" width="124" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="124" id="nUU-tX-oc7"/>
                                                 </constraints>
@@ -2737,7 +2737,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All fields mandatory" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmj-R5-7Ge">
-                                                <rect key="frame" x="126" y="341" width="187" height="17"/>
+                                                <rect key="frame" x="126" y="341" width="187" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="187" id="kqd-QB-6Jz"/>
                                                 </constraints>
@@ -2746,10 +2746,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="Xd0-z8-xA5">
-                                                <rect key="frame" x="8" y="370" width="305" height="1"/>
+                                                <rect key="frame" x="8" y="374" width="305" height="1"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HAT password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb5-c1-eYO">
-                                                <rect key="frame" x="8" y="455" width="305" height="21"/>
+                                                <rect key="frame" x="8" y="459" width="305" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="Kfl-Yj-Hwg"/>
                                                 </constraints>
@@ -2758,7 +2758,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="whr-pj-0QQ">
-                                                <rect key="frame" x="8" y="485" width="305" height="30"/>
+                                                <rect key="frame" x="8" y="489" width="305" height="30"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="pXH-po-89v"/>
@@ -2771,7 +2771,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re-type HAT password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqq-6r-zsT">
-                                                <rect key="frame" x="8" y="523" width="305" height="21"/>
+                                                <rect key="frame" x="8" y="527" width="305" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="oZJ-E6-8k9"/>
                                                 </constraints>
@@ -2780,7 +2780,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BT5-ys-ocF">
-                                                <rect key="frame" x="8" y="553" width="305" height="30"/>
+                                                <rect key="frame" x="8" y="557" width="305" height="30"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="xJP-gi-AdV"/>
@@ -2790,7 +2790,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where do you want your HAT to be based?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiK-c3-N1x">
-                                                <rect key="frame" x="8" y="591" width="305" height="21"/>
+                                                <rect key="frame" x="8" y="595" width="305" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="9uM-ad-n6k"/>
                                                 </constraints>
@@ -2799,7 +2799,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPF-bz-2p4">
-                                                <rect key="frame" x="8" y="668" width="305" height="30"/>
+                                                <rect key="frame" x="8" y="672" width="305" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="6L2-zi-o38"/>
                                                 </constraints>
@@ -2812,7 +2812,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1p-Ja-3PS">
-                                                <rect key="frame" x="8" y="706" width="305" height="30"/>
+                                                <rect key="frame" x="8" y="710" width="305" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="rXR-Am-deE"/>
                                                 </constraints>
@@ -2825,7 +2825,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ5-N5-roR" customClass="BEMCheckBox">
-                                                <rect key="frame" x="282" y="775.5" width="30" height="30"/>
+                                                <rect key="frame" x="282" y="782" width="30" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="9sH-PQ-mpg"/>
@@ -2841,19 +2841,19 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I accept the terms &amp; conditions of HAT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54T-qB-uxo">
-                                                <rect key="frame" x="8" y="748" width="268" height="15.5"/>
+                                                <rect key="frame" x="8" y="752" width="268" height="18"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I accept the terms &amp; conditions of Rumpel lite" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRz-Zb-nuZ">
-                                                <rect key="frame" x="8" y="770.5" width="268" height="39"/>
+                                                <rect key="frame" x="8" y="777" width="268" height="39"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your personal HAT address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isj-4e-cfc">
-                                                <rect key="frame" x="8" y="388" width="305" height="21"/>
+                                                <rect key="frame" x="8" y="392" width="305" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="6wD-hb-697"/>
                                                 </constraints>
@@ -2862,7 +2862,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAs-Yj-7hx">
-                                                <rect key="frame" x="8" y="817.5" width="305" height="30"/>
+                                                <rect key="frame" x="8" y="824" width="305" height="30"/>
                                                 <color key="backgroundColor" red="0.0" green="0.58628696199999997" blue="0.53447610140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Xwn-G6-LR6"/>
@@ -2876,7 +2876,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QiG-kT-xYa" customClass="BEMCheckBox">
-                                                <rect key="frame" x="282" y="744" width="30" height="27.5"/>
+                                                <rect key="frame" x="282" y="748" width="30" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="P6q-Dd-nXV"/>
@@ -2892,7 +2892,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bw8-gR-QXJ">
-                                                <rect key="frame" x="8" y="620" width="305" height="30"/>
+                                                <rect key="frame" x="8" y="624" width="305" height="30"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="kMZ-nB-4Uf"/>
@@ -3078,7 +3078,7 @@
         <!--Notes-->
         <scene sceneID="fXN-3h-Pjq">
             <objects>
-                <viewController id="f85-QV-g2W" customClass="NotablesViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f85-QV-g2W" customClass="NotablesViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zs5-Ga-pZt"/>
                         <viewControllerLayoutGuide type="bottom" id="lVl-QC-z0N"/>
@@ -3097,7 +3097,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="426"/>
                                 <color key="backgroundColor" red="0.11489913612604141" green="0.19210577011108398" blue="0.20907124876976013" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellData" rowHeight="139" id="TjC-3X-AF5" customClass="NotablesTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellData" rowHeight="139" id="TjC-3X-AF5" customClass="NotablesTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="139"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TjC-3X-AF5" id="nFU-b5-3He">
@@ -3148,7 +3148,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="socialCell" id="8Km-R0-gpQ" customClass="SocialImageCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="socialCell" id="8Km-R0-gpQ" customClass="SocialImageCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="2.5" width="22" height="22"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -3213,7 +3213,7 @@
                                             <segue destination="omu-es-gVw" kind="show" identifier="editNoteSegue" id="K29-cj-KVX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellDataWithImage" rowHeight="235" id="vcR-O3-pTf" customClass="NotablesTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellDataWithImage" rowHeight="235" id="vcR-O3-pTf" customClass="NotablesTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="167" width="320" height="235"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vcR-O3-pTf" id="E93-lQ-Zbe">
@@ -3264,7 +3264,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="socialCell" id="jZO-G6-kIx" customClass="SocialImageCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="socialCell" id="jZO-G6-kIx" customClass="SocialImageCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="2.5" width="22" height="22"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -3308,7 +3308,7 @@
                                                         <constraint firstAttribute="width" constant="142" id="hNS-oM-C7O"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Im9-et-VJk" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Im9-et-VJk" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
                                                     <rect key="frame" x="209" y="132" width="50" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -3441,7 +3441,7 @@
         <!--Loading Screen With Progress Ring View Controller-->
         <scene sceneID="HKX-TQ-xuZ">
             <objects>
-                <viewController storyboardIdentifier="loadingScreen" id="l9C-OY-AeN" customClass="LoadingScreenWithProgressRingViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loadingScreen" id="l9C-OY-AeN" customClass="LoadingScreenWithProgressRingViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DGb-m2-F20"/>
                         <viewControllerLayoutGuide type="bottom" id="Q2f-ec-eh8"/>
@@ -3450,7 +3450,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="150" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAx-kn-Ht3" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAx-kn-Ht3" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="25" y="21" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -3524,7 +3524,7 @@
         <!--Note-->
         <scene sceneID="kfW-GN-ydW">
             <objects>
-                <viewController id="omu-es-gVw" customClass="ShareOptionsViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="omu-es-gVw" customClass="ShareOptionsViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0rH-zG-X90"/>
                         <viewControllerLayoutGuide type="bottom" id="lab-W1-wpF"/>
@@ -3578,14 +3578,16 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addedImageCell" id="USP-W7-mM4" customClass="ShareOptionsSelectedImageCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addedImageCell" id="USP-W7-mM4" customClass="ShareOptionsSelectedImageCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-zu-4D8"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-zu-4D8">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                                                                </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-k9-Y0V">
-                                                                    <rect key="frame" x="-30" y="5" width="23" height="23"/>
+                                                                    <rect key="frame" x="970" y="5" width="23" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="23" id="RwY-Of-R7w"/>
                                                                         <constraint firstAttribute="width" constant="23" id="hfR-3q-g4g"/>
@@ -3595,8 +3597,8 @@
                                                                         <action selector="cancelButtonAction:" destination="USP-W7-mM4" eventType="touchUpInside" id="Ql8-bQ-Nq8"/>
                                                                     </connections>
                                                                 </button>
-                                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMQ-U4-zG1" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
-                                                                    <rect key="frame" x="-17.5" y="-17.5" width="35" height="35"/>
+                                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMQ-U4-zG1" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
+                                                                    <rect key="frame" x="482.5" y="482.5" width="35" height="35"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" id="gUr-jF-YO4"/>
@@ -4007,7 +4009,7 @@
         <!--Add Location-->
         <scene sceneID="izm-8P-db0">
             <objects>
-                <viewController id="xCe-Uv-qit" customClass="CheckInMapViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xCe-Uv-qit" customClass="CheckInMapViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4vf-ss-x9Q"/>
                         <viewControllerLayoutGuide type="bottom" id="f1W-7z-ab7"/>
@@ -4079,7 +4081,7 @@
         <!--Notes-->
         <scene sceneID="cEx-lr-1cO">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarControllerID" automaticallyAdjustsScrollViewInsets="NO" id="Qkh-YZ-tmw" customClass="TabBarViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarControllerID" automaticallyAdjustsScrollViewInsets="NO" id="Qkh-YZ-tmw" customClass="TabBarViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Notes" id="Ht2-6p-toc"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="EPN-1v-nes">
@@ -4102,7 +4104,7 @@
         <!--More-->
         <scene sceneID="2vB-Ho-yPc">
             <objects>
-                <viewController id="ZcN-ia-0Jf" customClass="MoreTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZcN-ia-0Jf" customClass="MoreTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gc5-WD-Rvr"/>
                         <viewControllerLayoutGuide type="bottom" id="XZP-cQ-6jI"/>
@@ -4166,13 +4168,13 @@
         <!--Data Debits-->
         <scene sceneID="r9f-sj-MLJ">
             <objects>
-                <tableViewController id="HmI-my-0z7" customClass="DataDebitsTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="HmI-my-0z7" customClass="DataDebitsTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" id="WaO-5a-ImH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="dataDebitCell" rowHeight="83" id="RoS-HM-gJR" customClass="DataDebitTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="dataDebitCell" rowHeight="83" id="RoS-HM-gJR" customClass="DataDebitTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RoS-HM-gJR" id="aks-2W-UyJ">
@@ -4232,13 +4234,13 @@
         <!--Change Password-->
         <scene sceneID="xzh-Sh-1x2">
             <objects>
-                <tableViewController id="wDI-A0-0ja" customClass="ResetPasswordTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="wDI-A0-0ja" customClass="ResetPasswordTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="aEK-3w-2zY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="resetPasswordCell" id="sTN-Mk-k8D" customClass="ResetPasswordTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="resetPasswordCell" id="sTN-Mk-k8D" customClass="ResetPasswordTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sTN-Mk-k8D" id="lmZ-zR-bZf">
@@ -4290,7 +4292,7 @@
         <!--PHATA-->
         <scene sceneID="uh5-0g-ogX">
             <objects>
-                <tableViewController id="QCY-ZL-SNu" customClass="PhataTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QCY-ZL-SNu" customClass="PhataTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="erZ-O2-Bza">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4343,13 +4345,13 @@
         <!--Name-->
         <scene sceneID="uBs-8N-Nv6">
             <objects>
-                <tableViewController id="o5i-F7-7vc" customClass="NameTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="o5i-F7-7vc" customClass="NameTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="KDJ-xR-l2i">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="nameCell" id="Ueo-aN-UjF" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="nameCell" id="Ueo-aN-UjF" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ueo-aN-UjF" id="cxw-3q-VxG">
@@ -4362,7 +4364,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QzR-TI-Jx2" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QzR-TI-Jx2" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="254" y="10" width="50" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -4420,7 +4422,7 @@
         <!--My Story-->
         <scene sceneID="fm5-0J-UrW">
             <objects>
-                <viewController id="xvM-wD-caY" customClass="SocialFeedViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xvM-wD-caY" customClass="SocialFeedViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YG6-XN-r9T"/>
                         <viewControllerLayoutGuide type="bottom" id="o9P-dr-mXx"/>
@@ -4445,7 +4447,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="statusSocialFeedCell" id="jPI-nt-CZH" customClass="SocialFeedCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="statusSocialFeedCell" id="jPI-nt-CZH" customClass="SocialFeedCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -4554,7 +4556,7 @@
                                             <outlet property="profileNameLabel" destination="xlj-Ms-Tqg" id="N3D-ku-liy"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageSocialFeedCell" id="4LN-de-skn" customClass="SocialFeedCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageSocialFeedCell" id="4LN-de-skn" customClass="SocialFeedCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="105" width="320" height="230"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -4790,7 +4792,7 @@
         <!--Images-->
         <scene sceneID="WxL-Ys-5nb">
             <objects>
-                <viewController id="vRc-AS-X6W" customClass="PhotoViewerViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vRc-AS-X6W" customClass="PhotoViewerViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="llO-gm-1pc"/>
                         <viewControllerLayoutGuide type="bottom" id="usR-Qc-0a6"/>
@@ -4816,7 +4818,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photosCell" id="Oxk-QE-u8p" customClass="PhotosCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photosCell" id="Oxk-QE-u8p" customClass="PhotosCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -4826,7 +4828,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="SRf-ZB-ClW">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMd-rN-zA6" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMd-rN-zA6" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
                                                     <rect key="frame" x="25" y="25" width="50" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -4927,7 +4929,7 @@
         <!--Photo Full Screen Viewer View Controller-->
         <scene sceneID="Ibc-Jy-1zZ">
             <objects>
-                <viewController id="v77-9E-bTS" customClass="PhotoFullScreenViewerViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="v77-9E-bTS" customClass="PhotoFullScreenViewerViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mET-GW-H8Q"/>
                         <viewControllerLayoutGuide type="bottom" id="nzS-BX-Ohv"/>
@@ -4943,7 +4945,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="572"/>
                                     </imageView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUi-o2-Lss">
-                                        <rect key="frame" x="8" y="486" width="158" height="25"/>
+                                        <rect key="frame" x="8" y="486" width="161" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="qmY-4h-brV"/>
                                         </constraints>
@@ -4970,7 +4972,7 @@
                                     <outlet property="delegate" destination="v77-9E-bTS" id="DQT-53-Dhn"/>
                                 </connections>
                             </scrollView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjS-U2-UNr" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjS-U2-UNr" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="135" y="202.5" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5020,7 +5022,7 @@
         <!--Go Deep Collection View Controller-->
         <scene sceneID="yuS-Y2-x5h">
             <objects>
-                <collectionViewController id="Zii-IS-Aer" customClass="GoDeepCollectionViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Zii-IS-Aer" customClass="GoDeepCollectionViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="n8H-Lp-Cba">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5032,7 +5034,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="goDeepCell" id="gvo-Ed-jy7" customClass="GoDeepCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="goDeepCell" id="gvo-Ed-jy7" customClass="GoDeepCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="155" height="155"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -5094,7 +5096,7 @@
         <!--Data Store-->
         <scene sceneID="YGf-2D-Hzz">
             <objects>
-                <tableViewController id="apV-lR-PYY" customClass="DataStoreTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="apV-lR-PYY" customClass="DataStoreTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="UsZ-WQ-CHg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5142,7 +5144,7 @@
         <!--Tracker-->
         <scene sceneID="h9j-4h-yFw">
             <objects>
-                <viewController id="OkO-CT-twm" customClass="FitbitFeedViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OkO-CT-twm" customClass="FitbitFeedViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ELt-IT-84X"/>
                         <viewControllerLayoutGuide type="bottom" id="xwj-uU-Bvc"/>
@@ -5240,7 +5242,7 @@
                                 <rect key="frame" x="0.0" y="93" width="320" height="426"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fitbitCell" id="KiI-hG-wxa" customClass="DataPlugDetailsTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fitbitCell" id="KiI-hG-wxa" customClass="DataPlugDetailsTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KiI-hG-wxa" id="mHf-HC-dNi">
@@ -5274,7 +5276,7 @@
                                             <outlet property="titleLabel" destination="n1l-U1-kIO" id="TZP-XP-6P6"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedDateCell" id="6ol-Hb-U4f" customClass="FitbitDateTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedDateCell" id="6ol-Hb-U4f" customClass="FitbitDateTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ol-Hb-U4f" id="uEU-gg-jei">
@@ -5357,13 +5359,13 @@
         <!--Name-->
         <scene sceneID="205-Bs-Seq">
             <objects>
-                <tableViewController id="ksA-vn-U5k" customClass="DataSourceNameTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ksA-vn-U5k" customClass="DataSourceNameTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="BNp-Ha-j8g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreNameCell" id="7zv-xe-tR4" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreNameCell" id="7zv-xe-tR4" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7zv-xe-tR4" id="Qft-pb-sNQ">
@@ -5415,7 +5417,7 @@
         <!--Data Plugs-->
         <scene sceneID="tL6-wp-nlK">
             <objects>
-                <collectionViewController id="Zm4-mn-pPm" customClass="DataPlugsCollectionViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Zm4-mn-pPm" customClass="DataPlugsCollectionViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="VpC-ZV-WXZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5427,7 +5429,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" reuseIdentifier="dataPlugCell" id="0TD-qU-FsG" customClass="DataPlugCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" reuseIdentifier="dataPlugCell" id="0TD-qU-FsG" customClass="DataPlugCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -5517,7 +5519,7 @@
         <!--Plug Details-->
         <scene sceneID="3M5-jR-si5">
             <objects>
-                <viewController id="r4q-L2-RRn" customClass="DetailsDataPlugViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="r4q-L2-RRn" customClass="DetailsDataPlugViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yaR-Rg-9oo"/>
                         <viewControllerLayoutGuide type="bottom" id="uk4-1k-Hqs"/>
@@ -5550,7 +5552,7 @@
                                 <rect key="frame" x="0.0" y="110" width="320" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlugDetailsCell" id="iSZ-XI-AM8" customClass="DataPlugDetailsTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlugDetailsCell" id="iSZ-XI-AM8" customClass="DataPlugDetailsTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iSZ-XI-AM8" id="IWt-cj-cfn">
@@ -5655,13 +5657,13 @@
         <!--Notifications-->
         <scene sceneID="IxR-iy-KRl">
             <objects>
-                <tableViewController id="ND3-tk-Cpi" customClass="NotificationsTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ND3-tk-Cpi" customClass="NotificationsTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="117" sectionHeaderHeight="18" sectionFooterHeight="18" id="LMl-e9-tQ6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationsCell" rowHeight="117" id="Vya-cg-ETA" customClass="NotificationsTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationsCell" rowHeight="117" id="Vya-cg-ETA" customClass="NotificationsTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vya-cg-ETA" id="5rr-kh-A42">
@@ -5728,7 +5730,7 @@
         <!--Details-->
         <scene sceneID="DOo-Gz-rkY">
             <objects>
-                <viewController id="461-3s-qam" customClass="NotificationDetailsViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="461-3s-qam" customClass="NotificationDetailsViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sjk-jr-fnb"/>
                         <viewControllerLayoutGuide type="bottom" id="c3v-sM-9mj"/>
@@ -5783,13 +5785,13 @@
         <!--Email-->
         <scene sceneID="eaJ-q8-iYX">
             <objects>
-                <tableViewController id="OOQ-w5-kdQ" customClass="EmailTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="OOQ-w5-kdQ" customClass="EmailTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Dn3-Vu-A93">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emailCell" id="eJl-0s-l7S" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emailCell" id="eJl-0s-l7S" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eJl-0s-l7S" id="CTU-FF-ATx">
@@ -5802,7 +5804,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
                                         </textField>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjA-a3-hpH" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjA-a3-hpH" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="254" y="10" width="50" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -5860,13 +5862,13 @@
         <!--Phone-->
         <scene sceneID="Xk7-AT-GI0">
             <objects>
-                <tableViewController id="LKz-YA-kTu" customClass="PhoneTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LKz-YA-kTu" customClass="PhoneTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="on0-hq-Oxr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="phoneCell" id="7Sj-WQ-Chh" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="phoneCell" id="7Sj-WQ-Chh" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Sj-WQ-Chh" id="29X-Iu-Nmd">
@@ -5879,7 +5881,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stM-Zn-Thp" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stM-Zn-Thp" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="254" y="10" width="50" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -5937,13 +5939,13 @@
         <!--Locale-->
         <scene sceneID="xPE-ta-2VA">
             <objects>
-                <tableViewController id="8ae-nD-T4a" customClass="AddressTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8ae-nD-T4a" customClass="AddressTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="IdR-7i-Ril">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="addressCell" id="BI4-es-8fw" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="addressCell" id="BI4-es-8fw" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BI4-es-8fw" id="uuP-i6-4aN">
@@ -5956,7 +5958,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdp-S1-dcg" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdp-S1-dcg" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="254" y="10" width="50" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -6014,13 +6016,13 @@
         <!--Social Links-->
         <scene sceneID="qVx-DK-pFI">
             <objects>
-                <tableViewController id="b7Q-3u-xEB" customClass="SocialLinksTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="b7Q-3u-xEB" customClass="SocialLinksTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="0Vd-M4-6vj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="socialLinksCell" id="Heo-NZ-9FT" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="socialLinksCell" id="Heo-NZ-9FT" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Heo-NZ-9FT" id="bZ7-8o-6uV">
@@ -6033,7 +6035,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVF-p5-luI" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVF-p5-luI" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="254" y="10" width="50" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -6091,20 +6093,20 @@
         <!--About-->
         <scene sceneID="oCs-b7-PQ2">
             <objects>
-                <tableViewController id="Auk-so-H3O" customClass="AboutTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Auk-so-H3O" customClass="AboutTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="OiU-2h-YVL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="aboutCell" id="2L2-rT-rLg" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="aboutCell" id="2L2-rT-rLg" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2L2-rT-rLg" id="pX6-MF-qbV">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="so8-Ue-SUX" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="so8-Ue-SUX" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="262" y="7" width="50" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -6172,13 +6174,13 @@
         <!--Profile Info-->
         <scene sceneID="zSK-SN-FlZ">
             <objects>
-                <tableViewController id="x8B-hh-Hhw" customClass="ProfileInfoTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="x8B-hh-Hhw" customClass="ProfileInfoTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="IIg-C7-0po">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="profileInfoCell" id="byv-vX-9aU" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="profileInfoCell" id="byv-vX-9aU" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="byv-vX-9aU" id="Ko5-bC-EWU">
@@ -6191,7 +6193,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5g-Od-ysI" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5g-Od-ysI" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="254" y="10" width="50" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -6249,7 +6251,7 @@
         <!--Profile Picture-->
         <scene sceneID="CK3-eG-4ee">
             <objects>
-                <viewController id="Nho-G7-h7U" customClass="PhataPictureViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nho-G7-h7U" customClass="PhataPictureViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lt3-vn-EMG"/>
                         <viewControllerLayoutGuide type="bottom" id="p66-wm-Oj2"/>
@@ -6266,7 +6268,7 @@
                                     <constraint firstAttribute="width" constant="150" id="q7D-HF-CJa"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-H0-WN6" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-H0-WN6" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="254" y="228" width="50" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -6308,7 +6310,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profilePictureCell" id="SWR-i9-QBP" customClass="PhotosCollectionViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profilePictureCell" id="SWR-i9-QBP" customClass="PhotosCollectionViewCell" customModule="HATDeX" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="33" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -6318,7 +6320,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="HAh-6T-kKB">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5B-Hk-QfC" customClass="RingProgressCircle" customModule="hat_mobile_ios" customModuleProvider="target">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5B-Hk-QfC" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -6361,7 +6363,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileImageHeader" id="Drx-rR-qSQ" customClass="PhotosHeaderCollectionReusableView" customModule="hat_mobile_ios" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileImageHeader" id="Drx-rR-qSQ" customClass="PhotosHeaderCollectionReusableView" customModule="HATDeX" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -6450,13 +6452,13 @@
         <!--Emergency Contact-->
         <scene sceneID="REX-b2-hjT">
             <objects>
-                <tableViewController id="f3X-xm-vwZ" customClass="EmergencyContactTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="f3X-xm-vwZ" customClass="EmergencyContactTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="CYS-RP-ZBU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emergencyContactCell" id="2di-Bc-5tf" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emergencyContactCell" id="2di-Bc-5tf" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2di-Bc-5tf" id="cBQ-7F-jzb">
@@ -6469,7 +6471,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         </textField>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFK-4k-rCr" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFK-4k-rCr" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="254" y="10" width="50" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -6527,20 +6529,20 @@
         <!--PHATA Settings-->
         <scene sceneID="EZr-Sa-aEp">
             <objects>
-                <tableViewController id="6Vg-W8-QTe" customClass="PHATASettingsTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="6Vg-W8-QTe" customClass="PHATASettingsTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="gd3-rJ-Nhx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="phataSettingsCell" id="NqK-tg-Rsy" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="phataSettingsCell" id="NqK-tg-Rsy" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NqK-tg-Rsy" id="XwY-ll-NKf">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQo-VS-9Tv" customClass="CustomSwitch" customModule="hat_mobile_ios" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQo-VS-9Tv" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                             <rect key="frame" x="254" y="10" width="50" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -6605,13 +6607,13 @@
         <!--Info-->
         <scene sceneID="F6E-1h-FR9">
             <objects>
-                <tableViewController id="Mcf-4N-WWI" customClass="DataStoreInfoTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Mcf-4N-WWI" customClass="DataStoreInfoTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Soz-5I-w4D">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreInfoCell" id="IZV-Dd-Luh" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreInfoCell" id="IZV-Dd-Luh" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IZV-Dd-Luh" id="1gS-3B-4bc">
@@ -6663,13 +6665,13 @@
         <!--Contact Info-->
         <scene sceneID="FOD-3c-6PN">
             <objects>
-                <tableViewController id="IHb-iX-6qM" customClass="DataStoreContactInfoTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="IHb-iX-6qM" customClass="DataStoreContactInfoTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fFw-B5-Zex">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreContactInfoCell" id="4cQ-IL-R2T" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreContactInfoCell" id="4cQ-IL-R2T" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4cQ-IL-R2T" id="CRr-2Z-1y2">
@@ -6721,13 +6723,13 @@
         <!--Employment Status-->
         <scene sceneID="fgq-Pw-oxe">
             <objects>
-                <tableViewController id="h0o-kk-ErZ" customClass="DataStoreEmploymentStatusTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="h0o-kk-ErZ" customClass="DataStoreEmploymentStatusTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="HEo-kE-ecW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreEmploymentCell" id="IHk-kF-piW" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreEmploymentCell" id="IHk-kF-piW" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IHk-kF-piW" id="J9q-DM-exL">
@@ -6780,13 +6782,13 @@
         <!--Living Info-->
         <scene sceneID="VtJ-8x-zRi">
             <objects>
-                <tableViewController id="kBN-ii-qDR" customClass="DataStoreRelationshipAndHouseholdTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="kBN-ii-qDR" customClass="DataStoreRelationshipAndHouseholdTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="rwL-j0-JIV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreRelationshipCell" id="0Kp-L2-5Ea" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreRelationshipCell" id="0Kp-L2-5Ea" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Kp-L2-5Ea" id="wDM-Us-fHP">
@@ -6838,13 +6840,13 @@
         <!--Education-->
         <scene sceneID="V4O-Mq-kWJ">
             <objects>
-                <tableViewController id="Twn-bK-3VD" customClass="DataStoreEducationTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Twn-bK-3VD" customClass="DataStoreEducationTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="K1e-hn-xGq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreEducationCell" id="4B0-o6-sLe" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreEducationCell" id="4B0-o6-sLe" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4B0-o6-sLe" id="bsg-xy-DbF">
@@ -6915,13 +6917,13 @@
         <!--UK Specific Info-->
         <scene sceneID="rjd-7u-k62">
             <objects>
-                <tableViewController id="8XH-Of-4fF" customClass="DataStoreUKSpecificTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8XH-Of-4fF" customClass="DataStoreUKSpecificTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Kkr-Pe-j5W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreUKSpecificInfoCell" id="pzu-c5-T1D" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataStoreUKSpecificInfoCell" id="pzu-c5-T1D" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pzu-c5-T1D" id="qd9-J6-hjw">
@@ -6973,13 +6975,13 @@
         <!--For Data Offers-->
         <scene sceneID="g0P-HE-Dio">
             <objects>
-                <tableViewController id="mgI-bA-DX6" customClass="DataStoreForDataOffersTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="mgI-bA-DX6" customClass="DataStoreForDataOffersTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="E1j-gM-qTb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="forDataOffersCell" textLabel="oHJ-nd-yt3" style="IBUITableViewCellStyleDefault" id="KTl-xa-6Xl" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="forDataOffersCell" textLabel="oHJ-nd-yt3" style="IBUITableViewCellStyleDefault" id="KTl-xa-6Xl" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KTl-xa-6Xl" id="RIi-0K-c0n">
@@ -7032,7 +7034,7 @@
         <!--My Priorities-->
         <scene sceneID="Bnd-RQ-3iN">
             <objects>
-                <tableViewController id="uH4-YL-S8S" customClass="DataStorePrioritiesTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="uH4-YL-S8S" customClass="DataStorePrioritiesTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="nXK-ss-Y0o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7077,13 +7079,13 @@
         <!--Dietary Habits-->
         <scene sceneID="PSV-lB-ek0">
             <objects>
-                <tableViewController id="ZeN-Nx-VXy" customClass="DataStoreDietaryHabitsAndBehaviorsTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ZeN-Nx-VXy" customClass="DataStoreDietaryHabitsAndBehaviorsTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="117" sectionHeaderHeight="18" sectionFooterHeight="18" id="scS-At-mKq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="dietaryHabitsCell" rowHeight="117" id="Heg-V5-U1w" customClass="SurveyTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="dietaryHabitsCell" rowHeight="117" id="Heg-V5-U1w" customClass="SurveyTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Heg-V5-U1w" id="ra8-am-UyE">
@@ -7322,13 +7324,13 @@
         <!--My Interests-->
         <scene sceneID="ePi-Sf-RUl">
             <objects>
-                <tableViewController id="pMy-sW-MIc" customClass="DataStoreInterestsTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="pMy-sW-MIc" customClass="DataStoreInterestsTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FKU-xK-JGO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="interestsCell" editingAccessoryType="checkmark" textLabel="oiu-zM-Egt" style="IBUITableViewCellStyleDefault" id="GHz-Gj-Bl6" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="interestsCell" editingAccessoryType="checkmark" textLabel="oiu-zM-Egt" style="IBUITableViewCellStyleDefault" id="GHz-Gj-Bl6" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GHz-Gj-Bl6" id="f2F-HP-B91">
@@ -7372,13 +7374,13 @@
         <!--Physical Activities-->
         <scene sceneID="Dz3-O9-tgr">
             <objects>
-                <tableViewController id="Khk-mP-ep4" customClass="DataStorePhysicalActivityTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Khk-mP-ep4" customClass="DataStorePhysicalActivityTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="117" sectionHeaderHeight="18" sectionFooterHeight="18" id="dw0-Be-aXd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="physicalActivitiesCell" rowHeight="117" id="xa0-jC-VxA" customClass="SurveyTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="physicalActivitiesCell" rowHeight="117" id="xa0-jC-VxA" customClass="SurveyTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xa0-jC-VxA" id="G2x-Is-Okp">
@@ -7617,13 +7619,13 @@
         <!--Lifestyle Habits-->
         <scene sceneID="hmc-VN-dmp">
             <objects>
-                <tableViewController id="9k9-Pv-8FX" customClass="DataStoreLifestyleHabitsTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9k9-Pv-8FX" customClass="DataStoreLifestyleHabitsTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="117" sectionHeaderHeight="18" sectionFooterHeight="18" id="xWl-1z-UL4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="lifestyleHabitsCell" rowHeight="117" id="YMS-2S-YDP" customClass="SurveyTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="lifestyleHabitsCell" rowHeight="117" id="YMS-2S-YDP" customClass="SurveyTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YMS-2S-YDP" id="Ft1-Zp-FOE">
@@ -7862,13 +7864,13 @@
         <!--Financial Managment-->
         <scene sceneID="spa-3w-hDF">
             <objects>
-                <tableViewController id="8Sp-TZ-NFH" customClass="DataStoreFinancialManagementTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8Sp-TZ-NFH" customClass="DataStoreFinancialManagementTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="117" sectionHeaderHeight="18" sectionFooterHeight="18" id="nMv-h2-zfC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="financialManagementCell" rowHeight="117" id="8ye-m6-i6c" customClass="SurveyTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="financialManagementCell" rowHeight="117" id="8ye-m6-i6c" customClass="SurveyTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8ye-m6-i6c" id="rDc-xe-p5j">
@@ -8107,13 +8109,13 @@
         <!--Happiness And Mental Health-->
         <scene sceneID="jYo-jr-2f3">
             <objects>
-                <tableViewController id="U6W-wg-Nq5" customClass="DataStoreHappinessAndMentalHealthTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="U6W-wg-Nq5" customClass="DataStoreHappinessAndMentalHealthTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="117" sectionHeaderHeight="18" sectionFooterHeight="18" id="IOI-mF-KQs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="happinesAndMentalHealthCell" rowHeight="117" id="WFZ-kh-k3E" customClass="SurveyTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="happinesAndMentalHealthCell" rowHeight="117" id="WFZ-kh-k3E" customClass="SurveyTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WFZ-kh-k3E" id="8kX-Zk-u20">
@@ -8371,13 +8373,13 @@
         <!--Stuff To Remember-->
         <scene sceneID="ani-0d-8Wa">
             <objects>
-                <tableViewController id="pJa-s5-uXN" customClass="StuffToRememberTableViewController" customModule="hat_mobile_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="pJa-s5-uXN" customClass="StuffToRememberTableViewController" customModule="HATDeX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Qm1-ep-EBD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="stuffToRememberCell" id="9tl-UP-Mad" customClass="PhataTableViewCell" customModule="hat_mobile_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="stuffToRememberCell" id="9tl-UP-Mad" customClass="PhataTableViewCell" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9tl-UP-Mad" id="2Kk-nd-a5E">
@@ -8479,6 +8481,6 @@
         <segue reference="7kR-bZ-1RE"/>
         <segue reference="gao-fb-RHk"/>
         <segue reference="4rH-cn-cXc"/>
-        <segue reference="ohN-KF-ATS"/>
+        <segue reference="v2J-fU-LlK"/>
     </inferredMetricsTieBreakers>
 </document>

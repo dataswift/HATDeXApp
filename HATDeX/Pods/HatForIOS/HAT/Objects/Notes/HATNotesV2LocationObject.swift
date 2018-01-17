@@ -13,7 +13,7 @@
 import SwiftyJSON
 
 public struct HATNotesV2LocationObject: HATObject, HatApiType {
-
+    
     // MARK: - JSON Fields
     
     /// The possible Fields of the JSON struct
@@ -72,44 +72,26 @@ public struct HATNotesV2LocationObject: HATObject, HatApiType {
     public mutating func inititialize(dict: Dictionary<String, JSON>) {
         
         // check for values and assign them if not empty
-        if let tempAltitude = dict[Fields.altitude]?.string {
+        if let tempAltitude = dict[Fields.altitude]?.floatValue {
             
-            if tempAltitude != "" {
-                
-                if let doubleNumberAltitute = Double(tempAltitude) {
-                    
-                    altitude = doubleNumberAltitute
-                }
-            }
+            altitude = Double(tempAltitude)
         }
         
-        if let tempAltitudeAccuracy = dict[Fields.altitudeAccuracy]?.string {
+        if let tempAltitudeAccuracy = dict[Fields.altitudeAccuracy]?.floatValue {
             
-            if tempAltitudeAccuracy != "" {
-                
-                if let doubleNumberAltitudeAccuracy = Double(tempAltitudeAccuracy) {
-                    
-                    altitude_accuracy = doubleNumberAltitudeAccuracy
-                }
-            }
+            altitude_accuracy = Double(tempAltitudeAccuracy)
         }
         
-        if let tempLatitude = dict[Fields.latitude]?.string {
+        if let tempLatitude = dict[Fields.latitude]?.floatValue {
             
-            if tempLatitude != "" {
-                
-                if let doubleNumberLatitude = Double(tempLatitude) {
-                    
-                    latitude = doubleNumberLatitude
-                }
-            }
+            latitude = Double(tempLatitude)
         }
-        if let tempHeading = dict[Fields.heading]?.string {
+        if let tempHeading = dict[Fields.heading]?.stringValue {
             
             heading = tempHeading
         }
         
-        if let tempShared = dict[Fields.shared]?.string {
+        if let tempShared = dict[Fields.shared]?.stringValue {
             
             if tempShared != "" {
                 
@@ -119,35 +101,17 @@ public struct HATNotesV2LocationObject: HATObject, HatApiType {
                 }
             }
         }
-        if let tempAccuracy = dict[Fields.accuracy]?.string {
+        if let tempAccuracy = dict[Fields.accuracy]?.floatValue {
             
-            if tempAccuracy != "" {
-                
-                if let doubleNumberAccuracy = Double(tempAccuracy) {
-                    
-                    accuracy = doubleNumberAccuracy
-                }
-            }
+            accuracy = Double(tempAccuracy)
         }
-        if let tempLongitude = dict[Fields.longitude]?.string {
+        if let tempLongitude = dict[Fields.longitude]?.floatValue {
             
-            if tempLongitude != "" {
-                
-                if let doubleNumberLongitude = Double(tempLongitude) {
-                    
-                    longitude = doubleNumberLongitude
-                }
-            }
+            longitude = Double(tempLongitude)
         }
-        if let tempSpeed = dict[Fields.speed]?.string {
+        if let tempSpeed = dict[Fields.speed]?.floatValue {
             
-            if tempSpeed != "" {
-                
-                if let doubleNumberSpeed = Double(tempSpeed) {
-                    
-                    speed = doubleNumberSpeed
-                }
-            }
+            speed = Double(tempSpeed)
         }
     }
     

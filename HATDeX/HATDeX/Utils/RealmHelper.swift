@@ -44,8 +44,6 @@ public class RealmHelper {
             
             return nil
         }
-        
-        return nil
     }
     
     // MARK: - Add data
@@ -191,7 +189,7 @@ public class RealmHelper {
         let dbLocations: Results<DataPoint> = realm.objects(DataPoint.self).sorted(by: sortProperties)
         var locationsToUpdate: [DataPoint] = []
         
-        for location in dbLocations where location.dateSyncStatusChanged > 0  && location.syncStatus == "syncing" {
+        for location in dbLocations where location.dateSyncStatusChanged > 0 && location.syncStatus == "syncing" {
             
             let syncingDate = Date(timeIntervalSince1970: Double(location.dateSyncStatusChanged))
             let currentDate = Date()

@@ -39,28 +39,4 @@ internal struct MarketSquareService: UserCredentialsProtocol {
         return Constants.HATDataPlugCredentials.marketsquareDataPlugID
     }
     
-    // MARK: - Get app token
-    
-    /**
-     Gets application token for facebook
-     
-     - parameter successful: An @escaping (String) -> Void method executed on a successful response
-     - parameter failed: An @escaping (Void) -> Void) method executed on a failed response
-     */
-//    static func getAppTokenForMarketsquare(successful: @escaping (String, String?) -> Void, failed: @escaping () -> Void) {
-//        
-//        HATService.getApplicationTokenFor(
-//            serviceName: Constants.ApplicationToken.Marketsquare.name,
-//            userDomain: userDomain,
-//            token: userToken,
-//            resource: Constants.ApplicationToken.Marketsquare.source,
-//            succesfulCallBack: successful,
-//            failCallBack: {(error) in
-//            
-//                failed()
-//                CrashLoggerHelper.JSONParsingErrorLogWithoutAlert(error: error)
-//            }
-//        )
-//    }
-    
 }

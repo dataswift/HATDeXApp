@@ -150,16 +150,16 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
         }
     }
     
-    class func checkForImageAndUpload(imagesToUpload: [UIImage], viewController: ShareOptionsViewController, imageSelected: UIImageView) {
+    class func checkForImageAndUpload(imagesToUpload: [UIImage], viewController: ShareOptionsViewController, imageSelected: UIImageView, completion: ((String?) -> Void)? = nil) {
         
         if !imagesToUpload.isEmpty {
             
             PresenterOfShareOptionsViewController.checkImage(imageSelected: imageSelected)
             
-            viewController.uploadImage()
+            viewController.uploadImage(completion: completion)
         } else {
             
-            viewController.postNote()
+            completion?(nil)
         }
     }
     
@@ -178,7 +178,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                         isUserInteractionEnabled: true,
                         previousTitle: previousPublishButtonTitle,
                         publishButton: publishButton)
-                }
+            }
             )
         }
         
@@ -216,7 +216,17 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                         PresenterOfShareOptionsViewController.checkForImageAndUpload(
                             imagesToUpload: imagesToUpload,
                             viewController: viewController,
-                            imageSelected: imageSelected)
+                            imageSelected: imageSelected,
+                            completion: { fileID in
+                                
+                                guard fileID != nil else {
+                                    
+                                    return
+                                }
+                                let imageURL = Constants.HATEndpoints.fileInfoURL(fileID: fileID!, userDomain: userDomain)
+                                viewController.postNote(updatedLink: imageURL)
+                        }
+                        )
                 },
                     cancelCompletion: {
                         
@@ -231,17 +241,44 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                 PresenterOfShareOptionsViewController.checkForImageAndUpload(
                     imagesToUpload: imagesToUpload,
                     viewController: viewController,
-                    imageSelected: imageSelected)
+                    imageSelected: imageSelected,
+                    completion: { fileID in
+                        
+                        guard fileID != nil else {
+                            
+                            viewController.postNote(updatedLink: nil)
+                            return
+                        }
+                        let imageURL = Constants.HATEndpoints.fileInfoURL(fileID: fileID!, userDomain: userDomain)
+                        viewController.postNote(updatedLink: imageURL)
+                })
             }
             // else delete the existing note and post a new one
         } else {
             
-            func deleteNote() {
+            func updateNote() {
                 
-                // delete note
-                NotesCachingWrapperHelper.deleteNote(noteID: receivedNote.recordId, userToken: userToken, userDomain: userDomain, cacheTypeID: "notes-Delete")
-                
-                PresenterOfShareOptionsViewController.checkForImageAndUpload(imagesToUpload: imagesToUpload, viewController: viewController, imageSelected: imageSelected)
+                if receivedNote.data.photov1?.link == nil && !imagesToUpload.isEmpty {
+                    
+                    PresenterOfShareOptionsViewController.checkForImageAndUpload(
+                        imagesToUpload: imagesToUpload,
+                        viewController: viewController,
+                        imageSelected: imageSelected,
+                        completion: { fileID in
+                            
+                            guard fileID != nil else {
+                                
+                                return
+                            }
+                            
+                            let imageURL = Constants.HATEndpoints.fileInfoURL(fileID: fileID!, userDomain: userDomain)
+                            viewController.updateNote(updatedLink: imageURL)
+                        }
+                    )
+                } else {
+                    
+                    viewController.updateNote(updatedLink: nil)
+                }
             }
             
             // if note is shared and user has changed the text show alert message
@@ -252,7 +289,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                     alertTitle: "",
                     cancelTitle: "Cancel",
                     proceedTitle: "OK",
-                    proceedCompletion: deleteNote,
+                    proceedCompletion: updateNote,
                     cancelCompletion: {
                         
                         PresenterOfShareOptionsViewController.restorePublishButtonToPreviousState(
@@ -269,7 +306,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                     alertTitle: "",
                     cancelTitle: "Cancel",
                     proceedTitle: "Share now",
-                    proceedCompletion: deleteNote,
+                    proceedCompletion: updateNote,
                     cancelCompletion: {
                         
                         PresenterOfShareOptionsViewController.restorePublishButtonToPreviousState(
@@ -280,7 +317,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                 )
             } else {
                 
-                deleteNote()
+                updateNote()
             }
         }
     }
@@ -303,7 +340,8 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
             PresenterOfShareOptionsViewController.changePublishButtonTo(
                 title: "Please try again",
                 userEnabled: true,
-                publishButton: publishButton, previousTitle: &fakeInout)
+                publishButton: publishButton,
+                previousTitle: &fakeInout)
         }
     }
     
@@ -473,9 +511,9 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
         }
     }
     
-    class func checkFilePublicOrPrivate(fileUploaded: FileUploadObject, receivedNote: HATNotesV2Object, viewController: ShareOptionsViewController?, success: (() -> Void)? = nil) {
+    class func checkFilePublicOrPrivate(fileUploaded: FileUploadObject, receivedNote: HATNotesV2Object, viewController: ShareOptionsViewController?, success: ((String?) -> Void)? = nil) {
         
-        if receivedNote.data.currently_shared! {
+        if receivedNote.data.currently_shared ?? false {
             
             // do another call to make image public
             HATFileService.makeFilePublic(
@@ -486,9 +524,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                     
                     if boolResult {
                         
-                        success?()
-                        // post note
-                        viewController?.postNote(updatedLink: Constants.HATEndpoints.fileInfoURL(fileID: fileUploaded.fileID, userDomain: userDomain))
+                        success?(fileUploaded.fileID)
                     }
             },
                 errorCallBack: {(error) -> Void in
@@ -502,9 +538,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
                 
                 if boolResult {
                     
-                    success?()
-                    // post note
-                    viewController?.postNote(updatedLink: Constants.HATEndpoints.fileInfoURL(fileID: fileUploaded.fileID, userDomain: userDomain))
+                    success?(fileUploaded.fileID)
                 }
             }, errorCallBack: {(error) -> Void in
                 

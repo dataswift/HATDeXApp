@@ -56,14 +56,15 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
      - parameter cell: The cell to set up
      - parameter note: The data to show on the cell
      - parameter indexPath: The index path of the cell
+     - parameter profileImageURL: The url for the profile image
      
      - returns: NotablesTableViewCell
      */
-    func setUpCell(_ cell: NotablesTableViewCell, note: HATNotesV2Object, indexPath: IndexPath) -> NotablesTableViewCell {
+    func setUpCell(_ cell: NotablesTableViewCell, note: HATNotesV2Object, indexPath: IndexPath, profileImageURL: String?) -> NotablesTableViewCell {
         
         let newCell = self.initCellToNil(cell: cell)
         
-        self.updateCellUI(newCell: newCell, note: note, indexPath: indexPath)
+        self.updateCellUI(newCell: newCell, note: note, indexPath: indexPath, profileImageURL: profileImageURL)
         
         self.updateCellData(newCell: newCell, note: note, indexPath: indexPath)
         
@@ -77,8 +78,9 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
      - parameter newCell: The cell to set up
      - parameter note: The model that holds our data
      - parameter indexPath: The index path of the cell
+     - parameter profileImageURL: The url for the profile image
      */
-    private func updateCellUI(newCell: NotablesTableViewCell, note: HATNotesV2Object, indexPath: IndexPath) {
+    private func updateCellUI(newCell: NotablesTableViewCell, note: HATNotesV2Object, indexPath: IndexPath, profileImageURL: String?) {
         
         if note.data.photov1 != nil && note.data.photov1?.link != nil {
             
@@ -91,6 +93,27 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
                     note: note,
                     weakSelf: self)
             }
+        }
+        
+        if profileImageURL != nil {
+            
+            guard let url: URL = URL(string: profileImageURL!) else {
+                
+                return
+            }
+            
+            newCell.profileImage.hnk_setImage(
+                from: url,
+                placeholder: nil,
+                headers: ["x-auth-token": userToken],
+                success: { image in
+                    
+                    newCell.profileImage.layer.masksToBounds = true
+                    newCell.profileImage.layer.cornerRadius = newCell.profileImage.frame.height / 2
+                    newCell.profileImage.image = image
+            },
+                failure: nil,
+                update: nil)
         }
         
         // if the note is shared get the shared on string as well
@@ -147,7 +170,7 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
         newCell.usernameLabel.text = authorData.phata
         newCell.postInfoLabel.attributedText = self.formatInfoLabel(
             date: date,
-            shared: note.data.shared,
+            shared: note.data.currently_shared ?? false,
             publicUntil: publicUntil)
         
         // flip the view to appear from right to left

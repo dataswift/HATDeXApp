@@ -9,7 +9,7 @@
 import HatForIOS
 import SwiftyJSON
 
-struct ProfileObject: HatApiType {
+internal struct ProfileObject: HatApiType {
     
     public init() {
         

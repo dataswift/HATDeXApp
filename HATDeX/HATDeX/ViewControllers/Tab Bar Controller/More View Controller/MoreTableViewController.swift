@@ -20,7 +20,7 @@ internal class MoreTableViewController: UIViewController, UITableViewDelegate, U
     // MARK: - Variables
     
     /// The sections of the table view
-    private let sections: [[String]] = [["Data Debits"], ["Past Notifications"], ["Storage Info", "Change Password"], ["Show Data", "Location Settings"], [/*"Release Notes",*/ "Rumpel Terms of Service", "HAT Terms of Service"], ["Report Problem"], ["Clear Cache"], ["Log Out", "Version"]]
+    private let sections: [[String]] = [["Data Debits"], ["Past Notifications"], ["Storage Info", "Change Password", "Open HAT App"], ["Show Data", "Location Settings"], [/*"Release Notes",*/ "Rumpel Terms of Service", "HAT Terms of Service"], ["Report Problem"], ["Clear Cache"], ["Log Out", "Version"]]
     /// The headers of the table view
     private let headers: [String] = ["Data Debits", "Notifications", "HAT", "Location", "About", "", "", ""]
     private let footers: [String] = ["", "", "", "", "", "HATs are distributed systems and being private also means no one will know if you have a problem. If you have an issue with your HAT or this dashboard, please report it here", "", ""]
@@ -88,6 +88,24 @@ internal class MoreTableViewController: UIViewController, UITableViewDelegate, U
             if indexPath.row == 1 {
                 
                 self.performSegue(withIdentifier: Constants.Segue.moreToResetPasswordSegue, sender: self)
+            } else if indexPath.row == 2 {
+                
+                guard let url = URL(string: "hatapp://") else {
+                    
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(url) {
+                    
+                    UIApplication.shared.openURL(url)
+                } else {
+                    
+                    if let url: URL = URL(string: "https://itunes.apple.com/us/app/hat-app/id1303181222?l=el&ls=1&mt=8"),
+                        UIApplication.shared.canOpenURL(url) {
+                        
+                        UIApplication.shared.openURL(url)
+                    }
+                }
             }
         } else if indexPath.section == 3 {
             

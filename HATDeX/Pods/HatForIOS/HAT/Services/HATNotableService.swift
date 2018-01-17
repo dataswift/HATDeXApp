@@ -127,16 +127,17 @@ public struct HATNotablesService {
      - parameter id: the id of the note to delete
      - parameter tkn: the user's token as a string
      */
-    public static func updateNotev2(note: HATNotesV2Object, tkn: String, userDomain: String, success: @escaping (([JSON], String?) -> Void) = { _, _  in }, failed: @escaping ((HATTableError) -> Void) = { _ in }) {
-        
-        // update JSON file with the values needed
-        let hatData = HATNotesV2DataObject.encode(from: note.data)!
+    public static func updateNotev2(notes: [HATNotesV2Object], tkn: String, userDomain: String, success: @escaping (([HATNotesV2Object], String?) -> Void) = { _, _  in }, failed: @escaping ((HATTableError) -> Void) = { _ in }) {
         
         HATAccountService.updateHatRecordV2(
             userDomain: userDomain,
-            token: tkn,
-            parameters: hatData,
-            successCallback: success,
+            userToken: tkn,
+            notes: notes,
+            successCallback: { newNotes, newToken in
+                
+                HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: {})
+                success(newNotes, newToken)
+        },
             errorCallback: failed)
     }
     
@@ -213,7 +214,11 @@ public struct HATNotablesService {
         if tempNote.data.photov1?.link == "" {
             
             tempNote.data.photov1 = nil
+        } else {
+            
+            tempNote.data.photov1?.shared = note.data.currently_shared!
         }
+        
         // update JSON file with the values needed
         let hatData = HATNotesV2DataObject.encode(from: tempNote.data)!
         

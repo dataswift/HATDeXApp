@@ -139,7 +139,7 @@ internal struct SocialFeedCachingWrapperHelper {
                 parameters: ["take": "1",
                              "orderBy": "date"],
                 successCallback: successRespond,
-                errorCallback: { _ in return}
+                errorCallback: { _ in return }
             )
         }
     }

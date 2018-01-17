@@ -14,13 +14,13 @@ import HatForIOS
 
 extension HATProfileService {
     
-    public static let addressMapping = [
+    public static let addressMapping: [String: String] = [
         "(0, 0)": "address.city",
         "(1, 0)": "address.county",
         "(2, 0)": "address.country"
     ]
     
-    public static let personalMapping = [
+    public static let personalMapping: [String: String] = [
         "(0, 0)": "personal.firstName",
         "(1, 0)": "personal.lastName",
         "(2, 0)": "personal.middleName",
@@ -28,31 +28,31 @@ extension HATProfileService {
         "(4, 0)": "personal.title"
         ]
     
-    public static let phoneMapping = [
+    public static let phoneMapping: [String: String] = [
         "(0, 0)": "contact.mobile",
         "(1, 0)": "contact.landline"
         ]
     
-    public static let emailMapping = [
+    public static let emailMapping: [String: String] = [
         "(0, 0)": "contact.primaryEmail",
         "(1, 0)": "contact.alternativeEmail"
     ]
     
-    public static let emergencyContactMapping = [
+    public static let emergencyContactMapping: [String: String] = [
         "(0, 0)": "emergencyContact.firstName",
         "(1, 0)": "emergencyContact.lastName",
         "(2, 0)": "emergencyContact.relationship",
         "(3, 0)": "emergencyContact.phoneNumber"
     ]
     
-    public static let personalInfoMapping = [
+    public static let personalInfoMapping: [String: String] = [
         "(0, 0)": "personal.age",
         "(1, 0)": "personal.gender",
         "(2, 0)": "personal.birth",
         "(3, 0)": "personal.nickname"
     ]
     
-    public static let onlineMapping = [
+    public static let onlineMapping: [String: String] = [
         "(0, 0)": "online.website",
         "(1, 0)": "online.blog",
         "(2, 0)": "online.facebook",
@@ -62,17 +62,17 @@ extension HATProfileService {
         "(6, 0)": "online.youtube"
     ]
     
-    public static let aboutMapping = [
+    public static let aboutMapping: [String: String] = [
         "(0, 0)": "about.body"
     ]
     
-    static let initAddressMapping = [
+    static let initAddressMapping: [String: Any] = [
         "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.address.city, tag: 0, placeholder: "City"),
         "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.address.county, tag: 0, placeholder: "County"),
         "(2, 0)": FieldInfo(string: \HATProfileObjectV2.data.address.country, tag: 5, placeholder: "Country")
     ]
     
-    static let initPersonalMapping = [
+    static let initPersonalMapping: [String: Any] = [
         "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.firstName, tag: 0, placeholder: "First Name"),
         "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.lastName, tag: 0, placeholder: "Last Name"),
         "(2, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.middleName, tag: 5, placeholder: "Middle Name"),
@@ -80,19 +80,19 @@ extension HATProfileService {
         "(4, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.title, tag: 5, placeholder: "Title")
     ]
     
-    static let initPhoneMapping = [
+    static let initPhoneMapping: [String: Any] = [
         "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.contact.mobile, tag: 0, placeholder: "Mobile Phone"),
         "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.contact.landline, tag: 0, placeholder: "Phone")
     ]
     
-    static let initEmergencyContactMapping = [
+    static let initEmergencyContactMapping: [String: Any] = [
         "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.emergencyContact.firstName, tag: 0, placeholder: "First Name"),
         "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.emergencyContact.lastName, tag: 0, placeholder: "Last Name"),
         "(2, 0)": FieldInfo(string: \HATProfileObjectV2.data.emergencyContact.relationship, tag: 5, placeholder: "Relationship"),
         "(3, 0)": FieldInfo(string: \HATProfileObjectV2.data.emergencyContact.mobile, tag: 0, placeholder: "Phone Number")
     ]
     
-    static let initOnlineMapping = [
+    static let initOnlineMapping: [String: Any] = [
         "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.website, tag: 0, placeholder: "Website"),
         "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.blog, tag: 0, placeholder: "Blog"),
         "(2, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.facebook, tag: 0, placeholder: "Facebook"),
@@ -106,12 +106,9 @@ extension HATProfileService {
         
         let filtered = structure.filter({ item1 in
             
-            for item2 in returnedDictionary {
+            for item2 in returnedDictionary where item1.value == item2.value {
                 
-                if item1.value == item2.value {
-                    
-                    return true
-                }
+                return true
             }
             
             return false

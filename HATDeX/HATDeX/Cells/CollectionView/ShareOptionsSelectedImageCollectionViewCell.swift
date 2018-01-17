@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -100,10 +100,26 @@ internal class ShareOptionsSelectedImageCollectionViewCell: UICollectionViewCell
      */
     private func downloadImageFrom(url: URL, imagesToUpload: [UIImage], completion: @escaping (UIImage) -> Void) {
         
-        self.selectedImage.downloadedFrom(
-            url: url,
-            userToken: userToken,
-            progressUpdater: { [weak self] progress in
+        self.selectedImage.hnk_setImage(
+            from: url,
+            placeholder: nil,
+            headers: ["x-auth-token": userToken],
+            success: { [weak self] image in
+                
+                if let weakSelf = self {
+                    
+                    weakSelf.ringProgressCircle.isHidden = true
+                    
+                    if !imagesToUpload.isEmpty {
+                        
+                        weakSelf.selectedImage.image = image
+                        completion(weakSelf.selectedImage.image!)
+                        weakSelf.selectedImage.cropImage(width: weakSelf.frame.width, height: weakSelf.frame.height)
+                    }
+                }
+            },
+            failure: nil,
+            update: { [weak self] progress in
                 
                 if let weakSelf = self {
                     
@@ -111,19 +127,6 @@ internal class ShareOptionsSelectedImageCollectionViewCell: UICollectionViewCell
                         end: CGFloat(progress),
                         animate: Float((weakSelf.ringProgressCircle.endPoint)),
                         removePreviousLayer: false)
-                }
-            },
-            completion: { [weak self] in
-                
-                if let weakSelf = self {
-                    
-                    weakSelf.ringProgressCircle.isHidden = true
-                    
-                    if !imagesToUpload.isEmpty && weakSelf.selectedImage.image != nil {
-                        
-                        completion(weakSelf.selectedImage.image!)
-                        weakSelf.selectedImage.cropImage(width: weakSelf.frame.width, height: weakSelf.frame.height)
-                    }
                 }
             }
         )

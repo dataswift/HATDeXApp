@@ -32,7 +32,7 @@ extension String {
         
         for _ in 0..<length {
             
-            let randomValue = arc4random_uniform(UInt32(base.characters.count))
+            let randomValue = arc4random_uniform(UInt32(base.count))
             randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
         }
         
@@ -51,10 +51,10 @@ extension String {
     func fromBase64URLToBase64(stringToConvert: String) -> String {
         
         var convertedString = stringToConvert
-        if convertedString.characters.count % 4 == 2 {
+        if convertedString.count % 4 == 2 {
             
             convertedString += "=="
-        } else if convertedString.characters.count % 4 == 3 {
+        } else if convertedString.count % 4 == 3 {
             
             convertedString += "="
         }

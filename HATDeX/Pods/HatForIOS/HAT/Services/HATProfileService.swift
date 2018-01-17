@@ -447,7 +447,8 @@ public struct HATProfileService {
                                 "shared_on": "shared_on",
                                 "created_time": "created_time",
                                 "public_until": "public_until",
-                                "updated_time": "updated_time"
+                                "updated_time": "updated_time",
+                                "photo": "photov1"
                         ],
                         "endpoint": "rumpel/notablesv1"
                     ]],

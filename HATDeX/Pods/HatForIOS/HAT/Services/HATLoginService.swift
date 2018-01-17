@@ -87,6 +87,14 @@ public struct HATLoginService {
                                 return
                             }
                             
+                            let accessScope = jwt.claim(name: "accessScope").string
+                            
+                            if accessScope != "owner" {
+                                
+                                failed?(.cannotDecodeToken(token))
+                                return
+                            }
+                            
                             /*
                              The token will consist of header.payload.signature
                              To verify the token we use header.payload hashed with signature in base64 format

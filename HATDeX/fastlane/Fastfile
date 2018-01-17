@@ -47,6 +47,13 @@ platform :ios do
     # frame_screenshots
   end
 
+desc "Test things"
+  lane :sign do
+
+    get_certificates           # invokes cert
+    get_provisioning_profile   # invokes sigh
+  end
+
   after_all do |lane|
     # This block is called, only if the executed lane was successful
 

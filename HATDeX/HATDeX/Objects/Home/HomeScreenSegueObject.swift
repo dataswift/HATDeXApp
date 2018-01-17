@@ -62,7 +62,7 @@ internal struct HomeScreenSegueObject {
         } else if name == "Photo Viewer" {
             
             object.segueName = Constants.Segue.photoViewerSegue
-        }  else if name == "PHATA Profile" {
+        } else if name == "PHATA Profile" {
             
             object.infoPopUpToPassOnToTheNextView = "Your PHATA is your public profile. Enable it to use it as a calling card!"
             object.titleToPassOnToTheNextView = "PHATA Profile"

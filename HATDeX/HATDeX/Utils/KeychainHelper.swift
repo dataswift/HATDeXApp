@@ -47,7 +47,14 @@ internal struct KeychainHelper {
      */
     static func getKeychainValue(key: String) -> String? {
         
-        return KeychainSwift().get(key)
+        let keychain = KeychainSwift()
+        let value = keychain.get(key)
+        if value == nil {
+            
+            return keychain.get(key)
+        }
+        
+        return value
     }
     
     /**

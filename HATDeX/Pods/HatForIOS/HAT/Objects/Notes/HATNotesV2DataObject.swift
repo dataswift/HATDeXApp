@@ -80,22 +80,30 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
      */
     public mutating func inititialize(dict: Dictionary<String, JSON>) {
         
-        if let tempAuthorData = dict[Fields.authorV1]?.dictionary {
+        let tempDict: Dictionary<String, JSON>
+        if let temp = dict["notablesv1"]?.dictionaryValue {
+            
+            tempDict = temp
+        } else {
+            
+            tempDict = dict
+        }
+        if let tempAuthorData = tempDict[Fields.authorV1]?.dictionary {
             
             authorv1 = HATNotesV2AuthorObject.init(dict: tempAuthorData)
         }
         
-        if let tempPhotoData = dict[Fields.photoV1]?.dictionary {
+        if let tempPhotoData = tempDict[Fields.photoV1]?.dictionary {
             
             photov1 = HATNotesV2PhotoObject.init(dict: tempPhotoData)
         }
         
-        if let tempLocationData = dict[Fields.locationV1]?.dictionary {
+        if let tempLocationData = tempDict[Fields.locationV1]?.dictionary {
             
             locationv1 = HATNotesV2LocationObject.init(dict: tempLocationData)
         }
         
-        if let tempSharedOn = dict[Fields.shared_on]?.arrayValue {
+        if let tempSharedOn = tempDict[Fields.shared_on]?.arrayValue {
             
             for item in tempSharedOn {
                 
@@ -103,34 +111,36 @@ public struct HATNotesV2DataObject: HATObject, HatApiType {
             }
         }
         
-        if let tempPublicUntil = dict[Fields.public_until]?.string {
+        if let tempPublicUntil = tempDict[Fields.public_until]?.string {
             
             public_until = tempPublicUntil
         }
         
-        if let tempCreatedTime = dict[Fields.created_time]?.string {
+        if let tempCreatedTime = tempDict[Fields.created_time]?.string {
             
             created_time = tempCreatedTime
         }
         
-        if let tempUpdatedTime = dict[Fields.updated_time]?.string {
+        if let tempUpdatedTime = tempDict[Fields.updated_time]?.string {
             
             updated_time = tempUpdatedTime
         }
         
-        if let tempShared = dict[Fields.shared]?.boolValue {
+        if let tempShared = tempDict[Fields.shared]?.boolValue {
             
             shared = tempShared
         }
-        if let tempCurrentlyShared = dict[Fields.currently_shared]?.boolValue {
+        if let tempCurrentlyShared = tempDict[Fields.currently_shared]?.boolValue {
             
             currently_shared = tempCurrentlyShared
         }
-        if let tempMessage = dict[Fields.message]?.string {
+        
+        if let tempMessage = tempDict[Fields.message]?.string {
             
             message = tempMessage
         }
-        if let tempKind = dict[Fields.kind]?.string {
+        
+        if let tempKind = tempDict[Fields.kind]?.string {
             
             kind = tempKind
         }

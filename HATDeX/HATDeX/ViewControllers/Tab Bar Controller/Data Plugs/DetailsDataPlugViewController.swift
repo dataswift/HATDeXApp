@@ -397,11 +397,6 @@ internal class DetailsDataPlugViewController: UIViewController, UserCredentialsP
                 vc.isFilteringHidden = true
                 vc.showNotesButton = false
             }
-        } else if segue.identifier == "fitbitFeedSegue" {
-            
-            if let vc = segue.destination as? FitbitFeedViewController {
-                
-            }
         }
     }
 

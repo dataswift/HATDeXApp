@@ -269,7 +269,7 @@ internal class StripeViewController: UIViewController, UIPickerViewDelegate, UIP
         if let selectedRange = personalHATAddressTextField.selectedTextRange {
             
             // and only if the new position is valid
-            if let newPosition = personalHATAddressTextField.position(from: selectedRange.start, offset: -self.domain.characters.count) {
+            if let newPosition = personalHATAddressTextField.position(from: selectedRange.start, offset: -self.domain.count) {
                 
                 // set the new position
                 personalHATAddressTextField.selectedTextRange = personalHATAddressTextField.textRange(from: newPosition, to: newPosition)

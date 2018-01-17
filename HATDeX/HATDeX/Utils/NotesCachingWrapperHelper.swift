@@ -12,6 +12,7 @@
 
 import Haneke
 import HatForIOS
+import RealmSwift
 import SwiftyJSON
 
 // MARK: Struct
@@ -56,7 +57,6 @@ internal struct NotesCachingWrapperHelper {
      */
     static func getNotes(userToken: String, userDomain: String, cacheTypeID: String, parameters: Dictionary<String, String>, successRespond: @escaping ([HATNotesV2Object], String?) -> Void, failRespond: @escaping (HATTableError) -> Void) {
         
-        NotesCachingWrapperHelper.checkForUnsyncedNotesToPost(userDomain: userDomain, userToken: userToken)
         // Decide to get data from cache or network
         AsyncCachingHelper.decider(
             type: cacheTypeID,
@@ -148,7 +148,7 @@ internal struct NotesCachingWrapperHelper {
                     return
                 }
                 
-                let imageView = UIImageView()
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
                 imageView.hnk_setImage(
                     from: url,
                     placeholder: UIImage(named: Constants.ImageNames.placeholderImage),
@@ -185,13 +185,101 @@ internal struct NotesCachingWrapperHelper {
                 
                 let jsonObject2 = JSONCacheObject(dictionary: [dictionary], type: "notes-Post", expiresIn: nil, value: nil)
                 realm.add(jsonObject2)
+                
+                successCallback()
             }
         } catch {
             
             print("adding to notes to Post failed")
         }
+    }
+    
+    // MARK: - Update Note
+    
+    /**
+     Posts a note
+     
+     - parameter note: The note to be posted
+     - parameter userToken: The user's token
+     - parameter userDomain: The user's domain
+     */
+    static func updateNote(note: HATNotesV2Object, userToken: String, userDomain: String, successCallback: @escaping () -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
-        NotesCachingWrapperHelper.checkForUnsyncedNotesToPost(userDomain: userDomain, userToken: userToken, completion: successCallback)
+        // remove note from notes
+        NotesCachingWrapperHelper.checkForNotesInCacheToBeDeleted(cacheTypeID: "notes", noteID: note.recordId)
+        
+        var tempNote = note
+        tempNote.data.authorv1.phata = userDomain
+        
+        let date = Date()
+        let dateString = HATFormatterHelper.formatDateToISO(date: date)
+        
+        tempNote.data.updated_time = dateString
+        if tempNote.data.created_time == "" {
+            
+            tempNote.data.created_time = dateString
+        }
+        
+        if tempNote.data.locationv1?.latitude == nil {
+            
+            tempNote.data.locationv1 = nil
+        }
+        
+        // creating note to be posted in cache
+        var dictionary = tempNote.toJSON()
+        if let photo = tempNote.data.photov1 {
+            
+            if photo.link != "" && photo.link != nil {
+                
+                guard let url = URL(string: photo.link!) else {
+                    
+                    return
+                }
+                
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+                imageView.hnk_setImage(
+                    from: url,
+                    placeholder: UIImage(named: Constants.ImageNames.placeholderImage),
+                    headers: ["x-auth-token": userToken],
+                    success: { image in
+                        
+                        guard image != nil else {
+                            
+                            return
+                        }
+                        
+                        if let imageData = UIImageJPEGRepresentation(image!, 1.0) {
+                            
+                            dictionary.updateValue(imageData, forKey: "imageData")
+                        }
+                },
+                    failure: { _ in return },
+                    update: { _ in return })
+            }
+        }
+        
+        // adding note to be posted in cache
+        do {
+            
+            guard let realm = RealmHelper.getRealm() else {
+                
+                return
+            }
+            
+            try realm.write {
+                
+                let jsonObject = JSONCacheObject(dictionary: [dictionary], type: "notes", expiresIn: .hour, value: 1)
+                realm.add(jsonObject)
+                
+                let jsonObject2 = JSONCacheObject(dictionary: [dictionary], type: "notes-Update", expiresIn: nil, value: nil)
+                realm.add(jsonObject2)
+                
+                successCallback()
+            }
+        } catch {
+            
+            print("adding to notes to Post failed")
+        }
     }
     
     // MARK: - Check cache for unsynced stuff
@@ -205,13 +293,14 @@ internal struct NotesCachingWrapperHelper {
     static func checkForNotesInCacheToBeDeleted(cacheTypeID: String, noteID: String) {
         
         // get notes from cache
-        guard let notesFromCache = CachingHelper.getFromRealm(type: cacheTypeID) else {
-            
-            return
+        guard let notesFromCache = CachingHelper.getFromRealm(type: cacheTypeID),
+            let realm = RealmHelper.getRealm() else {
+                
+                return
         }
         
         // iterate through the results and parse it to HATNotesV2Object. If noteID = ID to be deleted, delete it.
-        for element in notesFromCache where element.jsonData != nil {
+        for element in notesFromCache where element.jsonData != nil && !realm.isInWriteTransaction {
             
             if var dictionary = NSKeyedUnarchiver.unarchiveObject(with: element.jsonData!) as? [Dictionary<String, Any>] {
                 
@@ -288,7 +377,7 @@ internal struct NotesCachingWrapperHelper {
                                 
                                 print("error deleting from cache")
                             }
-                        },
+                    },
                         failed: { error in
                             
                             CrashLoggerHelper.hatTableErrorLog(error: error)
@@ -321,11 +410,19 @@ internal struct NotesCachingWrapperHelper {
                     
                     func innerPostNote(_ note: HATNotesV2Object) {
                         
+                        var temp = note
+                        if temp.data.locationv1?.latitude == nil || (temp.data.locationv1?.latitude == 0 && temp.data.locationv1?.longitude == 0 && temp.data.locationv1?.accuracy == 0) {
+                            
+                            temp.data.locationv1 = nil
+                        }
+                        
                         HATNotablesService.postNoteV2(
                             userDomain: userDomain,
                             userToken: userToken,
-                            note: note,
-                            successCallBack: { _, _ in
+                            note: temp,
+                            successCallBack: { newNote, _ in
+                                
+                                let tempNewNote = HATNotesV2Object(dict: newNote.dictionaryValue)
                                 
                                 do {
                                     
@@ -338,21 +435,38 @@ internal struct NotesCachingWrapperHelper {
                                         
                                         realm.delete(tempNote)
                                         
-//                                        guard let resuts = CachingHelper.getFromRealm(type: "notes") else {
-//
-//                                            return
-//                                        }
-//                                        realm.delete(resuts)
+                                        if let results = CachingHelper.getFromRealm(type: "notes") {
+                                            
+                                            for var item in results {
+                                                
+                                                if let jsonObject = NSKeyedUnarchiver.unarchiveObject(with: item.jsonData!) as? [Dictionary<String, Any>],
+                                                    !jsonObject.isEmpty {
+                                                    
+                                                    let json = JSON(jsonObject[0])
+                                                    var temp = HATNotesV2Object(dict: json.dictionaryValue)
+                                                    
+                                                    if temp.data.created_time == tempNewNote.data.created_time {
+                                                        
+                                                        realm.delete(item)
+                                                        temp.recordId = tempNewNote.recordId
+                                                        temp.endpoint = tempNewNote.endpoint
+                                                        item = JSONCacheObject(dictionary: [temp.toJSON()], type: "notes", expiresIn: nil, value: nil)
+                                                        
+                                                        realm.add(item)
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 } catch {
                                     
                                     print("error deleting from cache")
                                 }
-                            },
+                        },
                             errorCallback: { error in
                                 
                                 CrashLoggerHelper.hatTableErrorLog(error: error)
-                            }
+                        }
                         )
                     }
                     
@@ -374,11 +488,11 @@ internal struct NotesCachingWrapperHelper {
                     var note = HATNotesV2Object()
                     note.inititialize(dict: dictionary.arrayValue[0].dictionaryValue)
                     
-                    if note.data.photov1?.link == "" {
+                    if note.data.photov1?.link != "" {
                         
                         if (tempDict[0]["imageData"] as? Data) != nil {
                             
-                            let imageView = UIImageView()
+                            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
                             let url = URL(string: note.data.photov1!.link!)
                             imageView.hnk_setImage(from: url)
                             
@@ -396,8 +510,10 @@ internal struct NotesCachingWrapperHelper {
                                         fileUploaded: file,
                                         receivedNote: note,
                                         viewController: nil,
-                                        success: {
+                                        success: { imageURL in
                                             
+                                            note.data.photov1 = HATNotesV2PhotoObject()
+                                            note.data.photov1?.link = imageURL
                                             postNote(note)
                                     }
                                     )
@@ -423,6 +539,122 @@ internal struct NotesCachingWrapperHelper {
         
         // ask cache for the notes to be deleted
         CheckCache.searchForUnsyncedCache(type: "notes-Post", sync: tryPosting)
+    }
+    
+    /**
+     Checks for unsynced notes to update
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     */
+    static func checkForUnsyncedNotesToUpdate(userDomain: String, userToken: String, completion: (() -> Void)? = nil) {
+        
+        // Try deleting the notes
+        func tryPosting(notes: [JSONCacheObject]) {
+            
+            completion?()
+            
+            // for each note parse it and try to delete it
+            for tempNote in notes where tempNote.jsonData != nil && Reachability.isConnectedToNetwork() {
+                
+                func updateNote(_ note: HATNotesV2Object) {
+                    
+                    var temp = note
+                    if temp.data.locationv1?.latitude == nil || (temp.data.locationv1?.latitude == 0 && temp.data.locationv1?.longitude == 0 && temp.data.locationv1?.accuracy == 0) {
+                        
+                        temp.data.locationv1 = nil
+                    }
+                    
+                    HATNotablesService.updateNotev2(
+                        notes: [temp],
+                        tkn: userToken,
+                        userDomain: userDomain,
+                        success: { _, _ in
+                            
+                            do {
+                                
+                                guard let realm = RealmHelper.getRealm() else {
+                                    
+                                    return
+                                }
+                                
+                                try realm.write {
+                                    
+                                    realm.delete(tempNote)
+                                }
+                            } catch {
+                                
+                                print("error deleting from cache")
+                            }
+                    },
+                        failed: { error in
+                            
+                            CrashLoggerHelper.hatTableErrorLog(error: error)
+                    }
+                    )
+                }
+                
+                if let tempDict = NSKeyedUnarchiver.unarchiveObject(with: tempNote.jsonData!) as? [Dictionary<String, Any>] {
+                    
+                    let dictionary = JSON(tempDict)
+                    var note = HATNotesV2Object()
+                    note.inititialize(dict: dictionary.arrayValue[0].dictionaryValue)
+                    
+                    if note.data.photov1?.link != "" {
+                        
+                        if (tempDict[0]["imageData"] as? Data) != nil {
+                            
+                            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+                            let url = URL(string: note.data.photov1!.link!)
+                            imageView.hnk_setImage(from: url)
+                            
+                            if imageView.image != nil {
+                                
+                                HATFileService.uploadFileToHATWrapper(
+                                    token: userToken,
+                                    userDomain: userDomain,
+                                    fileToUpload: imageView.image!,
+                                    tags: ["photo", "iPhone", "notes"],
+                                    progressUpdater: nil,
+                                    completion: { (file, newToken) in
+                                        
+                                        KeychainHelper.setKeychainValue(key: Constants.Keychain.userToken, value: newToken)
+                                        
+                                        PresenterOfShareOptionsViewController.checkFilePublicOrPrivate(
+                                            fileUploaded: file,
+                                            receivedNote: note,
+                                            viewController: nil,
+                                            success: { imageURL in
+                                                
+                                                note.data.photov1 = HATNotesV2PhotoObject()
+                                                note.data.photov1?.link = imageURL
+                                                
+                                                updateNote(note)
+                                            }
+                                        )
+                                    },
+                                    errorCallBack: nil
+                                )
+                            }
+                        } else {
+                            
+                            updateNote(note)
+                        }
+                    } else {
+                        
+                        updateNote(note)
+                    }
+                }
+            }
+            
+            if notes.isEmpty {
+                
+                completion?()
+            }
+        }
+        
+        // ask cache for the notes to be deleted
+        CheckCache.searchForUnsyncedCache(type: "notes-Update", sync: tryPosting)
     }
     
     static func addImageToNote(recordID: String, link: String, userToken: String, image: UIImage? = nil) {
@@ -478,7 +710,7 @@ internal struct NotesCachingWrapperHelper {
                         saveImage(image: image, index: index, dict: tempDict)
                     } else if newNote.recordId == recordID {
                         
-                        let imageView = UIImageView()
+                        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
                         let url = URL(string: (newNote.data.photov1?.link)!)
                         imageView.hnk_setImage(
                             from: url,
@@ -509,6 +741,7 @@ internal struct NotesCachingWrapperHelper {
             
             NotesCachingWrapperHelper.checkForUnsyncedDeletes(userDomain: userDomain, userToken: userToken)
             NotesCachingWrapperHelper.checkForUnsyncedNotesToPost(userDomain: userDomain, userToken: userToken)
+            NotesCachingWrapperHelper.checkForUnsyncedNotesToUpdate(userDomain: userDomain, userToken: userToken)
         }
     }
 }

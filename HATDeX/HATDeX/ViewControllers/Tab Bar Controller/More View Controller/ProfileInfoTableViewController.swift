@@ -210,11 +210,7 @@ internal class ProfileInfoTableViewController: UITableViewController, UserCreden
             
             if indexPath.section == 0 {
                 
-                var array: [String] = []
-                for i in 13...100 {
-                    
-                    array.append(String(describing: i))
-                }
+                let array: [String] = ["18 - 25", "26 - 35", "36 - 45", "46 - 55", "56 - 65", "65+"]
                 cell.dataSourceForPickerView = array
                 cell.setTextToTextField(text: self.profile!.profile.data.personal.ageGroup)
                 cell.setKeyboardType(.numberPad)
