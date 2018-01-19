@@ -199,8 +199,6 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
             object: nil)
         
         self.createNewNoteButton.addBorderToButton(width: 0.5, color: .white)
-        
-        NotesCachingWrapperHelper.checkForUnsyncedCache(userDomain: userDomain, userToken: userToken)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -210,6 +208,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
         // check token
         self.addChildViewController(NotablesViewController.authoriseVC)
         NotablesViewController.authoriseVC.checkToken(viewController: self)
+        NotesCachingWrapperHelper.checkForUnsyncedCache(userDomain: userDomain, userToken: userToken)
     }
     
     override func viewDidAppear(_ animated: Bool) {

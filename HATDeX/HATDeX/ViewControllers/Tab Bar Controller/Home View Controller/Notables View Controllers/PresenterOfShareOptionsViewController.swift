@@ -97,7 +97,7 @@ internal class PresenterOfShareOptionsViewController: NSObject, UserCredentialsP
         previousTitle = (publishButton.titleLabel?.text)!
         
         // change button title to saving
-        publishButton.setTitle(title, for: .normal)
+        publishButton.titleLabel?.text = title
         publishButton.isUserInteractionEnabled = userEnabled
         
         if !userEnabled {

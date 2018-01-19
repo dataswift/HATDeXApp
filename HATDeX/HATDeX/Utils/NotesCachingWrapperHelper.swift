@@ -411,9 +411,16 @@ internal struct NotesCachingWrapperHelper {
                     func innerPostNote(_ note: HATNotesV2Object) {
                         
                         var temp = note
+                        
+                        // remove location and public_until since it can mess up Notables
                         if temp.data.locationv1?.latitude == nil || (temp.data.locationv1?.latitude == 0 && temp.data.locationv1?.longitude == 0 && temp.data.locationv1?.accuracy == 0) {
                             
                             temp.data.locationv1 = nil
+                        }
+                        
+                        if temp.data.public_until == "" {
+                            
+                            temp.data.public_until = nil
                         }
                         
                         HATNotablesService.postNoteV2(
@@ -560,9 +567,16 @@ internal struct NotesCachingWrapperHelper {
                 func updateNote(_ note: HATNotesV2Object) {
                     
                     var temp = note
+                    
+                    // remove location and public_until since it can mess up Notables
                     if temp.data.locationv1?.latitude == nil || (temp.data.locationv1?.latitude == 0 && temp.data.locationv1?.longitude == 0 && temp.data.locationv1?.accuracy == 0) {
                         
                         temp.data.locationv1 = nil
+                    }
+                    
+                    if temp.data.public_until == "" {
+                        
+                        temp.data.public_until = nil
                     }
                     
                     HATNotablesService.updateNotev2(

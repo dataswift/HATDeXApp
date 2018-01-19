@@ -32,7 +32,7 @@ public struct HATFileService {
         let url: String = "https://\(userDomain)/api/v2/files/search"
         let headers = ["X-Auth-Token": token]
         
-        var parameters: Dictionary <String, Any> = ["source": "iPhone",
+        var parameters: Dictionary <String, Any> = ["source": "",
                                                     "name": name,
                                                     "status": [
                                                         
@@ -41,7 +41,7 @@ public struct HATFileService {
         ]
         if tags! != [""] {
             
-            parameters = ["source": "iPhone",
+            parameters = ["source": "",
                           "name": "",
                           "tags": tags!,
                           "status": [

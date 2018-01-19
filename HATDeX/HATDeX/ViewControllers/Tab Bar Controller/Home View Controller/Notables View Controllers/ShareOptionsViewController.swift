@@ -363,8 +363,6 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.NotificationNames.reloadTable), object: nil)
                     weakSelf.isEditingExistingNote = false
                 }
-                
-                NotesCachingWrapperHelper.checkForUnsyncedNotesToPost(userDomain: weakSelf.userDomain, userToken: weakSelf.userToken)
             },
             errorCallback: { _ in return }
         )
@@ -456,8 +454,6 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.NotificationNames.reloadTable), object: nil)
                     weakSelf.isEditingExistingNote = false
                 }
-                
-                NotesCachingWrapperHelper.checkForUnsyncedNotesToUpdate(userDomain: weakSelf.userDomain, userToken: weakSelf.userToken)
             },
             errorCallback: { _ in return }
         )
@@ -679,7 +675,11 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                     )
                 }
                 
-                self.publishButton.setTitle("Please Wait..", for: .normal)
+                PresenterOfShareOptionsViewController.changePublishButtonTo(
+                    title: "Please Wait..",
+                    userEnabled: false,
+                    publishButton: self.publishButton,
+                    previousTitle: &self.previousPublishButtonTitle!)
                 
                 for plug in self.dataPlugs where plug.plug.name == "facebook" {
                     
