@@ -50,6 +50,7 @@ platform :ios do
 desc "Test things"
   lane :sign do
 
+setup_travis
     get_certificates           # invokes cert
     get_provisioning_profile   # invokes sigh
   end
