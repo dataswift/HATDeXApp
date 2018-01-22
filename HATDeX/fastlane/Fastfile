@@ -50,9 +50,11 @@ platform :ios do
 desc "Test things"
   lane :sign do
 
-setup_travis
-    get_certificates           # invokes cert
-    get_provisioning_profile   # invokes sigh
+unlock_keychain( # Unlock an existing keychain and add it to the keychain search list
+  path: "/Users/travis/Library/Keychains/fastlane_tmp_keychain",
+  password: "testUnlock"
+)
+	get_certificates
   end
 
   after_all do |lane|
