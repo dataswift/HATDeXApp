@@ -5,6 +5,8 @@ xcode_scheme: HATDeX
 xcode_sdk: iphonesimulator11
 before_install:
 - openssl aes-256-cbc -K $encrypted_bf0a66d2317b_key -iv $encrypted_bf0a66d2317b_iv
+  -in apple.cer.enc -out apple.cer -d
+- openssl aes-256-cbc -K $encrypted_bf0a66d2317b_key -iv $encrypted_bf0a66d2317b_iv
   -in cert.cer.enc -out cert.cer -d
 - openssl aes-256-cbc -K $encrypted_bf0a66d2317b_key -iv $encrypted_bf0a66d2317b_iv
   -in key.p12.enc -out key.p12 -d
@@ -18,13 +20,24 @@ install:
 - sudo gem install bundler
 - bundle install
 - bundle update
-before_script: 
-- ./create-keychain.sh
+before_script:
+- export KEY_PASSWORD=travis
+- security create-keychain -p travis ios-build.keychain
+- security default-keychain -s ios-build.keychain
+- echo "Unlock the keychain"
+- security unlock-keychain -p travis ios-build.keychain
+- echo "Add certificates to keychain and allow codesign to access them"
+- security import ./apple.cer -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./cert.cer -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./key.p12 -k ~/Library/Keychains/ios-build.keychain -P $KEY_PASSWORD
+  -A
+security set-key-partition-list -S apple-tool:,apple:,codesign: "-s \\ -k travis ~/Library/Keychains/ios-build.keychain"
 script:
 - cd HATDeX/
 - bundle exec fastlane sign
 after_script:
-- ./delete-keychain.sh
+- security delete-keychain ios-build.keychain
+- security default-keychain -s login.keychain
 env:
   global:
   - secure: Afm8XFhLNd3kiPWzCd0eKzqigX0KRfmSLGppp7UI5UOETWt1MCDxf8FhVbd5MjM9p4RCWthK+oTs3GS+odVZbbtPtfg4bgFaPeAGO/wIEeLzTqYC/5gCE0Be+RIEpeTJLjqZ7Sm8hh+pQ54iClD9ixRkC2fjZCOQ5/PB3YPCz2KldcqMsL+M3PMbFHqYR+cpVJyCf3eZWNQNoirInx5Q3/rdtQpBBXdE3G2gr0XOX7x/8XGxYVNxinSQYsz1jbIm9JKi2dLYdlGE6eIRDa8oovGVTTI1W1HPiwOr14CQJvgu5uLvAoz5ed/TqWpzazgEplf4gabSiVGLdNypbfCkTRmccM9POz6GhHxJr/ZNH2ThrxHGvpmcU6pbUWmcAUr9gizKGU6hyE29oECq2aSqBxMZ18L64s7/mGZ3a8s+HGV0cf8iYMD79gidScRLTKO8GTTOm/7FmgxIegroEDAK6RZiR3qNJTDnhYL7YD+DqiiGmTgW6cagzIxMTc48qXeJpmXgtyx1pVI2sTdaW0dPahFJpn0XIyAkPSIhO6DKTA/0adCPK4w6JZdqy5iP8rIDBT974Lqj8PCCN9YTsU/BcFmzdycdMxWzjsDQt1VGqqRnnxgWx329RUxUFCW+pXl3OFTJ8S0V2z1Ap3FZgV0pDco/bC4W+mJQYGomWzMttNM=
