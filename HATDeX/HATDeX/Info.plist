@@ -51,6 +51,7 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>notables</string>
 		<string>hatapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
