@@ -20,6 +20,7 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 *.cer
+*.p12
 
 ## Other
 *.xccheckout
@@ -77,6 +78,7 @@ build
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
+*.mobileprovision
 
 # GPS Related file to simulate movement
 *.gpx
