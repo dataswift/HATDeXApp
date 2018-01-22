@@ -364,6 +364,7 @@ internal class MapViewController: UIViewController, MKMapViewDelegate, MapSettin
         if self.segmentControl!.selectedSegmentIndex == 0 {
             
             self.filterDataPointsFrom = self.datePicker!.date.startOfDate(date: self.datePicker!.date)
+            self.filterDataPointsTo = filterDataPointsFrom?.endOfDate(date: filterDataPointsFrom!)
         } else {
             
             self.filterDataPointsTo = self.datePicker!.date.endOfDate(date: self.datePicker!.date)
@@ -382,7 +383,7 @@ internal class MapViewController: UIViewController, MKMapViewDelegate, MapSettin
         
         self.textField.becomeFirstResponder()
         self.filterDataPointsFrom = Date().startOfDate()
-        if let endOfDay = Date().endOfDate() {
+        if let endOfDay = self.filterDataPointsFrom!.endOfDate() {
             
             self.filterDataPointsTo = endOfDay
         }

@@ -151,7 +151,26 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
             )
         }
         
-        if self.segueObjectValues.segueName != "" {
+        if self.tiles[indexPath.row].serviceName == "Notables" {
+            
+            guard let url = URL(string: "hatapp://") else {
+                
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(url) {
+                
+                UIApplication.shared.openURL(url)
+            } else {
+                
+                if let url: URL = URL(string: "https://itunes.apple.com/us/app/notables/id1338778866?l=el&ls=1&mt=8"),
+                    UIApplication.shared.canOpenURL(url) {
+                    
+                    UIApplication.shared.openURL(url)
+                }
+            }
+            
+        } else if self.segueObjectValues.segueName != "" {
             
             self.performSegue(withIdentifier: self.segueObjectValues.segueName, sender: self)
         }
