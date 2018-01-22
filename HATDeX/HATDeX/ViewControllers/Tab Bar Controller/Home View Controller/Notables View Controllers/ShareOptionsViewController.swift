@@ -718,12 +718,12 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             // if button was selected deselect it and remove the button from the array
             if self.marketsquareButton.alpha == 1 {
                 
-                self.shareOnSocial.removeThe(string: "marketsquare")
+                self.shareOnSocial.removeThe(string: "phata")
                 PresenterOfShareOptionsViewController.turnButtonOff(button: self.marketsquareButton)
                 // else select it and add it to the array
             } else {
                 
-                self.shareOnSocial.append("marketsquare")
+                self.shareOnSocial.append("phata")
                 PresenterOfShareOptionsViewController.turnButtonOn(button: self.marketsquareButton)
             }
             
@@ -1082,7 +1082,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 self.facebookButton.alpha = 1
             }
             //  enable marketsquare button
-            if socialName == "marketsquare" {
+            if socialName == "phata" {
                 
                 self.marketsquareButton.alpha = 1
             }

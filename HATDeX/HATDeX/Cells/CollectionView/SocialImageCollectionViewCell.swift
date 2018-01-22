@@ -35,7 +35,7 @@ internal class SocialImageCollectionViewCell: UICollectionViewCell {
         if sharedOn == "facebook" {
             
             self.socialImage.image = UIImage(named: Constants.ImageNames.facebookImage)
-        } else if sharedOn == "marketsquare" {
+        } else if sharedOn == "phata" {
             
             self.socialImage.image = UIImage(named: Constants.ImageNames.hatters)
         } else if sharedOn == "twitter" {

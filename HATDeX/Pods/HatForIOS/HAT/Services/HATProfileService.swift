@@ -441,6 +441,7 @@ public struct HATProfileService {
                             [
                                 "kind": "kind",
                                 "shared": "shared",
+                                "currently_shared": "currently_shared",
                                 "message": "message",
                                 "author": "authorv1",
                                 "location": "locationv1",
