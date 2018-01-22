@@ -1501,7 +1501,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 84XHE3A5BA;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
 								enabled = 0;
@@ -2567,9 +2567,9 @@
 				BUNDLE_ID = com.hubofallthings.rumpellocationtrackerbeta;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HAT Data Exchange Ltd. (84XHE3A5BA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 84XHE3A5BA;
 				ENABLE_BITCODE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_UNUSED_LABEL = YES;
@@ -2578,8 +2578,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "44dd944d-4e2e-4223-afdc-e9a3ee956295";
+				PROVISIONING_PROFILE_SPECIFIER = "HAT Development";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -2746,9 +2746,9 @@
 				BUNDLE_ID = com.hubofallthings.rumpellocationtracker;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 84XHE3A5BA;
 				ENABLE_BITCODE = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
@@ -2756,8 +2756,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "44dd944d-4e2e-4223-afdc-e9a3ee956295";
+				PROVISIONING_PROFILE_SPECIFIER = "HAT Development";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -2775,9 +2775,9 @@
 				BUNDLE_ID = com.hubofallthings.rumpellocationtracker;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HAT Data Exchange Ltd. (84XHE3A5BA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 84XHE3A5BA;
 				ENABLE_BITCODE = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
@@ -2785,8 +2785,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "44dd944d-4e2e-4223-afdc-e9a3ee956295";
+				PROVISIONING_PROFILE_SPECIFIER = "HAT Development";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
