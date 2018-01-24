@@ -29,10 +29,10 @@ public struct HATDataOffersService {
         let mutableURL: NSMutableString
         if userDomain.contains("hubat") {
             
-            mutableURL = "http://databuyer.hubat.net/api/v2/offersWithClaims"
+            mutableURL = "https://databuyer.hubat.net/api/v2/offersWithClaims"
         } else {
             
-            mutableURL = "http://databuyer.hubofallthings.net/api/v2/offersWithClaims"
+            mutableURL = "https://databuyer.hubofallthings.net/api/v2/offersWithClaims"
         }
         
         for (index, merchant) in (merchants?.enumerated())! {
@@ -101,10 +101,10 @@ public struct HATDataOffersService {
         let url: String
         if userDomain.contains("hubat") {
             
-            url = "http://databuyer.hubat.net/api/v2/offer/\(offerID)/claim"
+            url = "https://databuyer.hubat.net/api/v2/offer/\(offerID)/claim"
         } else {
             
-            url = "http://databuyer.hubofallthings.net/api/v2/offer/\(offerID)/claim"
+            url = "https://databuyer.hubofallthings.net/api/v2/offer/\(offerID)/claim"
         }
         let headers: Dictionary<String, String> = ["X-Auth-Token": applicationToken]
         
