@@ -12,7 +12,7 @@ env:
   # - secure: tqxt08qWdgvaFL+VnSELZf4S/DIGpDaxJD/2XQAKXt+PSeU3/PUlJB2ZJivcdVSsCN0ZT92MDQm+sz5iaOb/4Hn4PNY/zAqVcfMxUdzWklD0CX1JE4Dg9YLg9+tvq0Vh7eZnvFaSDrrPJsQ7jZytb2BnJfzr79guzVYW3ADIWAhQVTjWMZZinvJiBC3nikYIu+zBSxcfuX+R7SZSfUyfu/zDYNt4+5+DX63jX9Ol96luguEoTxLlfnaWEfro3PsoooEyIdVwzkvb6C383D5kO1wHROY7gz//vgcB5D5vkLc6NTelDv0YswNcv61DKBzzpaqqy8udKzf8a3Ro2oRCnpkv5c3f8jG+c+J8WppDge2DESQaJGajieC016xS/hUKVdHaf6XOq/1k7q2ANGq6D3ohpazYgF7y55HSf3NaGWksl+gi+uQNgJ3iC78F+uHeVTnqR0wyGEmJnFx6lplqkUDMYtqBRtGIt4oE/LoEzPlKH52DjCKtb0X8Ffz8aLOe70GvoHXDtjWXycQ8RQPsRYlySvtTWcxIxOIoqqBK9qIFjY2AzRu+R2u0I/e1zltOh8dxf7he95CZzopwoMitM83b6j3x3PfljzeWv5K0SnCJ/y4K5O/yxOEFUUdr17YlGQuYckOPYgSI9z00QJU30+JWWI5QGecU/PSF33CI2D0=
 
 before_install:
-- openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in apple.cer.enc -out apple.cer -d
+openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in cert.cer.enc -out cert.cer -d
 # - openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in cert.cer.enc -out cert.cer -d
 # - openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in key.p12.enc -out key.p12 -d
 # - openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in AppStore_com.hubofallthings.rumpellocationtrackerbeta.mobileprovision.enc -out AppStore_com.hubofallthings.rumpellocationtrackerbeta.mobileprovision -d
