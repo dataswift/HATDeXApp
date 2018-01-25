@@ -1,8 +1,9 @@
-language: objective-c
-osx_image: xcode9.2
-xcode_workspace: HATDeX.xcworkspace
-xcode_scheme: HATDeX Testing
-xcode_sdk: iphonesimulator11
+language: ruby
+#language: objective-c
+#osx_image: xcode9.2
+#xcode_workspace: HATDeX.xcworkspace
+#xcode_scheme: HATDeX Testing
+#xcode_sdk: iphonesimulator11
 
 env:
   global:
@@ -25,18 +26,18 @@ install:
 # - bundle update
 
 before_script:
-- export KEY_PASSWORD=travis
-- security create-keychain -p travis ios-build.keychain
-- security default-keychain -s ios-build.keychain
-- echo "Unlock the keychain"
-- security unlock-keychain -p travis ios-build.keychain
-- echo "Add certificates to keychain and allow codesign to access them"
-- security import ./apple.cer -k ~/Library/Keychains/ios-build.keychain -A
+#- export KEY_PASSWORD=travis
+#- security create-keychain -p travis ios-build.keychain
+#- security default-keychain -s ios-build.keychain
+#- echo "Unlock the keychain"
+#- security unlock-keychain -p travis ios-build.keychain
+#- echo "Add certificates to keychain and allow codesign to access them"
+#- security import ./apple.cer -k ~/Library/Keychains/ios-build.keychain -A
 
 script:
 # - cd HATDeX/
 # - bundle exec fastlane sign
 
 after_script:
-- security delete-keychain ios-build.keychain
-- security default-keychain -s login.keychain
+#- security delete-keychain ios-build.keychain
+#- security default-keychain -s login.keychain
