@@ -29,4 +29,13 @@ extension UIButton {
         self.layer.borderWidth = width
         self.layer.borderColor = color.cgColor
     }
+    
+    /**
+     Removes border from the button
+     */
+    public func removeBorderFromButton() {
+        
+        self.layer.borderWidth = 0
+        self.layer.borderColor = UIColor.clear.cgColor
+    }
 }

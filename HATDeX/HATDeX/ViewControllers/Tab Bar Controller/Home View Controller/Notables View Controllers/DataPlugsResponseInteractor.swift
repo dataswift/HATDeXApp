@@ -74,7 +74,7 @@ internal class DataPlugsResponseInteractor: NSObject, UserCredentialsProtocol {
             serviceName: Constants.ApplicationToken.DataBuyer.name,
             userDomain: userDomain,
             token: userToken,
-            resource: Constants.ApplicationToken.DataBuyer(userDomain: userDomain).source,
+            resource: Constants.ApplicationToken.DataBuyer.source,
             succesfulCallBack: success,
             failCallBack: {(error) in
                 

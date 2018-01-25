@@ -20,7 +20,7 @@ internal class MoreTableViewController: UIViewController, UITableViewDelegate, U
     // MARK: - Variables
     
     /// The sections of the table view
-    private let sections: [[String]] = [["Data Debits"], ["Past Notifications"], ["Storage Info", "Change Password", "Open HAT App"], ["Show Data", "Location Settings"], [/*"Release Notes",*/ "Rumpel Terms of Service", "HAT Terms of Service"], ["Report Problem"], ["Clear Cache"], ["Log Out", "Version"]]
+    private let sections: [[String]] = [["Data Debits"], ["Past Notifications"], ["Storage Info", "Change Password", "Open HAT App"], ["Show Data", "Location Settings"], [/*"Release Notes",*/ "Privacy policy", "HAT Terms of Service"], ["Report Problem"], ["Clear Cache"], ["Log Out", "Version"]]
     /// The headers of the table view
     private let headers: [String] = ["Data Debits", "Notifications", "HAT", "Location", "About", "", "", ""]
     private let footers: [String] = ["", "", "", "", "", "HATs are distributed systems and being private also means no one will know if you have a problem. If you have an issue with your HAT or this dashboard, please report it here", "", ""]
@@ -118,13 +118,13 @@ internal class MoreTableViewController: UIViewController, UITableViewDelegate, U
             }
         } else if indexPath.section == 4 {
             
-            if self.sections[indexPath.section][indexPath.row] == "Rumpel Terms of Service" {
+            if self.sections[indexPath.section][indexPath.row] == "Privacy policy" {
                 
-                self.fileURL = Constants.TermsURL.rumpel
+                self.fileURL = Constants.TermsURL.privacyPolicy
                 self.performSegue(withIdentifier: Constants.Segue.moreToTermsSegue, sender: self)
             } else if self.sections[indexPath.section][indexPath.row] == "HAT Terms of Service" {
                 
-                self.fileURL = Constants.TermsURL.hat
+                self.fileURL = Constants.TermsURL.termsAndConditions
                 self.performSegue(withIdentifier: Constants.Segue.moreToTermsSegue, sender: self)
             }
         } else if indexPath.section == 5 {

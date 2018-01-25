@@ -192,8 +192,8 @@ internal class Constants {
     
     struct TermsURL {
         
-        static let rumpel: String = "https://s3-eu-west-1.amazonaws.com/developers.hubofallthings.com/legals/RumpelLite-Terms-of-Service.md"
-        static let hat: String = "https://s3-eu-west-1.amazonaws.com/developers.hubofallthings.com/legals/HAT-Terms-of-Service.md"
+        static let termsAndConditions: String = "https://s3-eu-west-1.amazonaws.com/developers.hubofallthings.com/legals/HATDeX-Terms-and-Conditions.md"
+        static let privacyPolicy: String = "https://s3-eu-west-1.amazonaws.com/developers.hubofallthings.com/legals/HATDeX-Privacy-Policy.md"
     }
     
     /**
@@ -751,23 +751,8 @@ internal class Constants {
         
         struct DataBuyer {
             
-            private var userDomain: String = ""
-            
-            init(userDomain: String) {
-                
-                self.userDomain = userDomain
-            }
             static let name: String = "DataBuyer"
-            var source: String {
-            
-                if userDomain.contains("hubat") {
-                    
-                    return "https://databuyer.hubat.net/"
-                } else {
-                    
-                    return "https://databuyer.hubofallthings.com/"
-                }
-            }
+            static var source: String = "https://databuyer.hubat.net/"
         }
     }
     

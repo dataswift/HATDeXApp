@@ -21,7 +21,7 @@ internal class TermsAndConditionsViewController: UIViewController {
     // MARK: - Variables
     
     private var safari: SFSafariViewController?
-    var url: String = "https://s3-eu-west-1.amazonaws.com/developers.hubofallthings.com/legals/RumpelLite-Terms-of-Service.md"
+    var url: String = Constants.TermsURL.termsAndConditions
     
     // MARK: - IBOutlets
 

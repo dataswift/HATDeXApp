@@ -20,6 +20,8 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
     
     /// All the offers available
     private var offers: [DataOfferObject] = []
+    /// The merchants received from hat
+    private var merchants: [String] = []
     /// Filtered offers, used to feed the table view with data we want to show
     private var filteredOffers: [DataOfferObject] = []
     
@@ -229,6 +231,7 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
 
                 if specificMerchant == "" {
                     
+                    self.merchants = merchants
                     HATDataOffersService.getAvailableDataOffers(
                         userDomain: userDomain,
                         applicationToken: appToken,
@@ -269,7 +272,7 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
                 serviceName: Constants.ApplicationToken.DataBuyer.name,
                 userDomain: self.userDomain,
                 token: self.userToken,
-                resource: Constants.ApplicationToken.DataBuyer(userDomain: userDomain).source,
+                resource: Constants.ApplicationToken.DataBuyer.source,
                 succesfulCallBack: applicationTokenReceived,
                 failCallBack: failedToFetchApplicationToken)
         }
@@ -724,6 +727,14 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
 
                 let cellIndexPath = self.collectionView.indexPath(for: cell)
                 destinationVC?.receivedOffer = self.filteredOffers[(cellIndexPath?.row)!]
+                if self.specificMerchant != "" {
+                    
+                    destinationVC?.merchants = [self.specificMerchant]
+                } else {
+                    
+                    destinationVC?.merchants = self.merchants
+                }
+                //destinationVC?.merchants = self.mer
             }
         }
     }

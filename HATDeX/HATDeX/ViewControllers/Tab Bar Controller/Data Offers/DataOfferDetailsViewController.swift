@@ -52,6 +52,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
     
     /// The offer received from DataOffersViewController
     var receivedOffer: DataOfferObject?
+    var merchants: [String]?
     
     /// A dark view covering the collection view cell
     private var darkView: UIVisualEffectView?
@@ -66,21 +67,21 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
      
      - parameter appToken: The app token needed to claim the offer
      */
-    private func claimOffer(appToken: String) {
+    private func claimOffer(dataBuyerToken: String) {
         
-        func success(claimResult: String, renewedUserToken: String?) {
+        func showAlert(offer: DataOfferObject, newUserToken: String?) {
             
             func alertCompletion() {
                 
                 self.darkView?.removeFromSuperview()
                 self.loadingView.removeFromSuperview()
                 
-                self.checkOfferStatus(status: claimResult)
+                self.checkOfferStatus(status: offer.claim.claimStatus)
                 
                 if receivedOffer?.reward.rewardType == "Cash" {
                     
                     self.navigationController?.popViewController(animated: true)
-                } else if receivedOffer?.reward.rewardType == "Voucher" && (claimResult == "completed" || claimResult == "redeemed") {
+                } else if receivedOffer?.reward.rewardType == "Voucher" && (offer.claim.claimStatus == "completed" || offer.claim.claimStatus == "redeemed") {
                     
                     if let code = self.receivedOffer?.reward.codes?[0] {
                         
@@ -92,6 +93,8 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
             }
             
             self.acceptOfferButton.layer.backgroundColor = UIColor.clear.cgColor
+            
+            self.acceptOfferButton.removeBorderFromButton()
             self.acceptOfferButton.setTitle("Offer has been accepted", for: .normal)
             self.acceptOfferButton.isEnabled = false
             self.acceptOfferButton.alpha = 0.8
@@ -103,20 +106,28 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
                 proceedCompletion: alertCompletion)
         }
         
-        func failed(error: DataPlugError) {
+        func failedCallback(error: DataPlugError) {
             
-            self.darkView?.removeFromSuperview()
-            self.loadingView.removeFromSuperview()
+            func alertCompletion() {
+                
+                self.darkView?.removeFromSuperview()
+                self.loadingView.removeFromSuperview()
+            }
             
-            CrashLoggerHelper.dataPlugErrorLog(error: error)
+            self.createClassicOKAlertWith(
+                alertMessage: "Error claiming offer",
+                alertTitle: "Offer has NOT been claimed!",
+                okTitle: "OK",
+                proceedCompletion: alertCompletion)
         }
         
-        HATDataOffersService.claimOffer(
+        HATDataOffersService.claimOfferWrapper(
+            offer: self.receivedOffer!,
             userDomain: userDomain,
-            applicationToken: appToken,
-            offerID: (receivedOffer?.dataOfferID)!,
-            succesfulCallBack: success,
-            failCallBack: failed)
+            userToken: userToken,
+            merchants: self.merchants,
+            succesfulCallBack: showAlert,
+            failCallBack: failedCallback)
     }
     
     // MARK: - IBActions
@@ -133,7 +144,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
             
             func gotApplicationToken(appToken: String, newUserToken: String?) {
                 
-                self.claimOffer(appToken: appToken)
+                self.claimOffer(dataBuyerToken: appToken)
             }
             
             func failedGettingAppToken(error: JSONParsingError) {
@@ -160,7 +171,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
                 serviceName: Constants.ApplicationToken.DataBuyer.name,
                 userDomain: self.userDomain,
                 token: self.userToken,
-                resource: Constants.ApplicationToken.DataBuyer(userDomain: userDomain).source,
+                resource: Constants.ApplicationToken.DataBuyer.source,
                 succesfulCallBack: gotApplicationToken,
                 failCallBack: failedGettingAppToken)
         } else if remaining > 0 {
@@ -198,6 +209,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
             } else if status == "accepted" {
                 
                 self.acceptOfferButton.layer.backgroundColor = UIColor.clear.cgColor
+                self.acceptOfferButton.removeBorderFromButton()
                 self.acceptOfferButton.setTitle("Offer has been accepted", for: .normal)
                 self.acceptOfferButton.isEnabled = false
                 self.acceptOfferButton.alpha = 0.8
@@ -217,6 +229,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
             } else if status == "accepted" {
                 
                 self.acceptOfferButton.layer.backgroundColor = UIColor.clear.cgColor
+                self.acceptOfferButton.removeBorderFromButton()
                 self.acceptOfferButton.setTitle("Offer has been accepted", for: .normal)
                 self.acceptOfferButton.isEnabled = false
                 self.acceptOfferButton.alpha = 0.8
@@ -264,6 +277,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
         } else if self.receivedOffer?.claim.claimStatus != "" {
             
             self.acceptOfferButton.setTitle("Offer has been accepted", for: .normal)
+            self.acceptOfferButton.removeBorderFromButton()
             self.acceptOfferButton.isEnabled = false
             self.acceptOfferButton.alpha = 0.8
         } else {

@@ -93,7 +93,7 @@ internal class StripeViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBAction func termsAndConditionsButtonAction(_ sender: Any) {
         
         // get the file url to the pdf and show it to the terms and conditions view controller
-        self.fileURL = Constants.TermsURL.hat
+        self.fileURL = Constants.TermsURL.termsAndConditions
         self.performSegue(withIdentifier: Constants.Segue.termsSegue, sender: self)
     }
     
@@ -105,7 +105,7 @@ internal class StripeViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBAction func rumpelLiteTermsAndConditionsButtonAction(_ sender: Any) {
         
         // get the file url to the pdf and show it to the terms and conditions view controller
-        self.fileURL = Constants.TermsURL.rumpel
+        self.fileURL = Constants.TermsURL.privacyPolicy
         self.performSegue(withIdentifier: Constants.Segue.termsSegue, sender: self)
     }
     

@@ -87,6 +87,18 @@ public enum Notables {
 }
 
 /**
+ The strings needed for generating databuyer token
+ 
+ - name: The name of the service
+ - source: The source of the service
+ */
+public struct DataBuyer {
+    
+    static let name: String = "DataBuyer"
+    static var source: String = "https://databuyer.hubat.net/"
+}
+
+/**
  The request headers
  
  - xAuthToken: No token detected
