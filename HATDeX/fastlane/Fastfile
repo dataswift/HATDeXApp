@@ -31,7 +31,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
 
-    setup_travis
+    #setup_travis
     sigh
     #build_app(scheme: "HATDeX Testing") # more options available
 
