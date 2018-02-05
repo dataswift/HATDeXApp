@@ -31,8 +31,8 @@ before_script:
 - tar xvf certificates.tar
 - security import ./distribution.cer -k ~/Library/Keychains/ios-build.keychain -A
 - security import ./development.cer -k ~/Library/Keychains/ios-build.keychain -A
-- security import ./distribution.p12 -k -P $certPassword ~/Library/Keychains/ios-build.keychain -A
-- security import ./development.p12 -k -P $certPassword ~/Library/Keychains/ios-build.keychain -A
+- security import ./distribution.p12 -P $certPassword -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./development.p12 -P $certPassword -k ~/Library/Keychains/ios-build.keychain -A
 - security import ./AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -A
 # Put the provisioning profile in place
 - mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
