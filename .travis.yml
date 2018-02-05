@@ -36,6 +36,7 @@ before_script:
 #
 script:
 - cd HATDeX/
+- bundle exec pod repo update
 - bundle exec fastlane beta
 #
 after_script:
