@@ -33,7 +33,7 @@ platform :ios do
 
     #setup_travis
     sigh
-    #build_app(scheme: "HATDeX Testing") # more options available
+    build_app(scheme: "HATDeX Testing") # more options available
 
     #changelog = File.read("../fastlane/Changelog.txt")
     #upload_to_testflight(app_identifier: "com.hubofallthings.rumpellocationtrackerbeta",  	changelog: changelog)
