@@ -32,11 +32,15 @@ before_script:
 - echo "Add certificates to keychain and allow codesign to access them"
 - tar xvf certificates.tar
 - security import ./distribution.cer -k ~/Library/Keychains/ios-build.keychain -A
+#- security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k travis ~/Library/Keychains/ios-build.keychain
 - security import ./development.cer -k ~/Library/Keychains/ios-build.keychain -A
+#- security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k travis ~/Library/Keychains/ios-build.keychain
 - security import ./distribution.p12 -P $certPassword -k ~/Library/Keychains/ios-build.keychain -A
+#- security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k travis ~/Library/Keychains/ios-build.keychain
 - security import ./development.p12 -P $certPassword -k ~/Library/Keychains/ios-build.keychain -A
+#- security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k travis ~/Library/Keychains/ios-build.keychain
 - security import ./AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -A
-- security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k travis ~/Library/Keychains/ios-build.keychain
+#- security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k travis ~/Library/Keychains/ios-build.keychain
 # Put the provisioning profile in place
 - mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 - cp "./Distribution.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
