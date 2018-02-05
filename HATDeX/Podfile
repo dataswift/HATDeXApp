@@ -19,7 +19,7 @@ target 'HATDeX' do
     pod 'zxcvbn-ios'
     pod 'HatForIOS', :git => 'https://github.com/whiteshadow-gr/HatForIOS.git'
     pod 'SwiftLint', '0.21.0'
-    pod 'MarkdownView'
+    pod 'MarkdownView', git: 'https://github.com/keitaoouchi/MarkdownView/', branch: 'master'
     pod 'Haneke'
 end
 
@@ -39,7 +39,7 @@ target 'HATDeXTests' do
     pod 'zxcvbn-ios'
     pod 'HatForIOS', :git => 'https://github.com/whiteshadow-gr/HatForIOS.git'
     pod 'Mockingjay'
-    pod 'MarkdownView'
+    pod 'MarkdownView', git: 'https://github.com/keitaoouchi/MarkdownView/', branch: 'master'
     pod 'Haneke'
 end
 
@@ -59,6 +59,6 @@ target 'HATDeXUITests' do
     pod 'zxcvbn-ios'
     pod 'HatForIOS', :git => 'https://github.com/whiteshadow-gr/HatForIOS.git'
     pod 'Mockingjay'
-    pod 'MarkdownView'
+    pod 'MarkdownView', git: 'https://github.com/keitaoouchi/MarkdownView/', branch: 'master'
     pod 'Haneke'
 end
