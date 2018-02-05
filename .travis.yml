@@ -31,8 +31,8 @@ before_script:
 - tar xvf certificates.tar
 - security import ./distribution.cer -k ~/Library/Keychains/ios-build.keychain -A
 - security import ./development.cer -k ~/Library/Keychains/ios-build.keychain -A
-- security import ./Distribution.mobileprovision -k ~/Library/Keychains/ios-build.keychain -A
-- security import ./Development.mobileprovision -k ~/Library/Keychains/ios-build.keychain -A
+# - security import ./Distribution.mobileprovision -k ~/Library/Keychains/ios-build.keychain -A
+# - security import ./Development.mobileprovision -k ~/Library/Keychains/ios-build.keychain -A
 #
 script:
 - cd HATDeX/
