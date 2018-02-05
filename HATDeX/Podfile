@@ -7,7 +7,7 @@ use_frameworks!
 target 'HATDeX' do
     
     pod 'Alamofire'
-    pod 'RealmSwift'
+    pod 'RealmSwift', '~> 3.0.2'
     pod 'SwiftyJSON'
     pod 'FBAnnotationClusteringSwift', git: 'https://github.com/ribl/FBAnnotationClusteringSwift/', branch: 'master'
     pod 'JWTDecode'
@@ -27,7 +27,7 @@ target 'HATDeXTests' do
     
     inherit! :complete
     pod 'Alamofire'
-    pod 'RealmSwift'
+    pod 'RealmSwift', '~> 3.0.2'
     pod 'SwiftyJSON'
     pod 'FBAnnotationClusteringSwift', git: 'https://github.com/ribl/FBAnnotationClusteringSwift/', branch: 'master'
     pod 'JWTDecode'
@@ -47,7 +47,7 @@ target 'HATDeXUITests' do
 
     inherit! :complete
     pod 'Alamofire'
-    pod 'RealmSwift'
+    pod 'RealmSwift', '~> 3.0.2'
     pod 'SwiftyJSON'
     pod 'FBAnnotationClusteringSwift', git: 'https://github.com/ribl/FBAnnotationClusteringSwift/', branch: 'master'
     pod 'JWTDecode'
