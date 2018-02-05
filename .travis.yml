@@ -8,8 +8,8 @@ env:
     global:
         - secure: Afm8XFhLNd3kiPWzCd0eKzqigX0KRfmSLGppp7UI5UOETWt1MCDxf8FhVbd5MjM9p4RCWthK+oTs3GS+odVZbbtPtfg4bgFaPeAGO/wIEeLzTqYC/5gCE0Be+RIEpeTJLjqZ7Sm8hh+pQ54iClD9ixRkC2fjZCOQ5/PB3YPCz2KldcqMsL+M3PMbFHqYR+cpVJyCf3eZWNQNoirInx5Q3/rdtQpBBXdE3G2gr0XOX7x/8XGxYVNxinSQYsz1jbIm9JKi2dLYdlGE6eIRDa8oovGVTTI1W1HPiwOr14CQJvgu5uLvAoz5ed/TqWpzazgEplf4gabSiVGLdNypbfCkTRmccM9POz6GhHxJr/ZNH2ThrxHGvpmcU6pbUWmcAUr9gizKGU6hyE29oECq2aSqBxMZ18L64s7/mGZ3a8s+HGV0cf8iYMD79gidScRLTKO8GTTOm/7FmgxIegroEDAK6RZiR3qNJTDnhYL7YD+DqiiGmTgW6cagzIxMTc48qXeJpmXgtyx1pVI2sTdaW0dPahFJpn0XIyAkPSIhO6DKTA/0adCPK4w6JZdqy5iP8rIDBT974Lqj8PCCN9YTsU/BcFmzdycdMxWzjsDQt1VGqqRnnxgWx329RUxUFCW+pXl3OFTJ8S0V2z1Ap3FZgV0pDco/bC4W+mJQYGomWzMttNM=
         - secure: HTiS/5Wh9kHTxV7PjFkm2VgNHPUH0jCOp099MJluZeg9uKvibttCIKF2grymzW41xXarDq4o7jhiHuNGC6I7YJwPxklpW/q81kXnE90fr87QIEQPA3/5LAJXFtSnt2ZRRucYxVgKcrTEophMsu7CDiN3oqoTiQ65CPLN3Q8VkKT+4dqcS2WdaYrEw7iF1hWVcH25fvgVVuKvk4pw4IJl+3gkCTp7Fo9bilxUOoiTuYClRsjr/y709YE9MOT6xcZ70KGyptajpbM/sG4gtz5S+O/ysqIZFX/TfeYp/74lFN3Q2x8aPDNhYCSp6N+gOxFQRhNa1lJvloqnGcuxWa9S2UHqkuqRyTZtAbm/fQ5aPfpo/gVONHMn6/NS64P20nLpVkSfZWgCvcW9BgXoW9PVIXbT2cLRJCFy658+XKs1OTxE/anUdJoxSEfng8bSuRFlO14LCO1++gkqgE84cNBkLhm8ZaCNR/uSwbhYZxRMEGz+PkLtfacsEyYZOrT5D8SVHt+R7LP0NCr6pnyzDa7f029bB99DjAL2gaGME8NIX0NSGH1/8vAqEdw5L8j9XgC7nIGmvqmfDW+pA0BYblcLbg19SWWeFleA4gkyJ/l49cU1K+Zg2O4yEkv1LDlRCbnvQyv/GdVWfEZcCVuMECJHFvEroblLkylyhG2exK79yrQ=
-        - secure: tqxt08qWdgvaFL+VnSELZf4S/DIGpDaxJD/2XQAKXt+PSeU3/PUlJB2ZJivcdVSsCN0ZT92MDQm+sz5iaOb/4Hn4PNY/zAqVcfMxUdzWklD0CX1JE4Dg9YLg9+tvq0Vh7eZnvFaSDrrPJsQ7jZytb2BnJfzr79guzVYW3ADIWAhQVTjWMZZinvJiBC3nikYIu+zBSxcfuX+R7SZSfUyfu/zDYNt4+5+DX63jX9Ol96luguEoTxLlfnaWEfro3PsoooEyIdVwzkvb6C383D5kO1wHROY7gz//vgcB5D5vkLc6NTelDv0YswNcv61DKBzzpaqqy8udKzf8a3Ro2oRCnpkv5c3f8jG+c+J8WppDge2DESQaJGajieC016xS/hUKVdHaf6XOq/1k7q2ANGq6D3ohpazYgF7y55HSf3NaGWksl+gi+uQNgJ3iC78F+uHeVTnqR0wyGEmJnFx6lplqkUDMYtqBRtGIt4oE/LoEzPlKH52DjCKtb0X8Ffz8aLOe70GvoHXDtjWXycQ8RQPsRYlySvtTWcxIxOIoqqBK9qIFjY2AzRu+R2u0I/e1zltOh8dxf7he95CZzopwoMitM83b6j3x3PfljzeWv5K0SnCJ/y4K5O/yxOEFUUdr17YlGQuYckOPYgSI9z00QJU30+JWWI5QGecU/PSF33CI2D0=
-
+        - secure: zRvOrFj05lDnCWsVZ1ehkb2u0paBnxEnPVAXwhCIWH4Qe36TnsjOos3ZzlH+TKIY8ztcTlAxhAA+FoQCYwNSEfkQ3OM/FaifFWxfjZxldfKgq7UcFbuam+cg9KfLPqdqOikKLCicbhG05nvRM1QlIufA2OUzri62CFfXUH3exgN14U/FXl6mLrE96EFVnlcaGi/EzntBj0nSBWIgrnH6SeFcSPfry4HC4Y1CYTUXUqMI8V/6DFoMNj75Hppby/rQxMyO4kvWx72UYigX9TSikwCgcPrUhnW9MIduFVgXG0n5IH7zI1NtpP4ios0M0H+/5cC7+xWXqcxtaalccMWOSV39F/8gEsbCRbfwTx2YyrvD1o2M2Vt/AboP6geEuGG1ePqDm86C85AKj1VuwmIjXa5Ahz9KLMGEZ+fuw3KD9XEVVrFDE+h57oc+7Q9BNCQh+8d2mP0mzrD0Yb7Z/xLO/HmGL2f0rnADTye63WIlv0GY4Vvwo4RIXvTrSKlufZ7srOa1B/ouHW8OUKohPCxAQHGc4govlPH+kdjYD7axALjTY0zfPTSy5AExbl5TuAvDD+NOWm2nX2Sxv6oD8g3K0RYdKKrrmeNJQknjmypn3Gs8cslDQHvHhCBepQbIcYJvvIVVRC9lQ33Uwz2dmMf7GPrcyz3bN5Mv2qN4G6iMNyc=
+        
 before_install:
 - openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in certificates.tar.enc -out certificates.tar -d
 - rvm install "ruby-2.4.3"
@@ -31,6 +31,9 @@ before_script:
 - tar xvf certificates.tar
 - security import ./distribution.cer -k ~/Library/Keychains/ios-build.keychain -A
 - security import ./development.cer -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./distribution.p12 -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./development.p12 -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -A
 # Put the provisioning profile in place
 - mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 - cp "./Distribution.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
