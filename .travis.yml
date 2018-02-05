@@ -36,7 +36,7 @@ before_script:
 - security import ./distribution.p12 -P $certPassword -k ~/Library/Keychains/ios-build.keychain -A
 - security import ./development.p12 -P $certPassword -k ~/Library/Keychains/ios-build.keychain -A
 - security import ./AppleWWDRCA.cer -k ~/Library/Keychains/ios-build.keychain -A
-- security set-key-partition-list -S apple-tool:,apple: -s -k travis ios-build.keychain
+- security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k travis ~/Library/Keychains/ios-build.keychain
 # Put the provisioning profile in place
 - mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 - cp "./Distribution.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
