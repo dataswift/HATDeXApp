@@ -31,8 +31,10 @@ before_script:
 - tar xvf certificates.tar
 - security import ./distribution.cer -k ~/Library/Keychains/ios-build.keychain -A
 - security import ./development.cer -k ~/Library/Keychains/ios-build.keychain -A
-# - security import ./Distribution.mobileprovision -k ~/Library/Keychains/ios-build.keychain -A
-# - security import ./Development.mobileprovision -k ~/Library/Keychains/ios-build.keychain -A
+# Put the provisioning profile in place
+- mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+- cp "./scripts/profile/Distribution.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+- cp "./scripts/profile/Development.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
 #
 script:
 - cd HATDeX/
