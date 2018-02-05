@@ -32,10 +32,11 @@ platform :ios do
   lane :beta do
 
     setup_travis
-    build_app(scheme: "HATDeX Testing") # more options available
+    sigh
+    #build_app(scheme: "HATDeX Testing") # more options available
 
-    changelog = File.read("../fastlane/Changelog.txt")
-    upload_to_testflight(app_identifier: "com.hubofallthings.rumpellocationtrackerbeta",  	changelog: changelog)
+    #changelog = File.read("../fastlane/Changelog.txt")
+    #upload_to_testflight(app_identifier: "com.hubofallthings.rumpellocationtrackerbeta",  	changelog: changelog)
   end
 
   desc "Deploy a new version to the App Store"
