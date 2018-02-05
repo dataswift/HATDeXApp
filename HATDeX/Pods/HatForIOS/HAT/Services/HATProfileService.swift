@@ -427,7 +427,16 @@ public struct HATProfileService {
                         
                         if response.response?.statusCode == 404 {
                             
-                            fail(HATTableError.generalError("json creation failed", nil, nil))
+                            if let value = response.result.value {
+                                
+                                let json = JSON(value)
+                                let message = json["message"].stringValue
+                                
+                                if message != "Bundle Not Found" {
+                                    
+                                    fail(HATTableError.generalError("json creation failed", nil, nil))
+                                }
+                            }
                         } else if response.response?.statusCode == 200 {
                             
                             if let value = response.result.value {

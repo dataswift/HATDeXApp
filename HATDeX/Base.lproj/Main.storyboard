@@ -3580,11 +3580,9 @@
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-zu-4D8">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                                                                </imageView>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-zu-4D8"/>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-k9-Y0V">
-                                                                    <rect key="frame" x="970" y="5" width="23" height="23"/>
+                                                                    <rect key="frame" x="-30" y="5" width="23" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="23" id="RwY-Of-R7w"/>
                                                                         <constraint firstAttribute="width" constant="23" id="hfR-3q-g4g"/>
@@ -3595,7 +3593,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMQ-U4-zG1" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
-                                                                    <rect key="frame" x="482.5" y="482.5" width="35" height="35"/>
+                                                                    <rect key="frame" x="-17.5" y="-17.5" width="35" height="35"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" id="gUr-jF-YO4"/>
