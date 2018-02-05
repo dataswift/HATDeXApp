@@ -153,7 +153,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
         
         if self.tiles[indexPath.row].serviceName == "Notables" {
             
-            guard let url = URL(string: "hatapp://") else {
+            guard let url = URL(string: "notables://") else {
                 
                 return
             }

@@ -150,7 +150,7 @@ internal class MoreTableViewController: UIViewController, UITableViewDelegate, U
                         alertTitle: "Do you want to clear cache?",
                         cancelTitle: "Cancel",
                         proceedTitle: "Clear",
-                        proceedCompletion: CachingHelper.deleteCache,
+                        proceedCompletion: { CachingHelper.deleteCache() },
                         cancelCompletion: {})
                 }
             }

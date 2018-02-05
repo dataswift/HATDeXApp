@@ -234,6 +234,10 @@ internal class DetailsDataPlugViewController: UIViewController, UserCredentialsP
         
         func gotTweets(tweets: [JSON], newToken: String?) {
             
+            guard !tweets.isEmpty else {
+                
+                return
+            }
             let user = tweets[0].dictionaryValue["data"]?["user"]
             self.sections.append("Twitter")
             

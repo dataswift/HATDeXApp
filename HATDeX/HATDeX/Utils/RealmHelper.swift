@@ -309,7 +309,7 @@ public class RealmHelper {
                         newObject!["altitude"] = -1
                         newObject!["course"] = -1
                         newObject!["syncStatus"] = "synced"
-                        newObject!["dateSyncStatusChanged"] = Date().timeIntervalSince1970
+                        newObject!["dateSyncStatusChanged"] = Date().timeIntervalSince1970 as! Int
                         newObject!["floor"] = 0
                     }
                 }

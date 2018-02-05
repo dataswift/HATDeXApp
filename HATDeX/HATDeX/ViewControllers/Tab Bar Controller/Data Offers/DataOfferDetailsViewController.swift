@@ -78,10 +78,10 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
                 
                 self.checkOfferStatus(status: offer.claim.claimStatus)
                 
-                if receivedOffer?.reward.rewardType == "Cash" {
+                if receivedOffer?.reward.rewardType == "cash" {
                     
                     self.navigationController?.popViewController(animated: true)
-                } else if receivedOffer?.reward.rewardType == "Voucher" && (offer.claim.claimStatus == "completed" || offer.claim.claimStatus == "redeemed") {
+                } else if receivedOffer?.reward.rewardType == "coucher" && (offer.claim.claimStatus == "completed" || offer.claim.claimStatus == "redeemed") {
                     
                     if let code = self.receivedOffer?.reward.codes?[0] {
                         
@@ -196,7 +196,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
      */
     private func checkOfferStatus(status: String) {
         
-        if receivedOffer?.reward.rewardType == "Service" {
+        if receivedOffer?.reward.rewardType == "service" {
             
             if status == "completed" || status == "redeemed" {
                 
@@ -216,7 +216,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
             }
         }
         
-        if receivedOffer?.reward.rewardType == "Voucher" {
+        if receivedOffer?.reward.rewardType == "voucher" {
         
             if status == "completed" || status == "redeemed" {
                 
@@ -434,7 +434,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
      */
     private func showPopUpWindow() {
         
-        if receivedOffer?.reward.rewardType == "Service" {
+        if receivedOffer?.reward.rewardType == "service" {
             
             if self.receivedOffer?.claim.claimStatus == "completed" || self.receivedOffer?.claim.claimStatus == "redeemed" {
                 
@@ -442,7 +442,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
                     text: (self.receivedOffer?.reward.vendorURL)!,
                     buttonTitle: "Open in Safari")
             }
-        } else if receivedOffer?.reward.rewardType == "Voucher" {
+        } else if receivedOffer?.reward.rewardType == "voucher" {
             
             if self.receivedOffer?.claim.claimStatus == "completed" || self.receivedOffer?.claim.claimStatus == "redeemed" {
                 

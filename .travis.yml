@@ -7,14 +7,11 @@ xcode_sdk: iphonesimulator11
 env:
     global:
         - secure: Afm8XFhLNd3kiPWzCd0eKzqigX0KRfmSLGppp7UI5UOETWt1MCDxf8FhVbd5MjM9p4RCWthK+oTs3GS+odVZbbtPtfg4bgFaPeAGO/wIEeLzTqYC/5gCE0Be+RIEpeTJLjqZ7Sm8hh+pQ54iClD9ixRkC2fjZCOQ5/PB3YPCz2KldcqMsL+M3PMbFHqYR+cpVJyCf3eZWNQNoirInx5Q3/rdtQpBBXdE3G2gr0XOX7x/8XGxYVNxinSQYsz1jbIm9JKi2dLYdlGE6eIRDa8oovGVTTI1W1HPiwOr14CQJvgu5uLvAoz5ed/TqWpzazgEplf4gabSiVGLdNypbfCkTRmccM9POz6GhHxJr/ZNH2ThrxHGvpmcU6pbUWmcAUr9gizKGU6hyE29oECq2aSqBxMZ18L64s7/mGZ3a8s+HGV0cf8iYMD79gidScRLTKO8GTTOm/7FmgxIegroEDAK6RZiR3qNJTDnhYL7YD+DqiiGmTgW6cagzIxMTc48qXeJpmXgtyx1pVI2sTdaW0dPahFJpn0XIyAkPSIhO6DKTA/0adCPK4w6JZdqy5iP8rIDBT974Lqj8PCCN9YTsU/BcFmzdycdMxWzjsDQt1VGqqRnnxgWx329RUxUFCW+pXl3OFTJ8S0V2z1Ap3FZgV0pDco/bC4W+mJQYGomWzMttNM=
-# - secure: HTiS/5Wh9kHTxV7PjFkm2VgNHPUH0jCOp099MJluZeg9uKvibttCIKF2grymzW41xXarDq4o7jhiHuNGC6I7YJwPxklpW/q81kXnE90fr87QIEQPA3/5LAJXFtSnt2ZRRucYxVgKcrTEophMsu7CDiN3oqoTiQ65CPLN3Q8VkKT+4dqcS2WdaYrEw7iF1hWVcH25fvgVVuKvk4pw4IJl+3gkCTp7Fo9bilxUOoiTuYClRsjr/y709YE9MOT6xcZ70KGyptajpbM/sG4gtz5S+O/ysqIZFX/TfeYp/74lFN3Q2x8aPDNhYCSp6N+gOxFQRhNa1lJvloqnGcuxWa9S2UHqkuqRyTZtAbm/fQ5aPfpo/gVONHMn6/NS64P20nLpVkSfZWgCvcW9BgXoW9PVIXbT2cLRJCFy658+XKs1OTxE/anUdJoxSEfng8bSuRFlO14LCO1++gkqgE84cNBkLhm8ZaCNR/uSwbhYZxRMEGz+PkLtfacsEyYZOrT5D8SVHt+R7LP0NCr6pnyzDa7f029bB99DjAL2gaGME8NIX0NSGH1/8vAqEdw5L8j9XgC7nIGmvqmfDW+pA0BYblcLbg19SWWeFleA4gkyJ/l49cU1K+Zg2O4yEkv1LDlRCbnvQyv/GdVWfEZcCVuMECJHFvEroblLkylyhG2exK79yrQ=
-# - secure: tqxt08qWdgvaFL+VnSELZf4S/DIGpDaxJD/2XQAKXt+PSeU3/PUlJB2ZJivcdVSsCN0ZT92MDQm+sz5iaOb/4Hn4PNY/zAqVcfMxUdzWklD0CX1JE4Dg9YLg9+tvq0Vh7eZnvFaSDrrPJsQ7jZytb2BnJfzr79guzVYW3ADIWAhQVTjWMZZinvJiBC3nikYIu+zBSxcfuX+R7SZSfUyfu/zDYNt4+5+DX63jX9Ol96luguEoTxLlfnaWEfro3PsoooEyIdVwzkvb6C383D5kO1wHROY7gz//vgcB5D5vkLc6NTelDv0YswNcv61DKBzzpaqqy8udKzf8a3Ro2oRCnpkv5c3f8jG+c+J8WppDge2DESQaJGajieC016xS/hUKVdHaf6XOq/1k7q2ANGq6D3ohpazYgF7y55HSf3NaGWksl+gi+uQNgJ3iC78F+uHeVTnqR0wyGEmJnFx6lplqkUDMYtqBRtGIt4oE/LoEzPlKH52DjCKtb0X8Ffz8aLOe70GvoHXDtjWXycQ8RQPsRYlySvtTWcxIxOIoqqBK9qIFjY2AzRu+R2u0I/e1zltOh8dxf7he95CZzopwoMitM83b6j3x3PfljzeWv5K0SnCJ/y4K5O/yxOEFUUdr17YlGQuYckOPYgSI9z00QJU30+JWWI5QGecU/PSF33CI2D0=
+        - secure: HTiS/5Wh9kHTxV7PjFkm2VgNHPUH0jCOp099MJluZeg9uKvibttCIKF2grymzW41xXarDq4o7jhiHuNGC6I7YJwPxklpW/q81kXnE90fr87QIEQPA3/5LAJXFtSnt2ZRRucYxVgKcrTEophMsu7CDiN3oqoTiQ65CPLN3Q8VkKT+4dqcS2WdaYrEw7iF1hWVcH25fvgVVuKvk4pw4IJl+3gkCTp7Fo9bilxUOoiTuYClRsjr/y709YE9MOT6xcZ70KGyptajpbM/sG4gtz5S+O/ysqIZFX/TfeYp/74lFN3Q2x8aPDNhYCSp6N+gOxFQRhNa1lJvloqnGcuxWa9S2UHqkuqRyTZtAbm/fQ5aPfpo/gVONHMn6/NS64P20nLpVkSfZWgCvcW9BgXoW9PVIXbT2cLRJCFy658+XKs1OTxE/anUdJoxSEfng8bSuRFlO14LCO1++gkqgE84cNBkLhm8ZaCNR/uSwbhYZxRMEGz+PkLtfacsEyYZOrT5D8SVHt+R7LP0NCr6pnyzDa7f029bB99DjAL2gaGME8NIX0NSGH1/8vAqEdw5L8j9XgC7nIGmvqmfDW+pA0BYblcLbg19SWWeFleA4gkyJ/l49cU1K+Zg2O4yEkv1LDlRCbnvQyv/GdVWfEZcCVuMECJHFvEroblLkylyhG2exK79yrQ=
+        - secure: tqxt08qWdgvaFL+VnSELZf4S/DIGpDaxJD/2XQAKXt+PSeU3/PUlJB2ZJivcdVSsCN0ZT92MDQm+sz5iaOb/4Hn4PNY/zAqVcfMxUdzWklD0CX1JE4Dg9YLg9+tvq0Vh7eZnvFaSDrrPJsQ7jZytb2BnJfzr79guzVYW3ADIWAhQVTjWMZZinvJiBC3nikYIu+zBSxcfuX+R7SZSfUyfu/zDYNt4+5+DX63jX9Ol96luguEoTxLlfnaWEfro3PsoooEyIdVwzkvb6C383D5kO1wHROY7gz//vgcB5D5vkLc6NTelDv0YswNcv61DKBzzpaqqy8udKzf8a3Ro2oRCnpkv5c3f8jG+c+J8WppDge2DESQaJGajieC016xS/hUKVdHaf6XOq/1k7q2ANGq6D3ohpazYgF7y55HSf3NaGWksl+gi+uQNgJ3iC78F+uHeVTnqR0wyGEmJnFx6lplqkUDMYtqBRtGIt4oE/LoEzPlKH52DjCKtb0X8Ffz8aLOe70GvoHXDtjWXycQ8RQPsRYlySvtTWcxIxOIoqqBK9qIFjY2AzRu+R2u0I/e1zltOh8dxf7he95CZzopwoMitM83b6j3x3PfljzeWv5K0SnCJ/y4K5O/yxOEFUUdr17YlGQuYckOPYgSI9z00QJU30+JWWI5QGecU/PSF33CI2D0=
 
 before_install:
-- openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in cert.cer.enc -out cert.cer -d
-# - openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in cert.cer.enc -out cert.cer -d
-# - openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in key.p12.enc -out key.p12 -d
-# - openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in AppStore_com.hubofallthings.rumpellocationtrackerbeta.mobileprovision.enc -out AppStore_com.hubofallthings.rumpellocationtrackerbeta.mobileprovision -d
+- openssl aes-256-cbc -K $encrypted_e2c1302e242a_key -iv $encrypted_e2c1302e242a_iv -in certificates.tar.enc -out certificates.tar -d
 - rvm install "ruby-2.4.3"
 - rvm use 2.4.3
 #
@@ -31,11 +28,15 @@ before_script:
 - echo "Unlock the keychain"
 - security unlock-keychain -p travis ios-build.keychain
 - echo "Add certificates to keychain and allow codesign to access them"
-- security import ./cert.cer -k ~/Library/Keychains/ios-build.keychain -A
+- tar xvf certificates.tar
+- security import ./distribution.cer -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./development.cer -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./Distribution.mobileprovision -k ~/Library/Keychains/ios-build.keychain -A
+- security import ./Development.mobileprovision -k ~/Library/Keychains/ios-build.keychain -A
 #
 script:
 - cd HATDeX/
-# - bundle exec fastlane sign
+- bundle exec fastlane beta
 #
 after_script:
 - security delete-keychain ios-build.keychain

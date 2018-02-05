@@ -101,7 +101,7 @@ internal struct CachingHelper {
     /**
      Deletes all cache (Realm + Hanake)
      */
-    static func deleteCache() {
+    static func deleteCache(completion: (() -> Void)? = nil) {
         
         do {
             
@@ -113,17 +113,28 @@ internal struct CachingHelper {
             
             try realm.write {
                 
-                let objects = realm.objects(JSONCacheObject.self)
-                realm.delete(objects)
+                realm.deleteAll()
+                
+                do {
+                    
+                    try realm.commitWrite()
+                    
+                    completion?()
+                } catch {
+                    
+                    print("error")
+                }
             }
-            
             // search through hanake directory for files to delete and delete them
             let appDir = "\(NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0])/Caches/com.hpique.haneke/shared/"
             let filesArray = try FileManager.default.subpathsOfDirectory(atPath: appDir) as [String]
             for fileName in filesArray {
                 
                 let filePath = "\(appDir)/\(fileName)"
-                try FileManager.default.removeItem(atPath: filePath)
+                if FileManager.default.fileExists(atPath: filePath) {
+                    
+                    try FileManager.default.removeItem(atPath: filePath)
+                }
             }
             
             // clear hanake

@@ -332,7 +332,7 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
                 offersClaimed += 1
             }
             
-            if ($0.claim.claimStatus == "completed" || $0.claim.claimStatus == "redeemed") && ($0.reward.rewardType == "Service" || $0.reward.rewardType == "Voucher") {
+            if ($0.claim.claimStatus == "completed" || $0.claim.claimStatus == "redeemed") && ($0.reward.rewardType == "service" || $0.reward.rewardType == "voucher") {
                 
                 listOffers += 1
             }
@@ -362,7 +362,7 @@ internal class DataOffersViewController: UIViewController, UICollectionViewDataS
             } else if filterBy == 1 && $0.claim.claimStatus != "" {
                 
                 tempArray.append($0)
-            } else if filterBy == 3 && ($0.claim.claimStatus == "completed" || $0.claim.claimStatus == "redeemed") && ($0.reward.rewardType == "Service" || $0.reward.rewardType == "Voucher") {
+            } else if filterBy == 3 && ($0.claim.claimStatus == "completed" || $0.claim.claimStatus == "redeemed") && ($0.reward.rewardType == "service" || $0.reward.rewardType == "voucher") {
                 
                 tempArray.append($0)
             }

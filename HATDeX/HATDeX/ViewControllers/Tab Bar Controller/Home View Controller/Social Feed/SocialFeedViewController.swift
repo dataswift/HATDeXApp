@@ -443,7 +443,7 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         self.isTwitterAvailable = true
         
         // check if the view is loaded and visible, else don't bother showing the data
-        if self.isViewLoaded && (self.view.window != nil) {
+        if self.isViewLoaded && (self.view.window != nil) && !array.isEmpty {
             
             // switch to the background queue
             DispatchQueue.global().async { [weak self] () -> Void in
@@ -528,7 +528,7 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
     private func showPosts(array: [HATFacebookSocialFeedObject], renewedUserToken: String?) {
         
         // check if the view is loaded and visible, else don't bother showing the data
-         if self.isViewLoaded && (self.view.window != nil) {
+         if self.isViewLoaded && (self.view.window != nil) && !array.isEmpty {
             
             // change flag
             self.isFacebookAvailable = true
@@ -588,10 +588,13 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
                 let tweet = self.cachedDataArray[indexPath.row] as? HATTwitterSocialFeedObject
                 
                 // set up cell
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellReuseIDs.statusSocialFeedCell, for: indexPath) as? SocialFeedCollectionViewCell
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellReuseIDs.statusSocialFeedCell, for: indexPath) as? SocialFeedCollectionViewCell {
+                    
+                    // return cell
+                    return SocialFeedCollectionViewCell.setUpCell(cell: cell, indexPath: indexPath, posts: tweet!)
+                }
                 
-                // return cell
-                return SocialFeedCollectionViewCell.setUpCell(cell: cell!, indexPath: indexPath, posts: tweet!)
+                return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellReuseIDs.statusSocialFeedCell, for: indexPath)
             }
         }
         
@@ -649,7 +652,7 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
                 let tweet = self.cachedDataArray[indexPath.row] as? HATTwitterSocialFeedObject
                 
                 let text = tweet?.data.tweets.text
-                let size = self.calculateCellHeight(text: text!, width: self.collectionView.frame.width - 20)
+                let size = self.calculateCellHeight(text: text, width: self.collectionView.frame.width - 20)
                 
                 return CGSize(width: collectionView.frame.width, height: 100 + size.height)
             }
@@ -668,9 +671,15 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
      - parameter width: The width of the field that will hold the text
      - returns: A CGSize object
      */
-    private func calculateCellHeight(text: String, width: CGFloat) -> CGSize {
+    private func calculateCellHeight(text: String?, width: CGFloat) -> CGSize {
         
-        return text.boundingRect(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: nil, context: nil).size
+        var text = text
+        if text == nil {
+            
+            text = ""
+        }
+        
+        return text!.boundingRect(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: nil, context: nil).size
     }
     
     // MARK: - Sort array
@@ -793,23 +802,23 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         // check the filter type and reload the data array
         if filter == "All" {
             
-            for post in self.posts {
+            for post in self.posts where !self.posts.isEmpty {
                 
                 self.allData.append(post as HATSocialFeedObject)
             }
-            for tweet in self.tweets {
+            for tweet in self.tweets where !self.tweets.isEmpty {
                 
                 self.allData.append(tweet)
             }
         } else if filter == "Twitter" {
             
-            for tweet in self.tweets {
+            for tweet in self.tweets where !self.tweets.isEmpty {
                 
                 self.allData.append(tweet)
             }
         } else if filter == "Facebook" {
             
-            for post in self.posts {
+            for post in self.posts where !self.posts.isEmpty {
                 
                 self.allData.append(post as HATSocialFeedObject)
             }
@@ -979,6 +988,11 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
      */
     private func showInfoViewController(text: String) {
         
+        guard self.storyboard != nil else {
+            
+            return
+        }
+        
         // set up page controller
         let textPopUpViewController = TextPopUpViewController.customInit(
             stringToShow: text,
@@ -998,7 +1012,7 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         
         DispatchQueue.main.async { [weak self] () -> Void in
             
-            if let weakSelf = self {
+            if let weakSelf = self, textPopUpViewController != nil {
                 
                 // add the page view controller to self
                 weakSelf.addBlurToView()

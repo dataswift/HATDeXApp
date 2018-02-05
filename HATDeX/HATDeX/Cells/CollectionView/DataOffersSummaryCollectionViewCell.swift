@@ -22,9 +22,9 @@ internal class DataOffersSummaryCollectionViewCell: UICollectionViewCell {
     /// The possible reward types
     private struct RewardTypes {
         
-        static let voucher: String = "Voucher"
-        static let service: String = "Service"
-        static let cash: String = "Cash"
+        static let voucher: String = "voucher"
+        static let service: String = "service"
+        static let cash: String = "cash"
     }
     
     /// A struct to hold the offers count

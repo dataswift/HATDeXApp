@@ -21,6 +21,7 @@ DerivedData/
 xcuserdata/
 *.cer
 *.p12
+*.tar
 
 ## Other
 *.xccheckout
