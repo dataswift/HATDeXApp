@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -13,77 +13,117 @@
 import Foundation
 
 /**
- The strings needed for communicating with twitter data plug
+ The data needed for communicating with twitter data plug
  
- - statusURL: No token detected
- - dataPlugURL: No issuer of the token detected. Includes a description(String)
- - tableName: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
- - sourceName: Cannot decode token. Includes a description(String)
- - serviceName: Cannot split token. Includes a description(String)
+ - tableName: The name of the table that HAT saves data
+ - sourceName: The source name of the data
+ - serviceName: The service, Plug, name
  */
 public struct Twitter {
     
+    /**
+     Constructs the api/status endpoint for the plug according to the dataplug url returned from the HAT
+     
+     - parameter twitterDataPlugURL: The plug url returned from HAT
+     
+     - returns: The twitterDataPlugURL appended with /api/status
+     */
     public static func twitterDataPlugStatusURL(twitterDataPlugURL: String) -> String {
         
         return "\(twitterDataPlugURL)/api/status"
     }
     
-    static let tableName: String = "tweets"
-    static let sourceName: String = "twitter"
-    static let serviceName: String = "Twitter"
+    public static let tableName: String = "tweets"
+    public static let sourceName: String = "twitter"
+    public static let serviceName: String = "Twitter"
 }
 
 /**
- The strings needed for communicating with twitter data plug
+ The strings needed for communicating with fitbit data plug
  
- - statusURL: No token detected
- - dataPlugURL: No issuer of the token detected. Includes a description(String)
- - tableName: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
- - sourceName: Cannot decode token. Includes a description(String)
- - serviceName: Cannot split token. Includes a description(String)
+ - sourceName: The source name of the data
+ - serviceName: The service, Plug, name
  */
 public struct Fitbit {
     
+    /**
+     Constructs the api/status endpoint for the plug according to the dataplug url returned from the HAT
+     
+     - parameter fitbitDataPlugURL: The plug url returned from HAT
+     
+     - returns: The fitbitDataPlugURL appended with /api/status
+     */
     public static func fitbitDataPlugStatusURL(fitbitDataPlugURL: String) -> String {
         
         return "\(fitbitDataPlugURL)/api/status"
     }
     
-    static let sourceName: String = "fitbit"
+    public static let sourceName: String = "fitbit"
     public static let serviceName: String = "Fitbit"
 }
 
 /**
  The strings needed for communicating with facebook data plug
  
- - statusURL: No token detected
- - dataPlugURL: No issuer of the token detected. Includes a description(String)
- - tableName: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
- - sourceName: Cannot decode token. Includes a description(String)
- - serviceName: Cannot split token. Includes a description(String)
+ - tableName: The name of the table that HAT saves data
+ - sourceName: The source name of the data
+ - serviceName: The service, Plug, name
  */
 public struct Facebook {
     
+    /**
+     Constructs the api/status endpoint for the plug according to the dataplug url returned from the HAT
+     
+     - parameter facebookDataPlugURL: The plug url returned from HAT
+     
+     - returns: The facebookDataPlugURL appended with /api/status
+     */
     public static func facebookDataPlugStatusURL(facebookDataPlugURL: String) -> String {
         
         return "\(facebookDataPlugURL)/api/status"
     }
     
-    static let tableName: String = "feed"
-    static let sourceName: String = "facebook"
-    static let serviceName: String = "Facebook"
+    public static let tableName: String = "feed"
+    public static let sourceName: String = "facebook"
+    public static let serviceName: String = "Facebook"
+}
+
+/**
+ The strings needed for communicating with facebook data plug
+ 
+ - tableName: The name of the table that HAT saves data
+ - sourceName: The source name of the data
+ - serviceName: The service, Plug, name
+ */
+public struct GoogleCalendar {
+    
+    /**
+     Constructs the api/status endpoint for the plug according to the dataplug url returned from the HAT
+     
+     - parameter facebookDataPlugURL: The plug url returned from HAT
+     
+     - returns: The facebookDataPlugURL appended with /api/status
+     */
+    public static func googleCalendarDataPlugStatusURL(googleDataPlugURL: String) -> String {
+        
+        return "\(googleDataPlugURL)/api/status"
+    }
+    
+    public static let tableName: String = "google/events"
+    public static let sourceName: String = "calendar"
+    public static let serviceName: String = "calendar"
 }
 
 /**
  The strings needed for communicating with notables service
  
- - tableName: No token detected
- - sourceName: No issuer of the token detected. Includes a description(String)
+ - tableName: The source name of the data
+ - sourceName: The service, Plug, name
  */
 public enum Notables {
     
-    static let tableName: String = "notablesv1"
-    static let sourceName: String = "rumpel"
+    public static let tableName: String = "notablesv1"
+    public static let sourceName: String = "rumpel"
 }
 
 /**
@@ -101,55 +141,32 @@ public struct DataBuyer {
 /**
  The request headers
  
- - xAuthToken: No token detected
+ - xAuthToken: The xAuthToken name in the headers
+ - tokenParamName: The token name in the headers
  */
 public enum RequestHeaders {
     
-    static let xAuthToken: String = "X-Auth-Token"
+    public static let xAuthToken: String = "x-auth-token"
+    public static let tokenParamName: String = "token"
 }
 
 /**
  The content type
  
- - JSON: No token detected
- - Text: No issuer of the token detected. Includes a description(String)
+ - json: "application/json"
+ - text: "text/plain"
  */
 public enum ContentType {
     
-    static let JSON: String = "application/json"
-    static let Text: String = "text/plain"
-}
-
-/**
- The authentication used for sending locations to HAT
- 
- - URLScheme: No token detected
- - ServiceName: No issuer of the token detected. Includes a description(String)
- - LocalAuthHost: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
- - NotificationHandlerName: Cannot decode token. Includes a description(String)
- - TokenParamName: Cannot split token. Includes a description(String)
- */
-public enum Auth {
-    
-    /// The name of the declared in the bundle identifier
-    static let URLScheme: String = "rumpellocationtrackerapp"
-    /// The name of the service, RumpelLite
-    static let ServiceName: String = "RumpelLite"
-    /// The name of the local authentication host, can be anything
-    static let LocalAuthHost: String = "rumpellocationtrackerapphost"
-    /// The notification handler name, can be anything
-    static let NotificationHandlerName: String = "rumpellocationtrackerappnotificationhandler"
-    /// The token name, QS parameter
-    static let TokenParamName: String = "token"
+    public static let json: String = "application/json"
+    public static let text: String = "text/plain"
 }
 
 /**
  The authentication data used by location service
  
- - HAT_Username: No token detected
- - HAT_Password: No issuer of the token detected. Includes a description(String)
- - Market_DataPlugID: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
- - Market_AccessToken: Cannot decode token. Includes a description(String)
+ - dataPlugID: The location plug id
+ - locationDataPlugToken: The location plug token, used when enabling the service
  */
 public enum HATDataPlugCredentials {
     

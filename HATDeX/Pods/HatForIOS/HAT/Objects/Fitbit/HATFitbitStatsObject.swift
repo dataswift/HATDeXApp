@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,6 +16,8 @@ public struct HATFitbitStatsObject: HATObject {
     
     // MARK: - Variables
 
+    /// The best stats
     public var best: HATFitbitStatsBestObject = HATFitbitStatsBestObject()
+    /// The lifetime stats
     public var lifetime: HATFitbitStatsLifetimeObject = HATFitbitStatsLifetimeObject()
 }

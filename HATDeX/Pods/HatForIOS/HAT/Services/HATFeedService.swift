@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -18,14 +18,23 @@ public struct HATFeedService {
     
     // MARK: - Get feed
     
+    /**
+     Gets the she feed from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters to pass in the request, default is empty
+     - parameter successCallback: A function of type ([HATFeedObject], String?) that executes on success
+     - parameter failed: A function of type (HATTableError) that executes on failure
+     */
     static public func getFeed(userDomain: String, userToken: String, parameters: Dictionary<String, Any> = [:], successCallback: @escaping ([HATFeedObject], String?) -> Void, failed: @escaping (HATTableError) -> Void) {
         
         func success(values: [JSON], newToken: String?) {
             
             var arrayToReturn: [HATFeedObject] = []
-            for value in values {
+            for value: JSON in values {
                 
-                let dict = value["data"].dictionaryValue
+                let dict: [String: JSON] = value["data"].dictionaryValue
                 if let object: HATFeedObject = HATFeedObject.decode(from: dict) {
                     
                     arrayToReturn.append(object)
@@ -35,7 +44,7 @@ public struct HATFeedService {
             successCallback(arrayToReturn, newToken)
         }
         
-        HATAccountService.getHatTableValuesv2(
+        HATAccountService.getHatTableValues(
             token: userToken,
             userDomain: userDomain,
             namespace: "she",

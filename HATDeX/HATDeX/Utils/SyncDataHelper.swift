@@ -148,11 +148,11 @@ internal class SyncDataHelper: UserCredentialsProtocol {
             self.dataSyncDelegate?.onDataSyncFeedback(true, message: "OK")
         }
         
-        var locations: [HATLocationsV2DataObject] = []
+        var locations: [HATLocationsDataObject] = []
         
         for datapoint in dataPoints {
             
-            var tempLocation = HATLocationsV2DataObject()
+            var tempLocation = HATLocationsDataObject()
             
             tempLocation.latitude = Float(datapoint.latitude)
             tempLocation.longitude = Float(datapoint.longitude)

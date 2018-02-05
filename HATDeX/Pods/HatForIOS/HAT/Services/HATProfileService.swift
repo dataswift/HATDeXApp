@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -17,6 +17,72 @@ import SwiftyJSON
 
 public struct HATProfileService {
     
+    // MARK: Get Generic
+    
+    /**
+     Gets the nationality of the user from the hat, if it's there already
+     
+     - parameter userDomain: The user's HAT domain
+     - parameter userToken: The user's token
+     - parameter nameSpace: The namespace to read from
+     - parameter scope: The scope to read from
+     - parameter parameters: The parameters to§ pass on to the request, defaults are ["orderBy": "dateCreated", "ordering": "descending", "take": "1"]
+     - parameter successCallback: A function to call on success
+     - parameter failCallback: A fuction to call on fail
+     */
+    private static func getFromHATGeneric<T: HatApiType>(userDomain: String, userToken: String, nameSpace: String, scope: String, parameters: [String: String] = ["orderBy": "dateCreated", "ordering": "descending", "take": "1"], successCallback: @escaping (T) -> Void, failCallback: @escaping (HATTableError) -> Void) {
+        
+        func profileEntries(json: [JSON], renewedToken: String?) {
+            
+            // if we have values return them
+            if !json.isEmpty {
+                
+                let object: T = T(fromCache: json.last!.dictionaryValue)
+                successCallback(object)
+            } else {
+                
+                failCallback(.noValuesFound)
+            }
+        }
+        
+        HATAccountService.getHatTableValues(
+            token: userToken,
+            userDomain: userDomain,
+            namespace: nameSpace,
+            scope: scope,
+            parameters: parameters,
+            successCallback: profileEntries,
+            errorCallback: failCallback)
+    }
+    
+    /**
+     Gets the nationality of the user from the hat, if it's there already
+     
+     - parameter userDomain: The user's HAT domain
+     - parameter userToken: The user's token
+     - parameter object: The object to post to the HAT
+     - parameter nameSpace: The namespace to write to
+     - parameter scope: The scope to write to
+     - parameter successCallback: A function to call on success
+     - parameter failCallback: A fuction to call on fail
+     */
+    private static func postToHATGeneric<T: HatApiType>(userDomain: String, userToken: String, object: T, nameSpace: String, scope: String, successCallback: @escaping (T) -> Void, failCallback: @escaping (HATTableError) -> Void) {
+        
+        let json: [String: Any] = object.toJSON()
+        
+        HATAccountService.createTableValue(
+            userToken: userToken,
+            userDomain: userDomain,
+            namespace: nameSpace,
+            scope: scope,
+            parameters: json,
+            successCallback: { (json, _) in
+                
+                successCallback(T(fromCache: json.dictionaryValue))
+            },
+            errorCallback: failCallback)
+    }
+    
     // MARK: - Get profile nationality
     
     /**
@@ -29,20 +95,13 @@ public struct HATProfileService {
      */
     public static func getNationalityFromHAT(userDomain: String, userToken: String, successCallback: @escaping (HATNationalityObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        func profileEntries(json: [JSON], renewedToken: String?) {
-            
-            // if we have values return them
-            if !json.isEmpty {
-                
-                let array = HATNationalityObject(from: json.last!)
-                successCallback(array)
-            } else {
-                
-                failCallback(.noValuesFound)
-            }
-        }
-        
-        HATAccountService.getHatTableValuesv2(token: userToken, userDomain: userDomain, namespace: "rumpel", scope: "nationality", parameters: ["starttime": "0"], successCallback: profileEntries, errorCallback: failCallback)
+        HATProfileService.getFromHATGeneric(
+            userDomain: userDomain,
+            userToken: userToken,
+            nameSpace: "rumpel",
+            scope: "nationality",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
     // MARK: - Post profile nationality
@@ -58,19 +117,14 @@ public struct HATProfileService {
      */
     public static func postNationalityToHAT(userDomain: String, userToken: String, nationality: HATNationalityObject, successCallback: @escaping (HATNationalityObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        let json = nationality.toJSON()
-        
-        HATAccountService.createTableValuev2(
-            token: userToken,
+        HATProfileService.postToHATGeneric(
             userDomain: userDomain,
-            source: "rumpel",
-            dataPath: "nationality",
-            parameters: json,
-            successCallback: { (json, _) in
-                
-                successCallback(HATNationalityObject(from: json))
-        },
-            errorCallback: failCallback)
+            userToken: userToken,
+            object: nationality,
+            nameSpace: "rumpel",
+            scope: "nationality",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
     // MARK: - Get profile relationship and household
@@ -85,20 +139,13 @@ public struct HATProfileService {
      */
     public static func getRelationshipAndHouseholdFromHAT(userDomain: String, userToken: String, successCallback: @escaping (HATProfileRelationshipAndHouseholdObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        func profileEntries(json: [JSON], renewedToken: String?) {
-            
-            // if we have values return them
-            if !json.isEmpty {
-                
-                let array = HATProfileRelationshipAndHouseholdObject(from: json.last!)
-                successCallback(array)
-            } else {
-                
-                failCallback(.noValuesFound)
-            }
-        }
-        
-        HATAccountService.getHatTableValuesv2(token: userToken, userDomain: userDomain, namespace: "rumpel", scope: "relationshipAndHousehold", parameters: ["starttime": "0"], successCallback: profileEntries, errorCallback: failCallback)
+        HATProfileService.getFromHATGeneric(
+            userDomain: userDomain,
+            userToken: userToken,
+            nameSpace: "rumpel",
+            scope: "relationshipAndHousehold",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
     // MARK: - Post profile relationship and household
@@ -114,20 +161,14 @@ public struct HATProfileService {
      */
     public static func postRelationshipAndHouseholdToHAT(userDomain: String, userToken: String, relationshipAndHouseholdObject: HATProfileRelationshipAndHouseholdObject, successCallback: @escaping (HATProfileRelationshipAndHouseholdObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        let json = relationshipAndHouseholdObject.toJSON()
-        
-        HATAccountService.createTableValuev2(
-            token: userToken,
+        HATProfileService.postToHATGeneric(
             userDomain: userDomain,
-            source: "rumpel",
-            dataPath: "relationshipAndHousehold",
-            parameters: json,
-            successCallback: {  (json, _) in
-                
-                successCallback(HATProfileRelationshipAndHouseholdObject(from: json))
-        },
-            errorCallback: failCallback
-        )
+            userToken: userToken,
+            object: relationshipAndHouseholdObject,
+            nameSpace: "rumpel",
+            scope: "relationshipAndHousehold",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
     // MARK: - Get profile education
@@ -142,20 +183,13 @@ public struct HATProfileService {
      */
     public static func getEducationFromHAT(userDomain: String, userToken: String, successCallback: @escaping (HATProfileEducationObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        func profileEntries(json: [JSON], renewedToken: String?) {
-            
-            // if we have values return them
-            if !json.isEmpty {
-                
-                let array = HATProfileEducationObject(from: json.last!)
-                successCallback(array)
-            } else {
-                
-                failCallback(.noValuesFound)
-            }
-        }
-        
-        HATAccountService.getHatTableValuesv2(token: userToken, userDomain: userDomain, namespace: "rumpel", scope: "education", parameters: ["starttime": "0"], successCallback: profileEntries, errorCallback: failCallback)
+        HATProfileService.getFromHATGeneric(
+            userDomain: userDomain,
+            userToken: userToken,
+            nameSpace: "rumpel",
+            scope: "education",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
     // MARK: - Post profile education
@@ -171,40 +205,34 @@ public struct HATProfileService {
      */
     public static func postEducationToHAT(userDomain: String, userToken: String, education: HATProfileEducationObject, successCallback: @escaping (HATProfileEducationObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        let json = education.toJSON()
-        
-        HATAccountService.createTableValuev2(
-            token: userToken,
+        HATProfileService.postToHATGeneric(
             userDomain: userDomain,
-            source: "rumpel",
-            dataPath: "education",
-            parameters: json,
-            successCallback: { (json, _) in
-                
-                successCallback(HATProfileEducationObject(from: json))
-        },
-            errorCallback: failCallback
-        )
+            userToken: userToken,
+            object: education,
+            nameSpace: "rumpel",
+            scope: "education",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
     // MARK: - Get Profile
     
     /**
-     Gets the profile education of the user from the hat, if it's there already
+     Gets the profile of the user from the hat, if it's there already
      
      - parameter userDomain: The user's HAT domain
      - parameter userToken: The user's token
      - parameter successCallback: A function to call on success
      - parameter failCallback: A fuction to call on fail
      */
-    public static func getProfile(userDomain: String, userToken: String, successCallback: @escaping (HATProfileObjectV2, String?) -> Void, failCallback: @escaping (HATTableError) -> Void) {
+    public static func getProfile(userDomain: String, userToken: String, successCallback: @escaping (HATProfileObject, String?) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
         func profileEntries(json: [JSON], renewedToken: String?) {
             
             // if we have values return them
             if !json.isEmpty {
                 
-                if let profile: HATProfileObjectV2 = HATProfileObjectV2.decode(from: json[0].dictionaryValue) {
+                if let profile: HATProfileObject = HATProfileObject.decode(from: json[0].dictionaryValue) {
                     
                     successCallback(profile, renewedToken)
                 } else {
@@ -217,32 +245,43 @@ public struct HATProfileService {
             }
         }
         
-        HATAccountService.getHatTableValuesv2(
+        HATAccountService.getHatTableValues(
             token: userToken,
             userDomain: userDomain,
             namespace: "rumpel",
             scope: "profile",
-            parameters: ["ordering": "descending", "orderBy": "dateCreated"],
+            parameters: ["ordering": "descending", "orderBy": "dateCreated", "take": "1"],
             successCallback: profileEntries,
             errorCallback: failCallback)
     }
     
-    public static func postProfile(userToken: String, userDomain: String, profile: HATProfileObjectV2, successCallback: @escaping (HATProfileObjectV2, String?) -> Void, failCallback: @escaping (HATTableError) -> Void) {
+    // MARK: - Post Profile
+    
+    /**
+     Gets the profile of the user from the hat, if it's there already
+     
+     - parameter userDomain: The user's HAT domain
+     - parameter userToken: The user's token
+     - parameter profile: The profile object to post
+     - parameter successCallback: A function to call on success
+     - parameter failCallback: A fuction to call on fail
+     */
+    public static func postProfile(userToken: String, userDomain: String, profile: HATProfileObject, successCallback: @escaping (HATProfileObject, String?) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        guard let profileJSON: Dictionary<String, Any> = HATProfileDataObjectV2.encode(from: profile.data) else {
+        guard let profileJSON: Dictionary<String, Any> = HATProfileDataObject.encode(from: profile.data) else {
             
             return
         }
         
-        HATAccountService.createTableValuev2(
-            token: userToken,
+        HATAccountService.createTableValue(
+            userToken: userToken,
             userDomain: userDomain,
-            source: "rumpel",
-            dataPath: "profile",
+            namespace: "rumpel",
+            scope: "profile",
             parameters: profileJSON,
             successCallback: { (json, newToken) in
                 
-                guard let profile: HATProfileObjectV2 = HATProfileObjectV2.decode(from: json.dictionaryValue) else {
+                guard let profile: HATProfileObject = HATProfileObject.decode(from: json.dictionaryValue) else {
                     
                     failCallback(.noValuesFound)
                     return
@@ -256,7 +295,7 @@ public struct HATProfileService {
     // MARK: - Get Profile Image
     
     /**
-     Gets the profile education of the user from the hat, if it's there already
+     Gets the profile image of the user from the hat, if it's there already
      
      - parameter userDomain: The user's HAT domain
      - parameter userToken: The user's token
@@ -265,26 +304,19 @@ public struct HATProfileService {
      */
     public static func getProfileImageFromHAT(userDomain: String, userToken: String, successCallback: @escaping (FileUploadObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        func profileEntries(json: [JSON], renewedToken: String?) {
-            
-            // if we have values return them
-            if !json.isEmpty {
-                
-                let array = FileUploadObject(from: (json.last?.dictionaryValue)!)
-                successCallback(array)
-            } else {
-                
-                failCallback(.noValuesFound)
-            }
-        }
-        
-        HATAccountService.getHatTableValuesv2(token: userToken, userDomain: userDomain, namespace: "rumpel", scope: "profileImage", parameters: ["starttime": "0"], successCallback: profileEntries, errorCallback: failCallback)
+        HATProfileService.getFromHATGeneric(
+            userDomain: userDomain,
+            userToken: userToken,
+            nameSpace: "rumpel",
+            scope: "profileImage",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
     // MARK: - Post profile Image
     
     /**
-     Posts user's profile education to the hat
+     Posts user's profile image to the hat
      
      - parameter userDomain: The user's HAT domain
      - parameter userToken: The user's token
@@ -294,20 +326,14 @@ public struct HATProfileService {
      */
     public static func postProfileImageToHAT(userDomain: String, userToken: String, image: FileUploadObject, successCallback: @escaping (FileUploadObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        let json = image.toJSON()
-        
-        HATAccountService.createTableValuev2(
-            token: userToken,
+        HATProfileService.postToHATGeneric(
             userDomain: userDomain,
-            source: "rumpel",
-            dataPath: "profileImage",
-            parameters: json,
-            successCallback: { (json, _) in
-                
-                successCallback(FileUploadObject(from: json.dictionaryValue))
-        },
-            errorCallback: failCallback
-        )
+            userToken: userToken,
+            object: image,
+            nameSpace: "rumpel",
+            scope: "profileImage",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
     // MARK: - Get Stuff To Remember
@@ -329,7 +355,7 @@ public struct HATProfileService {
                 
                 var arrayToReturn: [StuffToRememberObject] = []
                 
-                for item in json {
+                for item: JSON in json {
                     
                     arrayToReturn.append(StuffToRememberObject(dictionary: item.dictionaryValue))
                 }
@@ -341,7 +367,7 @@ public struct HATProfileService {
             }
         }
         
-        HATAccountService.getHatTableValuesv2(
+        HATAccountService.getHatTableValues(
             token: userToken,
             userDomain: userDomain,
             namespace: "rumpel",
@@ -362,24 +388,29 @@ public struct HATProfileService {
      - parameter successCallback: A function to call on success
      - parameter failCallback: A fuction to call on fail
      */
-    public static func postStuffToRememberToHAT(userDomain: String, userToken: String, stuffToRemember: StuffToRememberObject, successCallback: @escaping (StuffToRememberObject, String?) -> Void, failCallback: @escaping (HATTableError) -> Void) {
+    public static func postStuffToRememberToHAT(userDomain: String, userToken: String, stuffToRemember: StuffToRememberObject, successCallback: @escaping (StuffToRememberObject) -> Void, failCallback: @escaping (HATTableError) -> Void) {
         
-        let json = stuffToRemember.toJSON()
-        
-        HATAccountService.createTableValuev2(
-            token: userToken,
+        HATProfileService.postToHATGeneric(
             userDomain: userDomain,
-            source: "rumpel",
-            dataPath: "stufftoremember",
-            parameters: json,
-            successCallback: { (json, newToken) in
-                
-                successCallback(StuffToRememberObject(dictionary: json.dictionaryValue), newToken)
-        },
-            errorCallback: failCallback
-        )
+            userToken: userToken,
+            object: stuffToRemember,
+            nameSpace: "rumpel",
+            scope: "stufftoremember",
+            successCallback: successCallback,
+            failCallback: failCallback)
     }
     
+    // MARK: - Get PHATA bundle structure
+    
+    /**
+     Gets the PHATA bundle structure
+     
+     - parameter userDomain: The user's HAT domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters to pass on to the request, default = [:]
+     - parameter success: A function to call on success
+     - parameter fail: A fuction to call on fail
+     */
     public static func getPhataStructureBundle(userDomain: String, userToken: String, parameters: Dictionary<String, Any> = [:], success: @escaping (Dictionary<String, JSON>) -> Void, fail: @escaping (HATTableError) -> Void) {
         
         if let url: URLConvertible = URL(string: "https://\(userDomain)/api/v2/data-bundle/phata/structure") {
@@ -401,7 +432,7 @@ public struct HATProfileService {
                             
                             if let value = response.result.value {
                                 
-                                let json = JSON(value)
+                                let json: JSON = JSON(value)
                                 let dict = json["bundle"]["profile"]["endpoints"][0]["mapping"].dictionary
                                 success(dict ?? [:])
                             }
@@ -415,7 +446,10 @@ public struct HATProfileService {
         }
     }
     
-    public static let notablesStructure = [
+    // MARK: - Notables structure
+    
+    /// This is the default notables structure that goes in the phata structure bundle
+    public static let notablesStructure: [String: Any] = [
         "notables":
             [
                 "endpoints": [
@@ -436,7 +470,8 @@ public struct HATProfileService {
                                         "value": "phata",
                                         "operator": "contains"
                                 ]
-                            ]],
+                            ]
+                        ],
                         "mapping":
                             [
                                 "kind": "kind",
@@ -452,12 +487,22 @@ public struct HATProfileService {
                                 "photo": "photov1"
                         ],
                         "endpoint": "rumpel/notablesv1"
-                    ]],
+                    ]
+                ],
                 "orderBy": "updated_time",
                 "ordering": "descending"
         ]
     ]
     
+    // MARK: - Construct Bundle's Dictionary
+    
+    /**
+     Constructs the dictionary for tha PHATA bundle
+     
+     - parameter mutableDictionary: The mutable dictionary with the options we want to add to the bundle
+     
+     - returns: The bundle dictionary as Dictionary<String, Any>?
+     */
     public static func constructDictionaryForBundle(mutableDictionary: NSMutableDictionary) -> Dictionary<String, Any>? {
         
         if let dict = mutableDictionary as? Dictionary<String, String> {
@@ -491,6 +536,17 @@ public struct HATProfileService {
         return nil
     }
     
+    // MARK: - Creates the PHATA bundle
+    
+    /**
+     Creates the PHATA bundle structure
+     
+     - parameter userDomain: The user's HAT domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters to pass on to the request, default = [:]
+     - parameter success: A function to call on success
+     - parameter fail: A fuction to call on fail
+     */
     public static func createPhataStructureBundle(userDomain: String, userToken: String, parameters: Dictionary<String, Any>? = nil, success: @escaping (Bool) -> Void, fail: @escaping (HATTableError) -> Void) {
         
         if let url: URLConvertible = URL(string: "https://\(userDomain)/api/v2/data-bundle/phata") {
@@ -502,10 +558,10 @@ public struct HATProfileService {
                 parametersToSend = HATProfileService.notablesStructure
             } else {
                 
-                let mutableDictionary = NSMutableDictionary()
+                let mutableDictionary: NSMutableDictionary = NSMutableDictionary()
                 mutableDictionary.addEntries(from: HATProfileService.notablesStructure)
                 mutableDictionary.addEntries(from: parameters!)
-                guard let tempDict = mutableDictionary as? Dictionary<String, Any> else {
+                guard let tempDict: Dictionary<String, Any> = mutableDictionary as? Dictionary<String, Any> else {
                     
                     parametersToSend = [:]
                     return
@@ -539,6 +595,17 @@ public struct HATProfileService {
         }
     }
     
+    // MARK: - Create and get Bundle
+    
+    /**
+     Creates and gets the PHATA bundle structure
+     
+     - parameter userDomain: The user's HAT domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters to pass on to the request, default = [:]
+     - parameter success: A function to call on success
+     - parameter fail: A fuction to call on fail
+     */
     public static func createAndGetProfileBundle(userDomain: String, userToken: String, parameters: Dictionary<String, Any>? = nil, success: @escaping (Dictionary<String, JSON>) -> Void, fail: @escaping (HATTableError) -> Void) {
         
         func bundleCreated(isBundleCreated: Bool) {

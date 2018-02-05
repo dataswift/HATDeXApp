@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -12,10 +12,13 @@
 
 import SwiftyJSON
 
+// MARK: Struct
+
 public struct HATProfileAddress: HatApiType {
     
     // MARK: - Fields
     
+    /// The possible Fields of the JSON struct
     private struct Fields {
         
         static let streetAddress: String = "streetAddress"
@@ -25,24 +28,37 @@ public struct HATProfileAddress: HatApiType {
     
     // MARK: - Variables
     
+    /// The user's street address
     public var streetAddress: String = ""
+    /// The user's house number
     public var houseNumber: String = ""
+    /// The user's post code
     public var postCode: String = ""
 
     // MARK: - Initialisers
     
+    /**
+     The default initialiser. Initialises everything to default values.
+     */
     public init() {
         
     }
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public init(from dict: JSON) {
         
         self.initialize(dict: dict.dictionaryValue)
     }
     
+    /**
+     It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
+     */
     public mutating func initialize(dict: Dictionary<String, JSON>) {
         
         if let tempStreetAddress = (dict[Fields.streetAddress]?.stringValue) {
@@ -69,11 +85,6 @@ public struct HATProfileAddress: HatApiType {
     
     // MARK: - To JSON
     
-    /**
-     Returns the object as Dictionary, JSON
-     
-     - returns: Dictionary<String, Any>
-     */
     public func toJSON() -> Dictionary<String, Any> {
         
         return [

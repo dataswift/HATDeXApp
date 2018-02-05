@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -86,19 +86,17 @@ public class HATNetworkHelper: NSObject {
                 //print(response.data)     // server data
                 //print(response.result)   // result of response serialization
                 
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
-                
                 switch response.result {
                 case .success:
                     
-                    let header = response.response?.allHeaderFields
-                    let token = header?["x-auth-token"] as? String
-                    let tokenToReturn = HATTokenHelper.checkTokenScope(token: token)
+                    let header: [AnyHashable: Any]? = response.response?.allHeaderFields
+                    let token: String? = header?["x-auth-token"] as? String
+                    let tokenToReturn: String? = HATTokenHelper.checkTokenScope(token: token)
                     
                     // check if we have a value and return it
-                    if let value = response.result.value {
+                    if let value: Any = response.result.value {
                         
-                        let json = JSON(value)
+                        let json: JSON = JSON(value)
                         if token != nil {
                             
                             completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: json, token: tokenToReturn))
@@ -124,8 +122,6 @@ public class HATNetworkHelper: NSObject {
                     
                     completion(HATNetworkHelper.ResultType.error(error: error, statusCode: response.response?.statusCode))
                 }
-                
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
     }
     
@@ -151,8 +147,6 @@ public class HATNetworkHelper: NSObject {
         headers: Dictionary<String, String>,
         completion: @escaping (_ r: HATNetworkHelper.ResultTypeString) -> Void) {
         
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
         // do a post
         Alamofire.request(
             url, /* request url */
@@ -172,12 +166,12 @@ public class HATNetworkHelper: NSObject {
                 switch response.result {
                 case .success:
                     
-                    let header = response.response?.allHeaderFields
-                    let token = header?["x-auth-token"] as? String
-                    let tokenToReturn = HATTokenHelper.checkTokenScope(token: token)
+                    let header: [AnyHashable: Any]? = response.response?.allHeaderFields
+                    let token: String? = header?["x-auth-token"] as? String
+                    let tokenToReturn: String? = HATTokenHelper.checkTokenScope(token: token)
                     
                     // check if we have a value and return it
-                    if let value = response.result.value {
+                    if let value: String = response.result.value {
                         
                         if token != nil {
                             
@@ -202,8 +196,6 @@ public class HATNetworkHelper: NSObject {
                     
                     completion(HATNetworkHelper.ResultTypeString.error(error: error, statusCode: response.response?.statusCode))
                 }
-                
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
     }
     
@@ -218,8 +210,6 @@ public class HATNetworkHelper: NSObject {
      */
     public class func uploadFile(image: Data, url: String, progressUpdateHandler: ((Double) -> Void)?, completion: @escaping (_ r: HATNetworkHelper.ResultType) -> Void) {
         
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
         let headers = ["x-amz-server-side-encryption": "AES256"]
         
         Alamofire.upload(image, to: URL(string: url)!, method: .put, headers: headers).uploadProgress(closure: {(progress) -> Void in
@@ -230,15 +220,15 @@ public class HATNetworkHelper: NSObject {
             }
         }).responseString(completionHandler: {(response) in
             
-            let header = response.response?.allHeaderFields
-            let token = header?["x-auth-token"] as? String
-            let tokenToReturn = HATTokenHelper.checkTokenScope(token: token)
+            let header: [AnyHashable: Any]? = response.response?.allHeaderFields
+            let token: String? = header?["x-auth-token"] as? String
+            let tokenToReturn: String? = HATTokenHelper.checkTokenScope(token: token)
             
             switch response.result {
             case .success:
                 
                 // check if we have a value and return it
-                if let value = response.result.value {
+                if let value: String = response.result.value {
                     
                     if token != nil {
                         
@@ -263,8 +253,6 @@ public class HATNetworkHelper: NSObject {
                 
                 completion(HATNetworkHelper.ResultType.error(error: error, statusCode: response.response?.statusCode))
             }
-            
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         })
     }
     
@@ -280,9 +268,12 @@ public class HATNetworkHelper: NSObject {
      */
     public class func getQueryStringParameter(url: String?, param: String) -> String? {
         
-        if let url = url, let urlComponents = NSURLComponents(string: url), let queryItems = (urlComponents.queryItems as [URLQueryItem]!) {
+        if let url: String = url,
+            let urlComponents: NSURLComponents = NSURLComponents(string: url),
+            let queryItems: [URLQueryItem] = (urlComponents.queryItems as [URLQueryItem]!) {
             
-            let parameter = queryItems.first(where: { item in item.name == param })
+            let parameter: URLQueryItem? = queryItems.first(where: { item in item.name == param })
+            
             return parameter?.value
         }
         

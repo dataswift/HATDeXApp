@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -10,19 +10,31 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/
  */
 
-import UIKit
+// MARK: Struct
 
-public struct HATDataPlugPlugObject: Decodable {
+public struct HATDataPlugPlugObject: HATObject {
+    
+    // MARK: - Variables
 
+    /// The uuid of the plug
     public var uuid: String = ""
+    /// The provider of the plug
     public var providerId: String = ""
+    /// The date the plug was created as unix time stamp
     public var created: Int = 0
+    /// The name of the plug
     public var name: String = ""
+    /// The description of the plug
     public var description: String = ""
+    /// The url of the plug
     public var url: String = ""
+    /// The image url of the plug
     public var illustrationUrl: String = ""
+    /// The password has value of the plug
     public var passwordHash: String = ""
+    /// Is the plug approved for use
     public var approved: Bool = false
     
+    /// is the plug connected, if it is show checkmark
     public var showCheckMark: Bool? = false
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,6 +16,8 @@ public struct HATFitbitSleepLevelsSummaryCountObject: HATObject {
     
     // MARK: - Variables
 
+    /// The total sleep levels count
     public var count: Int = 0
+    /// The total duration of the sleep level in minutes
     public var minutes: Int = 0
 }

@@ -319,7 +319,7 @@ internal class MapViewController: UIViewController, MKMapViewDelegate, MapSettin
      - parameter json: the json received from HAT
      - parameter renewedUserToken: The new user token from HAT
      */
-    private func showLocations(array: [HATLocationsV2Object], renewedUserToken: String?) {
+    private func showLocations(array: [HATLocationsObject], renewedUserToken: String?) {
         
         self.clusteringManager.removeAll()
         

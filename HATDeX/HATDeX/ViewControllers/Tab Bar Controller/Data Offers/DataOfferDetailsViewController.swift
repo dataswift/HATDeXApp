@@ -170,7 +170,7 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
             HATService.getApplicationTokenFor(
                 serviceName: Constants.ApplicationToken.DataBuyer.name,
                 userDomain: self.userDomain,
-                token: self.userToken,
+                userToken: self.userToken,
                 resource: Constants.ApplicationToken.DataBuyer.source,
                 succesfulCallBack: gotApplicationToken,
                 failCallBack: failedGettingAppToken)

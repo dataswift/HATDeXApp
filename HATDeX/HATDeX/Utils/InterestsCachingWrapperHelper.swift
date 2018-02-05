@@ -33,7 +33,7 @@ internal struct InterestsCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.Interests.source,
@@ -168,11 +168,11 @@ internal struct InterestsCachingWrapperHelper {
                     
                     let unixTime = SurveyObject.createUnixTimeStamp()
                     array[0].dictionary.updateValue(unixTime, forKey: "unixTimeStamp")
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.Interests.source,
-                        dataPath: Constants.HATTableName.Interests.name,
+                        namespace: Constants.HATTableName.Interests.source,
+                        scope: Constants.HATTableName.Interests.name,
                         parameters: array[0].dictionary,
                         successCallback: success,
                         errorCallback: failed)

@@ -31,15 +31,16 @@ internal struct NotesCachingWrapperHelper {
      
      - returns: A function of type (([HATNotesV2Object], String?) -> Void)
      */
-    static func request(userToken: String, userDomain: String, parameters: Dictionary<String, String>, failRespond: @escaping (HATTableError) -> Void) -> ((@escaping (([HATNotesV2Object], String?) -> Void)) -> Void) {
+    static func request(userToken: String, userDomain: String, parameters: Dictionary<String, String>, failRespond: @escaping (HATTableError) -> Void) -> ((@escaping (([HATNotesObject], String?) -> Void)) -> Void) {
         
         return { successRespond in
             
-            HATNotablesService.getNotesV2(
+            HATNotablesService.getNotes(
                 userDomain: userDomain,
-                token: userToken,
+                userToken: userToken,
                 parameters: parameters,
-                success: successRespond)
+                success: successRespond,
+                failed: failRespond)
         }
     }
     
@@ -55,7 +56,7 @@ internal struct NotesCachingWrapperHelper {
      - parameter successRespond: A completion function of type ([HATNotesV2Object], String?) -> Void
      - parameter failRespond: A completion function of type (HATTableError) -> Void
      */
-    static func getNotes(userToken: String, userDomain: String, cacheTypeID: String, parameters: Dictionary<String, String>, successRespond: @escaping ([HATNotesV2Object], String?) -> Void, failRespond: @escaping (HATTableError) -> Void) {
+    static func getNotes(userToken: String, userDomain: String, cacheTypeID: String, parameters: Dictionary<String, String>, successRespond: @escaping ([HATNotesObject], String?) -> Void, failRespond: @escaping (HATTableError) -> Void) {
         
         // Decide to get data from cache or network
         AsyncCachingHelper.decider(
@@ -120,7 +121,7 @@ internal struct NotesCachingWrapperHelper {
      - parameter userToken: The user's token
      - parameter userDomain: The user's domain
      */
-    static func postNote(note: HATNotesV2Object, userToken: String, userDomain: String, successCallback: @escaping () -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+    static func postNote(note: HATNotesObject, userToken: String, userDomain: String, successCallback: @escaping () -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // remove note from notes
         NotesCachingWrapperHelper.checkForNotesInCacheToBeDeleted(cacheTypeID: "notes", noteID: note.recordId)
@@ -203,7 +204,7 @@ internal struct NotesCachingWrapperHelper {
      - parameter userToken: The user's token
      - parameter userDomain: The user's domain
      */
-    static func updateNote(note: HATNotesV2Object, userToken: String, userDomain: String, successCallback: @escaping () -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+    static func updateNote(note: HATNotesObject, userToken: String, userDomain: String, successCallback: @escaping () -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // remove note from notes
         NotesCachingWrapperHelper.checkForNotesInCacheToBeDeleted(cacheTypeID: "notes", noteID: note.recordId)
@@ -307,7 +308,7 @@ internal struct NotesCachingWrapperHelper {
                 let json = JSON(dictionary)
                 for (index, item) in json.arrayValue.enumerated() {
                     
-                    let tempNote = HATNotesV2Object(dict: item.dictionaryValue)
+                    let tempNote = HATNotesObject(dict: item.dictionaryValue)
                     if tempNote.recordId == noteID {
                         
                         dictionary.remove(at: index)
@@ -353,12 +354,12 @@ internal struct NotesCachingWrapperHelper {
                 if let tempDict = NSKeyedUnarchiver.unarchiveObject(with: tempNote.jsonData!) as? [Dictionary<String, Any>] {
                     
                     let dictionary = JSON(tempDict)
-                    var note = HATNotesV2Object()
+                    var note = HATNotesObject()
                     note.recordId = dictionary[0]["id"].stringValue
                     
-                    HATNotablesService.deleteNotesv2(
+                    HATNotablesService.deleteNotes(
                         noteIDs: [note.recordId],
-                        tkn: userToken,
+                        userToken: userToken,
                         userDomain: userDomain,
                         success: { _ in
                             
@@ -406,9 +407,9 @@ internal struct NotesCachingWrapperHelper {
             // for each note parse it and try to delete it
             for tempNote in notes where tempNote.jsonData != nil && Reachability.isConnectedToNetwork() {
                 
-                func postNote(_ note: HATNotesV2Object) {
+                func postNote(_ note: HATNotesObject) {
                     
-                    func innerPostNote(_ note: HATNotesV2Object) {
+                    func innerPostNote(_ note: HATNotesObject) {
                         
                         var temp = note
                         
@@ -423,13 +424,11 @@ internal struct NotesCachingWrapperHelper {
                             temp.data.public_until = nil
                         }
                         
-                        HATNotablesService.postNoteV2(
+                        HATNotablesService.postNote(
                             userDomain: userDomain,
                             userToken: userToken,
                             note: temp,
                             successCallBack: { newNote, _ in
-                                
-                                let tempNewNote = HATNotesV2Object(dict: newNote.dictionaryValue)
                                 
                                 do {
                                     
@@ -450,13 +449,13 @@ internal struct NotesCachingWrapperHelper {
                                                     !jsonObject.isEmpty {
                                                     
                                                     let json = JSON(jsonObject[0])
-                                                    var temp = HATNotesV2Object(dict: json.dictionaryValue)
+                                                    var temp = HATNotesObject(dict: json.dictionaryValue)
                                                     
-                                                    if temp.data.created_time == tempNewNote.data.created_time {
+                                                    if temp.data.created_time == newNote.data.created_time {
                                                         
                                                         realm.delete(item)
-                                                        temp.recordId = tempNewNote.recordId
-                                                        temp.endpoint = tempNewNote.endpoint
+                                                        temp.recordId = newNote.recordId
+                                                        temp.endpoint = newNote.endpoint
                                                         item = JSONCacheObject(dictionary: [temp.toJSON()], type: "notes", expiresIn: nil, value: nil)
                                                         
                                                         realm.add(item)
@@ -469,11 +468,11 @@ internal struct NotesCachingWrapperHelper {
                                     
                                     print("error deleting from cache")
                                 }
-                        },
+                            },
                             errorCallback: { error in
                                 
                                 CrashLoggerHelper.hatTableErrorLog(error: error)
-                        }
+                            }
                         )
                     }
                     
@@ -492,7 +491,7 @@ internal struct NotesCachingWrapperHelper {
                 if let tempDict = NSKeyedUnarchiver.unarchiveObject(with: tempNote.jsonData!) as? [Dictionary<String, Any>] {
                     
                     let dictionary = JSON(tempDict)
-                    var note = HATNotesV2Object()
+                    var note = HATNotesObject()
                     note.inititialize(dict: dictionary.arrayValue[0].dictionaryValue)
                     
                     if note.data.photov1?.link != "" {
@@ -519,7 +518,7 @@ internal struct NotesCachingWrapperHelper {
                                         viewController: nil,
                                         success: { imageURL in
                                             
-                                            note.data.photov1 = HATNotesV2PhotoObject()
+                                            note.data.photov1 = HATNotesPhotoObject()
                                             note.data.photov1?.link = imageURL
                                             postNote(note)
                                     }
@@ -564,7 +563,7 @@ internal struct NotesCachingWrapperHelper {
             // for each note parse it and try to delete it
             for tempNote in notes where tempNote.jsonData != nil && Reachability.isConnectedToNetwork() {
                 
-                func updateNote(_ note: HATNotesV2Object) {
+                func updateNote(_ note: HATNotesObject) {
                     
                     var temp = note
                     
@@ -579,9 +578,9 @@ internal struct NotesCachingWrapperHelper {
                         temp.data.public_until = nil
                     }
                     
-                    HATNotablesService.updateNotev2(
-                        notes: [temp],
-                        tkn: userToken,
+                    HATNotablesService.updateNote(
+                        note: temp,
+                        userToken: userToken,
                         userDomain: userDomain,
                         success: { _, _ in
                             
@@ -611,7 +610,7 @@ internal struct NotesCachingWrapperHelper {
                 if let tempDict = NSKeyedUnarchiver.unarchiveObject(with: tempNote.jsonData!) as? [Dictionary<String, Any>] {
                     
                     let dictionary = JSON(tempDict)
-                    var note = HATNotesV2Object()
+                    var note = HATNotesObject()
                     note.inititialize(dict: dictionary.arrayValue[0].dictionaryValue)
                     
                     if note.data.photov1?.link != "" {
@@ -640,7 +639,7 @@ internal struct NotesCachingWrapperHelper {
                                             viewController: nil,
                                             success: { imageURL in
                                                 
-                                                note.data.photov1 = HATNotesV2PhotoObject()
+                                                note.data.photov1 = HATNotesPhotoObject()
                                                 note.data.photov1?.link = imageURL
                                                 
                                                 updateNote(note)
@@ -714,7 +713,7 @@ internal struct NotesCachingWrapperHelper {
             if let tempDict = NSKeyedUnarchiver.unarchiveObject(with: tempNote.jsonData!) as? [Dictionary<String, Any>] {
                 
                 let json = JSON(tempDict)
-                var newNote = HATNotesV2Object()
+                var newNote = HATNotesObject()
                 for (index, dictionary) in json.arrayValue.enumerated() {
                     
                     newNote.inititialize(dict: dictionary.dictionaryValue)

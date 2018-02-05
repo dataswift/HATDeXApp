@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -48,6 +48,7 @@ public struct HATLivingInfoObject: HatApiType, Comparable {
     
     // MARK: - Fields
     
+    /// The possible Fields of the JSON struct
     private struct Fields {
         
         static let relationshipStatus: String = "relationshipStatus"
@@ -62,12 +63,19 @@ public struct HATLivingInfoObject: HatApiType, Comparable {
     
     // MARK: - Variables
     
+    /// User's relationship status
     public var relationshipStatus: String = ""
+    /// User's type of accomodation
     public var typeOfAccomodation: String = ""
+    /// User's livinga situation
     public var livingSituation: String = ""
+    /// User's number of people in household
     public var numberOfPeopleInHousehold: String = ""
+    /// User's number of decendatants
     public var numberOfDecendants: String = ""
+    /// User's number of children
     public var numberOfChildren: String = ""
+    /// The record ID
     public var recordID: String = "-1"
     
     // MARK: - Initialisers
@@ -88,6 +96,8 @@ public struct HATLivingInfoObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public init(from dict: JSON) {
         
@@ -127,6 +137,11 @@ public struct HATLivingInfoObject: HatApiType, Comparable {
         recordID = (dict[Fields.recordId].stringValue)
     }
     
+    /**
+     It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
+     */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         
         if let tempRelationshipStatus = fromCache[Fields.relationshipStatus] {
@@ -162,11 +177,6 @@ public struct HATLivingInfoObject: HatApiType, Comparable {
     
     // MARK: - JSON Mapper
     
-    /**
-     Returns the object as Dictionary, JSON
-     
-     - returns: Dictionary<String, String>
-     */
     public func toJSON() -> Dictionary<String, Any> {
         
         return [

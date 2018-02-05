@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -64,9 +64,12 @@ public struct StuffToRememberObject: HatApiType, Comparable {
     
     // MARK: - Variables
     
+    /// Title of the stuff to remember
     public var title: String = ""
+    /// Body of the stuff to remember
     public var body: String = ""
     
+    /// The unix time stamp of the record
     public var unixTimeStamp: Int?
     
     // MARK: - Initialisers

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,6 +16,8 @@ public struct HATFitbitDailyActivityDistanceObject: HATObject {
     
     // MARK: - Variables
 
+    /// The type of the activity
     public var activity: String = ""
+    /// The total distance during the activity
     public var distance: Float = 0
 }

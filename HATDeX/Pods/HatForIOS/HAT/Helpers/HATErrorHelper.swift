@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -21,6 +21,7 @@ import Foundation
  - cannotDecodeToken: Cannot decode token. Includes a description(String)
  - cannotSplitToken: Cannot split token. Includes a description(String)
  - tokenValidationFailed: Token cannot be validated. Includes a description(String)
+ - noInternetConnection: No internet connection available
  */
 public enum AuthenicationError: Error {
     
@@ -38,6 +39,7 @@ public enum AuthenicationError: Error {
  
  - expectedFieldNotFound: Field requested not found. Includes a description(String)
  - generalError: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
+ - noInternetConnection: No internet connection available
  */
 public enum JSONParsingError: Error {
     
@@ -53,6 +55,7 @@ public enum JSONParsingError: Error {
  - tableDoesNotExist: Table does not exist
  - noTableIDFound: Couldn't find the table ID
  - generalError: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
+ - noInternetConnection: No internet connection available
  */
 public enum HATTableError: Error {
     
@@ -70,6 +73,7 @@ public enum HATTableError: Error {
  - tableDoesNotExist: Table does not exist
  - noTableIDFound: Couldn't find the table ID
  - generalError: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
+ - noInternetConnection: No internet connection available
  */
 public enum HATError: Error {
     
@@ -81,7 +85,9 @@ public enum HATError: Error {
  The possible data plug errors produced when communicating with data plugs
  
  - generalError: General error. Includes a description(String), the statusCode(Int?) and the error(Error?)
+ - offerClaimed: The offer has already been claimed
  - noValueFound: No value found in the response
+ - noInternetConnection: No internet connection available
  */
 public enum DataPlugError: Error {
     

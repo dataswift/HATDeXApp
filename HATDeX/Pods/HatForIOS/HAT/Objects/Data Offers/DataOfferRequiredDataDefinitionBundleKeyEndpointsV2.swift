@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,8 +16,12 @@ public struct DataOfferRequiredDataDefinitionBundleKeyEndpointsV2: Codable {
     
     // MARK: - Variables
     
+    /// The endpoint of the definition object
     public var endpoint: String = ""
+    /// The mapping of the definition object
     public var mapping: Dictionary<String, String>?
+    /// The filters of the definition object
     public var filters: [DataOfferRequiredDataDefinitionBundleFiltersV2]?
+    /// The links of the definition object
     public var links: [DataOfferRequiredDataDefinitionBundleKeyEndpointsV2]?
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,18 +16,30 @@ public struct PurchaseObject: HATObject {
     
     // MARK: - Variables
 
+    /// First name of the new user
     public var firstName: String = ""
+    /// Has new user agreed to terms
     public var termsAgreed: Bool = false
+    /// Last name of the new user
     public var lastName: String = ""
+    /// Email of the new user
     public var email: String = ""
+    /// HAT name of the new user
     public var hatName: String = ""
+    /// Password of the new user
     public var password: String = ""
+    /// HAT cluster of the new user
     public var hatCluster: String = ""
+    /// HAT country of the new user
     public var hatCountry: String = ""
+    /// Membership info of the new user
     public var membership: PurchaseMembershipObject = PurchaseMembershipObject()
     
     // MARK: - Initialisers
     
+    /**
+     The default initialiser. Initialises everything to default values.
+     */
     public init() {
         
     }

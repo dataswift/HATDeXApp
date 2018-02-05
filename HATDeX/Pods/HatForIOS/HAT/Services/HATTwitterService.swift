@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -19,28 +19,12 @@ import SwiftyJSON
 public struct HATTwitterService {
     
     // MARK: - Check twitter plug
-    
-    /**
-     Fetched the user's posts from twitter
-     
-     - parameter authToken: The authorisation token to authenticate with the hat
-     - parameter parameters: The parameters to use in the request
-     - parameter success: An @escaping (_ array: [JSON]) -> Void) method executed on a successful response
-     */
-    public static func checkTwitterDataPlugTable(authToken: String, userDomain: String, parameters: Dictionary<String, String>, success: @escaping (_ array: [JSON], String?) -> Void) {
-        
-        HATAccountService.checkHatTableExists(userDomain: userDomain,
-                                              tableName: Twitter.tableName,
-                                              sourceName: Twitter.sourceName,
-                                              authToken: authToken,
-                                              successCallback: getTweets(token: authToken, userDomain: userDomain, parameters: parameters, success: success),
-                                              errorCallback: { (_: HATTableError) -> Void in return })
-    }
-    
+
     /**
      Checks if twitter plug is active
      
      - parameter appToken: The authorisation token to authenticate with the hat
+     - parameter url: The plug's status url to connect to
      - parameter successful: An @escaping (Void) -> Void method executed on a successful response
      - parameter failed: An @escaping (Void) -> Void) method executed on a failed response
      */
@@ -48,10 +32,10 @@ public struct HATTwitterService {
         
         // construct the url, set parameters and headers for the request
         let parameters: Dictionary<String, String> = [:]
-        let headers = [RequestHeaders.xAuthToken: appToken]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: appToken]
         
         // make the request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             // act upon response
             switch response {
@@ -69,7 +53,7 @@ public struct HATTwitterService {
             // inform user that there was an error
             case .error(let error, let statusCode):
                 
-                let message = NSLocalizedString("Server responded with error", comment: "")
+                let message: String = NSLocalizedString("Server responded with error", comment: "")
                 failed(.generalError(message, statusCode, error))
             }
         })
@@ -78,34 +62,21 @@ public struct HATTwitterService {
     // MARK: - Get tweets
     
     /**
-     Gets tweets from database
-     
-     - parameter authToken: The authorisation token to authenticate with the hat
-     - parameter parameters: The parameters to use in the request
-     - parameter success: An @escaping (_ array: [JSON]) -> Void) method executed on a successful response
-     */
-    private static func getTweets(token: String, userDomain: String, parameters: Dictionary<String, String>, success: @escaping (_ array: [JSON], String?) -> Void) -> (_ tableID: NSNumber, _ token: String?) -> Void {
-        
-        return {(tableID: NSNumber, returnedToken: String?) -> Void in
-            
-            HATAccountService.getHatTableValues(token: token, userDomain: userDomain, tableID: tableID, parameters: parameters, successCallback: success, errorCallback: { (_: HATTableError) -> Void in return })
-        }
-    }
-    
-    /**
      Fetches the facebook profile image of the user with v2 API's
      
-     - parameter authToken: The authorisation token to authenticate with the hat
+     - parameter authToken: The authorisation token of twitter to authenticate with the hat
+     - parameter userDomain: The authorisation token of twitter to authenticate with the hat
      - parameter parameters: The parameters to use in the request
-     - parameter success: An @escaping (_ array: [JSON]) -> Void) method executed on a successful response
+     - parameter success: An @escaping (_ array: [JSON], String?) -> Void) method executed on a successful response
+     - parameter errorCallback: An @escaping (HATTableError) -> Void) method executed on a failed response
      */
-    public static func fetchTweetsV2(authToken: String, userDomain: String, parameters: Dictionary<String, String>, successCallback: @escaping (_ array: [HATTwitterSocialFeedObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+    public static func fetchTweets(authToken: String, userDomain: String, parameters: Dictionary<String, String>, successCallback: @escaping (_ array: [HATTwitterSocialFeedObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         func sendObjectBack(jsonArray: [JSON], token: String?) {
             
             var array: [HATTwitterSocialFeedObject] = []
             
-            for object in jsonArray {
+            for object: JSON in jsonArray {
                 
                 array.append(HATTwitterSocialFeedObject(fromV2: object.dictionaryValue))
             }
@@ -113,7 +84,14 @@ public struct HATTwitterService {
             successCallback(array, token)
         }
         
-        HATAccountService.getHatTableValuesv2(token: authToken, userDomain: userDomain, namespace: Twitter.sourceName, scope: Twitter.tableName, parameters: parameters, successCallback: sendObjectBack, errorCallback: errorCallback)
+        HATAccountService.getHatTableValues(
+            token: authToken,
+            userDomain: userDomain,
+            namespace: Twitter.sourceName,
+            scope: Twitter.tableName,
+            parameters: parameters,
+            successCallback: sendObjectBack,
+            errorCallback: errorCallback)
     }
     
     // MARK: - Get application token for twitter
@@ -121,64 +99,31 @@ public struct HATTwitterService {
     /**
      Gets application token for twitter
      
-     - parameter successful: An @escaping (String) -> Void method executed on a successful response
-     - parameter failed: An @escaping (Void) -> Void) method executed on a failed response
+     - parameter plug: The plug object to extract the info we need to get the AppToken
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter successful: An @escaping (String, String?) -> Void method executed on a successful response
+     - parameter failed: An @escaping (JSONParsingError) -> Void) method executed on a failed response
      */
-    public static func getAppTokenForTwitter(plug: HATDataPlugObject, userDomain: String, token: String, successful: @escaping (String, String?) -> Void, failed: @escaping (JSONParsingError) -> Void) {
+    public static func getAppTokenForTwitter(plug: HATDataPlugObject, userDomain: String, userToken: String, successful: @escaping (String, String?) -> Void, failed: @escaping (JSONParsingError) -> Void) {
         
         HATService.getApplicationTokenFor(
             serviceName: plug.plug.name,
             userDomain: userDomain,
-            token: token,
+            userToken: userToken,
             resource: plug.plug.url,
             succesfulCallBack: successful,
             failCallBack: failed)
     }
     
-    // MARK: - Remove diplicates
+    // MARK: - Remove duplicates
     
     /**
-     Removes duplicates from a json file and returns the corresponding objects
+     Removes duplicates from an array of HATTwitterSocialFeedObject and returns the corresponding objects in an array
      
-     - parameter array: The JSON array
-     - returns: An array of TwitterSocialFeedObject
-     */
-    public static func removeDuplicatesFrom(array: [JSON]) -> [HATTwitterSocialFeedObject] {
-        
-        // the array to return
-        var arrayToReturn: [HATTwitterSocialFeedObject] = []
-        
-        // go through each dictionary object in the array
-        for dictionary in array {
-            
-            // transform it to an TwitterSocialFeedObject
-            let object = HATTwitterSocialFeedObject(from: dictionary.dictionaryValue)
-            
-            // check if the arrayToReturn it contains that value and if not add it
-            let result = arrayToReturn.contains(where: {(tweet: HATTwitterSocialFeedObject) -> Bool in
-                
-                if object.data.tweets.tweetID == tweet.data.tweets.tweetID {
-                    
-                    return true
-                }
-                
-                return false
-            })
-            
-            if !result {
-                
-                arrayToReturn.append(object)
-            }
-        }
-        
-        return arrayToReturn
-    }
-    
-    /**
-     Removes duplicates from an array of FacebookSocialFeedObject and returns the corresponding objects in an array
+     - parameter array: The HATTwitterSocialFeedObject array
      
-     - parameter array: The FacebookSocialFeedObject array
-     - returns: An array of FacebookSocialFeedObject
+     - returns: An array of HATTwitterSocialFeedObject
      */
     public static func removeDuplicatesFrom(array: [HATTwitterSocialFeedObject]) -> [HATTwitterSocialFeedObject] {
         
@@ -186,10 +131,10 @@ public struct HATTwitterService {
         var arrayToReturn: [HATTwitterSocialFeedObject] = []
         
         // go through each tweet object in the array
-        for tweet in array where array.count > 1 {
+        for tweet: HATTwitterSocialFeedObject in array where array.count > 1 {
             
             // check if the arrayToReturn it contains that value and if not add it
-            let result = arrayToReturn.contains(where: {(tweeter: HATTwitterSocialFeedObject) -> Bool in
+            let result: Bool = arrayToReturn.contains(where: {(tweeter: HATTwitterSocialFeedObject) -> Bool in
                 
                 if tweet.data.tweets.tweetID == tweeter.data.tweets.tweetID {
                     

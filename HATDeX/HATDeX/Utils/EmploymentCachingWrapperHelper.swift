@@ -33,7 +33,7 @@ internal struct EmploymentCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.EmploymentStatus.source,
@@ -158,11 +158,11 @@ internal struct EmploymentCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.EmploymentStatus.source,
-                        dataPath: Constants.HATTableName.EmploymentStatus.name,
+                        namespace: Constants.HATTableName.EmploymentStatus.source,
+                        scope: Constants.HATTableName.EmploymentStatus.name,
                         parameters: employmentStatus.toJSON(),
                         successCallback: success,
                         errorCallback: failed)

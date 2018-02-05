@@ -60,7 +60,7 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
      
      - returns: NotablesTableViewCell
      */
-    func setUpCell(_ cell: NotablesTableViewCell, note: HATNotesV2Object, indexPath: IndexPath, profileImageURL: String?) -> NotablesTableViewCell {
+    func setUpCell(_ cell: NotablesTableViewCell, note: HATNotesObject, indexPath: IndexPath, profileImageURL: String?) -> NotablesTableViewCell {
         
         let newCell = self.initCellToNil(cell: cell)
         
@@ -80,7 +80,7 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
      - parameter indexPath: The index path of the cell
      - parameter profileImageURL: The url for the profile image
      */
-    private func updateCellUI(newCell: NotablesTableViewCell, note: HATNotesV2Object, indexPath: IndexPath, profileImageURL: String?) {
+    private func updateCellUI(newCell: NotablesTableViewCell, note: HATNotesObject, indexPath: IndexPath, profileImageURL: String?) {
         
         if note.data.photov1 != nil && note.data.photov1?.link != nil {
             
@@ -138,7 +138,7 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
      - parameter note: The model that holds our data
      - parameter indexPath: The index path of the cell
      */
-    private func updateCellData(newCell: NotablesTableViewCell, note: HATNotesV2Object, indexPath: IndexPath) {
+    private func updateCellData(newCell: NotablesTableViewCell, note: HATNotesObject, indexPath: IndexPath) {
         
         // get the author data
         let authorData = note.data.authorv1
@@ -170,7 +170,7 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
         newCell.usernameLabel.text = authorData.phata
         newCell.postInfoLabel.attributedText = self.formatInfoLabel(
             date: date,
-            shared: note.data.currently_shared ?? false,
+            shared: note.data.currently_shared,
             publicUntil: publicUntil)
         
         // flip the view to appear from right to left
@@ -188,7 +188,7 @@ internal class NotablesTableViewCell: UITableViewCell, UICollectionViewDataSourc
      - parameter note: The note file to put the data on to update the cell
      - parameter weakSelf: The weakSelf
      */
-    func downloadAttachedImage(cell: NotablesTableViewCell, url: URL, row: Int, note: HATNotesV2Object, weakSelf: NotablesTableViewCell) {
+    func downloadAttachedImage(cell: NotablesTableViewCell, url: URL, row: Int, note: HATNotesObject, weakSelf: NotablesTableViewCell) {
         
         cell.attachedImage.image = UIImage(named: Constants.ImageNames.placeholderImage)
         

@@ -86,7 +86,7 @@ internal class NotificationsTableViewController: UITableViewController, UserCred
         HATService.getApplicationTokenFor(
             serviceName: Constants.ApplicationToken.Dex.name,
             userDomain: userDomain,
-            token: userToken,
+            userToken: userToken,
             resource: Constants.ApplicationToken.Dex.source,
             succesfulCallBack: getNotifications,
             failCallBack: error)

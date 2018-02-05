@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -12,12 +12,13 @@
 
 import SwiftyJSON
 
-// MARK: Class
+// MARK: Struct
 
 public struct FileUploadObject: HatApiType, Comparable {
     
     // MARK: - Fields
     
+    /// The possible Fields of the JSON struct
     struct Fields {
         
         static let fileId: String = "fileId"
@@ -72,18 +73,31 @@ public struct FileUploadObject: HatApiType, Comparable {
     
     // MARK: - Variables
     
+    /// The file ID of the uploaded file
     public var fileID: String = ""
+    /// The name of the uploaded file
     public var name: String = ""
+    /// The source of the uploaded file
     public var source: String = ""
+    /// The tags of the uploaded file
     public var tags: [String] = []
+    /// The image of the uploaded file
     public var image: UIImage?
+    /// The title of the uploaded file
     public var title: String = ""
+    /// The description of the uploaded file
     public var fileDescription: String = ""
+    /// The created date of the uploaded file
     public var dateCreated: Date?
+    /// The last updated date of the uploaded file
     public var lastUpdated: Date?
+    /// The current status of the uploaded file
     public var status: FileUploadObjectStatus = FileUploadObjectStatus()
+    /// The image url of the uploaded file
     public var contentURL: String = ""
+    /// Is the uploaded file public
     public var contentPublic: Bool = false
+    /// The permissions of the uploaded file
     public var permisions: [FileUploadObjectPermissions] = []
     
     // MARK: - Initialisers
@@ -110,12 +124,19 @@ public struct FileUploadObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received
      */
     public init(from dict: Dictionary<String, JSON>) {
         
         self.assingValues(dict: dict)
     }
     
+    /**
+     It assignes everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received
+     */
     mutating func assingValues(dict: Dictionary<String, JSON>) {
         
         if let tempFileID = dict[Fields.fileId]?.stringValue {
@@ -176,6 +197,8 @@ public struct FileUploadObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the cache
+     
+     - fromCache: The Dictionary file received from the cache
      */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         

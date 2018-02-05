@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -21,37 +21,21 @@ public struct HATFacebookService {
     // MARK: - Check facebook plug
     
     /**
-     Fetches the facebook profile image of the user
-     
-     - parameter authToken: The authorisation token to authenticate with the hat
-     - parameter parameters: The parameters to use in the request
-     - parameter success: An @escaping (_ array: [JSON]) -> Void) method executed on a successful response
-     */
-    public static func fetchProfileFacebookPhoto(authToken: String, userDomain: String, parameters: Dictionary<String, String>, success: @escaping (_ array: [JSON], String?) -> Void) {
-        
-        HATAccountService.checkHatTableExists(
-            userDomain: userDomain,
-            tableName: "profile_picture",
-            sourceName: "facebook",
-            authToken: authToken,
-            successCallback: getPosts(token: authToken, userDomain: userDomain, parameters: parameters, success: success),
-            errorCallback: { (_: HATTableError) -> Void in return })
-    }
-    
-    /**
      Fetches the facebook profile image of the user with v2 API's
      
      - parameter authToken: The authorisation token to authenticate with the hat
-     - parameter parameters: The parameters to use in the request
-     - parameter success: An @escaping (_ array: [JSON]) -> Void) method executed on a successful response
+     - parameter userDomain: The user's domain
+     - parameter parameters: The parameters to use in the request as Dictionary<String: String>
+     - parameter successCallback: An @escaping ([HATFacebookProfileImageObject], String?) -> Void) method executed on a successful response
+     - parameter errorCallback: An @escaping (HATTableError) -> Void) method executed on a successful response
      */
-    public static func fetchProfileFacebookPhotoV2(authToken: String, userDomain: String, parameters: Dictionary<String, String>, successCallback: @escaping (_ array: [HATFacebookProfileImageObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+    public static func fetchProfileFacebookPhoto(authToken: String, userDomain: String, parameters: Dictionary<String, String>, successCallback: @escaping (_ array: [HATFacebookProfileImageObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         func sendObjectBack(jsonArray: [JSON], token: String?) {
             
             var array: [HATFacebookProfileImageObject] = []
             
-            for object in jsonArray {
+            for object: JSON in jsonArray {
                 
                 array.append(HATFacebookProfileImageObject(from: object.dictionaryValue))
             }
@@ -59,11 +43,11 @@ public struct HATFacebookService {
             successCallback(array, token)
         }
         
-        HATAccountService.getHatTableValuesv2(
+        HATAccountService.getHatTableValues(
             token: authToken,
             userDomain: userDomain,
             namespace: Facebook.sourceName,
-            scope: "profile_picture",
+            scope: "profile/picture",
             parameters: parameters,
             successCallback: sendObjectBack,
             errorCallback: errorCallback)
@@ -72,29 +56,13 @@ public struct HATFacebookService {
     // MARK: - Facebook data plug
     
     /**
-     Fetched the user's posts from facebook
-     
-     - parameter authToken: The authorisation token to authenticate with the hat
-     - parameter parameters: The parameters to use in the request
-     - parameter success: An @escaping (_ array: [JSON]) -> Void) method executed on a successful response
-     */
-    public static func facebookDataPlug(authToken: String, userDomain: String, parameters: Dictionary<String, String>, success: @escaping (_ array: [JSON], String?) -> Void) {
-        
-        HATAccountService.checkHatTableExists(
-            userDomain: userDomain,
-            tableName: Facebook.tableName,
-            sourceName: Facebook.sourceName,
-            authToken: authToken,
-            successCallback: getPosts(token: authToken, userDomain: userDomain, parameters: parameters, success: success),
-            errorCallback: { (_: HATTableError) -> Void in return })
-    }
-    
-    /**
      Fetched the user's posts from facebook with v2 API's
      
      - parameter authToken: The authorisation token to authenticate with the hat
+     - parameter userDomain: The user's domain
      - parameter parameters: The parameters to use in the request
-     - parameter success: An @escaping (_ array: [JSON]) -> Void) method executed on a successful response
+     - parameter successCallback: An @escaping ([JSON]) -> Void) method executed on a successful response
+     - parameter errorCallback: An @escaping (HATTableError) -> Void) method executed on a failed response
      */
     public static func getFacebookData(authToken: String, userDomain: String, parameters: Dictionary<String, String>, successCallback: @escaping (_ array: [HATFacebookSocialFeedObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
@@ -102,7 +70,7 @@ public struct HATFacebookService {
             
             var array: [HATFacebookSocialFeedObject] = []
             
-            for object in jsonArray {
+            for object: JSON in jsonArray {
                 
                 array.append(HATFacebookSocialFeedObject(from: object.dictionaryValue))
             }
@@ -110,7 +78,7 @@ public struct HATFacebookService {
             successCallback(array, token)
         }
         
-        HATAccountService.getHatTableValuesv2(
+        HATAccountService.getHatTableValues(
             token: authToken,
             userDomain: userDomain,
             namespace: Facebook.sourceName,
@@ -124,16 +92,17 @@ public struct HATFacebookService {
      Checks if facebook plug is active
      
      - parameter appToken: The authorisation token to authenticate with the hat
+     - parameter url: The facebook plug url to connect
      - parameter successful: An @escaping (Void) -> Void method executed on a successful response
      - parameter failed: An @escaping (Void) -> Void) method executed on a failed response
      */
     public static func isFacebookDataPlugActive(appToken: String, url: String, successful: @escaping (Bool) -> Void, failed: @escaping (DataPlugError) -> Void) {
         
         let parameters: Dictionary<String, String> = [:]
-        let headers = [RequestHeaders.xAuthToken: appToken]
+        let headers: Dictionary<String, String>  = [RequestHeaders.xAuthToken: appToken]
         
         // make the request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             // act upon response
             switch response {
@@ -151,39 +120,16 @@ public struct HATFacebookService {
             // inform user that there was an error
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failed(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failed(.generalError(message, statusCode, error))
                 }
             }
         })
-    }
-    
-    // MARK: - Get posts
-    
-    /**
-     Gets the facebook posts from database
-     
-     - parameter authToken: The authorisation token to authenticate with the hat
-     - parameter parameters: The parameters to use in the request
-     - parameter success: An @escaping (_ array: [JSON]) -> Void) method executed on a successful response
-     */
-    private static func getPosts(token: String, userDomain: String, parameters: Dictionary<String, String>, success: @escaping (_ array: [JSON], String?) -> Void) -> (_ tableID: NSNumber, _ token: String?) -> Void {
-        
-        return {(tableID: NSNumber, returnedToken: String?) -> Void in
-            
-            HATAccountService.getHatTableValues(
-                token: token, userDomain:
-                userDomain,
-                tableID: tableID,
-                parameters: parameters,
-                successCallback: success,
-                errorCallback: { (_: HATTableError) -> Void in return })
-        }
     }
     
     // MARK: - Get app token
@@ -191,6 +137,9 @@ public struct HATFacebookService {
     /**
      Gets application token for facebook
      
+     - parameter plug: The HATDataPlugObject object to extract the data from
+     - parameter token: The user's token
+     - parameter userDomain: The user's domain
      - parameter successful: An @escaping (String) -> Void method executed on a successful response
      - parameter failed: An @escaping (Void) -> Void) method executed on a failed response
      */
@@ -199,7 +148,7 @@ public struct HATFacebookService {
         HATService.getApplicationTokenFor(
             serviceName: plug.plug.name,
             userDomain: userDomain,
-            token: token,
+            userToken: token,
             resource: plug.plug.url,
             succesfulCallBack: successful,
             failCallBack: failed)
@@ -211,7 +160,8 @@ public struct HATFacebookService {
      Removes duplicates from a json file and returns the corresponding objects
      
      - parameter array: The JSON array
-     - returns: An array of FacebookSocialFeedObject
+     
+     - returns: An array of HATFacebookSocialFeedObject
      */
     public static func removeDuplicatesFrom(array: [JSON]) -> [HATFacebookSocialFeedObject] {
         
@@ -219,10 +169,10 @@ public struct HATFacebookService {
         var arrayToReturn: [HATFacebookSocialFeedObject] = []
         
         // go through each dictionary object in the array
-        for dictionary in array {
+        for dictionary: JSON in array {
             
             // transform it to an FacebookSocialFeedObject
-            let object = HATFacebookSocialFeedObject(from: dictionary.dictionaryValue)
+            let object: HATFacebookSocialFeedObject = HATFacebookSocialFeedObject(from: dictionary.dictionaryValue)
             
             // check if the arrayToReturn it contains that value and if not add it
             let result = arrayToReturn.contains(where: {(post: HATFacebookSocialFeedObject) -> Bool in
@@ -248,7 +198,8 @@ public struct HATFacebookService {
      Removes duplicates from an array of FacebookSocialFeedObject and returns the corresponding objects in an array
      
      - parameter array: The FacebookSocialFeedObject array
-     - returns: An array of FacebookSocialFeedObject
+     
+     - returns: An array of HATFacebookSocialFeedObject
      */
     public static func removeDuplicatesFrom(array: [HATFacebookSocialFeedObject]) -> [HATFacebookSocialFeedObject] {
         
@@ -256,7 +207,7 @@ public struct HATFacebookService {
         var arrayToReturn: [HATFacebookSocialFeedObject] = []
         
         // go through each post object in the array
-        for facebookPost in array {
+        for facebookPost: HATFacebookSocialFeedObject in array {
             
             // check if the arrayToReturn it contains that value and if not add it
             let result = arrayToReturn.contains(where: {(post: HATFacebookSocialFeedObject) -> Bool in

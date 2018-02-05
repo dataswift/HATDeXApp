@@ -33,7 +33,7 @@ internal struct UKSpecificInfoCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.UKSpecificInfo.source,
@@ -147,11 +147,11 @@ internal struct UKSpecificInfoCachingWrapperHelper {
                     let ukSpecific = UKSpecificInfo(fromCache: dictionary[0])
                     let json = ukSpecific.toJSON()
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.UKSpecificInfo.source,
-                        dataPath: Constants.HATTableName.UKSpecificInfo.name,
+                        namespace: Constants.HATTableName.UKSpecificInfo.source,
+                        scope: Constants.HATTableName.UKSpecificInfo.name,
                         parameters: json,
                         successCallback: { (_, _) in
                     

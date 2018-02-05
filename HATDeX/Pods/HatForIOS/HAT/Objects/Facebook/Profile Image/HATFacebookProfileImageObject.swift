@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -34,13 +34,21 @@ public struct HATFacebookProfileImageObject: HatApiType {
 
     // MARK: - Variables
 
+    /// Is image Silhouette
     public var isSilhouette: Bool = false
+    /// The url of the image
     public var url: String = ""
+    /// The height of the image
     public var imageHeight: Int = 0
+    /// The width of the image
     public var imageWidth: Int = 0
+    /// The date the image was last updated as unix time stamp
     public var lastUpdated: Int = 0
+    /// The record id in the HAT
     public var recordID: String?
+    /// The endpoint of the image
     public var endPoint: String = "profile_picture"
+    /// The downloaded image
     public var image: UIImage?
 
     // MARK: - Initialisers
@@ -62,6 +70,8 @@ public struct HATFacebookProfileImageObject: HatApiType {
 
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received
      */
     public init(from dictionary: Dictionary<String, JSON>) {
 
@@ -108,6 +118,8 @@ public struct HATFacebookProfileImageObject: HatApiType {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received
      */
     public mutating func inititialize(dict: Dictionary<String, JSON>) {
         
@@ -152,6 +164,8 @@ public struct HATFacebookProfileImageObject: HatApiType {
     
     /**
      It initialises everything from the received JSON file from the cache
+     
+     - fromCache: The Dictionary file received from the cache
      */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         

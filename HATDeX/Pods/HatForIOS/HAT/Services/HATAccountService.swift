@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -13,7 +13,7 @@
 import Alamofire
 import SwiftyJSON
 
-// MARK: Class
+// MARK: Struct
 
 /// A Struct about the methods concerning the user's HAT account
 public struct HATAccountService {
@@ -21,31 +21,32 @@ public struct HATAccountService {
     // MARK: - Get hat values from a table
     
     /**
-     Gets values from a particular table in use with v1 API
+     Gets values from a particular table in use with v2 API
      
-     - parameter token: The token in String format
-     - parameter userDomain: The user's domain in String format
-     - parameter tableID: The table id as NSNumber
+     - parameter token: The user's token
+     - parameter userDomain: The user's domain
+     - parameter namespace: The namespace to read from
+     - parameter scope: The scope to read from
      - parameter parameters: The parameters to pass to the request, e.g. startime, endtime, limit
-     - parameter successCallback: A callback called when successful of type @escaping ([JSON]) -> Void
-     - parameter errorCallback: A callback called when failed of type @escaping (Void) -> Void)
+     - parameter successCallback: A callback called when successful of type @escaping ([JSON], String?) -> Void
+     - parameter errorCallback: A callback called when failed of type @escaping (HATTableError) -> Void)
      */
-    public static func getHatTableValues(token: String, userDomain: String, tableID: NSNumber, parameters: Dictionary<String, String>, successCallback: @escaping ([JSON], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+    public static func getHatTableValues(token: String, userDomain: String, namespace: String, scope: String, parameters: Dictionary<String, Any>, successCallback: @escaping ([JSON], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // form the url
-        let url = "https://\(userDomain)/data/table/\(tableID.stringValue)/values?pretty=true"
+        let url: String = "https://\(userDomain)/api/v2/data/\(namespace)/\(scope)"
         
         // create parameters and headers
-        let headers = [RequestHeaders.xAuthToken: token]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: token]
         
         // make the request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     errorCallback(.noInternetConnection)
                 } else {
@@ -69,81 +70,35 @@ public struct HATAccountService {
         })
     }
     
-    /**
-     Gets values from a particular table in use with v2 API
-     
-     - parameter token: The token in String format
-     - parameter userDomain: The user's domain in String format
-     - parameter dataPath: The table id as NSNumber
-     - parameter parameters: The parameters to pass to the request, e.g. startime, endtime, limit
-     - parameter successCallback: A callback called when successful of type @escaping ([JSON]) -> Void
-     - parameter errorCallback: A callback called when failed of type @escaping (Void) -> Void)
-     */
-    public static func getHatTableValuesv2(token: String, userDomain: String, namespace: String, scope: String, parameters: Dictionary<String, Any>, successCallback: @escaping ([JSON], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
-        
-        // form the url
-        let url = "https://\(userDomain)/api/v2/data/\(namespace)/\(scope)"
-        
-        // create parameters and headers
-        let headers = [RequestHeaders.xAuthToken: token]
-        
-        // make the request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
-            
-            switch response {
-                
-            case .error(let error, let statusCode):
-                
-                if error.localizedDescription == "The request timed out." {
-                    
-                    errorCallback(.noInternetConnection)
-                } else {
-                    
-                    let message = NSLocalizedString("Server responded with error", comment: "")
-                    errorCallback(.generalError(message, statusCode, error))
-                }
-            case .isSuccess(let isSuccess, _, let result, let token):
-                
-                if isSuccess {
-                    
-                    if let array = result.array {
-                        
-                        successCallback(array, token)
-                    } else {
-                        
-                        errorCallback(.noValuesFound)
-                    }
-                }
-            }
-        })
-    }
+    // MARK: - Create value
     
     /**
      Gets values from a particular table in use with v2 API
      
-     - parameter token: The token in String format
-     - parameter userDomain: The user's domain in String format
-     - parameter dataPath: The table id as NSNumber
+     - parameter userToken: The user's token
+     - parameter userDomain: The user's domain
+     - parameter namespace: The namespace to read from
+     - parameter scope: The scope to read from
      - parameter parameters: The parameters to pass to the request, e.g. startime, endtime, limit
-     - parameter successCallback: A callback called when successful of type @escaping ([JSON]) -> Void
-     - parameter errorCallback: A callback called when failed of type @escaping (Void) -> Void)
+     - parameter successCallback: A callback called when successful of type @escaping (JSON, String?) -> Void
+     - parameter errorCallback: A callback called when failed of type @escaping (HATTableError) -> Void)
      */
-    public static func createTableValuev2(token: String, userDomain: String, source: String, dataPath: String, parameters: Dictionary<String, Any>, successCallback: @escaping (JSON, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+    public static func createTableValue(userToken: String, userDomain: String, namespace: String, scope: String, parameters: Dictionary<String, Any>, successCallback: @escaping (JSON, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // form the url
-        let url = "https://\(userDomain)/api/v2/data/\(source)/\(dataPath)"
+        let url: String = "https://\(userDomain)/api/v2/data/\(namespace)/\(scope)"
         
         // create parameters and headers
-        let headers = [RequestHeaders.xAuthToken: token]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
         
         // make the request
-        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     errorCallback(.noInternetConnection)
                 } else {
@@ -166,250 +121,34 @@ public struct HATAccountService {
         })
     }
     
-    /**
-     Gets values from a particular table
-     
-     - parameter token: The token in String format
-     - parameter tableID: The table id as NSNumber
-     - parameter parameters: The parameters to pass to the request, e.g. startime, endtime, limit
-     - parameter successCallback: A callback called when successful of type @escaping ([JSON]) -> Void
-     - parameter errorCallback: A callback called when failed of type @escaping (Void) -> Void)
-     */
-    public static func getHatTableValuesWithOutPretty(token: String, userDomain: String, tableID: NSNumber, parameters: Dictionary<String, String>, successCallback: @escaping ([JSON], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
-        
-        // form the url
-        let url = "https://\(userDomain)/data/table/\(tableID.stringValue)/values"
-        
-        // create parameters and headers
-        let headers = [RequestHeaders.xAuthToken: token]
-        
-        // make the request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
-            
-            switch response {
-                
-            case .error(let error, let statusCode):
-                
-                if error.localizedDescription == "The request timed out." {
-                    
-                    errorCallback(.noInternetConnection)
-                } else {
-                    
-                    let message = NSLocalizedString("Server responded with error", comment: "")
-                    errorCallback(.generalError(message, statusCode, error))
-                }
-            case .isSuccess(let isSuccess, _, let result, let token):
-                
-                if isSuccess {
-                    
-                    if let array = result.array {
-                        
-                        successCallback(array, token)
-                    } else {
-                        
-                        errorCallback(.noValuesFound)
-                    }
-                }
-            }
-        })
-    }
-    
-    /**
-     Checks if a table exists
-     
-     - parameter tableName: The table we are looking as String
-     - parameter sourceName: The source name as String
-     - parameter authToken: The user's token as String
-     - parameter successCallback: A callback called when successful of type @escaping (NSNumber) -> Void
-     - parameter errorCallback: A callback called when failed of type @escaping (Void) -> Void)
-     */
-    public static func checkHatTableExists(userDomain: String, tableName: String, sourceName: String, authToken: String, successCallback: @escaping (NSNumber, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
-        
-        // create the url
-        let tableURL = "https://\(userDomain)/data/table?name=\(tableName)&source=\(sourceName)"
-        
-        // create headers
-        let header = [RequestHeaders.xAuthToken: authToken]
-        
-        // make async request
-        HATNetworkHelper.asynchronousRequest(
-            tableURL,
-            method: HTTPMethod.get,
-            encoding: Alamofire.URLEncoding.default,
-            contentType: ContentType.JSON,
-            parameters: [:],
-            headers: header,
-            completion: {(response: HATNetworkHelper.ResultType) -> Void in
-                
-                let message = NSLocalizedString("Server responded with error", comment: "")
-                
-                switch response {
-                    
-                case .error(let error, let statusCode):
-                    
-                    if error.localizedDescription == "The request timed out." {
-                        
-                        errorCallback(.noInternetConnection)
-                    } else if statusCode == 404 {
-                        
-                        errorCallback(.tableDoesNotExist)
-                    } else {
-                        
-                        errorCallback(.generalError(message, statusCode, error))
-                    }
-                case .isSuccess(let isSuccess, let statusCode, let result, let token):
-                    
-                    if isSuccess {
-                        
-                        let tableID = result["fields"][0]["tableId"].number
-                        
-                        //table found
-                        if statusCode == 200 {
-                            
-                            // get notes
-                            if tableID != nil {
-                                
-                                successCallback(tableID!, token)
-                            } else {
-                                
-                                errorCallback(.noTableIDFound)
-                            }
-                            //table not found
-                        } else if statusCode == 404 {
-                            
-                            errorCallback(.tableDoesNotExist)
-                        } else {
-                            
-                            errorCallback(.generalError(message, statusCode, nil))
-                        }
-                    }
-                }
-        })
-    }
-    
-    // MARK: - Create table in hat
-    
-    /**
-     Creates the notables table on the hat
-     
-     - parameter token: The token returned from the hat
-     */
-    public static func createHatTable(userDomain: String, token: String, notablesTableStructure: Dictionary<String, Any>, failed: @escaping (HATTableError) -> Void) -> (()) -> Void {
-        
-        return { (_ callback: Void) -> Void in
-            
-            // create headers and parameters
-            let headers = ["Accept": ContentType.JSON,
-                           "Content-Type": ContentType.JSON,
-                           "X-Auth-Token": token]
-            let url = "https://\(userDomain)/data/table"
-            
-            // make async request
-            HATNetworkHelper.asynchronousRequest(url, method: HTTPMethod.post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.JSON, parameters: notablesTableStructure, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
-                
-                // handle result
-                switch response {
-                    
-                case .isSuccess(let isSuccess, let statusCode, _, _):
-                    
-                    if isSuccess {
-                        
-                        callback
-                        // if user is creating notables table send a notif back that the table has been created
-                        NotificationCenter.default.post(name: NSNotification.Name("refreshTable"), object: nil)
-                    } else {
-                        
-                        let message = NSLocalizedString("The request was not succesful", comment: "")
-                        failed(.generalError(message, statusCode, nil))
-                    }
-                    
-                case .error(let error, let statusCode):
-                    
-                    if error.localizedDescription == "The request timed out." {
-                        
-                        failed(.noInternetConnection)
-                    } else {
-                        
-                        let message = NSLocalizedString("Server responded with error", comment: "")
-                        failed(.generalError(message, statusCode, error))
-                    }
-                }
-            })
-        }
-    }
-    
     // MARK: - Delete from hat
-    
-    /**
-     Deletes a record from hat
-     
-     - parameter token: The user's token
-     - parameter recordId: The record id to delete
-     - parameter success: A callback called when successful of type @escaping (String) -> Void
-     */
-    public static func deleteHatRecord(userDomain: String, token: String, recordId: Int, success: @escaping (String) -> Void, failed: @ escaping (HATTableError) -> Void) {
-        
-        // form the url
-        let url = "https://\(userDomain)/data/record/\(String(recordId))"
-        
-        // create  headers
-        let headers = [RequestHeaders.xAuthToken: token]
-        
-        // make the request
-        HATNetworkHelper.asynchronousRequest(url, method: .delete, encoding: Alamofire.URLEncoding.default, contentType: ContentType.Text, parameters: [:], headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
-            
-            // handle result
-            switch response {
-                
-            case .isSuccess(let isSuccess, let statusCode, _, _):
-                
-                if isSuccess {
-                    
-                    success(token)
-                    HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: {})
-                } else {
-                    
-                    let message = NSLocalizedString("The request was unsuccesful", comment: "")
-                    failed(.generalError(message, statusCode, nil))
-                }
-                
-            case .error(let error, let statusCode):
-                
-                if error.localizedDescription == "The request timed out." {
-                    
-                    failed(.noInternetConnection)
-                } else {
-                    
-                    let message = NSLocalizedString("Server responded with error", comment: "")
-                    failed(.generalError(message, statusCode, error))
-                }
-            }
-        })
-    }
+
     /**
      Deletes a record from hat using V2 API
      
-     - parameter token: The user's token
-     - parameter recordId: The record id to delete
-     - parameter success: A callback called when successful of type @escaping (String) -> Void
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter recordIds: The record id to delete
+     - parameter success: A callback called when the request was successful of type @escaping (String) -> Void
+     - parameter failed: A callback called when the request failed of type @escaping (HATTableError) -> Void
      */
-    public static func deleteHatRecordV2(userDomain: String, token: String, recordId: [String], success: @escaping (String) -> Void, failed: @ escaping (HATTableError) -> Void) {
+    public static func deleteHatRecord(userDomain: String, userToken: String, recordIds: [String], success: @escaping (String) -> Void, failed: @ escaping (HATTableError) -> Void) {
         
         // form the url
-        var url = "https://\(userDomain)/api/v2/data"
+        var url: String = "https://\(userDomain)/api/v2/data"
         
-        let firstRecord = recordId.first
+        let firstRecord: String? = recordIds.first
         url.append("?records=\(firstRecord!)")
         
-        for record in recordId where record != firstRecord! {
+        for record: String in recordIds where record != firstRecord! {
             
             url.append("&records=\(record)")
         }
         
-        let headers = [RequestHeaders.xAuthToken: token]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
         
         // make the request
-        HATNetworkHelper.asynchronousRequest(url, method: .delete, encoding: Alamofire.URLEncoding.default, contentType: ContentType.Text, parameters: [:], headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .delete, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.text, parameters: [:], headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             // handle result
             switch response {
@@ -418,17 +157,17 @@ public struct HATAccountService {
                 
                 if isSuccess {
                     
-                    success(token)
+                    success(userToken)
                     HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: { () -> Void in return })
                 } else {
                     
-                    let message = NSLocalizedString("The request was unsuccesful", comment: "")
+                    let message: String = NSLocalizedString("The request was unsuccesful", comment: "")
                     failed(.generalError(message, statusCode, nil))
                 }
                 
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failed(.noInternetConnection)
                 } else {
@@ -445,51 +184,47 @@ public struct HATAccountService {
     /**
      Edits a record from hat using v2 API's
      
-     - parameter token: The user's token
-     - parameter recordId: The record id to delete
-     - parameter success: A callback called when successful of type @escaping (String) -> Void
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The object to upload formatted as a Dictionary<String, Any>
+     - parameter successCallback: A callback called when successful of type @escaping ([JSON], String?) -> Void
+     - parameter errorCallback: A callback called when failed of type @escaping (HATTableError) -> Void
      */
-    public static func updateHatRecordV2(userDomain: String, userToken: String, notes: [HATNotesV2Object], successCallback: @escaping ([HATNotesV2Object], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+    public static func updateHatRecord(userDomain: String, userToken: String, parameters: Dictionary<String, Any>, successCallback: @escaping ([JSON], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
-        let encoded = HATNotesV2Object.encode(from: notes)
+        // form the url
+        let url: String = "https://\(userDomain)/api/v2/data"
         
-        var urlRequest = URLRequest.init(url: URL(string: "https://\(userDomain)/api/v2/data")!)
-        urlRequest.httpMethod = HTTPMethod.put.rawValue
-        urlRequest.addValue(userToken, forHTTPHeaderField: "x-auth-token")
-        urlRequest.networkServiceType = .background
-        urlRequest.httpBody = encoded
+        // create parameters and headers
+        let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
         
-        if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
+        // make the request
+        HATNetworkHelper.asynchronousRequest(url, method: .put, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
-            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        }
-        
-        Alamofire.request(urlRequest).responseJSON(completionHandler: { response in
-            
-            let header = response.response?.allHeaderFields
-            let token = header?["x-auth-token"] as? String
-            let tokenToReturn = HATTokenHelper.checkTokenScope(token: token)
-            
-            if response.response?.statusCode != 201 {
+            // handle result
+            switch response {
                 
-                errorCallback(.generalError("General error", response.response?.statusCode, nil))
-            } else if response.response?.statusCode == 201 {
+            case .error(let error, let statusCode):
                 
-                let json = JSON(response.result.value)
-                if let array = json.array {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
-                    var arrayToReturn: [HATNotesV2Object] = []
-                    
-                    for item in array {
-                        
-                        let note = HATNotesV2Object(dict: item.dictionaryValue)
-                        arrayToReturn.append(note)
-                    }
-                    
-                    successCallback(arrayToReturn, tokenToReturn)
+                    errorCallback(.noInternetConnection)
                 } else {
                     
-                    successCallback([], tokenToReturn)
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
+                    errorCallback(.generalError(message, statusCode, error))
+                }
+            case .isSuccess(let isSuccess, _, let result, let token):
+                
+                if isSuccess {
+                    
+                    if let array: [JSON] = result.array {
+                        
+                        successCallback(array, token)
+                    } else {
+                        
+                        errorCallback(.noValuesFound)
+                    }
                 }
             }
         })
@@ -503,7 +238,7 @@ public struct HATAccountService {
     public static func triggerHatUpdate(userDomain: String, completion: @escaping () -> Void) {
         
         // define the url to connect to
-        let url = "https://notables.hubofallthings.com/api/bulletin/tickle"
+        let url: String = "https://notables.hubofallthings.com/api/bulletin/tickle"
         
         // make the request
         Alamofire.request(url, method: .get, parameters: ["phata": userDomain], encoding: Alamofire.URLEncoding.default, headers: nil).responseString { _ in
@@ -512,80 +247,14 @@ public struct HATAccountService {
         }
     }
     
-    /**
-     Checks if a table exists
-     
-     - parameter tableName: The table we are looking as String
-     - parameter sourceName: The source name as String
-     - parameter authToken: The user's token as String
-     - parameter successCallback: A callback called when successful of type @escaping (NSNumber) -> Void
-     - parameter errorCallback: A callback called when failed of type @escaping (Void) -> Void)
-     */
-    public static func checkHatTableExistsForUploading(userDomain: String, tableName: String, sourceName: String, authToken: String, successCallback: @escaping (Dictionary<String, Any>, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
-        
-        // create the url
-        let tableURL = "https://\(userDomain)/data/table?name=\(tableName)&source=\(sourceName)"
-        
-        // create headers
-        let header = [RequestHeaders.xAuthToken: authToken]
-        
-        // make async request
-        HATNetworkHelper.asynchronousRequest(
-            tableURL,
-            method: HTTPMethod.get,
-            encoding: Alamofire.URLEncoding.default,
-            contentType: ContentType.JSON,
-            parameters: [:],
-            headers: header,
-            completion: {(response: HATNetworkHelper.ResultType) -> Void in
-                
-                switch response {
-                    
-                case .error(let error, let statusCode):
-                    
-                    if error.localizedDescription == "The request timed out." {
-                        
-                        errorCallback(.noInternetConnection)
-                    } else if statusCode == 404 {
-                        
-                        errorCallback(.tableDoesNotExist)
-                    } else {
-                        
-                        let message = NSLocalizedString("Server responded with error", comment: "")
-                        errorCallback(.generalError(message, statusCode, error))
-                    }
-                case .isSuccess(let isSuccess, let statusCode, let result, let token):
-                    
-                    if isSuccess {
-                        
-                        //table found
-                        if statusCode == 200 {
-                            
-                            successCallback(result.dictionaryValue, token)
-                            //table not found
-                        } else if statusCode == 404 {
-                            
-                            errorCallback(.tableDoesNotExist)
-                        } else {
-                            
-                            let message = NSLocalizedString("Status code does not match expecations", comment: "")
-                            errorCallback(.generalError(message, statusCode, nil))
-                        }
-                    } else {
-                        
-                        let message = NSLocalizedString("Respond is not succesful", comment: "")
-                        errorCallback(.generalError(message, statusCode, nil))
-                    }
-                }
-        })
-    }
+    // MARK: - Get public key
     
     /**
      Constructs URL to get the public key
      
      - parameter userHATDomain: The user's HAT domain
      
-     - returns: HATRegistrationURLAlias
+     - returns: An optional String, nil if public key not found
      */
     public static func theUserHATDomainPublicKeyURL(_ userHATDomain: String) -> String? {
         
@@ -611,23 +280,23 @@ public struct HATAccountService {
      */
     public static func changePassword(userDomain: String, userToken: String, oldPassword: String, newPassword: String, successCallback: @escaping (String, String?) -> Void, failCallback: @escaping (HATError) -> Void) {
         
-        let url = "https://\(userDomain)/control/v2/auth/password"
+        let url: String = "https://\(userDomain)/control/v2/auth/password"
         
-        let parameters: Dictionary = ["password": oldPassword, "newPassword": newPassword]
-        let headers = [RequestHeaders.xAuthToken: userToken]
+        let parameters: Dictionary<String, Any> = ["password": oldPassword, "newPassword": newPassword]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
         
-        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallback(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallback(.generalError(message, statusCode, error))
                 }
             case .isSuccess(let isSuccess, _, let result, let token):
@@ -642,33 +311,28 @@ public struct HATAccountService {
     
     // MARK: - Create Combinator
     
-    public static func createBetweenLocationCombinator(userDomain: String, userToken: String, combinatorName: String, fieldToFilter: String, lowerValue: Int, upperValue: Int, successCallback: @escaping (Bool, String?) -> Void, failCallback: @escaping (HATError) -> Void) {
+    /**
+     Creates combinator
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's authentication token
+     - parameter combinatorName: The desired combinator name
+     - parameter fieldToFilter: The field to filter with
+     - parameter lowerValue: The lower value of the filter
+     - parameter upperValue: The upper value of the filter
+     - parameter successCallback: A function of type (Bool, String?) to call on success
+     - parameter failCallback: A fuction of type (HATError) to call on fail
+     */
+    public static func createCombinator(userDomain: String, userToken: String, combinatorName: String, fieldToFilter: String, lowerValue: Int, upperValue: Int, successCallback: @escaping (Bool, String?) -> Void, failCallback: @escaping (HATError) -> Void) {
         
-        let url = "https://\(userDomain)/api/v2/combinator/\(combinatorName)"
-        
-        class Operator: HATObject {
-            
-            var `operator`: String = "between"
-            var lower: Int = 0
-            var upper: Int = 0
-        }
-        class Filter: HATObject {
-            
-            var field: String = ""
-            var `operator`: Operator = Operator()
-        }
-        class BodyRequest: HATObject {
-            
-            var endpoint: String = "rumpel/locations/ios"
-            var filters: [Filter] = [Filter()]
-        }
+        let url: String = "https://\(userDomain)/api/v2/combinator/\(combinatorName)"
         
         let bodyRequest: [BodyRequest] = [BodyRequest()]
         bodyRequest[0].filters[0].field = fieldToFilter
         bodyRequest[0].filters[0].`operator`.lower = lowerValue
         bodyRequest[0].filters[0].`operator`.upper = upperValue
         
-        var urlRequest = URLRequest.init(url: URL(string: url)!)
+        var urlRequest: URLRequest = URLRequest.init(url: URL(string: url)!)
         urlRequest.httpBody = BodyRequest.encode(from: bodyRequest)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
         urlRequest.addValue(userToken, forHTTPHeaderField: RequestHeaders.xAuthToken)
@@ -691,17 +355,26 @@ public struct HATAccountService {
         })
     }
     
-    public static func getBetweenLocationCombinator(userDomain: String, userToken: String, successCallback: @escaping ([HATLocationsV2Object], String?) -> Void, failCallback: @escaping (HATError) -> Void) {
+    /**
+     Gets the combinator data from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's authentication token
+     - parameter combinatorName: The combinator name to search for
+     - parameter successCallback: A function of type ([HATLocationsV2Object], String?) to call on success
+     - parameter failCallback: A fuction of type (HATError) to call on fail
+     */
+    public static func getCombinator(userDomain: String, userToken: String, combinatorName: String, successCallback: @escaping ([JSON], String?) -> Void, failCallback: @escaping (HATError) -> Void) {
         
-        let url = "https://\(userDomain)/api/v2/combinator/locationsfilter"
+        let url: String = "https://\(userDomain)/api/v2/combinator/\(combinatorName)"
         
-        let headers = [RequestHeaders.xAuthToken: userToken]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
         
         HATNetworkHelper.asynchronousRequest(
             url,
             method: .get,
             encoding: Alamofire.JSONEncoding.default,
-            contentType: ContentType.JSON,
+            contentType: ContentType.json,
             parameters: [:],
             headers: headers,
             completion: {(response: HATNetworkHelper.ResultType) -> Void in
@@ -710,31 +383,42 @@ public struct HATAccountService {
                     
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         failCallback(.noInternetConnection)
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         failCallback(.generalError(message, statusCode, error))
                     }
                 case .isSuccess(let isSuccess, _, let result, let token):
                     
-                    if isSuccess, let array = result.array {
+                    if isSuccess, let array: [JSON] = result.array {
                         
-                        var arrayToReturn: [HATLocationsV2Object] = []
-                        for item in array {
-                            
-                            if let object: HATLocationsV2Object = HATLocationsV2Object.decode(from: item.dictionaryValue) {
-                                
-                                arrayToReturn.append(object)
-                            }
-                        }
-                        
-                        successCallback(arrayToReturn, token)
+                        successCallback(array, token)
                     }
                 }
             }
         )
     }
+}
+
+/// The operator JSON format
+private class Operator: HATObject {
+    
+    var `operator`: String = "between"
+    var lower: Int = 0
+    var upper: Int = 0
+}
+/// The filter JSON format
+private class Filter: HATObject {
+    
+    var field: String = ""
+    var `operator`: Operator = Operator()
+}
+/// The combinator JSON format
+private class BodyRequest: HATObject {
+    
+    var endpoint: String = "rumpel/locations/ios"
+    var filters: [Filter] = [Filter()]
 }

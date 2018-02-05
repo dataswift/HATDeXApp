@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -48,6 +48,7 @@ public struct HATProfileInfo: HatApiType, Comparable {
     
     // MARK: - Fields
     
+    /// The possible Fields of the JSON struct
     private struct Fields {
         
         static let dateOfBirth: String = "dateOfBirth"
@@ -59,10 +60,14 @@ public struct HATProfileInfo: HatApiType, Comparable {
     
     // MARK: - Variables
     
+    /// User's data of birth
     public var dateOfBirth: Date = Date()
     
+    /// User's gender
     public var gender: String = ""
+    /// User's income group
     public var incomeGroup: String = ""
+    /// Record ID
     public var recordID: String = "-1"
     
     // MARK: - Initialisers
@@ -81,6 +86,8 @@ public struct HATProfileInfo: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public init(from dict: JSON) {
         
@@ -109,7 +116,9 @@ public struct HATProfileInfo: HatApiType, Comparable {
     }
     
     /**
-     It initialises everything from the received JSON file from the cache
+     It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         

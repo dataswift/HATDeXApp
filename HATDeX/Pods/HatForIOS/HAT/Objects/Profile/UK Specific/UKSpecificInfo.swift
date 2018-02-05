@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -48,6 +48,7 @@ public struct UKSpecificInfo: HatApiType, Comparable {
     
     // MARK: - Fields
     
+    /// The possible Fields of the JSON struct
     private struct Fields {
         
         static let nationalInsuranceNumber: String = "nationalInsuranceNumber"
@@ -65,17 +66,27 @@ public struct UKSpecificInfo: HatApiType, Comparable {
     
     // MARK: - Variables
     
+    /// User's national insurance number
     public var nationalInsuranceNumber: String = ""
+    /// User's nhs number
     public var nhsNumber: String = ""
+    /// User's driving license number
     public var drivingLicenseNumber: String = ""
+    /// User's passport number
     public var passportNumber: String = ""
+    /// User's place of birth
     public var placeOfBirth: String = ""
+    /// User's second passport number
     public var secondPassportNumber: String = ""
+    /// User's unique tax reference
     public var uniqueTaxReference: String = ""
     
+    /// User's passport expiry date
     public var passportExpiryDate: Date = Date()
+    /// User's second passport expiry date
     public var secondPassportExpiryDate: Date = Date()
     
+    /// Record ID
     public var recordID: String = "-1"
     
     // MARK: - Initialisers
@@ -101,6 +112,8 @@ public struct UKSpecificInfo: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public init(from dict: JSON) {
         
@@ -113,7 +126,9 @@ public struct UKSpecificInfo: HatApiType, Comparable {
     }
     
     /**
-     It initialises everything from the received JSON file from the cache
+     It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         

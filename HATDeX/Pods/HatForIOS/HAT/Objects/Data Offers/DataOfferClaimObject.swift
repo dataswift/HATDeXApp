@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -18,6 +18,7 @@ public struct DataOfferClaimObject {
     
     // MARK: - Fields
     
+    /// The JSON fields used by the hat
     public struct Fields {
         
         static let claimStatus: String = "status"
@@ -27,8 +28,11 @@ public struct DataOfferClaimObject {
 
     // MARK: - Variables
     
+    /// The data offer claim status
     public var claimStatus: String = ""
+    /// The data offer claim confirmed state
     public var claimConfirmed: String = ""
+    /// The data offer claim unix time stamp
     public var claimDateStamp: Int = -1
     
     // MARK: - Initialisers
@@ -45,6 +49,8 @@ public struct DataOfferClaimObject {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received
      */
     public init(dictionary: Dictionary<String, JSON>) {
         

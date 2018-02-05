@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,6 +16,8 @@ public struct HATFitbitActivityLevelObject: HATObject {
     
     // MARK: - Variables
 
+    /// The name of the activity
     public var name: String = ""
+    /// The duration of the activity in minutes
     public var minutes: Int = 0
 }

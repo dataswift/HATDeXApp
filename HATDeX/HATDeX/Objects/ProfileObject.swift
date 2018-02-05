@@ -15,14 +15,14 @@ internal struct ProfileObject: HatApiType {
         
     }
 
-    var profile: HATProfileObjectV2 = HATProfileObjectV2()
+    var profile: HATProfileObject = HATProfileObject()
     var shareOptions: Dictionary<String, String> = [:]
     
     public mutating func initialaze(dict: Dictionary<String, JSON>) {
         
         if let tempProfile = dict["profile"]?.dictionaryValue {
             
-            profile = HATProfileObjectV2(from: tempProfile)
+            profile = HATProfileObject(from: tempProfile)
         }
         
         if let tempShareOptions = dict["shareOptions"]?.dictionaryObject as? Dictionary<String, String> {

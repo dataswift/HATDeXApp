@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -18,6 +18,7 @@ public struct DataOfferRequiredDataDefinitionDataSetsObject {
     
     // MARK: - JSON Fields
     
+    /// The JSON fields used by the hat
     public struct Fields {
         
         static let requiredDataDefinitionName: String = "name"
@@ -27,9 +28,12 @@ public struct DataOfferRequiredDataDefinitionDataSetsObject {
     
     // MARK: - Variables
     
+    /// the name of the definition
     public var name: String = ""
+    /// the description of the definition
     public var dataSetsDescription: String = ""
     
+    /// the fields of the definition
     public var fields: [DataOfferRequiredDataDefinitionDataSetsFieldsObject] = []
     
     // MARK: - Initialisers
@@ -46,6 +50,8 @@ public struct DataOfferRequiredDataDefinitionDataSetsObject {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received
      */
     public init(dictionary: Dictionary<String, JSON>) {
         

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -21,57 +21,25 @@ public struct HATNotablesService {
     // MARK: - Get Notes
     
     /**
-     Checks if notables table exists
-     
-     - parameter authToken: The auth token from hat
-     */
-    public static func fetchNotables(userDomain: String, authToken: String, structure: Dictionary<String, Any>, parameters: Dictionary<String, String>, success: @escaping (_ array: [JSON], String?) -> Void, failure: @escaping (HATTableError) -> Void ) {
-        
-        HATAccountService.checkHatTableExists(
-            userDomain: userDomain, tableName: "notablesv1",
-            sourceName: "rumpel",
-            authToken: authToken,
-            successCallback: getNotes(userDomain: userDomain, token: authToken, parameters: parameters, success: success),
-            errorCallback: failure)
-    }
-    
-    /**
      Gets the notes of the user from the HAT
      
-     - parameter token: The user's token
-     - parameter tableID: The table id of the notes
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters to pass into the request, defaults are ["orderBy": "updated_time", "ordering": "descending"]
+     - parameter success: A function executing on success returning ([HATNotesV2Object], String?) -> Void)
+     - parameter failed: A function executing on failure returning (HATTableError) -> Void)
      */
-    private static func getNotes(userDomain: String, token: String, parameters: Dictionary<String, String>, success: @escaping (_ array: [JSON], String?) -> Void) -> (_ tableID: NSNumber, _ token: String?) -> Void {
-        
-        return { (tableID: NSNumber, returnedToken: String?) -> Void in
-            
-            HATAccountService.getHatTableValues(
-                token: token,
-                userDomain: userDomain,
-                tableID: tableID,
-                parameters: parameters,
-                successCallback: success,
-                errorCallback: { _ in return })
-        }
-    }
-    
-    /**
-     Gets the notes of the user from the HAT
-     
-     - parameter token: The user's token
-     - parameter tableID: The table id of the notes
-     */
-    public static func getNotesV2(userDomain: String, token: String, parameters: Dictionary<String, String> = ["orderBy": "updated_time", "ordering": "descending"], success: @escaping (_ array: [HATNotesV2Object], String?) -> Void) {
+    public static func getNotes(userDomain: String, userToken: String, parameters: Dictionary<String, String> = ["orderBy": "updated_time", "ordering": "descending"], success: @escaping (_ array: [HATNotesObject], String?) -> Void, failed: @escaping (HATTableError) -> Void) {
         
         func gotNotes(notesJSON: [JSON], newToken: String?) {
             
-            var notes: [HATNotesV2Object] = []
+            var notes: [HATNotesObject] = []
             
-            for item in notesJSON {
+            for item: JSON in notesJSON {
                 
-                if let note = item.dictionary {
+                if let note: [String: JSON] = item.dictionary {
                     
-                    if let tempNote: HATNotesV2Object = (HATNotesV2Object.decode(from: note)) {
+                    if let tempNote: HATNotesObject = (HATNotesObject.decode(from: note)) {
                         
                         notes.append(tempNote)
                     }
@@ -81,130 +49,83 @@ public struct HATNotablesService {
             success(notes, newToken)
         }
         
-        func error(error: HATTableError) {
-            
-        }
-        
-        HATAccountService.getHatTableValuesv2(
-            token: token,
+        HATAccountService.getHatTableValues(
+            token: userToken,
             userDomain: userDomain,
             namespace: "rumpel",
             scope: "notablesv1",
             parameters: parameters,
             successCallback: gotNotes,
-            errorCallback: error)
+            errorCallback: failed)
     }
     
     // MARK: - Delete notes
     
     /**
-     Deletes a note from the hat
+     Deletes the specified notes from the hat
      
-     - parameter id: the id of the note to delete
-     - parameter tkn: the user's token as a string
+     - parameter noteIDs: The note IDs to delete from the hat
+     - parameter userToken: The user's token
+     - parameter userDomain: The user's domain
+     - parameter success: A function to execute on success
+     - parameter failed: A function to execute on failure
      */
-    public static func deleteNote(recordID: Int, tkn: String, userDomain: String, success: @escaping ((String) -> Void) = { _ in }, failed: @escaping ((HATTableError) -> Void) = { _ in }) {
+    public static func deleteNotes(noteIDs: [String], userToken: String, userDomain: String, success: @escaping ((String) -> Void) = { _ in }, failed: @escaping ((HATTableError) -> Void) = { _ in }) {
         
-        HATAccountService.deleteHatRecord(userDomain: userDomain, token: tkn, recordId: recordID, success: success, failed: failed)
-    }
-    
-    /**
-     Deletes a note from the hat
-     
-     - parameter id: the id of the note to delete
-     - parameter tkn: the user's token as a string
-     */
-    public static func deleteNotesv2(noteIDs: [String], tkn: String, userDomain: String, success: @escaping ((String) -> Void) = { _ in }, failed: @escaping ((HATTableError) -> Void) = { _ in }) {
-        
-        HATAccountService.deleteHatRecordV2(userDomain: userDomain, token: tkn, recordId: noteIDs, success: success, failed: failed)
+        HATAccountService.deleteHatRecord(
+            userDomain: userDomain,
+            userToken: userToken,
+            recordIds: noteIDs,
+            success: { string in
+            
+                HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: { () })
+                success(string)
+            },
+            failed: failed)
     }
     
     // MARK: - Update note
     
     /**
-     updates a note from the hat
+     Updates a note from the hat
      
-     - parameter id: the id of the note to delete
-     - parameter tkn: the user's token as a string
+     - parameter note: The note object to update
+     - parameter userToken: The user's token
+     - parameter userDomain: The user's domain
+     - parameter success: A function to execute on success
+     - parameter failed: A function to execute on failure
      */
-    public static func updateNotev2(notes: [HATNotesV2Object], tkn: String, userDomain: String, success: @escaping (([HATNotesV2Object], String?) -> Void) = { _, _  in }, failed: @escaping ((HATTableError) -> Void) = { _ in }) {
+    public static func updateNote(note: HATNotesObject, userToken: String, userDomain: String, success: @escaping ((HATNotesObject, String?) -> Void) = { _, _  in }, failed: @escaping ((HATTableError) -> Void) = { _ in }) {
         
-        HATAccountService.updateHatRecordV2(
+        // update JSON file with the values needed
+        let hatData: [String: Any] = HATNotesDataObject.encode(from: note.data)!
+        
+        HATAccountService.updateHatRecord(
             userDomain: userDomain,
-            userToken: tkn,
-            notes: notes,
-            successCallback: { newNotes, newToken in
+            userToken: userToken,
+            parameters: hatData,
+            successCallback: { jsonArray, newToken in
                 
-                HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: {})
-                success(newNotes, newToken)
-        },
+                HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: { () })
+                
+                let note = HATNotesObject(dict: jsonArray[0].dictionaryValue)
+                success(note, newToken)
+            },
             errorCallback: failed)
     }
-    
+        
     // MARK: - Post note
     
     /**
-     Posts the note to the hat
+     Posts a note to hat
      
-     - parameter token: The token returned from the hat
-     - parameter json: The json file as a Dictionary<String, Any>
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter note: The note object to post
+     - parameter successCallBack: A function to execute on success
+     - parameter errorCallback: A function to execute on failure
      */
-    public static func postNote(userDomain: String, userToken: String, note: HATNotesData, successCallBack: @escaping () -> Void, errorCallback: @escaping (HATTableError) -> Void) {
-        
-        func posting(resultJSON: Dictionary<String, Any>, token: String?) {
-            
-            // create the headers
-            let headers = ["Accept": ContentType.JSON,
-                           "Content-Type": ContentType.JSON,
-                           "X-Auth-Token": userToken]
-            
-            // create JSON file for posting with default values
-            let hatDataStructure = HATJSONHelper.createJSONForPosting(hatTableStructure: resultJSON)
-            // update JSON file with the values needed
-            let hatData = HATJSONHelper.updateNotesJSONFile(file: hatDataStructure, noteFile: note, userDomain: userDomain)
-            
-            // make async request
-            HATNetworkHelper.asynchronousRequest("https://\(userDomain)/data/record/values", method: HTTPMethod.post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.JSON, parameters: hatData, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
-                
-                // handle result
-                switch response {
-                    
-                case .isSuccess(let isSuccess, _, _, _):
-                    
-                    if isSuccess {
-                        
-                        // reload table
-                        successCallBack()
-                        
-                        HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: { () })
-                    }
-                    
-                case .error(let error, let statusCode):
-                    
-                    if error.localizedDescription == "The request timed out." {
-                        
-                        errorCallback(.noInternetConnection)
-                    } else {
-                        
-                        let message = NSLocalizedString("Server responded with error", comment: "")
-                        errorCallback(.generalError(message, statusCode, error))
-                    }
-                }
-            })
-        }
-        
-        HATAccountService.checkHatTableExistsForUploading(userDomain: userDomain, tableName: "notablesv1", sourceName: "rumpel", authToken: userToken, successCallback: posting, errorCallback: errorCallback)
-    }
-    
-    // MARK: - Post note
-    
-    /**
-     Posts the note to the hat
-     
-     - parameter token: The token returned from the hat
-     - parameter json: The json file as a Dictionary<String, Any>
-     */
-    public static func postNoteV2(userDomain: String, userToken: String, note: HATNotesV2Object, successCallBack: @escaping (JSON, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+    public static func postNote(userDomain: String, userToken: String, note: HATNotesObject, successCallBack: @escaping (HATNotesObject, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         var tempNote = note
         if tempNote.data.locationv1?.latitude == nil {
@@ -214,25 +135,24 @@ public struct HATNotablesService {
         if tempNote.data.photov1?.link == "" {
             
             tempNote.data.photov1 = nil
-        } else {
-            
-            tempNote.data.photov1?.shared = note.data.currently_shared!
         }
         
         // update JSON file with the values needed
-        let hatData = HATNotesV2DataObject.encode(from: tempNote.data)!
+        let hatData: [String: Any] = HATNotesDataObject.encode(from: note.data)!
         
-        HATAccountService.createTableValuev2(
-            token: userToken,
+        HATAccountService.createTableValue(
+            userToken: userToken,
             userDomain: userDomain,
-            source: "rumpel",
-            dataPath: "notablesv1",
+            namespace: "rumpel",
+            scope: "notablesv1",
             parameters: hatData,
             successCallback: { notes, newToken in
                 
                 HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: { () })
-                successCallBack(notes, newToken)
-        },
+                
+                let note = HATNotesObject(dict: notes[0].dictionaryValue)
+                successCallBack(note, newToken)
+            },
             errorCallback: errorCallback)
     }
     
@@ -241,64 +161,23 @@ public struct HATNotablesService {
     /**
      Removes duplicates from an array of NotesData and returns the corresponding objects in an array
      
-     - parameter array: The NotesData array
-     - returns: An array of NotesData
-     */
-    public static func removeDuplicatesFrom(array: [HATNotesData]) -> [HATNotesData] {
-        
-        // the array to return
-        var arrayToReturn: [HATNotesData] = []
-        
-        // go through each note object in the array
-        for note in array {
-            
-            // check if the arrayToReturn it contains that value and if not add it
-            let result = arrayToReturn.contains(where: {(note2: HATNotesData) -> Bool in
-                
-                if (note.data.createdTime == note2.data.createdTime) && (note.data.message == note2.data.message) {
-                    
-                    if (note.lastUpdated < note2.lastUpdated) || (note.noteID == note2.noteID) {
-                        
-                        return true
-                    }
-                }
-                
-                return false
-            })
-            
-            if !result {
-                
-                arrayToReturn.append(note)
-            }
-        }
-        
-        return arrayToReturn
-    }
-    
-    /**
-     Removes duplicates from an array of NotesData and returns the corresponding objects in an array
+     - parameter array: The HATNotesV2Object array
      
-     - parameter array: The NotesData array
-     - returns: An array of NotesData
+     - returns: An array of HATNotesV2Object
      */
-    public static func removeDuplicatesFrom(array: [HATNotesV2Object]) -> [HATNotesV2Object] {
+    public static func removeDuplicatesFrom(array: [HATNotesObject]) -> [HATNotesObject] {
         
         // the array to return
-        var arrayToReturn: [HATNotesV2Object] = []
+        var arrayToReturn: [HATNotesObject] = []
         
         // go through each note object in the array
-        for note in array {
+        for note: HATNotesObject in array {
             
             // check if the arrayToReturn it contains that value and if not add it
-            let result = arrayToReturn.contains(where: {(note2: HATNotesV2Object) -> Bool in
+            let result = arrayToReturn.contains(where: {(note2: HATNotesObject) -> Bool in
                 
-                // unsynced notes have empty recordid
                 if note.recordId == note2.recordId {
                     
-                    if note.recordId == "" && note.data.updated_time != note2.data.updated_time {
-                        
-                        return false
-                    }
                     return true
                 }
                 
@@ -319,21 +198,11 @@ public struct HATNotablesService {
     /**
      Sorts notes based on updated time
      
-     - parameter notes: The NotesData array
-     - returns: An array of NotesData
-     */
-    public static func sortNotables(notes: [HATNotesData]) -> [HATNotesData] {
-        
-        return notes.sorted { $0.lastUpdated > $1.lastUpdated }
-    }
-    
-    /**
-     Sorts notes based on updated time
+     - parameter notes: The HATNotesV2Object array
      
-     - parameter notes: The NotesData array
-     - returns: An array of NotesData
+     - returns: An array of HATNotesV2Object
      */
-    public static func sortNotables(notes: [HATNotesV2Object]) -> [HATNotesV2Object] {
+    public static func sortNotables(notes: [HATNotesObject]) -> [HATNotesObject] {
         
         return notes.sorted { $0.data.updated_time > $1.data.updated_time }
     }

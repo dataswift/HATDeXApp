@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -10,12 +10,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/
  */
 
-import SwiftyJSON
-
 // MARK: Struct
 
 /// A class representing the outer data plug JSON format
-public struct HATDataPlugObject: Decodable {
+public struct HATDataPlugObject: HATObject {
 
     // MARK: - Variables
 

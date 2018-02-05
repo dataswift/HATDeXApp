@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -22,6 +22,7 @@ public struct HATTokenHelper {
      Checks if the token has owner scope and returns it, else returns nil
      
      - parameter token: The token to check for the scope
+     
      - returns: Returns the token if the scope of it is owner else nil
      */
     public static func checkTokenScope(token: String?) -> String? {

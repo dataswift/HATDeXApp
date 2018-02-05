@@ -28,13 +28,13 @@ internal struct LocationsWrapperHelper {
      
      - returns: A function of type (([HATLocationsObject], String?) -> Void)
      */
-    static func request(userToken: String, userDomain: String, locationsFromDate: Date? = Date().startOfDate(), locationsToDate: Date? = Date().endOfDate()!, failRespond: @escaping (HATTableError) -> Void) -> ((@escaping (([HATLocationsV2Object], String?) -> Void)) -> Void) {
+    static func request(userToken: String, userDomain: String, locationsFromDate: Date? = Date().startOfDate(), locationsToDate: Date? = Date().endOfDate()!, failRespond: @escaping (HATTableError) -> Void) -> ((@escaping (([HATLocationsObject], String?) -> Void)) -> Void) {
         
         return { successRespond in
             
             func combinatorCreated(result: Bool, newUserToken: String?) {
                 
-                HATAccountService.getBetweenLocationCombinator(
+                HATLocationService.getLocationCombinator(
                     userDomain: userDomain,
                     userToken: userToken,
                     successCallback: { locations, newToken in
@@ -46,7 +46,7 @@ internal struct LocationsWrapperHelper {
                         let locationsDB = RealmHelper.getResults(predicate)!
                         for location in locationsDB where location.dateCreated <= Date.endOfDateInUnixTimeStape(date: locationsToDate!)! && location.dateCreated >= Date.startOfDateInUnixTimeStape(date: locationsFromDate!) {
                             
-                            var tempLoc = HATLocationsV2Object()
+                            var tempLoc = HATLocationsObject()
                             tempLoc.data.latitude = Float(location.latitude)
                             tempLoc.data.longitude = Float(location.longitude)
                             tempLoc.data.dateCreated = location.dateCreated
@@ -66,7 +66,7 @@ internal struct LocationsWrapperHelper {
             let startOfDay = Date.startOfDateInUnixTimeStape(date: locationsFromDate!)
             let endOfDay = Date.endOfDateInUnixTimeStape(date: locationsToDate!)
             
-            HATAccountService.createBetweenLocationCombinator(
+            HATAccountService.createCombinator(
                 userDomain: userDomain,
                 userToken: userToken,
                 combinatorName: "locationsfilter",
@@ -92,7 +92,7 @@ internal struct LocationsWrapperHelper {
      - parameter successRespond: A completion function of type ([HATLocationsObject], String?) -> Void
      - parameter failRespond: A completion function of type (HATTableError) -> Void
      */
-    static func getLocations(userToken: String, userDomain: String, locationsFromDate: Date?, locationsToDate: Date?, successRespond: @escaping ([HATLocationsV2Object], String?) -> Void, failRespond: @escaping (HATTableError) -> Void) {
+    static func getLocations(userToken: String, userDomain: String, locationsFromDate: Date?, locationsToDate: Date?, successRespond: @escaping ([HATLocationsObject], String?) -> Void, failRespond: @escaping (HATTableError) -> Void) {
         
         // construct the type of the cache to save
         let type: String

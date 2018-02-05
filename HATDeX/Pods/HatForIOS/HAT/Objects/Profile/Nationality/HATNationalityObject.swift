@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -17,6 +17,8 @@ import SwiftyJSON
 public struct HATNationalityObject: HatApiType, Comparable {
     
     // MARK: - Fields
+    
+    /// The possible Fields of the JSON struct
     struct Fields {
         
         static let nationality: String = "nationality"
@@ -61,14 +63,20 @@ public struct HATNationalityObject: HatApiType, Comparable {
     
     // MARK: - Variables
     
-    /// Indicates if the object, HATProfileDataProfilePrimaryEmailObject, is private
+    /// User's nationality
     public var nationality: String = ""
+    /// User's passport country of issue
     public var passportHeld: String = ""
+    /// User's passport number
     public var passportNumber: String = ""
+    /// User's place of birth
     public var placeOfBirth: String = ""
+    /// User's language
     public var language: String = ""
+    /// record ID
     public var recordID: String = ""
     
+    /// The date the record has been created in unix time stamp format
     public var unixTimeStamp: Int?
     
     // MARK: - Initialisers
@@ -89,6 +97,8 @@ public struct HATNationalityObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public init(from dict: JSON) {
         
@@ -109,7 +119,9 @@ public struct HATNationalityObject: HatApiType, Comparable {
     }
     
     /**
-     It initialises everything from the received JSON file from the cache
+     It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         

@@ -211,7 +211,7 @@ internal class DetailsDataPlugViewController: UIViewController, UserCredentialsP
             }
         }
         
-        HATAccountService.getHatTableValuesv2(
+        HATAccountService.getHatTableValues(
             token: userToken,
             userDomain: userDomain,
             namespace: "facebook",
@@ -257,7 +257,7 @@ internal class DetailsDataPlugViewController: UIViewController, UserCredentialsP
             self.tableView.reloadData()
         }
         
-        HATAccountService.getHatTableValuesv2(
+        HATAccountService.getHatTableValues(
             token: userToken,
             userDomain: userDomain,
             namespace: Constants.SocialNetworks.Twitter.name,

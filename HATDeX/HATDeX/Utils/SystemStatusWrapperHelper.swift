@@ -34,7 +34,7 @@ internal struct SystemStatusWrapperHelper {
             // get system status from hat
             HATService.getSystemStatus(
                 userDomain: userDomain,
-                authToken: userToken,
+                userToken: userToken,
                 completion: successRespond,
                 failCallBack: failRespond)
         }

@@ -89,7 +89,7 @@ extension FBClusteringManager {
      
      - returns: An array of FBAnnotation, pins
      */
-    func createAnnotationsFrom(objects: [HATLocationsV2Object]) -> [FBAnnotation] {
+    func createAnnotationsFrom(objects: [HATLocationsObject]) -> [FBAnnotation] {
         
         var arrayToReturn: [FBAnnotation] = []
         

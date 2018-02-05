@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -17,17 +17,22 @@ import Foundation
 /// A struct for everything that formats something
 public class HATFormatterHelper: NSObject {
     
+    // MARK: - Static dateFormatter
+    
+    /// A static dateFormatter in order to use it accross the file, performance improvements
+    static let dateFormatter: DateFormatter = DateFormatter()
+    
     // MARK: - String to Date formaters
     
     /**
      Formats a date to ISO 8601 format
      
      - parameter date: The date to format
-     - returns: String
+     
+     - returns: The date as string represented in ISO format
      */
     public class func formatDateToISO(date: Date) -> String {
         
-        let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -39,20 +44,20 @@ public class HATFormatterHelper: NSObject {
      Formats a string into a Date
      
      - parameter string: The string to format to a Date
-     - returns: Date
+     
+     - returns: An optional Date format, nil if all formats failed to produce a date
      */
     public class func formatStringToDate(string: String) -> Date? {
         
         // check if the string to format is empty
-        if string == "" {
+        guard string != "" else {
             
             return nil
         }
         
-        let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        var date = dateFormatter.date(from: string)
+        var date: Date? = dateFormatter.date(from: string)
         
         if date == nil {
             
@@ -90,7 +95,7 @@ public class HATFormatterHelper: NSObject {
         if date == nil {
             
             // timestamp is in milliseconds
-            if let timeStamp = Double(string) {
+            if let timeStamp: Double = Double(string) {
                 
                 date = Date(timeIntervalSince1970: TimeInterval(timeStamp / 1000))
             }
@@ -102,19 +107,20 @@ public class HATFormatterHelper: NSObject {
     // MARK: - UnixTimeStamp
     
     /**
-     Formats a date to ISO 8601 format
+     Formats a date to unix time stamp
      
      - parameter date: The date to format
-     - returns: String?
+     
+     - returns: An optional string representing the unix time stamp, nil if the formatting failed
      */
     public static func formatDateToEpoch(date: Date) -> String? {
         
         // get the unix time stamp
-        let elapse = date.timeIntervalSince1970
+        let elapse: TimeInterval = date.timeIntervalSince1970
         
-        let temp = String(elapse)
+        let temp: String = String(elapse)
         
-        let array = temp.components(separatedBy: ".")
+        let array: [String] = temp.components(separatedBy: ".")
         
         if !array.isEmpty {
             
@@ -129,13 +135,13 @@ public class HATFormatterHelper: NSObject {
     /**
      String extension to convert from base64Url to base64
      
-     parameter s: The string to be converted
+     parameter stringToConvert: The string to be converted
      
-     returns: A Base64 String
+     returns: The stringToConvert represented in Base64 format
      */
     public class func fromBase64URLToBase64(stringToConvert: String) -> String {
         
-        var convertedString = stringToConvert
+        var convertedString: String = stringToConvert
         if convertedString.count % 4 == 2 {
             
             convertedString += "=="

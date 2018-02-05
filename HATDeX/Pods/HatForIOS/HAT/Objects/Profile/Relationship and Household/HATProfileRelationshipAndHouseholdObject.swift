@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -14,7 +14,7 @@ import SwiftyJSON
 
 // MARK: Struct
 
-public struct HATProfileRelationshipAndHouseholdObject: Comparable {
+public struct HATProfileRelationshipAndHouseholdObject: HatApiType, Comparable {
 
     // MARK: - Comparable protocol
 
@@ -48,17 +48,27 @@ public struct HATProfileRelationshipAndHouseholdObject: Comparable {
 
     // MARK: - Variables
 
+    /// User's relationship status
     public var relationshipStatus: String = ""
+    /// User's type of accomodation
     public var typeOfAccomodation: String = ""
+    /// User's living situation
     public var livingSituation: String = ""
+    /// User's total people in household
     public var howManyUsuallyLiveInYourHousehold: String = ""
+    /// User's household ownership
     public var householdOwnership: String = ""
+    /// User has children
     public var hasChildren: String = ""
+    /// User's descendants
     public var additionalDependents: String = ""
+    /// Record ID
     public var recordID: String = ""
-
-    public var unixTimeStamp: Int?
+    /// User's children number
     public var numberOfChildren: Int = 0
+
+    /// The date the record was created
+    public var unixTimeStamp: Int?
 
     // MARK: - Initialisers
 
@@ -82,11 +92,19 @@ public struct HATProfileRelationshipAndHouseholdObject: Comparable {
 
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public init(from dict: JSON) {
 
-        if let data = (dict["data"].dictionary) {
-
+        self.initialize(fromCache: dict.dictionaryValue)
+    }
+    
+    public mutating func initialize(fromCache: Dictionary<String, Any>) {
+        
+        let json: JSON = JSON(fromCache)
+        if let data = (json["data"].dictionary) {
+            
             relationshipStatus = (data["relationshipStatus"]!.stringValue)
             typeOfAccomodation = (data["typeOfAccomodation"]!.stringValue)
             livingSituation = (data["livingSituation"]!.stringValue)
@@ -95,23 +113,18 @@ public struct HATProfileRelationshipAndHouseholdObject: Comparable {
             hasChildren = (data["hasChildren"]!.stringValue)
             additionalDependents = (data["additionalDependents"]!.stringValue)
             numberOfChildren = (data["numberOfChildren"]!.intValue)
-
+            
             if let time = (data["unixTimeStamp"]?.stringValue) {
-
+                
                 unixTimeStamp = Int(time)
             }
         }
-
-        recordID = (dict["recordId"].stringValue)
+        
+        recordID = (json["recordId"].stringValue)
     }
 
     // MARK: - JSON Mapper
 
-    /**
-     Returns the object as Dictionary, JSON
-     
-     - returns: Dictionary<String, String>
-     */
     public func toJSON() -> Dictionary<String, Any> {
 
         return [

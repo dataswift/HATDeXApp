@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -18,6 +18,7 @@ public struct DataOfferOwnerObject {
     
     // MARK: - JSON Fields
     
+    /// The JSON fields used by the hat
     public struct Fields {
         
         static let issuerID: String = "id"
@@ -29,10 +30,15 @@ public struct DataOfferOwnerObject {
     
     // MARK: - Variables
 
+    /// The offer issuer ID
     public var issuerID: String = ""
+    /// The email of the issuer
     public var email: String = ""
+    /// The nickname of the issuer
     public var nick: String = ""
+    /// The first name of the issuer
     public var firstName: String = ""
+    /// The last name of the issuer
     public var lastName: String = ""
     
     // MARK: - Initialisers
@@ -51,6 +57,8 @@ public struct DataOfferOwnerObject {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received
      */
     public init(dictionary: Dictionary<String, JSON>) {
         

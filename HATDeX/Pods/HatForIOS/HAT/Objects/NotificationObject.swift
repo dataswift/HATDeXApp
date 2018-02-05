@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -18,6 +18,7 @@ public struct NotificationObject {
     
     // MARK: - Fields
     
+    /// The possible Fields of the JSON struct
     private struct Fields {
         
         static let notice: String = "notice"
@@ -27,8 +28,11 @@ public struct NotificationObject {
     
     // MARK: - Variables
     
+    /// The notification data
     public var notice: NotificationNoticeObject = NotificationNoticeObject()
+    /// The date the notification was created
     public var received: Date = Date()
+    /// The date the notification was read
     public var read: Date?
     
     // MARK: - Initialisers
@@ -45,6 +49,8 @@ public struct NotificationObject {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received from the HAT
      */
     public init(dictionary: Dictionary<String, JSON>) {
         

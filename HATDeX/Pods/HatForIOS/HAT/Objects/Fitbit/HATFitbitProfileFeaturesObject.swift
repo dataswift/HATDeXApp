@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,5 +16,6 @@ public struct HATFitbitProfileFeaturesObject: HATObject {
 
     // MARK: - Variables
     
+    /// The exercise goal
     public var exerciseGoal: Bool = false
 }

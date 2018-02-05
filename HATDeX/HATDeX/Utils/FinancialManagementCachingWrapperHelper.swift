@@ -33,7 +33,7 @@ internal struct FinancialManagementCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.FinancialManagementAnswers.source,
@@ -173,11 +173,11 @@ internal struct FinancialManagementCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.FinancialManagementAnswers.source,
-                        dataPath: Constants.HATTableName.FinancialManagementAnswers.name,
+                        namespace: Constants.HATTableName.FinancialManagementAnswers.source,
+                        scope: Constants.HATTableName.FinancialManagementAnswers.name,
                         parameters: ["array": array,
                                      "unixTimeStamp": SurveyObject.createUnixTimeStamp()],
                         successCallback: success,

@@ -221,7 +221,7 @@ internal class MoreTableViewController: UIViewController, UITableViewDelegate, U
                 
                 HATService.getSystemStatus(
                     userDomain: userDomain,
-                    authToken: userToken,
+                    userToken: userToken,
                     completion: self.updateSystemStatusLabel(cell: cell),
                     failCallBack: {error in
                     

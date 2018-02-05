@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,7 +16,10 @@ public struct HATFitbitActivityManualValuesObject: HATObject {
 
     // MARK: - Variables
     
+    /// The steps manual value
     public var steps: Bool = false
+    /// The caloried manual value
     public var calories: Bool = false
+    /// The distance manual value
     public var distance: Bool = false
 }

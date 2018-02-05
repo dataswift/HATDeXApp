@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -12,13 +12,15 @@
 
 import SwiftyJSON
 
-// MARK: Class
+// MARK: Struct
 
 public struct FileUploadObjectStatus {
 
     // MARK: - Variables
 
+    /// The status of the uploaded file
     public var status: String = ""
+    /// The size of the uploaded file
     public var size: Int?
 
     // MARK: - Initialisers
@@ -34,6 +36,8 @@ public struct FileUploadObjectStatus {
 
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received
      */
     public init(from dict: Dictionary<String, JSON>) {
 

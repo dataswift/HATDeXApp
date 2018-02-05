@@ -43,7 +43,7 @@ extension HATDataPlugsService: UserCredentialsProtocol {
         HATService.getApplicationTokenFor(
             serviceName: Constants.ApplicationToken.Dex.name,
             userDomain: userDomain,
-            token: userToken,
+            userToken: userToken,
             resource: Constants.ApplicationToken.Dex.source,
             succesfulCallBack: checkPlugForToken,
             failCallBack: { (error) in
@@ -88,7 +88,7 @@ extension HATDataPlugsService: UserCredentialsProtocol {
             HATService.getApplicationTokenFor(
                 serviceName: Constants.ApplicationToken.Dex.name,
                 userDomain: userDomain,
-                token: userToken,
+                userToken: userToken,
                 resource: Constants.ApplicationToken.Dex.source,
                 succesfulCallBack: offerClaimForToken,
                 failCallBack: { (error) in
@@ -325,7 +325,7 @@ extension HATDataPlugsService: UserCredentialsProtocol {
             HATTwitterService.getAppTokenForTwitter(
                 plug: dataPlug,
                 userDomain: userDomain,
-                token: userToken,
+                userToken: userToken,
                 successful: gotTwitterApplicationToken,
                 failed: gettingApplicationTokenFailed)
         } else if dataPlug.plug.name == Constants.DataPlug.DataPlugNames.fitbit {

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -18,6 +18,7 @@ public struct DataOfferRewardsCashValueObject {
 
     // MARK: - JSON Fields
     
+    /// The JSON fields used by the hat
     public struct Fields {
         
         static let rewardType: String = "rewardType"
@@ -27,8 +28,11 @@ public struct DataOfferRewardsCashValueObject {
     
     // MARK: - Variables
     
+    /// The reward type of the offer
     public var rewardType: String = ""
+    /// The value of the reward
     public var value: Int = 0
+    /// The currency of the reward
     public var currency: String = ""
     
     // MARK: - Initialiser
@@ -45,6 +49,8 @@ public struct DataOfferRewardsCashValueObject {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received
      */
     public init(dictionary: Dictionary<String, JSON>) {
         

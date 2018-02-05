@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -12,7 +12,7 @@
 
 import SwiftyJSON
 
-// MARK: Class
+// MARK: Struct
 
 /// A class representing the actual data of the tweet
 public struct HATTwitterDataTweetsSocialFeedObject: HatApiType, Comparable {
@@ -125,6 +125,8 @@ public struct HATTwitterDataTweetsSocialFeedObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received from the HAT
      */
     public init(from dictionary: Dictionary<String, JSON>) {
         
@@ -135,6 +137,8 @@ public struct HATTwitterDataTweetsSocialFeedObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public mutating func inititialize(dict: Dictionary<String, JSON>) {
         
@@ -184,9 +188,6 @@ public struct HATTwitterDataTweetsSocialFeedObject: HatApiType, Comparable {
         }
     }
     
-    /**
-     It initialises everything from the received JSON file from the cache
-     */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         
         let dictionary = JSON(fromCache)

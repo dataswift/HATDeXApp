@@ -33,7 +33,7 @@ internal struct HappinessAndMentalCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.HappinessAndMentalHealthAnswers.source,
@@ -173,11 +173,11 @@ internal struct HappinessAndMentalCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.HappinessAndMentalHealthAnswers.source,
-                        dataPath: Constants.HATTableName.HappinessAndMentalHealthAnswers.name,
+                        namespace: Constants.HATTableName.HappinessAndMentalHealthAnswers.source,
+                        scope: Constants.HATTableName.HappinessAndMentalHealthAnswers.name,
                         parameters: ["array": array,
                                      "unixTimeStamp": SurveyObject.createUnixTimeStamp()],
                         successCallback: success,

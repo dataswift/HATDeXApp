@@ -71,7 +71,7 @@ internal struct ProfileImageCachingWrapperHelper {
                 CrashLoggerHelper.hatTableErrorLog(error: error)
             }
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.ProfileImage.source,
@@ -217,11 +217,11 @@ internal struct ProfileImageCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.ProfileImage.source,
-                        dataPath: Constants.HATTableName.ProfileImage.name,
+                        namespace: Constants.HATTableName.ProfileImage.source,
+                        scope: Constants.HATTableName.ProfileImage.name,
                         parameters: profileImageObject.toJSON(),
                         successCallback: valueCreated,
                         errorCallback: failed)

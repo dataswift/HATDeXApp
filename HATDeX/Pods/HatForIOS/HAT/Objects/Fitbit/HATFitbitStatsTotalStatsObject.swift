@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,6 +16,8 @@ public struct HATFitbitStatsTotalStatsObject: HATObject {
 
     // MARK: - Variables
     
+    /// The date of the stats
     public var date: String = ""
+    /// The value of the stats
     public var value: Float = 0
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -10,8 +10,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/
  */
 
-public struct PurchaseMembershipObject: HATObject {
+// MARK: Struct
 
+public struct PurchaseMembershipObject: HATObject {
+    
+    // MARK: - Variables
+
+    /// Membership type
     public var membershipType: String = ""
+    /// Plan
     public var plan: String = ""
 }

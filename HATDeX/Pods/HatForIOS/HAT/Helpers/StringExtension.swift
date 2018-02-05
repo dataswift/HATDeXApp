@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -10,16 +10,24 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/
  */
 
+// MARK: Extension
+
 extension String {
 
+    // MARK: - Check for Suffix
+    
+    /**
+     Checks if the strings has the suffixes passed
+     
+     - parameter suffixes: The suffixes to check
+     
+     - returns: True if string has suffix false if not
+     */
     internal func hasSuffixes(_ suffixes: [String]) -> Bool {
         
-        for suffix in suffixes {
+        for suffix: String in suffixes where self.hasSuffix(suffix) {
             
-            if self.hasSuffix(suffix) {
-                
-                return true
-            }
+            return true
         }
         
         return false

@@ -22,7 +22,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
     
     func locationDataReceived(latitude: Double, longitude: Double, accuracy: Double) {
         
-        self.receivedNote?.data.locationv1 = HATNotesV2LocationObject()
+        self.receivedNote?.data.locationv1 = HATNotesLocationObject()
         
         self.receivedNote?.data.locationv1?.latitude = latitude
         self.receivedNote?.data.locationv1?.longitude = longitude
@@ -102,7 +102,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
     private var previousPublishButtonTitle: String?
     
     /// the received note to edit from notables view controller
-    var receivedNote: HATNotesV2Object?
+    var receivedNote: HATNotesObject?
     
     /// the cached received note to edit from notables view controller
     private var cachedIsNoteShared: [String] = []
@@ -280,7 +280,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                     HATTwitterService.getAppTokenForTwitter(
                         plug: plug,
                         userDomain: userDomain,
-                        token: userToken,
+                        userToken: userToken,
                         successful: { appToken, newToken in
                             
                             checkDataPlug(plug: plug, appToken: appToken, renewedUserToken: newToken)
@@ -326,7 +326,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         
         if updatedLink != nil {
             
-            self.receivedNote?.data.photov1 = HATNotesV2PhotoObject()
+            self.receivedNote?.data.photov1 = HATNotesPhotoObject()
             self.receivedNote?.data.photov1?.link = updatedLink!
         }
         
@@ -379,7 +379,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                     if let object = NSKeyedUnarchiver.unarchiveObject(with: item.jsonData!) as? [Dictionary<String, Any>], !object.isEmpty {
                         
                         let json = JSON(object[0])
-                        let note = HATNotesV2Object(dict: json.dictionaryValue)
+                        let note = HATNotesObject(dict: json.dictionaryValue)
                         
                         if note.data.created_time == self.receivedNote!.data.created_time && note.data.message == self.receivedNote!.data.message {
                             
@@ -417,7 +417,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
         
         if updatedLink != nil {
             
-            self.receivedNote?.data.photov1 = HATNotesV2PhotoObject()
+            self.receivedNote?.data.photov1 = HATNotesPhotoObject()
             self.receivedNote?.data.photov1?.link = updatedLink!
         }
         
@@ -570,7 +570,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 func proceedCompletion() {
                     
                     // delete note
-                    HATNotablesService.deleteNotesv2(noteIDs: [(receivedNote?.recordId)!], tkn: userToken, userDomain: userDomain)
+                    HATNotablesService.deleteNotes(noteIDs: [(receivedNote?.recordId)!], userToken: userToken, userDomain: userDomain)
                     
                     //go back
                     _ = self.navigationController?.popViewController(animated: true)
@@ -756,7 +756,7 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             
             self.imageSelected.image = image
             
-            self.receivedNote?.data.photov1 = HATNotesV2PhotoObject()
+            self.receivedNote?.data.photov1 = HATNotesPhotoObject()
             self.imagesToUpload.append(image)
             self.collectionView.isHidden = false
             self.collectionView.reloadData()
@@ -853,8 +853,10 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
             
             if self.receivedNote != nil && self.receivedNote?.data.currently_shared == nil {
                 
-                let shared = self.receivedNote?.data.shared
-                self.receivedNote?.data.currently_shared = shared
+                if let shared = self.receivedNote?.data.shared {
+                    
+                    self.receivedNote?.data.currently_shared = shared
+                }
             }
             self.setUpUIElementsFromReceivedNote(self.receivedNote!)
             self.cachedIsNoteShared = (self.receivedNote?.data.shared_on)!
@@ -884,11 +886,11 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
                 date: date,
                 durationLabel: self.durationSharedForLabel,
                 shareForLabel: self.shareForLabel,
-                isNoteShared: self.receivedNote!.data.currently_shared!)
+                isNoteShared: self.receivedNote!.data.currently_shared)
             // else init a new value
         } else {
             
-            self.receivedNote = HATNotesV2Object()
+            self.receivedNote = HATNotesObject()
             self.receivedNote?.data.currently_shared = false
             self.deleteButtonOutlet.isHidden = true
         }
@@ -1005,13 +1007,13 @@ internal class ShareOptionsViewController: UIViewController, UITextViewDelegate,
     /**
      Update the ui from the received note
      */
-    private func setUpUIElementsFromReceivedNote(_ receivedNote: HATNotesV2Object) {
+    private func setUpUIElementsFromReceivedNote(_ receivedNote: HATNotesObject) {
         
         // add message to the text field
         self.textView.text = receivedNote.data.message
         // set public switch state
         self.publicSwitch.isOn = true
-        self.publicSwitch.setOn(receivedNote.data.currently_shared!, animated: false)
+        self.publicSwitch.setOn(receivedNote.data.currently_shared, animated: false)
         // if switch is on update the ui accordingly
         if self.publicSwitch.isOn {
             

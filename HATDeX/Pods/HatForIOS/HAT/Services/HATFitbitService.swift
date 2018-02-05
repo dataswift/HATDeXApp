@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -17,7 +17,7 @@ import SwiftyJSON
 
 public struct HATFitbitService {
     
-    // MARK: - Get Fitbit Data
+    // MARK: - Get Available fitbit data
     
     /**
      Gets all the endpoints from the hat and searches for the fitbit specific ones
@@ -27,13 +27,13 @@ public struct HATFitbitService {
      */
     public static func getFitbitEndpoints(successCallback: @escaping ([String], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
-        let url = "https://dex.hubofallthings.com/stats/available-data"
+        let url: String = "https://dex.hubofallthings.com/stats/available-data"
         
         HATNetworkHelper.asynchronousRequest(
             url,
             method: .get,
             encoding: Alamofire.URLEncoding.default,
-            contentType: ContentType.JSON,
+            contentType: ContentType.json,
             parameters: [:],
             headers: [:],
             completion: { response in
@@ -42,12 +42,12 @@ public struct HATFitbitService {
                     
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         errorCallback(.noInternetConnection)
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         errorCallback(.generalError(message, statusCode, error))
                     }
                 case .isSuccess(let isSuccess, _, let result, let token):
@@ -74,22 +74,23 @@ public struct HATFitbitService {
                         }
                     }
                 }
-        }
+            }
         )
     }
     
-    public static func getSleep(userDomain: String, userToken: String, parameters: Dictionary<String, String>, successCallback: @escaping ([HATFitbitSleepObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
-        
-        HATFitbitService.getGeneric(
-            userDomain: userDomain,
-            userToken: userToken,
-            namespace: "fitbit",
-            scope: "sleep",
-            parameters: parameters,
-            successCallback: successCallback,
-            errorCallback: errorCallback)
-    }
+    // MARK: - Get Data Generic
     
+    /**
+     The generic function used to get fitbit data
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter namespace: The namespace to read from
+     - parameter scope: The scope to write from
+     - parameter parameters: The parameters of the request, limit, take etc.
+     - parameter successCallback: A ([Object], String?) -> Void function executed on success
+     - parameter errorCallback: A (HATTableError) -> Void function executed on failure
+     */
     private static func getGeneric<Object: HATObject>(userDomain: String, userToken: String, namespace: String, scope: String, parameters: Dictionary<String, String>, successCallback: @escaping ([Object], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         func gotResponse(json: [JSON], renewedToken: String?) {
@@ -99,7 +100,7 @@ public struct HATFitbitService {
                 
                 var arrayToReturn: [Object] = []
                 
-                for item in json {
+                for item: JSON in json {
                     
                     if let object: Object = Object.decode(from: item["data"].dictionaryValue) {
                         
@@ -117,7 +118,7 @@ public struct HATFitbitService {
             }
         }
         
-        HATAccountService.getHatTableValuesv2(
+        HATAccountService.getHatTableValues(
             token: userToken,
             userDomain: userDomain,
             namespace: namespace,
@@ -127,6 +128,38 @@ public struct HATFitbitService {
             errorCallback: errorCallback)
     }
     
+    // MARK: - Get Data
+    
+    /**
+     Gets fitbit sleep from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters of the request, limit, take etc.
+     - parameter successCallback: A ([HATFitbitSleepObject], String?) -> Void function executed on success
+     - parameter errorCallback: A (HATTableError) -> Void function executed on failure
+     */
+    public static func getSleep(userDomain: String, userToken: String, parameters: Dictionary<String, String>, successCallback: @escaping ([HATFitbitSleepObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+        
+        HATFitbitService.getGeneric(
+            userDomain: userDomain,
+            userToken: userToken,
+            namespace: "fitbit",
+            scope: "sleep",
+            parameters: parameters,
+            successCallback: successCallback,
+            errorCallback: errorCallback)
+    }
+    
+    /**
+     Gets fitbit weight from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters of the request, limit, take etc.
+     - parameter successCallback: A ([HATFitbitWeightObject], String?) -> Void function executed on success
+     - parameter errorCallback: A (HATTableError) -> Void function executed on failure
+     */
     public static func getWeight(userDomain: String, userToken: String, parameters: Dictionary<String, String>, successCallback: @escaping ([HATFitbitWeightObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         HATFitbitService.getGeneric(
@@ -139,6 +172,15 @@ public struct HATFitbitService {
             errorCallback: errorCallback)
     }
     
+    /**
+     Gets fitbit profile from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters of the request, limit, take etc.
+     - parameter successCallback: A ([HATFitbitProfileObject], String?) -> Void function executed on success
+     - parameter errorCallback: A (HATTableError) -> Void function executed on failure
+     */
     public static func getProfile(userDomain: String, userToken: String, parameters: Dictionary<String, String>, successCallback: @escaping ([HATFitbitProfileObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         HATFitbitService.getGeneric(
@@ -151,6 +193,15 @@ public struct HATFitbitService {
             errorCallback: errorCallback)
     }
     
+    /**
+     Gets fitbit activity from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters of the request, limit, take etc.
+     - parameter successCallback: A ([HATFitbitDailyActivityObject], String?) -> Void function executed on success
+     - parameter errorCallback: A (HATTableError) -> Void function executed on failure
+     */
     public static func getDailyActivity(userDomain: String, userToken: String, parameters: Dictionary<String, String>, successCallback: @escaping ([HATFitbitDailyActivityObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         HATFitbitService.getGeneric(
@@ -163,6 +214,15 @@ public struct HATFitbitService {
             errorCallback: errorCallback)
     }
     
+    /**
+     Gets fitbit lifetime stats from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters of the request, limit, take etc.
+     - parameter successCallback: A ([HATFitbitStatsObject], String?) -> Void function executed on success
+     - parameter errorCallback: A (HATTableError) -> Void function executed on failure
+     */
     public static func getLifetimeStats(userDomain: String, userToken: String, parameters: Dictionary<String, String>, successCallback: @escaping ([HATFitbitStatsObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         HATFitbitService.getGeneric(
@@ -175,6 +235,15 @@ public struct HATFitbitService {
             errorCallback: errorCallback)
     }
     
+    /**
+     Gets fitbit activity from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter parameters: The parameters of the request, limit, take etc.
+     - parameter successCallback: A ([HATFitbitActivityObject], String?) -> Void function executed on success
+     - parameter errorCallback: A (HATTableError) -> Void function executed on failure
+     */
     public static func getActivity(userDomain: String, userToken: String, parameters: Dictionary<String, String>, successCallback: @escaping ([HATFitbitActivityObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         HATFitbitService.getGeneric(
@@ -187,16 +256,28 @@ public struct HATFitbitService {
             errorCallback: errorCallback)
     }
     
+    // MARK: - Check if Fitbit is enabled
+    
+    /**
+     Checks if Fitbit plug is enabled
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter plugURL: The plug's url returned from HAT
+     - parameter statusURL: The plug's status url
+     - parameter successCallback: A (Bool, String?) -> Void function executed on success
+     - parameter errorCallback: A (JSONParsingError) -> Void function executed on failure
+     */
     public static func checkIfFitbitIsEnabled(userDomain: String, userToken: String, plugURL: String, statusURL: String, successCallback: @escaping (Bool, String?) -> Void, errorCallback: @escaping (JSONParsingError) -> Void) {
         
         func gotToken(fitbitToken: String, newUserToken: String?) {
             
             // construct the url, set parameters and headers for the request
             let parameters: Dictionary<String, String> = [:]
-            let headers = [RequestHeaders.xAuthToken: fitbitToken]
+            let headers: [String: String] = [RequestHeaders.xAuthToken: fitbitToken]
             
             // make the request
-            HATNetworkHelper.asynchronousRequest(statusURL, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
+            HATNetworkHelper.asynchronousRequest(statusURL, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
                 
                 // act upon response
                 switch response {
@@ -214,7 +295,7 @@ public struct HATFitbitService {
                 // inform user that there was an error
                 case .error(let error, let statusCode):
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     errorCallback(.generalError(message, statusCode, error))
                 }
             })
@@ -228,12 +309,23 @@ public struct HATFitbitService {
             errorCallback: errorCallback)
     }
     
+    // MARK: - Get Fitbit token
+    
+    /**
+     Gets fitbit token
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter dataPlugURL: The plug's url returned from HAT
+     - parameter successCallback: A (String, String?) -> Void function executed on success
+     - parameter errorCallback: A (JSONParsingError) -> Void function executed on failure
+     */
     public static func getApplicationTokenForFitbit(userDomain: String, userToken: String, dataPlugURL: String, successCallback: @escaping (String, String?) -> Void, errorCallback: @escaping (JSONParsingError) -> Void) {
         
         HATService.getApplicationTokenFor(
             serviceName: Fitbit.serviceName,
             userDomain: userDomain,
-            token: userToken,
+            userToken: userToken,
             resource: dataPlugURL,
             succesfulCallBack: successCallback,
             failCallBack: errorCallback)

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -48,6 +48,7 @@ public struct HATEmployementStatusObject: HatApiType, Comparable {
     
     // MARK: - Fields
     
+    /// The possible Fields of the JSON struct
     private struct Fields {
         
         static let status: String = "status"
@@ -58,7 +59,9 @@ public struct HATEmployementStatusObject: HatApiType, Comparable {
     
     // MARK: - Variables
     
+    /// Employment status
     public var status: String = ""
+    /// The record ID
     public var recordID: String = "-1"
     
     // MARK: - Initialisers
@@ -74,6 +77,8 @@ public struct HATEmployementStatusObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received from the HAT
      */
     public init(from dict: JSON) {
         
@@ -88,9 +93,6 @@ public struct HATEmployementStatusObject: HatApiType, Comparable {
         recordID = (dict[Fields.recordId].stringValue)
     }
     
-    /**
-     It initialises everything from the received JSON file from the cache
-     */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         
         if let tempStatus = fromCache[Fields.status] {
@@ -101,11 +103,6 @@ public struct HATEmployementStatusObject: HatApiType, Comparable {
     
     // MARK: - JSON Mapper
     
-    /**
-     Returns the object as Dictionary, JSON
-     
-     - returns: Dictionary<String, String>
-     */
     public func toJSON() -> Dictionary<String, Any> {
         
         return [

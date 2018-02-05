@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,6 +16,8 @@ public struct DataOfferRequiredDataDefinitionObjectV2: Codable {
     
     // MARK: - Variables
     
+    /// The name of the definition
     public var name: String = ""
+    /// The requirements of the offer
     public var bundle: Dictionary<String, DataOfferRequiredDataDefinitionBundleKeyV2> = [:]
 }

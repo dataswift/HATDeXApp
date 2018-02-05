@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -12,13 +12,15 @@
 
 import SwiftyJSON
 
-// MARK: Class
+// MARK: Struct
 
 public struct FileUploadObjectPermissions {
 
     // MARK: - Variables
 
+    /// The user id that uploaded the file
     public var userID: String = ""
+    /// Is the content readable
     public var contentReadable: String = ""
 
     // MARK: - Initialisers
@@ -33,6 +35,8 @@ public struct FileUploadObjectPermissions {
 
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received
      */
     public init(from dict: Dictionary<String, JSON>) {
 

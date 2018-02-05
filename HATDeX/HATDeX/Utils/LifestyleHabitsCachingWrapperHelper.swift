@@ -33,7 +33,7 @@ internal struct LifestyleHabitsCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.LifestyleHabitsAnswers.source,
@@ -173,11 +173,11 @@ internal struct LifestyleHabitsCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.LifestyleHabitsAnswers.source,
-                        dataPath: Constants.HATTableName.LifestyleHabitsAnswers.name,
+                        namespace: Constants.HATTableName.LifestyleHabitsAnswers.source,
+                        scope: Constants.HATTableName.LifestyleHabitsAnswers.name,
                         parameters: ["array": array,
                                      "unixTimeStamp": SurveyObject.createUnixTimeStamp()],
                         successCallback: success,

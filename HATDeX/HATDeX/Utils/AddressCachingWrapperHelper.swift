@@ -33,7 +33,7 @@ internal struct AddressCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.ProfileAddress.source,
@@ -167,11 +167,11 @@ internal struct AddressCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.ProfileAddress.source,
-                        dataPath: Constants.HATTableName.ProfileAddress.name,
+                        namespace: Constants.HATTableName.ProfileAddress.source,
+                        scope: Constants.HATTableName.ProfileAddress.name,
                         parameters: ["streetAddress": addressObject.streetAddress,
                                      "houseNumber": addressObject.houseNumber,
                                      "postCode": addressObject.postCode,

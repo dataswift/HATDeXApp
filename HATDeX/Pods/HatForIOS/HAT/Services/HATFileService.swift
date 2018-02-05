@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,7 +16,7 @@ import Alamofire
 
 public struct HATFileService {
     
-    // MARK: - Functions
+    // MARK: - Search files
     
     /**
      Searches and returns the files we want
@@ -24,15 +24,17 @@ public struct HATFileService {
      - parameter token: The authorisation token to authenticate with the hat
      - parameter userDomain: The user's HAT domain
      - parameter status: The status of the file, Completed or Deleted. Default value is Completed
+     - parameter name: The name of the file, default is ""
+     - parameter tags: The tags of the files, default is [""]
      - parameter successCallback: An @escaping ([FileUploadObject]) -> Void function to execute when the server has returned the files we were looking for
      - parameter errorCallBack: An @escaping (HATError) -> Void to execute when something went wrong
      */
     public static func searchFiles(userDomain: String, token: String, status: String? = "Completed", name: String = "", tags: [String]? = [""], successCallback: @escaping ([FileUploadObject], String?) -> Void, errorCallBack: @escaping (HATError) -> Void) {
         
         let url: String = "https://\(userDomain)/api/v2/files/search"
-        let headers = ["X-Auth-Token": token]
+        let headers: [String: String] = ["X-Auth-Token": token]
         
-        var parameters: Dictionary <String, Any> = ["source": "",
+        var parameters: Dictionary <String, Any> = ["source": "iPhone",
                                                     "name": name,
                                                     "status": [
                                                         
@@ -41,7 +43,7 @@ public struct HATFileService {
         ]
         if tags! != [""] {
             
-            parameters = ["source": "",
+            parameters = ["source": "iPhone",
                           "name": "",
                           "tags": tags!,
                           "status": [
@@ -51,7 +53,7 @@ public struct HATFileService {
             ]
         }
         
-        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response) -> Void in
             
             switch response {
                 
@@ -75,17 +77,19 @@ public struct HATFileService {
                 
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     errorCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     errorCallBack(.generalError(message, statusCode, error))
                 }
             }
         })
     }
+    
+    // MARK: - Delete File
     
     /**
      Deletes a file, with the specified ID, from the server
@@ -99,9 +103,9 @@ public struct HATFileService {
     public static func deleteFile(fileID: String, token: String, userDomain: String, successCallback: @escaping (Bool, String?) -> Void, errorCallBack: @escaping (HATError) -> Void) {
         
         let url: String = "https://\(userDomain)/api/v2/files/file/\(fileID)"
-        let headers = ["X-Auth-Token": token]
+        let headers: [String: String] = ["X-Auth-Token": token]
         
-        HATNetworkHelper.asynchronousRequest(url, method: .delete, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: [:], headers: headers, completion: { (response) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .delete, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: { (response) -> Void in
             // handle result
             switch response {
                 
@@ -114,28 +118,30 @@ public struct HATFileService {
                         successCallback(true, token)
                     } else {
                         
-                        let message = "Server returned unexpected respone"
+                        let message: String = "Server returned unexpected respone"
                         errorCallBack(.generalError(message, statusCode, nil))
                     }
                 } else {
                     
-                    let message = "Server returned unexpected respone"
+                    let message: String = "Server returned unexpected respone"
                     errorCallBack(.generalError(message, statusCode, nil))
                 }
                 
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     errorCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     errorCallBack(.generalError(message, statusCode, error))
                 }
             }
         })
     }
+    
+    // MARK: - Change File to Public or Private
     
     /**
      Makes an already uploaded file public
@@ -149,9 +155,9 @@ public struct HATFileService {
     public static func makeFilePublic(fileID: String, token: String, userDomain: String, successCallback: @escaping (Bool) -> Void, errorCallBack: @escaping (HATError) -> Void) {
         
         let url: String = "https://\(userDomain)/api/v2/files/allowAccessPublic/\(fileID)"
-        let headers = ["X-Auth-Token": token]
+        let headers: [String: String] = ["X-Auth-Token": token]
         
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: [:], headers: headers, completion: { (response) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: { (response) -> Void in
             // handle result
             switch response {
                 
@@ -164,23 +170,23 @@ public struct HATFileService {
                         successCallback(true)
                     } else {
                         
-                        let message = "Server returned unexpected respone"
+                        let message: String = "Server returned unexpected respone"
                         errorCallBack(.generalError(message, statusCode, nil))
                     }
                 } else {
                     
-                    let message = "Server returned unexpected respone"
+                    let message: String = "Server returned unexpected respone"
                     errorCallBack(.generalError(message, statusCode, nil))
                 }
                 
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     errorCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     errorCallBack(.generalError(message, statusCode, error))
                 }
             }
@@ -199,9 +205,9 @@ public struct HATFileService {
     public static func makeFilePrivate(fileID: String, token: String, userDomain: String, successCallback: @escaping (Bool) -> Void, errorCallBack: @escaping (HATError) -> Void) {
         
         let url: String = "https://\(userDomain)/api/v2/files/restrictAccessPublic/\(fileID)"
-        let headers = ["X-Auth-Token": token]
+        let headers: [String: String] = ["X-Auth-Token": token]
         
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: [:], headers: headers, completion: { (response) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: { (response) -> Void in
             // handle result
             switch response {
                 
@@ -219,18 +225,18 @@ public struct HATFileService {
                     }
                 } else {
                     
-                    let message = "Server returned unexpected respone"
+                    let message: String = "Server returned unexpected respone"
                     errorCallBack(.generalError(message, statusCode, nil))
                 }
                 
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     errorCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     errorCallBack(.generalError(message, statusCode, error))
                 }
             }
@@ -252,10 +258,10 @@ public struct HATFileService {
     public static func completeUploadFileToHAT(fileID: String, token: String, tags: [String], userDomain: String, completion: @escaping (FileUploadObject, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // create the url
-        let uploadURL = "https://\(userDomain)/api/v2/files/file/\(fileID)/complete"
+        let uploadURL: String = "https://\(userDomain)/api/v2/files/file/\(fileID)/complete"
         
         // create parameters and headers
-        let header = ["X-Auth-Token": token]
+        let header: [String: String] = ["X-Auth-Token": token]
         
         // make async request
         HATNetworkHelper.asynchronousRequest(
@@ -271,19 +277,19 @@ public struct HATFileService {
                     
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         errorCallback(.noInternetConnection)
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         errorCallback(.generalError(message, statusCode, error))
                     }
                 case .isSuccess(let isSuccess, let statusCode, let result, let token):
                     
                     if isSuccess {
                         
-                        var fileUploadJSON = FileUploadObject(from: result.dictionaryValue)
+                        var fileUploadJSON: FileUploadObject = FileUploadObject(from: result.dictionaryValue)
                         fileUploadJSON.tags = tags
                         
                         //table found
@@ -292,7 +298,7 @@ public struct HATFileService {
                             completion(fileUploadJSON, token)
                         } else {
                             
-                            let message = NSLocalizedString("Server responded with error", comment: "")
+                            let message: String = NSLocalizedString("Server responded with error", comment: "")
                             errorCallback(.generalError(message, statusCode, nil))
                         }
                     }
@@ -315,11 +321,11 @@ public struct HATFileService {
     public static func uploadFileToHAT(fileName: String, token: String, userDomain: String, tags: [String], completion: @escaping (FileUploadObject, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // create the url
-        let uploadURL = "https://\(userDomain)/api/v2/files/upload"
+        let uploadURL: String = "https://\(userDomain)/api/v2/files/upload"
         
         // create parameters and headers
         let parameters: Dictionary<String, Any> = HATJSONHelper.createFileUploadingJSONFrom(fileName: fileName, tags: tags)
-        let header = ["X-Auth-Token": token]
+        let header: [String: String] = ["X-Auth-Token": token]
         
         // make async request
         HATNetworkHelper.asynchronousRequest(
@@ -335,19 +341,19 @@ public struct HATFileService {
                     
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         errorCallback(.noInternetConnection)
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         errorCallback(.generalError(message, statusCode, error))
                     }
                 case .isSuccess(let isSuccess, let statusCode, let result, let token):
                     
                     if isSuccess {
                         
-                        let fileUploadJSON = FileUploadObject(from: result.dictionaryValue)
+                        let fileUploadJSON: FileUploadObject = FileUploadObject(from: result.dictionaryValue)
                         
                         //table found
                         if statusCode == 200 {
@@ -355,7 +361,7 @@ public struct HATFileService {
                             completion(fileUploadJSON, token)
                         } else {
                             
-                            let message = NSLocalizedString("Server responded with error", comment: "")
+                            let message: String = NSLocalizedString("Server responded with error", comment: "")
                             errorCallback(.generalError(message, statusCode, nil))
                         }
                     }
@@ -364,7 +370,7 @@ public struct HATFileService {
         )
     }
     
-    // MARK: Update Tags
+    // MARK: - Update Tags
     
     /**
      Updates the tags and name of a file
@@ -373,17 +379,18 @@ public struct HATFileService {
      - parameter fileName: The file name of the file
      - parameter token: The owner's token
      - parameter userDomain: The user hat domain
+     - parameter tags: The tags of the file
      - parameter completion: A function to execute on success, returning the object returned from the server
      - parameter errorCallback: A function to execute on failure, returning an error
      */
     public static func updateParametersOfFile(fileID: String, fileName: String, token: String, userDomain: String, tags: [String], completion: @escaping (FileUploadObject, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // create the url
-        let updateURL = "https://\(userDomain)/api/v2/files/file/\(fileID)"
+        let updateURL: String = "https://\(userDomain)/api/v2/files/file/\(fileID)"
         
         // create parameters and headers
         let parameters: Dictionary<String, Any> = HATJSONHelper.createFileUploadingJSONFrom(fileName: fileName, tags: tags)
-        let header = ["X-Auth-Token": token]
+        let header: [String: String] = ["X-Auth-Token": token]
         
         // make async request
         HATNetworkHelper.asynchronousRequest(
@@ -399,19 +406,19 @@ public struct HATFileService {
                     
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         errorCallback(.noInternetConnection)
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         errorCallback(.generalError(message, statusCode, error))
                     }
                 case .isSuccess(let isSuccess, let statusCode, let result, let token):
                     
                     if isSuccess {
                         
-                        let fileUploadJSON = FileUploadObject(from: result.dictionaryValue)
+                        let fileUploadJSON: FileUploadObject = FileUploadObject(from: result.dictionaryValue)
                         
                         //table found
                         if statusCode == 200 {
@@ -419,7 +426,7 @@ public struct HATFileService {
                             completion(fileUploadJSON, token)
                         } else {
                             
-                            let message = NSLocalizedString("Server responded with error", comment: "")
+                            let message: String = NSLocalizedString("Server responded with error", comment: "")
                             errorCallback(.generalError(message, statusCode, nil))
                         }
                     }
@@ -436,6 +443,7 @@ public struct HATFileService {
      - parameter userDomain: The user's domain
      - parameter fileToUpload: The image to upload
      - parameter tags: The tags to attach to the image
+     - parameter name: The name of the file, defauls it rumpelPhoto
      - parameter progressUpdater: A function to execute on the progress of the upload is moving forward
      - parameter completion: A function to execute on success
      - parameter errorCallBack: A Function to execute on failure
@@ -448,7 +456,7 @@ public struct HATFileService {
             userDomain: userDomain, tags: tags,
             completion: {(fileObject, renewedUserToken) -> Void in
                 
-                let data = UIImageJPEGRepresentation(fileToUpload, 1.0)
+                let data: Data? = UIImageJPEGRepresentation(fileToUpload, 1.0)
                 HATNetworkHelper.uploadFile(
                     image: data!,
                     url: fileObject.contentURL,
@@ -465,9 +473,9 @@ public struct HATFileService {
                             userDomain: userDomain,
                             completion: {(uploadedFile, renewedUserToken) -> Void in
                                 
-                                var tempFile = fileObject
+                                var tempFile: FileUploadObject = fileObject
                                 tempFile.status.status = uploadedFile.status.status
-                                completion?(tempFile, renewedUserToken!)
+                                completion?(tempFile, renewedUserToken)
                             },
                             errorCallback: {(error) -> Void in
                                 

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,7 +16,10 @@ public struct HATFitbitSleepLevelsSummaryObject: HATObject {
     
     // MARK: - Variables
 
+    /// The awake state of sleep
     public var awake: HATFitbitSleepLevelsSummaryCountObject = HATFitbitSleepLevelsSummaryCountObject()
+    /// The asleep state of sleep
     public var asleep: HATFitbitSleepLevelsSummaryCountObject = HATFitbitSleepLevelsSummaryCountObject()
+    /// The restless state of sleep
     public var restless: HATFitbitSleepLevelsSummaryCountObject = HATFitbitSleepLevelsSummaryCountObject()
 }

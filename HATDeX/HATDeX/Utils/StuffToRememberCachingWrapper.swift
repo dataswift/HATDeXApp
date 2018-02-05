@@ -152,7 +152,7 @@ internal struct StuffToRememberCachingWrapper {
                     
                     let stuffToRememberObject = StuffToRememberObject(fromCache: dictionary[0])
                     
-                    func valueCreated(result: StuffToRememberObject, renewedUserToken: String?) {
+                    func valueCreated(result: StuffToRememberObject) {
                         
                         do {
                             

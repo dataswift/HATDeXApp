@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -13,12 +13,14 @@
 import Alamofire
 import SwiftyJSON
 
+// MARK: Struct
+
 public struct HATNotificationsService {
 
     // MARK: - Get hat notifications
     
     /**
-     Gets values from a particular table in use with v1 API
+     Gets HAT notifications from HAT
      
      - parameter appToken: The token in String format
      - parameter successCallback: A callback called when successful of type @escaping ([NotificationObject]) -> Void
@@ -27,17 +29,17 @@ public struct HATNotificationsService {
     public static func getHATNotifications(appToken: String, successCallback: @escaping ([NotificationObject], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // form the url
-        let url = "https://dex.hubofallthings.com/api/notices"
+        let url: String = "https://dex.hubofallthings.com/api/notices"
         
         // create parameters and headers
-        let headers = [RequestHeaders.xAuthToken: appToken]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: appToken]
         
         // make the request
         HATNetworkHelper.asynchronousRequest(
             url,
             method: .get,
             encoding: Alamofire.URLEncoding.default,
-            contentType: ContentType.JSON,
+            contentType: ContentType.json,
             parameters: [:],
             headers: headers,
             completion: { (response: HATNetworkHelper.ResultType) -> Void in
@@ -46,22 +48,22 @@ public struct HATNotificationsService {
                     
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         errorCallback(.noInternetConnection)
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         errorCallback(.generalError(message, statusCode, error))
                     }
                 case .isSuccess(let isSuccess, _, let result, let token):
                     
                     if isSuccess {
                         
-                        if let array = result.array {
+                        if let array: [JSON] = result.array {
                             
                             var arrayToReturn: [NotificationObject] = []
-                            for notification in array {
+                            for notification: JSON in array {
                                 
                                 arrayToReturn.append(NotificationObject(dictionary: notification.dictionaryValue))
                             }
@@ -79,26 +81,27 @@ public struct HATNotificationsService {
     // MARK: - Mark notification as read
     
     /**
-     Gets values from a particular table in use with v1 API
+     Marks a notification as Read
      
      - parameter appToken: The token in String format
+     - parameter notificationID: The notification ID to mark as read
      - parameter successCallback: A callback called when successful of type @escaping ([NotificationObject]) -> Void
      - parameter errorCallback: A callback called when failed of type @escaping (Void) -> Void)
      */
     public static func markNotificationAsRead(appToken: String, notificationID: String, successCallback: @escaping (Bool, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // form the url
-        let url = "https://dex.hubofallthings.com/api/notices/\(notificationID)/read"
+        let url: String = "https://dex.hubofallthings.com/api/notices/\(notificationID)/read"
         
         // create parameters and headers
-        let headers = [RequestHeaders.xAuthToken: appToken]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: appToken]
         
         // make the request
         HATNetworkHelper.asynchronousRequest(
             url,
             method: .put,
             encoding: Alamofire.URLEncoding.default,
-            contentType: ContentType.JSON,
+            contentType: ContentType.json,
             parameters: [:],
             headers: headers,
             completion: { (response: HATNetworkHelper.ResultType) -> Void in
@@ -107,12 +110,12 @@ public struct HATNotificationsService {
                     
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         errorCallback(.noInternetConnection)
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         errorCallback(.generalError(message, statusCode, error))
                     }
                 case .isSuccess(let isSuccess, let statusCode, _, let token):
@@ -122,7 +125,7 @@ public struct HATNotificationsService {
                         successCallback(true, token)
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         errorCallback(.generalError(message, statusCode, nil))
                     }
                 }

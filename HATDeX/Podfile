@@ -7,7 +7,7 @@ use_frameworks!
 target 'HATDeX' do
     
     pod 'Alamofire'
-    pod 'RealmSwift', '~> 3.0.2'
+    pod 'RealmSwift'
     pod 'SwiftyJSON'
     pod 'FBAnnotationClusteringSwift', git: 'https://github.com/ribl/FBAnnotationClusteringSwift/', branch: 'master'
     pod 'JWTDecode'
@@ -19,7 +19,7 @@ target 'HATDeX' do
     pod 'zxcvbn-ios'
     pod 'HatForIOS', :git => 'https://github.com/whiteshadow-gr/HatForIOS.git'
     pod 'SwiftLint', '0.21.0'
-    pod 'MarkdownView', git: 'https://github.com/keitaoouchi/MarkdownView/', branch: 'master'
+    pod 'MarkdownView'
     pod 'Haneke'
 end
 
@@ -27,7 +27,7 @@ target 'HATDeXTests' do
     
     inherit! :complete
     pod 'Alamofire'
-    pod 'RealmSwift', '~> 3.0.2'
+    pod 'RealmSwift'
     pod 'SwiftyJSON'
     pod 'FBAnnotationClusteringSwift', git: 'https://github.com/ribl/FBAnnotationClusteringSwift/', branch: 'master'
     pod 'JWTDecode'
@@ -39,7 +39,7 @@ target 'HATDeXTests' do
     pod 'zxcvbn-ios'
     pod 'HatForIOS', :git => 'https://github.com/whiteshadow-gr/HatForIOS.git'
     pod 'Mockingjay'
-    pod 'MarkdownView', git: 'https://github.com/keitaoouchi/MarkdownView/', branch: 'master'
+    pod 'MarkdownView'
     pod 'Haneke'
 end
 
@@ -47,7 +47,7 @@ target 'HATDeXUITests' do
 
     inherit! :complete
     pod 'Alamofire'
-    pod 'RealmSwift', '~> 3.0.2'
+    pod 'RealmSwift'
     pod 'SwiftyJSON'
     pod 'FBAnnotationClusteringSwift', git: 'https://github.com/ribl/FBAnnotationClusteringSwift/', branch: 'master'
     pod 'JWTDecode'
@@ -59,6 +59,6 @@ target 'HATDeXUITests' do
     pod 'zxcvbn-ios'
     pod 'HatForIOS', :git => 'https://github.com/whiteshadow-gr/HatForIOS.git'
     pod 'Mockingjay'
-    pod 'MarkdownView', git: 'https://github.com/keitaoouchi/MarkdownView/', branch: 'master'
+    pod 'MarkdownView'
     pod 'Haneke'
 end

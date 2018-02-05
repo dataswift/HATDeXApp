@@ -31,7 +31,7 @@ internal struct DietaryInfoCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.DietaryAnswers.source,
@@ -171,11 +171,11 @@ internal struct DietaryInfoCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.DietaryAnswers.source,
-                        dataPath: Constants.HATTableName.DietaryAnswers.name,
+                        namespace: Constants.HATTableName.DietaryAnswers.source,
+                        scope: Constants.HATTableName.DietaryAnswers.name,
                         parameters: ["array": array,
                                      "unixTimeStamp": SurveyObject.createUnixTimeStamp()],
                         successCallback: success,

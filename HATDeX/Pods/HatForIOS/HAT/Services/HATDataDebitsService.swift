@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -29,7 +29,7 @@ public struct HATDataDebitsService {
      */
     public static func getAvailableDataDebits(userToken: String, userDomain: String, succesfulCallBack: @escaping ([DataDebitObject], String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
         
-        let url: String = "http://\(userDomain)/api/v2/data-debit"
+        let url: String = "https://\(userDomain)/api/v2/data-debit"
         
         let headers: Dictionary<String, String> = ["X-Auth-Token": userToken]
         
@@ -37,7 +37,7 @@ public struct HATDataDebitsService {
             url,
             method: .get,
             encoding: Alamofire.URLEncoding.default,
-            contentType: ContentType.JSON,
+            contentType: ContentType.json,
             parameters: [:],
             headers: headers,
             completion: { (response: HATNetworkHelper.ResultType) -> Void in
@@ -47,7 +47,7 @@ public struct HATDataDebitsService {
                 // in case of error call the failCallBack
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         failCallBack(.noInternetConnection)
                     } else {
@@ -64,7 +64,7 @@ public struct HATDataDebitsService {
                             
                             var returnValue: [DataDebitObject] = []
                             
-                            for item in result.arrayValue {
+                            for item: JSON in result.arrayValue {
                                 
                                 guard let dataDebit: DataDebitObject = DataDebitObject.decode(from: item.dictionaryValue) else {
                                     
@@ -76,13 +76,13 @@ public struct HATDataDebitsService {
                             succesfulCallBack(returnValue, token)
                         } else {
                             
-                            let message = NSLocalizedString("Server response was unexpected", comment: "")
+                            let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                             failCallBack(.generalError(message, statusCode, nil))
                         }
                         
                     } else {
                         
-                        let message = NSLocalizedString("Server response was unexpected", comment: "")
+                        let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                         failCallBack(.generalError(message, statusCode, nil))
                     }
                 }

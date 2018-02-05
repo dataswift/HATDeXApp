@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -22,26 +22,26 @@ public struct HATDataPlugsService {
     /**
      Gets the available data plugs for the user to enable
      
-     - parameter succesfulCallBack: A function of type ([HATDataPlugObject]) -> Void, executed on a successful result
-     - parameter failCallBack: A function of type (Void) -> Void, executed on an unsuccessful result
+     - parameter succesfulCallBack: A function of type ([HATDataPlugObject], String?) -> Void, executed on a successful result
+     - parameter failCallBack: A function of type (DataPlugError) -> Void, executed on an unsuccessful result
      */
     public static func getAvailableDataPlugs(succesfulCallBack: @escaping ([HATDataPlugObject], String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
         
         let url: String = "https://dex.hubofallthings.com/api/dataplugs"
         
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: [:], headers: [:], completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: [:], completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call the succesfulCallBack
@@ -53,22 +53,16 @@ public struct HATDataPlugsService {
                     
                     for item in result.arrayValue {
                         
-                        do {
+                        if let object: HATDataPlugObject = HATDataPlugObject.decode(from: item.dictionaryValue) {
                             
-                            let decoder = JSONDecoder()
-                            let data = try item.rawData()
-                            let tempItem = try decoder.decode(HATDataPlugObject.self, from: data)
-                            returnValue.append(tempItem)
-                        } catch {
-                            
-                            print("error decoding data plug JSON")
+                            returnValue.append(object)
                         }
                     }
                     
                     succesfulCallBack(returnValue, token)
                 } else {
                     
-                    let message = NSLocalizedString("Server response was unexpected", comment: "")
+                    let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }
@@ -89,29 +83,29 @@ public struct HATDataPlugsService {
         
         // setup parameters and headers
         let parameters: Dictionary<String, String> = [:]
-        let headers = ["X-Auth-Token": appToken]
+        let headers: [String: String] = ["X-Auth-Token": appToken]
         
         // contruct the url
-        let url = "https://dex.hubofallthings.com/api/v2/offer/\(offerID)/userClaim"
+        let url: String = "https://dex.hubofallthings.com/api/v2/offer/\(offerID)/userClaim"
         
         // make async request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else if statusCode != 404 {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 } else {
                     
-                    let message = NSLocalizedString("Expected response, 404", comment: "")
+                    let message: String = NSLocalizedString("Expected response, 404", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call succesfulCallBack
@@ -130,12 +124,12 @@ public struct HATDataPlugsService {
                         }
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with different code than 200", comment: "")
+                        let message: String = NSLocalizedString("Server responded with different code than 200", comment: "")
                         failCallBack(.generalError(message, statusCode, nil))
                     }
                 } else {
                     
-                    let message = NSLocalizedString("Server response was unexpected", comment: "")
+                    let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }
@@ -154,25 +148,25 @@ public struct HATDataPlugsService {
         
         // setup parameters and headers
         let parameters: Dictionary<String, String> = [:]
-        let headers = ["X-Auth-Token": appToken]
+        let headers: [String: String] = ["X-Auth-Token": appToken]
         
         // contruct the url
-        let url = "https://dex.hubofallthings.com/api/v2/offer/\(offerID)/claim"
+        let url: String = "https://dex.hubofallthings.com/api/v2/offer/\(offerID)/claim"
         
         // make async request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call succesfulCallBack
@@ -187,12 +181,12 @@ public struct HATDataPlugsService {
                         
                         failCallBack(.offerClaimed)
                     } else {
-                        let message = NSLocalizedString("Server responded with different code than 200", comment: "")
+                        let message: String = NSLocalizedString("Server responded with different code than 200", comment: "")
                         failCallBack(.generalError(message, statusCode, nil))
                     }
                 } else {
                     
-                    let message = NSLocalizedString("Server response was unexpected", comment: "")
+                    let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }
@@ -205,6 +199,8 @@ public struct HATDataPlugsService {
      Approve data debit
      
      - parameter dataDebitID: The data debit ID as a String
+     - parameter userToken: The user's token
+     - parameter userDomain: The user's domain
      - parameter succesfulCallBack: A function to call if everything is ok
      - parameter failCallBack: A function to call if fail
      */
@@ -212,25 +208,25 @@ public struct HATDataPlugsService {
         
         // setup parameters and headers
         let parameters: Dictionary<String, String> = [:]
-        let headers = ["X-Auth-Token": userToken]
+        let headers: [String: String] = ["X-Auth-Token": userToken]
         
         // contruct the url
-        let url = "https://\(userDomain)/api/v2/data-debit/\(dataDebitID)/enable"
+        let url: String = "https://\(userDomain)/api/v2/data-debit/\(dataDebitID)/enable"
         
         // make async request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call succesfulCallBack
@@ -245,7 +241,7 @@ public struct HATDataPlugsService {
                     succesfulCallBack("enabled")
                 } else {
                     
-                    let message = NSLocalizedString("Server response was unexpected", comment: "")
+                    let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }
@@ -253,9 +249,11 @@ public struct HATDataPlugsService {
     }
     
     /**
-     Check data debit with this ID
+     Check if data debit with this ID is enabled or not
      
      - parameter dataDebitID: The data debit ID as a String
+     - parameter userToken: The user's token
+     - parameter userDomain: The user's domain
      - parameter succesfulCallBack: A function to call if everything is ok
      - parameter failCallBack: A function to call if fail
      */
@@ -263,29 +261,29 @@ public struct HATDataPlugsService {
         
         // setup parameters and headers
         let parameters: Dictionary<String, String> = [:]
-        let headers = ["X-Auth-Token": userToken]
+        let headers: [String: String] = ["X-Auth-Token": userToken]
         
         // contruct the url
-        let url = "https://\(userDomain)/api/v2/data-debit/\(dataDebitID)"
+        let url: String = "https://\(userDomain)/api/v2/data-debit/\(dataDebitID)"
         
         // make async request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error( let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else if statusCode != 404 {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 } else {
                     
-                    let message = NSLocalizedString("Expected response, 404", comment: "")
+                    let message: String = NSLocalizedString("Expected response, 404", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call succesfulCallBack
@@ -293,7 +291,7 @@ public struct HATDataPlugsService {
                 
                 guard isSuccess, let dataDebit: DataDebitObject = DataDebitObject.decode(from: result.dictionaryValue) else {
                     
-                    let message = NSLocalizedString("Server response was unexpected", comment: "")
+                    let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                     failCallBack(.generalError(message, statusCode, nil))
                     
                     return
@@ -304,9 +302,12 @@ public struct HATDataPlugsService {
         })
     }
     
+    //
+    
     /**
      Check social plug expiry date
      
+     - parameter facebookUrlStatus: The plug's status url to connect to
      - parameter succesfulCallBack: A function to call if everything is ok
      - parameter failCallBack: A function to call if fail
      */
@@ -316,26 +317,26 @@ public struct HATDataPlugsService {
             
             // setup parameters and headers
             let parameters: Dictionary<String, String> = [:]
-            let headers = ["X-Auth-Token": appToken]
+            let headers: [String: String] = ["X-Auth-Token": appToken]
             
             // make async request
-            HATNetworkHelper.asynchronousRequest(facebookUrlStatus, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+            HATNetworkHelper.asynchronousRequest(facebookUrlStatus, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
                 
                 switch response {
                     
                 // in case of error call the failCallBack
                 case .error(let error, let statusCode):
                     
-                    if error.localizedDescription == "The request timed out." {
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                         
                         failCallBack(.noInternetConnection)
                     } else if statusCode == 404 {
                         
-                        let message = NSLocalizedString("Expected response, 404", comment: "")
+                        let message: String = NSLocalizedString("Expected response, 404", comment: "")
                         failCallBack(.generalError(message, statusCode, error))
                     } else {
                         
-                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        let message: String = NSLocalizedString("Server responded with error", comment: "")
                         failCallBack(.generalError(message, statusCode, error))
                     }
                 // in case of success call succesfulCallBack
@@ -346,7 +347,7 @@ public struct HATDataPlugsService {
                         succesfulCallBack(String(result["expires"].stringValue))
                     } else {
                         
-                        let message = NSLocalizedString("Server response was unexpected", comment: "")
+                        let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                         failCallBack(.generalError(message, statusCode, nil))
                     }
                 }

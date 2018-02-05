@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -20,17 +20,18 @@ import SwiftyRSA
 public struct HATLoginService {
     
     /**
-     Log in button pressed. Begin authorization
+     Verify userDomain that it can log on to the HAT
      
      - parameter userHATDomain: The user's domain
+     - parameter verifiedDomains: The allowed domains to login to the HAT
      - parameter successfulVerification: The function to execute on successful verification
      - parameter failedVerification: The function to execute on failed verification
      */
     public static func formatAndVerifyDomain(userHATDomain: String, verifiedDomains: [String], successfulVerification: @escaping (String) -> Void, failedVerification: @escaping (String) -> Void) {
         
         // trim values
-        let hatDomain = userHATDomain.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let result = hatDomain.hasSuffixes(verifiedDomains)
+        let hatDomain: String = userHATDomain.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let result: Bool = hatDomain.hasSuffixes(verifiedDomains)
         
         // verify if the domain is what we want
         if result {
@@ -40,7 +41,7 @@ public struct HATLoginService {
         } else {
             
             // domain is incorrect
-            let message = NSLocalizedString("The domain you entered is incorrect. Accepted domains are 'hubofallthings.net, savy.io and hubat.net. Please correct any typos and try again", comment: "")
+            let message: String = NSLocalizedString("The domain you entered is incorrect. Accepted domains are 'hubofallthings.net, savy.io and hubat.net. Please correct any typos and try again", comment: "")
             failedVerification(message)
         }
     }
@@ -50,23 +51,24 @@ public struct HATLoginService {
      
      - parameter userDomain: The user's domain
      - parameter url: The url to connect
-     - parameter success: A function to execute after finishing
+     - parameter success: A function to execute after finishing, returing the userToken
+     - parameter failed: A function to execute after finishing, returning AuthenicationError
      */
     public static func loginToHATAuthorization(userDomain: String, url: NSURL, success: ((String?) -> Void)?, failed: ((AuthenicationError) -> Void)?) {
         
         // get token out
-        if let token = HATNetworkHelper.getQueryStringParameter(url: url.absoluteString, param: Auth.TokenParamName) {
+        if let token: String = HATNetworkHelper.getQueryStringParameter(url: url.absoluteString, param: RequestHeaders.tokenParamName) {
             
             // make asynchronous call
             // parameters..
             let parameters: Dictionary<String, String> = [:]
             // auth header
-            let headers = ["Accept": ContentType.Text, "Content-Type": ContentType.Text]
+            let headers: [String: String] = ["Accept": ContentType.text, "Content-Type": ContentType.text]
             
-            if let url = HATAccountService.theUserHATDomainPublicKeyURL(userDomain) {
+            if let url: String = HATAccountService.theUserHATDomainPublicKeyURL(userDomain) {
                 
                 //. application/json
-                HATNetworkHelper.asynchronousStringRequest(url, method: HTTPMethod.get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.Text, parameters: parameters as Dictionary<String, AnyObject>, headers: headers) { (response: HATNetworkHelper.ResultTypeString) -> Void in
+                HATNetworkHelper.asynchronousStringRequest(url, method: HTTPMethod.get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.text, parameters: parameters as Dictionary<String, AnyObject>, headers: headers) { (response: HATNetworkHelper.ResultTypeString) -> Void in
                     
                     switch response {
                     case .isSuccess(let isSuccess, let statusCode, let result, _):
@@ -74,7 +76,7 @@ public struct HATLoginService {
                         if isSuccess {
                             
                             // decode the token and get the iss out
-                            guard let jwt = try? decode(jwt: token) else {
+                            guard let jwt: JWT = try? decode(jwt: token) else {
                                 
                                 failed?(.cannotDecodeToken(token))
                                 return
@@ -115,17 +117,17 @@ public struct HATLoginService {
                             let signature: String = tokenAttr[2]
                             
                             // decode signature from baseUrl64 to base64
-                            let decodedSig = HATFormatterHelper.fromBase64URLToBase64(stringToConvert: signature)
+                            let decodedSig: String = HATFormatterHelper.fromBase64URLToBase64(stringToConvert: signature)
                             
                             // data to be verified header.payload
-                            let headerAndPayload = header + "." + payload
+                            let headerAndPayload: String = "\(header).\(payload)"
                             
                             do {
                                 
-                                let signature = try Signature(base64Encoded: decodedSig)
-                                let privateKey = try PublicKey(pemEncoded: result)
-                                let clear = try ClearMessage(string: headerAndPayload, using: .utf8)
-                                let isSuccessful = try clear.verify(with: privateKey, signature: signature, digestType: .sha256)
+                                let signature: Signature = try Signature(base64Encoded: decodedSig)
+                                let privateKey: PublicKey = try PublicKey(pemEncoded: result)
+                                let clear: ClearMessage = try ClearMessage(string: headerAndPayload, using: .utf8)
+                                let isSuccessful: Bool = try clear.verify(with: privateKey, signature: signature, digestType: .sha256)
                                 
                                 if isSuccessful {
                                     
@@ -137,7 +139,7 @@ public struct HATLoginService {
                                 
                             } catch {
                                 
-                                let message = NSLocalizedString("Proccessing of token failed", comment: "")
+                                let message: String = NSLocalizedString("Proccessing of token failed", comment: "")
                                 failed?(.tokenValidationFailed(message))
                             }
                             
@@ -148,12 +150,12 @@ public struct HATLoginService {
                         
                     case .error(let error, let statusCode):
                         
-                        if error.localizedDescription == "The request timed out." {
+                        if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                             
                             failed?(.noInternetConnection)
                         } else {
                             
-                            let message = NSLocalizedString("Server responded with error", comment: "")
+                            let message: String = NSLocalizedString("Server responded with error", comment: "")
                             failed?(.generalError(message, statusCode, error))
                         }
                     }

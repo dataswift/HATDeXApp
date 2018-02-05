@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -18,6 +18,7 @@ public struct DataOfferObject {
     
     // MARK: - JSON Fields
     
+    /// The JSON fields used by the hat
     public struct Fields {
         
         static let dataOfferID: String = "id"
@@ -43,34 +44,55 @@ public struct DataOfferObject {
     
     // MARK: - Variables
     
+    /// The data offer ID
     public var dataOfferID: String = ""
+    /// The title of the offer
     public var title: String = ""
+    /// The short description of the offer
     public var shortDescription: String = ""
+    /// The long description of the offer
     public var longDescription: String = ""
+    /// The image URL of the offer
     public var illustrationURL: String = ""
+    /// The category of the offer
     public var offerCategory: String = ""
+    /// The merchant code of the offer
     public var merchantCode: String = ""
     
+    /// the date created as unix time stamp
     public var created: Int = -1
+    /// the start date of the offer as unix time stamp
     public var offerStarts: Int = -1
+    /// the expire date of the offer as unix time stamp
     public var offerExpires: Int = -1
+    /// the duration that the offer collects data for as unix time stamp
     public var collectsDataFor: Int = -1
+    /// the minimum users required for the offer to activate
     public var requiredMinUsers: Int = -1
+    /// the max users of the offer
     public var requiredMaxUsers: Int = -1
+    /// the number of the offer claimed the offer so far
     public var usersClaimedOffer: Int = -1
     
+    /// the data definition object of the offer
     public var requiredDataDefinition: [DataOfferRequiredDataDefinitionObject] = []
     
+    /// the data definition v2 object of the offer
     public var requiredDataDefinitionV2: DataOfferRequiredDataDefinitionObjectV2?
     
+    /// the rewards of the offer
     public var reward: DataOfferRewardsObject = DataOfferRewardsObject()
     
+    /// The owner of the offer
     public var owner: DataOfferOwnerObject = DataOfferOwnerObject()
     
+    /// The claim object of the offer
     public var claim: DataOfferClaimObject = DataOfferClaimObject()
     
+    /// The downloaded image of the offer
     public var image: UIImage?
     
+    /// Is the offer requiring pii
     public var isPΙIRequested: Bool = false
     
     // MARK: - Initialisers
@@ -112,6 +134,8 @@ public struct DataOfferObject {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received
      */
     public init(dictionary: Dictionary<String, JSON>) {
         

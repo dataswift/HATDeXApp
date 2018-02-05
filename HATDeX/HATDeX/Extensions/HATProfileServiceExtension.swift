@@ -67,39 +67,39 @@ extension HATProfileService {
     ]
     
     static let initAddressMapping: [String: Any] = [
-        "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.address.city, tag: 0, placeholder: "City"),
-        "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.address.county, tag: 0, placeholder: "County"),
-        "(2, 0)": FieldInfo(string: \HATProfileObjectV2.data.address.country, tag: 5, placeholder: "Country")
+        "(0, 0)": FieldInfo(string: \HATProfileObject.data.address.city, tag: 0, placeholder: "City"),
+        "(1, 0)": FieldInfo(string: \HATProfileObject.data.address.county, tag: 0, placeholder: "County"),
+        "(2, 0)": FieldInfo(string: \HATProfileObject.data.address.country, tag: 5, placeholder: "Country")
     ]
     
     static let initPersonalMapping: [String: Any] = [
-        "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.firstName, tag: 0, placeholder: "First Name"),
-        "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.lastName, tag: 0, placeholder: "Last Name"),
-        "(2, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.middleName, tag: 5, placeholder: "Middle Name"),
-        "(3, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.preferredName, tag: 0, placeholder: "Preferred Name"),
-        "(4, 0)": FieldInfo(string: \HATProfileObjectV2.data.personal.title, tag: 5, placeholder: "Title")
+        "(0, 0)": FieldInfo(string: \HATProfileObject.data.personal.firstName, tag: 0, placeholder: "First Name"),
+        "(1, 0)": FieldInfo(string: \HATProfileObject.data.personal.lastName, tag: 0, placeholder: "Last Name"),
+        "(2, 0)": FieldInfo(string: \HATProfileObject.data.personal.middleName, tag: 5, placeholder: "Middle Name"),
+        "(3, 0)": FieldInfo(string: \HATProfileObject.data.personal.preferredName, tag: 0, placeholder: "Preferred Name"),
+        "(4, 0)": FieldInfo(string: \HATProfileObject.data.personal.title, tag: 5, placeholder: "Title")
     ]
     
     static let initPhoneMapping: [String: Any] = [
-        "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.contact.mobile, tag: 0, placeholder: "Mobile Phone"),
-        "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.contact.landline, tag: 0, placeholder: "Phone")
+        "(0, 0)": FieldInfo(string: \HATProfileObject.data.contact.mobile, tag: 0, placeholder: "Mobile Phone"),
+        "(1, 0)": FieldInfo(string: \HATProfileObject.data.contact.landline, tag: 0, placeholder: "Phone")
     ]
     
     static let initEmergencyContactMapping: [String: Any] = [
-        "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.emergencyContact.firstName, tag: 0, placeholder: "First Name"),
-        "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.emergencyContact.lastName, tag: 0, placeholder: "Last Name"),
-        "(2, 0)": FieldInfo(string: \HATProfileObjectV2.data.emergencyContact.relationship, tag: 5, placeholder: "Relationship"),
-        "(3, 0)": FieldInfo(string: \HATProfileObjectV2.data.emergencyContact.mobile, tag: 0, placeholder: "Phone Number")
+        "(0, 0)": FieldInfo(string: \HATProfileObject.data.emergencyContact.firstName, tag: 0, placeholder: "First Name"),
+        "(1, 0)": FieldInfo(string: \HATProfileObject.data.emergencyContact.lastName, tag: 0, placeholder: "Last Name"),
+        "(2, 0)": FieldInfo(string: \HATProfileObject.data.emergencyContact.relationship, tag: 5, placeholder: "Relationship"),
+        "(3, 0)": FieldInfo(string: \HATProfileObject.data.emergencyContact.mobile, tag: 0, placeholder: "Phone Number")
     ]
     
     static let initOnlineMapping: [String: Any] = [
-        "(0, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.website, tag: 0, placeholder: "Website"),
-        "(1, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.blog, tag: 0, placeholder: "Blog"),
-        "(2, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.facebook, tag: 0, placeholder: "Facebook"),
-        "(3, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.twitter, tag: 0, placeholder: "Twitter"),
-        "(4, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.google, tag: 0, placeholder: "Google"),
-        "(5, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.linkedin, tag: 0, placeholder: "Linkedin"),
-        "(6, 0)": FieldInfo(string: \HATProfileObjectV2.data.online.youtube, tag: 0, placeholder: "Youtube")
+        "(0, 0)": FieldInfo(string: \HATProfileObject.data.online.website, tag: 0, placeholder: "Website"),
+        "(1, 0)": FieldInfo(string: \HATProfileObject.data.online.blog, tag: 0, placeholder: "Blog"),
+        "(2, 0)": FieldInfo(string: \HATProfileObject.data.online.facebook, tag: 0, placeholder: "Facebook"),
+        "(3, 0)": FieldInfo(string: \HATProfileObject.data.online.twitter, tag: 0, placeholder: "Twitter"),
+        "(4, 0)": FieldInfo(string: \HATProfileObject.data.online.google, tag: 0, placeholder: "Google"),
+        "(5, 0)": FieldInfo(string: \HATProfileObject.data.online.linkedin, tag: 0, placeholder: "Linkedin"),
+        "(6, 0)": FieldInfo(string: \HATProfileObject.data.online.youtube, tag: 0, placeholder: "Youtube")
     ]
     
     public static func mapStructure(_ structure: Dictionary<String, String>, with returnedDictionary: Dictionary<String, String>) -> Dictionary<String, String> {

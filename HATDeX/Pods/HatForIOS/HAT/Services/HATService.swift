@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -23,33 +23,35 @@ public struct HATService {
      Gets the application level token from hat
      
      - parameter serviceName: The service name requesting the token
+     - parameter userDomain: The user's domain
+     - parameter token: The user's token
      - parameter resource: The resource for the token
      - parameter succesfulCallBack: A function to call if everything is ok
      - parameter failCallBack: A function to call if fail
      */
-    public static func getApplicationTokenFor(serviceName: String, userDomain: String, token: String, resource: String, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
+    public static func getApplicationTokenFor(serviceName: String, userDomain: String, userToken: String, resource: String, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
         
         // setup parameters and headers
-        let parameters = ["name": serviceName, "resource": resource]
-        let headers = [RequestHeaders.xAuthToken: token]
+        let parameters: [String: String] = ["name": serviceName, "resource": resource]
+        let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
         
         // contruct the url
-        let url = "https://\(userDomain)/users/application_token"
+        let url: String = "https://\(userDomain)/users/application_token"
         
         // async request
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call the succesfulCallBack
@@ -70,24 +72,27 @@ public struct HATService {
     
     /**
      Fetches the available HAT providers
+     
+     - parameter succesfulCallBack: A function to call if everything is ok
+     - parameter failCallBack: A function to call if fail
      */
     public static func getAvailableHATProviders(succesfulCallBack: @escaping ([HATProviderObject], String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
         
-        let url = "https://hatters.hubofallthings.com/api/products/hat"
+        let url: String = "https://hatters.hubofallthings.com/api/products/hat"
         
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: [:], headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call the succesfulCallBack
@@ -105,36 +110,43 @@ public struct HATService {
                     succesfulCallBack(arrayToSendBack, token)
                 } else {
                     
-                    let message = NSLocalizedString("Server response was unexpected", comment: "")
+                    let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }
         })
     }
     
+    // MARK: - Validate Data
+    
     /**
      Validates email address with the HAT
+     
+     - parameter email: The email to validate with the HAT
+     - parameter cluster: The cluster to validate the email with
+     - parameter succesfulCallBack: A function to call if everything is ok
+     - parameter failCallBack: A function to call if fail
      */
     public static func validateEmailAddress(email: String, cluster: String, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
         
-        let url = "https://hatters.hubofallthings.com/api/products/hat/validate-email"
+        let url: String = "https://hatters.hubofallthings.com/api/products/hat/validate-email"
         
-        let parameters = ["email": email,
+        let parameters: [String: String] = ["email": email,
                           "cluster": cluster]
         
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = "Invalid Email. HAT with such email already exists"
+                    let message: String = "Invalid Email. HAT with such email already exists"
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call the succesfulCallBack
@@ -145,7 +157,7 @@ public struct HATService {
                     succesfulCallBack("valid email", newToken)
                 } else if statusCode == 400 {
                     
-                    let message = "Invalid Email. HAT with such email already exists"
+                    let message: String = "Invalid Email. HAT with such email already exists"
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }
@@ -154,27 +166,32 @@ public struct HATService {
     
     /**
      Validates HAT address with HAT
+     
+     - parameter address: The address to validate with the HAT
+     - parameter cluster: The cluster to validate the email with
+     - parameter succesfulCallBack: A function to call if everything is ok
+     - parameter failCallBack: A function to call if fail
      */
     public static func validateHATAddress(address: String, cluster: String, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
         
-        let url = "https://hatters.hubofallthings.com/api/products/hat/validate-hat"
+        let url: String = "https://hatters.hubofallthings.com/api/products/hat/validate-hat"
         
-        let parameters = ["address": address,
+        let parameters: [String: String] = ["address": address,
                           "cluster": cluster]
         
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: parameters, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = "Invalid address. HAT with such address already exists"
+                    let message: String = "Invalid address. HAT with such address already exists"
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call the succesfulCallBack
@@ -185,35 +202,41 @@ public struct HATService {
                     succesfulCallBack("valid address", newToken)
                 } else if statusCode == 400 {
                     
-                    let message = "Invalid hat address. HAT with such address already exists"
+                    let message: String = "Invalid hat address. HAT with such address already exists"
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }
         })
     }
     
+    // MARK: - Purchase
+
     /**
-     Validates HAT address with HAT
+     Confirms the hat purchase
+     
+     - parameter purchaseModel: The PurchaseObject to send to HAT
+     - parameter succesfulCallBack: A function to call if everything is ok
+     - parameter failCallBack: A function to call if fail
      */
     public static func confirmHATPurchase(purchaseModel: PurchaseObject, succesfulCallBack: @escaping (String, String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
         
-        let url = "https://hatters.hubofallthings.com/api/products/hat/purchase"
+        let url: String = "https://hatters.hubofallthings.com/api/products/hat/purchase"
         
-        let body = PurchaseObject.encode(from: purchaseModel)!
+        let body: [String: Any] = PurchaseObject.encode(from: purchaseModel)!
         
-        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.JSON, parameters: body, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: body, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = "Invalid address. HAT with such address already exists"
+                    let message: String = "Invalid address. HAT with such address already exists"
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call the succesfulCallBack
@@ -224,7 +247,7 @@ public struct HATService {
                     succesfulCallBack("purchase ok", newToken)
                 } else {
                     
-                    let message = result["message"].stringValue
+                    let message: String = result["message"].stringValue
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }
@@ -234,26 +257,31 @@ public struct HATService {
     // MARK: - Get system status
     
     /**
-     Fetches the available HAT providers
+     Fetches all the info related to user's HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's token
+     - parameter succesfulCallBack: A function to call if everything is ok
+     - parameter failCallBack: A function to call if fail
      */
-    public static func getSystemStatus(userDomain: String, authToken: String, completion: @escaping ([HATSystemStatusObject], String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
+    public static func getSystemStatus(userDomain: String, userToken: String, completion: @escaping ([HATSystemStatusObject], String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
         
-        let url = "https://\(userDomain)/api/v2/system/status"
-        let headers = ["X-Auth-Token": authToken]
+        let url: String = "https://\(userDomain)/api/v2/system/status"
+        let headers: [String: String] = ["X-Auth-Token": userToken]
         
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.JSON, parameters: [:], headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
             // in case of error call the failCallBack
             case .error(let error, let statusCode):
                 
-                if error.localizedDescription == "The request timed out." {
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
                     
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    let message: String = NSLocalizedString("Server responded with error", comment: "")
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call the succesfulCallBack
@@ -271,7 +299,7 @@ public struct HATService {
                     completion(arrayToSendBack, token)
                 } else {
                     
-                    let message = NSLocalizedString("Server response was unexpected", comment: "")
+                    let message: String = NSLocalizedString("Server response was unexpected", comment: "")
                     failCallBack(.generalError(message, statusCode, nil))
                 }
             }

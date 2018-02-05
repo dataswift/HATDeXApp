@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -16,11 +16,18 @@ public struct HATFitbitWeightObject: HATObject {
     
     // MARK: - Variables
 
+    /// User's BMI
     public var bmi: Float = 0
+    /// User's fat
     public var fat: Float = 0
+    /// User's weight date recorded
     public var date: String = ""
+    /// User's weight time recorder
     public var time: String = ""
+    /// Weight log ID
     public var logId: Int = 0
+    /// User's weight sourse
     public var source: String = ""
+    /// User's weight
     public var weight: Float = 0
 }

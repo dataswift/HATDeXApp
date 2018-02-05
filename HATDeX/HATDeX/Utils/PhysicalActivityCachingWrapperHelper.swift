@@ -33,7 +33,7 @@ internal struct PhysicalActivityCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.PhysicalActivityAnswers.source,
@@ -173,11 +173,11 @@ internal struct PhysicalActivityCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.PhysicalActivityAnswers.source,
-                        dataPath: Constants.HATTableName.PhysicalActivityAnswers.name,
+                        namespace: Constants.HATTableName.PhysicalActivityAnswers.source,
+                        scope: Constants.HATTableName.PhysicalActivityAnswers.name,
                         parameters: ["array": array,
                                      "unixTimeStamp": SurveyObject.createUnixTimeStamp()],
                         successCallback: success,

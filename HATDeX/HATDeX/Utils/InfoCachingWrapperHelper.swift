@@ -33,7 +33,7 @@ internal struct InfoCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.ProfileInfo.source,
@@ -159,11 +159,11 @@ internal struct InfoCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.ProfileInfo.source,
-                        dataPath: Constants.HATTableName.ProfileInfo.name,
+                        namespace: Constants.HATTableName.ProfileInfo.source,
+                        scope: Constants.HATTableName.ProfileInfo.name,
                         parameters: info.toJSON(),
                         successCallback: success,
                         errorCallback: failed)

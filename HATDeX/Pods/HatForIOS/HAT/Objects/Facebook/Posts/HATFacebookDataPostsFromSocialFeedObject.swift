@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 HAT Data Exchange Ltd
+ * Copyright (C) 2018 HAT Data Exchange Ltd
  *
  * SPDX-License-Identifier: MPL2
  *
@@ -76,6 +76,8 @@ public struct HATFacebookDataPostsFromSocialFeedObject: HatApiType, Comparable {
 
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dictionary: The JSON file received
      */
     public init(from dictionary: Dictionary<String, JSON>) {
 
@@ -93,6 +95,8 @@ public struct HATFacebookDataPostsFromSocialFeedObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the HAT
+     
+     - dict: The JSON file received
      */
     public mutating func inititialize(dict: Dictionary<String, JSON>) {
         
@@ -108,6 +112,8 @@ public struct HATFacebookDataPostsFromSocialFeedObject: HatApiType, Comparable {
     
     /**
      It initialises everything from the received JSON file from the cache
+     
+     - fromCache: The Dictionary file received from the cache
      */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         

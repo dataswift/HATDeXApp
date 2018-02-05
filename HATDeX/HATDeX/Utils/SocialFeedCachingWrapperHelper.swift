@@ -88,7 +88,7 @@ internal struct SocialFeedCachingWrapperHelper {
         
         return { successRespond in
             
-            HATTwitterService.fetchTweetsV2(
+            HATTwitterService.fetchTweets(
                 authToken: userToken,
                 userDomain: userDomain,
                 parameters: parameters,
@@ -133,7 +133,7 @@ internal struct SocialFeedCachingWrapperHelper {
         
         return { successRespond in
             
-            HATFacebookService.fetchProfileFacebookPhotoV2(
+            HATFacebookService.fetchProfileFacebookPhoto(
                 authToken: userToken,
                 userDomain: userDomain,
                 parameters: ["take": "1",

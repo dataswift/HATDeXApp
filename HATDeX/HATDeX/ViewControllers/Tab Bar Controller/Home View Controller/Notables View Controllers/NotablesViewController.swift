@@ -22,9 +22,9 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
     // MARK: - Variables
     
     /// a cached array of the notes to display
-    private var cachedNotesArray: [HATNotesV2Object] = []
+    private var cachedNotesArray: [HATNotesObject] = []
     /// an array of the notes to work on without touching the cachedNotesArray
-    private var notesArray: [HATNotesV2Object] = []
+    private var notesArray: [HATNotesObject] = []
     private var profileImageURL: String?
     
     /// A dark view covering the collection view cell
@@ -233,7 +233,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
      
      - parameter notification: The notification object
      */
-    private func showReceivedNotesFrom(array: [HATNotesV2Object]) {
+    private func showReceivedNotesFrom(array: [HATNotesObject]) {
         
         if self.isViewLoaded && (self.view.window != nil) {
             
@@ -286,7 +286,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
      
      - parameter array: The fetched notables
      */
-    private func showNotables(notes: [HATNotesV2Object], renewedUserToken: String?) {
+    private func showNotables(notes: [HATNotesObject], renewedUserToken: String?) {
         
         self.isFetchingData = false
         
@@ -520,7 +520,7 @@ internal class NotablesViewController: UIViewController, UITableViewDataSource, 
     
     // MARK: - Update notes data
     
-    func updateNote(_ note: HATNotesV2Object, at index: Int) {
+    func updateNote(_ note: HATNotesObject, at index: Int) {
         
         self.cachedNotesArray[index] = note
     }

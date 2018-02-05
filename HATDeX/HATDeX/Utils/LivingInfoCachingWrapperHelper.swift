@@ -33,7 +33,7 @@ internal struct LivingInfoCachingWrapperHelper {
         
         return { successRespond in
             
-            HATAccountService.getHatTableValuesv2(
+            HATAccountService.getHatTableValues(
                 token: userToken,
                 userDomain: userDomain,
                 namespace: Constants.HATTableName.LivingInfo.source,
@@ -158,11 +158,11 @@ internal struct LivingInfoCachingWrapperHelper {
                         CrashLoggerHelper.hatTableErrorLog(error: error)
                     }
                     
-                    HATAccountService.createTableValuev2(
-                        token: userToken,
+                    HATAccountService.createTableValue(
+                        userToken: userToken,
                         userDomain: userDomain,
-                        source: Constants.HATTableName.LivingInfo.source,
-                        dataPath: Constants.HATTableName.LivingInfo.name,
+                        namespace: Constants.HATTableName.LivingInfo.source,
+                        scope: Constants.HATTableName.LivingInfo.name,
                         parameters: livingInfo.toJSON(),
                         successCallback: success,
                         errorCallback: failed)
