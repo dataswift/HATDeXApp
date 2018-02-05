@@ -29,7 +29,7 @@ public struct HATDataOffersService {
      */
     public static func getAvailableDataOffers(isBeta: Bool = false, userDomain: String, applicationToken: String, merchants: [String]?, succesfulCallBack: @escaping ([DataOfferObject], String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
         
-        let mutableURL: NSMutableString = "https://databuyer.hubat.net//api/v2/offersWithClaims"
+        let mutableURL: NSMutableString = "https://databuyer.hubat.net/api/v2/offersWithClaims"
         
         if merchants != nil {
             
@@ -50,7 +50,7 @@ public struct HATDataOffersService {
         let url: String = mutableURL as String
         let headers: Dictionary<String, String> = ["X-Auth-Token": applicationToken]
         
-        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 
