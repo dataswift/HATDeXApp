@@ -3580,9 +3580,11 @@
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-zu-4D8"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-zu-4D8">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                                                                </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-k9-Y0V">
-                                                                    <rect key="frame" x="-30" y="5" width="23" height="23"/>
+                                                                    <rect key="frame" x="970" y="5" width="23" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="23" id="RwY-Of-R7w"/>
                                                                         <constraint firstAttribute="width" constant="23" id="hfR-3q-g4g"/>
@@ -3593,7 +3595,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMQ-U4-zG1" customClass="RingProgressCircle" customModule="HATDeX" customModuleProvider="target">
-                                                                    <rect key="frame" x="-17.5" y="-17.5" width="35" height="35"/>
+                                                                    <rect key="frame" x="482.5" y="482.5" width="35" height="35"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" id="gUr-jF-YO4"/>
@@ -4197,14 +4199,17 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="yae-cJ-jm6" firstAttribute="top" secondItem="aks-2W-UyJ" secondAttribute="topMargin" constant="5" id="9eO-g0-zQL"/>
                                         <constraint firstItem="nFB-te-OxB" firstAttribute="leading" secondItem="yae-cJ-jm6" secondAttribute="trailing" constant="8" id="BNB-y5-Evx"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nFB-te-OxB" secondAttribute="trailing" constant="20" symbolic="YES" id="L66-aV-5GE"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="yae-cJ-jm6" secondAttribute="bottom" constant="6" id="YR9-KI-FlF"/>
                                         <constraint firstItem="nFB-te-OxB" firstAttribute="top" secondItem="Oxa-yb-2jr" secondAttribute="bottom" constant="8" id="bYD-lF-VL0"/>
                                         <constraint firstItem="yae-cJ-jm6" firstAttribute="centerY" secondItem="aks-2W-UyJ" secondAttribute="centerY" id="gfq-Iu-b9I"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Oxa-yb-2jr" secondAttribute="trailing" constant="20" symbolic="YES" id="oQV-gR-O9a"/>
                                         <constraint firstItem="Oxa-yb-2jr" firstAttribute="leading" secondItem="yae-cJ-jm6" secondAttribute="trailing" constant="8" id="opG-JI-YvG"/>
                                         <constraint firstItem="yae-cJ-jm6" firstAttribute="leading" secondItem="aks-2W-UyJ" secondAttribute="leadingMargin" id="tTU-G5-z9X"/>
                                         <constraint firstItem="Oxa-yb-2jr" firstAttribute="top" secondItem="aks-2W-UyJ" secondAttribute="topMargin" constant="8" id="xzW-mr-G1K"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="nFB-te-OxB" secondAttribute="bottom" constant="4" id="yPW-yM-lbt"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

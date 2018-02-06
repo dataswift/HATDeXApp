@@ -31,11 +31,11 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
 
-    #setup_travis
+    cert
     sigh
     build_app(scheme: "HATDeX Testing") # more options available
 
-    #changelog = File.read("../fastlane/Changelog.txt")
+    changelog = File.read("../fastlane/Changelog.txt")
     #upload_to_testflight(app_identifier: "com.hubofallthings.rumpellocationtrackerbeta",  	changelog: changelog)
   end
 
