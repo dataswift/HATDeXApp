@@ -88,18 +88,15 @@ internal class NameTableViewController: UITableViewController, UserCredentialsPr
                 profile?.profile.data.personal.title = cell!.getTextFromTextField()
             }
             
+            let indexPathString = "(\(index), 0)"
+            let value = HATProfileService.personalMapping[indexPathString]
+            
+            let dictionary = [indexPathString: value!]
+            let mutableDictionary = NSMutableDictionary(dictionary: (self.profile?.shareOptions)!)
+            
             if cell!.getSwitchValue() {
                 
-                let indexPathString = "(\(index), 0)"
-                let value = HATProfileService.personalMapping[indexPathString]
-                
-                let dictionary = [indexPathString: value!]
-                let mutableDictionary = NSMutableDictionary(dictionary: (self.profile?.shareOptions)!)
-                
-                if mutableDictionary[dictionary[indexPathString] ?? ""] != nil {
-                    
-                    mutableDictionary.removeObject(forKey: dictionary[indexPathString] ?? "")
-                } else {
+                if mutableDictionary[dictionary[indexPathString] ?? ""] == nil {
                     
                     mutableDictionary.addEntries(from: dictionary)
                 }
@@ -107,6 +104,12 @@ internal class NameTableViewController: UITableViewController, UserCredentialsPr
                 if let tempDict = mutableDictionary as? Dictionary<String, String> {
                     
                     self.profile?.shareOptions = tempDict
+                }
+            } else {
+                
+                if mutableDictionary[dictionary[indexPathString] ?? ""] != nil {
+                    
+                    mutableDictionary.removeObject(forKey: dictionary[indexPathString] ?? "")
                 }
             }
         }
