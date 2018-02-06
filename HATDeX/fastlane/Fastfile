@@ -29,14 +29,19 @@ platform :ios do
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
-  lane :beta do
+  lane :beta do |options|
 
     cert
     sigh
     build_app(scheme: "HATDeX Testing") # more options available
-    upload_symbols_to_crashlytics(path: "~/Users/travis/build/Hub-of-all-Things/HATDeXApp/HATDeX/HATDeX.app.dSYM.zip'")
+    upload_symbols_to_crashlytics(
+	dsym_path: "~/Users/travis/build/Hub-of-all-Things/HATDeXApp/HATDeX/HATDeX.app.dSYM.zip'", 
+	api_token: options[:FABRIC_API_TOKEN])
     changelog = File.read("../fastlane/Changelog.txt")
-    upload_to_testflight(app_identifier: "com.hubofallthings.rumpellocationtrackerbeta",  	changelog: changelog, skip_waiting_for_build_processing: true)
+    upload_to_testflight(
+	app_identifier: "com.hubofallthings.rumpellocationtrackerbeta", 
+	changelog: changelog, 
+	skip_waiting_for_build_processing: true)
   end
 
   desc "Deploy a new version to the App Store"
