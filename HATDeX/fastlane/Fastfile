@@ -35,7 +35,7 @@ platform :ios do
     sigh
     build_app(scheme: "HATDeX Testing") # more options available
     upload_symbols_to_crashlytics(
-	dsym_path: "~/Users/travis/build/Hub-of-all-Things/HATDeXApp/HATDeX/HATDeX.app.dSYM.zip", 
+	dsym_path: "~/build/Hub-of-all-Things/HATDeXApp/HATDeX/HATDeX.app.dSYM.zip", 
 	api_token: options[:FABRIC_API_TOKEN])
     changelog = File.read("../fastlane/Changelog.txt")
     upload_to_testflight(
