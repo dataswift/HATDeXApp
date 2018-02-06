@@ -32,7 +32,7 @@ before_script:
 - echo "Add certificates to keychain and allow codesign to access them"
 - tar xvf certificates.tar
 - security import ./distribution.cer -k ~/Library/Keychains/ios-build.keychain -A
-- security set-key-partition-list -S apple-tool:,apple: -s -k travis ios-build.keychain
+- security set-key-partition-list -s -k travis ios-build.keychain
 - security import ./development.cer -k ~/Library/Keychains/ios-build.keychain -A
 #- security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k travis ~/Library/Keychains/ios-build.keychain
 - security import ./distribution.p12 -P $certPassword -k ~/Library/Keychains/ios-build.keychain -A
