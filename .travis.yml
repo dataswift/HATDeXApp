@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode9.2
 xcode_workspace: HATDeX.xcworkspace
-xcode_scheme: HATDeX Testing
+xcode_scheme: HATDeX
 xcode_sdk: iphonesimulator11
 
 env:

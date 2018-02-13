@@ -1,4 +1,4 @@
-app_identifier "com.hubofallthings.rumpellocationtrackerbeta" # The bundle identifier of your app
+app_identifier "com.hubofallthings.rumpellocationtracker" # The bundle identifier of your app
 apple_id "tech@hatdex.org" # Your Apple email address
 
 itc_team_id "118371096" # Developer Portal Team ID
