@@ -98,9 +98,6 @@ internal class MapViewController: UIViewController, MKMapViewDelegate, MapSettin
             name: NSNotification.Name(Constants.NotificationNames.hideDataServicesInfo),
             object: nil)
         
-        // add gesture recognizers to today button
-        buttonTodayTouchUp(UIBarButtonItem())
-        
         let recogniser = UITapGestureRecognizer()
         recogniser.addTarget(self, action: #selector(self.selectDatesToViewLocations(gesture:)))
         self.calendarImageView.isUserInteractionEnabled = true
@@ -112,6 +109,9 @@ internal class MapViewController: UIViewController, MKMapViewDelegate, MapSettin
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+        
+        // add gesture recognizers to today button
+        buttonTodayTouchUp(UIBarButtonItem())
         
         // check token
         self.addChildViewController(MapViewController.authoriseVC)

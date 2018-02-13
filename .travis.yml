@@ -46,7 +46,7 @@ before_script:
 script:
 - cd HATDeX/
 - bundle exec pod repo update
-- "bundle exec fastlane beta FABRIC_API_TOKEN:$FABRIC_API_TOKEN"
+- "bundle exec fastlane release FABRIC_API_TOKEN:$FABRIC_API_TOKEN"
 #
 after_script:
 - security delete-keychain ios-build.keychain

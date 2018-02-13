@@ -5280,7 +5280,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LQv-hb-I1N">
-                                                    <rect key="frame" x="145" y="14.5" width="30.5" height="16.5"/>
+                                                    <rect key="frame" x="145" y="14" width="30.5" height="16.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dw-gI-i5x">
                                                             <rect key="frame" x="0.0" y="0.0" width="30.5" height="16.5"/>
