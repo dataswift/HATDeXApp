@@ -196,6 +196,11 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
      */
     private func checkOfferStatus(status: String) {
         
+        guard self.receivedOffer != nil else {
+            
+            return
+        }
+        
         if receivedOffer?.reward.rewardType == "service" {
             
             if status == "completed" || status == "redeemed" {
@@ -216,9 +221,9 @@ internal class DataOfferDetailsViewController: UIViewController, UserCredentials
             }
         }
         
-        if receivedOffer?.reward.rewardType == "voucher" {
+        if receivedOffer?.reward.rewardType == "voucher" && self.receivedOffer?.reward.codes != nil {
         
-            if status == "completed" || status == "redeemed" {
+            if (status == "completed" || status == "redeemed") && !(self.receivedOffer?.reward.codes!.isEmpty)! {
                 
                 if let code = self.receivedOffer?.reward.codes?[0] {
                     
