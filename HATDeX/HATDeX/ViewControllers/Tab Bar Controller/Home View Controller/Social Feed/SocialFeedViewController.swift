@@ -380,7 +380,7 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         
         return ["take": self.fetchDataParameter,
                 "skip": String(describing: self.tweets.count),
-                "orderBy": "updated_time",
+                "orderBy": "id",
                 "ordering": "descending"]
     }
     
