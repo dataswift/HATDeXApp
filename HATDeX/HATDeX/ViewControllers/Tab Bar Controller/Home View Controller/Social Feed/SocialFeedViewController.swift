@@ -505,10 +505,13 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
             
             func setProfileImage(profileImage: [HATFacebookProfileImageObject], newToken: String?) {
                 
-                if profileImage[0].image != nil {
+                if !profileImage.isEmpty {
                     
-                    self.facebookProfileImage = UIImageView()
-                    self.facebookProfileImage?.image = profileImage[0].image
+                    if profileImage[0].image != nil {
+                        
+                        self.facebookProfileImage = UIImageView()
+                        self.facebookProfileImage?.image = profileImage[0].image
+                    }
                 }
             }
             
