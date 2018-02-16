@@ -34,7 +34,6 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
-*.cer
 
 ## Playgrounds
 timeline.xctimeline
@@ -86,4 +85,8 @@ build
 *.gpx
 
 # temp files
+<<<<<<< HEAD
 *.swp
+=======
+*.swp
+>>>>>>> v2.4.1
