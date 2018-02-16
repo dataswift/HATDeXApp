@@ -19,6 +19,9 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+*.cer
+*.p12
+*.tar
 
 ## Other
 *.xccheckout
@@ -31,7 +34,6 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
-*.cer
 
 ## Playgrounds
 timeline.xctimeline
@@ -65,17 +67,22 @@ Carthage/Build
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
+HATDeX/fastlane/report.xml
+HATDeX/fastlane/Preview.html
+HATDeX/fastlane/screenshots
+HATDeX/fastlane/test_output
+HATDeX/fastlane/Gymfile
+HATDeX/fastlane/Deliverfile
 
 ### Xcode ###
 build
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
+*.mobileprovision
 
 # GPS Related file to simulate movement
 *.gpx
 
+# temp files
+*.swp
