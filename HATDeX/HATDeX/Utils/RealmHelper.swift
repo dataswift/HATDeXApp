@@ -198,7 +198,7 @@ public class RealmHelper {
                 return
             }
             
-            if minutes > 5 {
+            if minutes > 30 {
                 
                 do {
                     

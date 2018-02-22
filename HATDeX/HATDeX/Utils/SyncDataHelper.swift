@@ -83,14 +83,14 @@ internal class SyncDataHelper: UserCredentialsProtocol {
             
         var theBlockDataPoints: [DataPoint] = []
         
-        for dataPoint in results where dataPoint.longitude != 0 && dataPoint.latitude != 0 && dataPoint.verticalAccuracy != 0 && !dataPoint.isInvalidated {
+        for dataPoint in results where dataPoint.longitude != 0 && dataPoint.latitude != 0 && dataPoint.verticalAccuracy != 0 && !dataPoint.isInvalidated && theBlockDataPoints.count < 100 {
             
             // append
             theBlockDataPoints.append(dataPoint)
         }
         
         // only sync if we have data
-        if theBlockDataPoints.count > 10 {
+        if theBlockDataPoints.count > 10 && self.userToken != "" {
             
             do {
                 
@@ -129,6 +129,7 @@ internal class SyncDataHelper: UserCredentialsProtocol {
                     KeychainHelper.setKeychainValue(key: newToken, value: Constants.Keychain.userToken)
                 }
             })
+            
             return true
         }
         
