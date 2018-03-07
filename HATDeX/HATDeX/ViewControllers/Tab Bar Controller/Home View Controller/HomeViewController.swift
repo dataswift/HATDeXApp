@@ -213,7 +213,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
         
         // set up elements
         let usersHAT = userDomain.components(separatedBy: ".")[0]
-        self.helloLabel.text = "Hello \(usersHAT)!"
+        self.helloLabel.text = "Hello \(usersHAT)!" 
         
         SystemStatusWrapperHelper.getSystemStatus(userToken: userToken, userDomain: userDomain, successRespond: self.updateRingProgressBar, failRespond: CrashLoggerHelper.JSONParsingErrorLogWithoutAlert)
         

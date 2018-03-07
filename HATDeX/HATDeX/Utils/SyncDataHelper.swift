@@ -66,14 +66,14 @@ internal class SyncDataHelper: UserCredentialsProtocol {
      
      - returns: A Bool indicating if we have data to sync or not
      */
-    func checkNextBlockToSync() -> Bool {
+    func checkNextBlockToSync(completion: @escaping (Bool) -> Void) {
         
         RealmHelper.removeSyncedLocationsFromDB()
         RealmHelper().checkSyncingLocations()
 
         guard let realm = RealmHelper.getRealm() else {
             
-            return false
+            return
         }
 
         // predicate to check for nil sync field
@@ -90,7 +90,7 @@ internal class SyncDataHelper: UserCredentialsProtocol {
         }
         
         // only sync if we have data
-        if theBlockDataPoints.count > 10 && self.userToken != "" {
+        if theBlockDataPoints.count > 10 {
             
             do {
                 
@@ -120,20 +120,19 @@ internal class SyncDataHelper: UserCredentialsProtocol {
                                 dataPoint.syncStatus = "synced"
                                 dataPoint.dateSyncStatusChanged = Int(Date().timeIntervalSince1970)
                             }
+                            
+                            completion(true)
                         }
                     } catch let error {
                         
                         print(error)
+                        completion(false)
                     }
                     
                     KeychainHelper.setKeychainValue(key: newToken, value: Constants.Keychain.userToken)
                 }
             })
-            
-            return true
         }
-        
-        return false
     }
     
     /**

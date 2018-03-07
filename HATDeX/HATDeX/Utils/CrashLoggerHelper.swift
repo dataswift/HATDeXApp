@@ -479,21 +479,13 @@ internal struct CrashLoggerHelper {
      
      - parameter message: The custom message to add to crashlytics
      - parameter error: The error returned from the server
-     
-     - returns: A ready to present UIAlertController with alert type and one OK button
      */
     @discardableResult
-    static func customErrorLog(message: String, error: Error) -> UIAlertController {
+    static func customErrorLog( error: Error, userInfo: [String: Any]?) {
         
         Crashlytics.sharedInstance().recordError(
             error,
-            withAdditionalUserInfo: [message: ""])
-        
-        return UIAlertController.createOKAlert(
-            alertMessage: message,
-            alertTitle: NSLocalizedString("error_label", comment: "error"),
-            okTitle: "OK",
-            proceedCompletion: {})
+            withAdditionalUserInfo: userInfo)
     }
 
 }

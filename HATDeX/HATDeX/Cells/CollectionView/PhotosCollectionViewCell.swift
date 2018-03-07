@@ -156,7 +156,7 @@ internal class PhotosCollectionViewCell: UICollectionViewCell {
                         weakSelf.setImageInUIImageView(image: UIImage(named: Constants.ImageNames.imageDeleted)!)
                         if error != nil {
                             
-                            CrashLoggerHelper.customErrorLog(message: "", error: error!)
+                            CrashLoggerHelper.customErrorLog(error: error!, userInfo: ["": ""])
                         }
                         
                         errorCallBack?(error!)

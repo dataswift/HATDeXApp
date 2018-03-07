@@ -590,6 +590,7 @@
 		60FB24041F3A0B6C001A5EFD /* GoDeepCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB24031F3A0B6C001A5EFD /* GoDeepCollectionViewController.swift */; };
 		60FB24061F3A0C75001A5EFD /* GoDeepObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB24051F3A0C75001A5EFD /* GoDeepObject.swift */; };
 		60FB24081F3A0F99001A5EFD /* GoDeepCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB24071F3A0F99001A5EFD /* GoDeepCollectionViewCell.swift */; };
+		60FC6F4B204324EA007A85EE /* mapstogpx20170220_154311.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 60FC6F4A204324EA007A85EE /* mapstogpx20170220_154311.gpx */; };
 		7DDE79ADA898F4961733EEC5 /* Pods_HATDeXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C645BB3A94E669867354068A /* Pods_HATDeXUITests.framework */; };
 		95ADA004C97262D0E0E2414E /* Pods_HATDeX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5B39F59CF757EC7480103A /* Pods_HATDeX.framework */; };
 		B5138ACE1D1ECA2C00CD1530 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5138ACD1D1ECA2C00CD1530 /* NetworkHelper.swift */; };
@@ -825,6 +826,7 @@
 		60FB24031F3A0B6C001A5EFD /* GoDeepCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoDeepCollectionViewController.swift; sourceTree = "<group>"; };
 		60FB24051F3A0C75001A5EFD /* GoDeepObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoDeepObject.swift; sourceTree = "<group>"; };
 		60FB24071F3A0F99001A5EFD /* GoDeepCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoDeepCollectionViewCell.swift; sourceTree = "<group>"; };
+		60FC6F4A204324EA007A85EE /* mapstogpx20170220_154311.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapstogpx20170220_154311.gpx; path = ../../HATApp/HATApp/HATApp/mapstogpx20170220_154311.gpx; sourceTree = "<group>"; };
 		6E179F656EAC20F840A9A87B /* Pods-HATDeXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7AD3B1195D19AF412C2EB870 /* Pods-HATDeXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4E8148AE275A0D3AD63B64 /* Pods-HATDeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeX.release.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX.release.xcconfig"; sourceTree = "<group>"; };
@@ -1282,6 +1284,7 @@
 		B564E95C1D19717900EDB8F1 = {
 			isa = PBXGroup;
 			children = (
+				60FC6F4A204324EA007A85EE /* mapstogpx20170220_154311.gpx */,
 				604E0C8F1F643CC4007DA3AA /* Fastlane */,
 				08D0D14BBCEF6FAAACE465BA /* Frameworks */,
 				B564E9661D19717900EDB8F1 /* Products */,
@@ -1572,6 +1575,7 @@
 				6000CE5F1DE728580076E173 /* OpenSans-ExtraBold.ttf in Resources */,
 				6000CE701DE7288A0076E173 /* ss-glyphish-outlined.ttf in Resources */,
 				B564E9991D19862200EDB8F1 /* Localizable.strings in Resources */,
+				60FC6F4B204324EA007A85EE /* mapstogpx20170220_154311.gpx in Resources */,
 				6000CE631DE728580076E173 /* OpenSans-LightItalic.ttf in Resources */,
 				6000CE6A1DE728640076E173 /* OpenSans-CondBold.ttf in Resources */,
 				6000CE6E1DE728770076E173 /* ss-glyphish-filled.ttf in Resources */,

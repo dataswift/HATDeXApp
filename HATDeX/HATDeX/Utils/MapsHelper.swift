@@ -124,7 +124,7 @@ internal struct MapsHelper {
         // add data
         _ = RealmHelper.addData(latestLocation)
         let syncHelper = SyncDataHelper()
-        _ = syncHelper.checkNextBlockToSync()
+        _ = syncHelper.checkNextBlockToSync(completion: { _ in return })
     }
 
 }

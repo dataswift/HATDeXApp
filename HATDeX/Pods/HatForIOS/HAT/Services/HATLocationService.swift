@@ -173,7 +173,7 @@ public struct HATLocationService {
         
         var urlRequest: URLRequest = URLRequest.init(url: URL(string: "https://\(userDomain)/api/v2/data/rumpel/locations/ios?skipErrors=true")!)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
-        urlRequest.addValue(userToken, forHTTPHeaderField: "x-auth-token")
+        urlRequest.addValue(HATDataPlugCredentials.locationDataPlugToken, forHTTPHeaderField: "x-auth-token")
         urlRequest.networkServiceType = .background
         urlRequest.httpBody = encoded
         
@@ -201,6 +201,9 @@ public struct HATLocationService {
             } else if response.response?.statusCode == 201 {
                 
                 completion?(true, tokenToReturn)
+            } else {
+                
+                completion?(false, nil)
             }
         })
     }

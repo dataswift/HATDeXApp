@@ -113,22 +113,19 @@ internal class UpdateLocations: NSObject, CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         
-        let message = "Monitoring failed for region with identifier: \(region!.identifier)"
-        CrashLoggerHelper.customErrorLog(message: message, error: error)
+        CrashLoggerHelper.customErrorLog(error: error, userInfo: ["Monitoring failed for region with identifier:": region!.identifier])
     }
     
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
-        let message = "Location Manager failed with the following error: \(error)"
-        CrashLoggerHelper.customErrorLog(message: message, error: error)
+        CrashLoggerHelper.customErrorLog(error: error, userInfo: ["Location Manager failed with the following error:": error])
     }
     
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
         
         if error != nil {
             
-            let message = "error: \(error!.localizedDescription), status code: \(String(describing: manager.monitoredRegions))"
-            CrashLoggerHelper.customErrorLog(message: message, error: error!)
+            CrashLoggerHelper.customErrorLog(error: error!, userInfo: ["error": error!.localizedDescription, "status code:": manager.monitoredRegions])
         }
     }
     

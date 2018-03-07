@@ -12,6 +12,7 @@
 
 import Crashlytics
 import Fabric
+import HatForIOS
 import UIKit
 
 // MARK: Class
@@ -78,7 +79,7 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
 ////        }
 //        let token = deviceToken.reduce("", { $0 + String(format: "%02x", $1) })
 //        print(token)
-//        print("Did registered")
+//        print("Did registered")/.
 //    }
 //    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
 //        print("Failed")
@@ -86,16 +87,31 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
+        let startDate = Date()
         let taskID = beginBackgroundUpdateTask()
         let syncHelper = SyncDataHelper()
-        if syncHelper.checkNextBlockToSync() == true {
+        syncHelper.checkNextBlockToSync(completion: { [weak self] result in
             
-            completionHandler(.newData)
-        } else {
+            let endDate = Date()
+            let executionTime = endDate.timeIntervalSince(startDate)
             
-            completionHandler(.noData)
-        }
-        self.endBackgroundUpdateTask(taskID: taskID)
+            let notification = UILocalNotification()
+            notification.fireDate = Date(timeIntervalSinceNow: 5)
+            notification.alertBody = "Performed fetch"
+            notification.alertAction = "Total time: \(String(describing: executionTime))"
+            UIApplication.shared.scheduleLocalNotification(notification)
+            
+            CrashLoggerHelper.customErrorLog(error: HATError.generalError("", nil, nil), userInfo: ["duration": executionTime])
+            if result {
+                
+                completionHandler(.newData)
+            } else {
+                
+                completionHandler(.noData)
+            }
+            
+            self?.endBackgroundUpdateTask(taskID: taskID)
+        })
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -542,7 +542,7 @@ internal class PhataPictureViewController: UIViewController, UserCredentialsProt
                                 
                                 if error != nil {
                                     self?.imageView!.cropImage(width: self!.imageView!.frame.width, height: self!.imageView!.frame.height)
-                                    CrashLoggerHelper.customErrorLog(message: "", error: error!)
+                                    CrashLoggerHelper.customErrorLog(error: error!, userInfo: ["": ""])
                                 }
                             },
                             update: nil
