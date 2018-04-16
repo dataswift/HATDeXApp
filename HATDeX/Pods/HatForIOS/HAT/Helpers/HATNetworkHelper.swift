@@ -91,32 +91,36 @@ public class HATNetworkHelper: NSObject {
                     
                     let header: [AnyHashable: Any]? = response.response?.allHeaderFields
                     let token: String? = header?["x-auth-token"] as? String
-                    let tokenToReturn: String? = HATTokenHelper.checkTokenScope(token: token)
                     
-                    // check if we have a value and return it
-                    if let value: Any = response.result.value {
+                    if response.response?.statusCode == 401 {
                         
-                        let json: JSON = JSON(value)
-                        if token != nil {
-                            
-                            completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: json, token: tokenToReturn))
-                        } else {
-                            
-                            completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: json, token: nil))
-                        }
-                        
-                        // else return isSuccess: false and nil for value
+                        completion(HATNetworkHelper.ResultType.error(error: AuthenicationError.tokenValidationFailed("expired"), statusCode: response.response?.statusCode))
                     } else {
                         
-                        if token != nil {
+                        // check if we have a value and return it
+                        if let value: Any = response.result.value {
                             
-                            completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: tokenToReturn))
+                            let json: JSON = JSON(value)
+                            if token != nil || 200 ... 299 ~= response.response!.statusCode {
+                                
+                                completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: json, token: token))
+                            } else {
+                                
+                                completion(HATNetworkHelper.ResultType.error(error: HATError.generalError("Unexpected Error", response.response?.statusCode, nil), statusCode: response.response?.statusCode))
+                            }
+                            
+                            // else return isSuccess: false and nil for value
                         } else {
                             
-                            completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: nil))
+                            if token != nil || 200 ... 299 ~= response.response!.statusCode {
+                                
+                                completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: token))
+                            } else {
+                                
+                                completion(HATNetworkHelper.ResultType.error(error: HATError.generalError("Unexpected Error", response.response?.statusCode, nil), statusCode: response.response?.statusCode))
+                            }
                         }
                     }
-                    
                 // in case of failure return the error but check for internet connection or unauthorised status and let the user know
                 case .failure(let error):
                     
@@ -168,14 +172,13 @@ public class HATNetworkHelper: NSObject {
                     
                     let header: [AnyHashable: Any]? = response.response?.allHeaderFields
                     let token: String? = header?["x-auth-token"] as? String
-                    let tokenToReturn: String? = HATTokenHelper.checkTokenScope(token: token)
                     
                     // check if we have a value and return it
                     if let value: String = response.result.value {
                         
                         if token != nil {
                             
-                            completion(HATNetworkHelper.ResultTypeString.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: value, token: tokenToReturn))
+                            completion(HATNetworkHelper.ResultTypeString.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: value, token: token))
                         } else {
                             
                             completion(HATNetworkHelper.ResultTypeString.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: value, token: nil))
@@ -185,7 +188,7 @@ public class HATNetworkHelper: NSObject {
                         
                         if token != nil {
                             
-                            completion(HATNetworkHelper.ResultTypeString.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: tokenToReturn))
+                            completion(HATNetworkHelper.ResultTypeString.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: token))
                         } else {
                             
                             completion(HATNetworkHelper.ResultTypeString.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: nil))
@@ -210,11 +213,11 @@ public class HATNetworkHelper: NSObject {
      */
     public class func uploadFile(image: Data, url: String, progressUpdateHandler: ((Double) -> Void)?, completion: @escaping (_ r: HATNetworkHelper.ResultType) -> Void) {
         
-        let headers = ["x-amz-server-side-encryption": "AES256"]
+        let headers: [String: String] = ["x-amz-server-side-encryption": "AES256"]
         
         Alamofire.upload(image, to: URL(string: url)!, method: .put, headers: headers).uploadProgress(closure: {(progress) -> Void in
             
-            if let updateFunc = progressUpdateHandler {
+            if let updateFunc: ((Double) -> Void) = progressUpdateHandler {
                 
                 updateFunc(progress.fractionCompleted)
             }
@@ -222,7 +225,6 @@ public class HATNetworkHelper: NSObject {
             
             let header: [AnyHashable: Any]? = response.response?.allHeaderFields
             let token: String? = header?["x-auth-token"] as? String
-            let tokenToReturn: String? = HATTokenHelper.checkTokenScope(token: token)
             
             switch response.result {
             case .success:
@@ -232,7 +234,7 @@ public class HATNetworkHelper: NSObject {
                     
                     if token != nil {
                         
-                        completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: JSON(value), token: tokenToReturn))
+                        completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: JSON(value), token: token))
                     } else {
                         
                         completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: true, statusCode: response.response?.statusCode, result: JSON(value), token: nil))
@@ -242,7 +244,7 @@ public class HATNetworkHelper: NSObject {
                     
                     if token != nil {
                         
-                        completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: tokenToReturn))
+                        completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: token))
                     } else {
                         
                         completion(HATNetworkHelper.ResultType.isSuccess(isSuccess: false, statusCode: response.response?.statusCode, result: "", token: nil))
@@ -270,7 +272,7 @@ public class HATNetworkHelper: NSObject {
         
         if let url: String = url,
             let urlComponents: NSURLComponents = NSURLComponents(string: url),
-            let queryItems: [URLQueryItem] = (urlComponents.queryItems as [URLQueryItem]!) {
+            let queryItems: [URLQueryItem] = (urlComponents.queryItems) {
             
             let parameter: URLQueryItem? = queryItems.first(where: { item in item.name == param })
             

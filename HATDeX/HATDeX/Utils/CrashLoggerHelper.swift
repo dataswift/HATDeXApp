@@ -84,7 +84,7 @@ internal struct CrashLoggerHelper {
                 )
             }
             
-            let msg = NetworkHelper.exceptionFriendlyMessage(statusCode, defaultMessage: error.localizedDescription)
+            let msg: String = NetworkHelper.exceptionFriendlyMessage(statusCode, defaultMessage: error.localizedDescription)
             return UIAlertController.createOKAlert(
                 alertMessage: msg,
                 alertTitle: NSLocalizedString("error_label", comment: "error"),
@@ -215,7 +215,7 @@ internal struct CrashLoggerHelper {
     @discardableResult
     static func JSONParsingErrorLog(error: JSONParsingError) -> UIAlertController {
         
-        let crashlytics = Crashlytics.sharedInstance()
+        let crashlytics: Crashlytics = Crashlytics.sharedInstance()
         switch error {
         case .expectedFieldNotFound:
             
@@ -257,7 +257,7 @@ internal struct CrashLoggerHelper {
             }
             
             // no token in url callback redirect
-            let msg = NetworkHelper.exceptionFriendlyMessage(statusCode, defaultMessage: error.localizedDescription)
+            let msg: String = NetworkHelper.exceptionFriendlyMessage(statusCode, defaultMessage: error.localizedDescription)
             return UIAlertController.createOKAlert(
                 alertMessage: msg,
                 alertTitle: NSLocalizedString("error_label", comment: "error"),
@@ -266,7 +266,7 @@ internal struct CrashLoggerHelper {
         default:
             
             // no token in url callback redirect
-            let msg = "No internet connection"
+            let msg: String = "No internet connection"
             return UIAlertController.createOKAlert(
                 alertMessage: msg,
                 alertTitle: NSLocalizedString("error_label", comment: "error"),
@@ -284,7 +284,7 @@ internal struct CrashLoggerHelper {
      */
     static func JSONParsingErrorLogWithoutAlert(error: JSONParsingError) {
         
-        let crashlytics = Crashlytics.sharedInstance()
+        let crashlytics: Crashlytics = Crashlytics.sharedInstance()
         switch error {
         case .expectedFieldNotFound:
             
@@ -408,7 +408,7 @@ internal struct CrashLoggerHelper {
         default:
             
             // no token in url callback redirect
-            let msg = "No internet connection"
+            let msg: String = "No internet connection"
             return UIAlertController.createOKAlert(
                 alertMessage: msg,
                 alertTitle: NSLocalizedString("error_label", comment: "error"),
@@ -456,7 +456,7 @@ internal struct CrashLoggerHelper {
             }
             
             // no token in url callback redirect
-            let msg = NetworkHelper.exceptionFriendlyMessage(statusCode, defaultMessage: error.localizedDescription)
+            let msg: String = NetworkHelper.exceptionFriendlyMessage(statusCode, defaultMessage: error.localizedDescription)
             return UIAlertController.createOKAlert(
                 alertMessage: msg,
                 alertTitle: NSLocalizedString("error_label", comment: "error"),
@@ -465,7 +465,7 @@ internal struct CrashLoggerHelper {
         default:
             
             // no token in url callback redirect
-            let msg = "No internet connection"
+            let msg: String = "No internet connection"
             return UIAlertController.createOKAlert(
                 alertMessage: msg,
                 alertTitle: NSLocalizedString("error_label", comment: "error"),
@@ -480,7 +480,6 @@ internal struct CrashLoggerHelper {
      - parameter message: The custom message to add to crashlytics
      - parameter error: The error returned from the server
      */
-    @discardableResult
     static func customErrorLog( error: Error, userInfo: [String: Any]?) {
         
         Crashlytics.sharedInstance().recordError(

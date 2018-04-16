@@ -15,7 +15,7 @@ import SwiftyJSON
 // MARK: Class
 
 /// A class representing the facebook social feed object
-public struct HATFacebookSocialFeedObject: HatApiType, HATSocialFeedObject, Comparable {
+public struct HATFacebookSocialFeedObject: HatApiType, HATSocialFeedObject, Comparable, HATObject {
     
     // MARK: - Fields
     

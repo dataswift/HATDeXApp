@@ -74,7 +74,7 @@ public struct HATFitbitService {
                         }
                     }
                 }
-            }
+        }
         )
     }
     
@@ -294,6 +294,11 @@ public struct HATFitbitService {
                     
                 // inform user that there was an error
                 case .error(let error, let statusCode):
+                    
+                    if statusCode == 403 {
+                        
+                        successCallback(false, fitbitToken)
+                    }
                     
                     let message: String = NSLocalizedString("Server responded with error", comment: "")
                     errorCallback(.generalError(message, statusCode, error))

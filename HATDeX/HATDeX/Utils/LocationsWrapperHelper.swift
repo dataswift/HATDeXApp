@@ -39,16 +39,17 @@ internal struct LocationsWrapperHelper {
                     userToken: userToken,
                     successCallback: { locations, newToken in
                         
-                        var arrayToReturn = locations
+                        var arrayToReturn: [HATLocationsObject] = locations
                         // predicate to check for nil sync field
-                        let predicate = NSPredicate(format: "lastSynced == %@")
+                        let predicate: NSPredicate = NSPredicate(format: "lastSynced == %@")
                         
                         let locationsDB = RealmHelper.getResults(predicate)!
-                        for location in locationsDB where location.dateCreated <= Date.endOfDateInUnixTimeStape(date: locationsToDate!)! && location.dateCreated >= Date.startOfDateInUnixTimeStape(date: locationsFromDate!) {
+                        
+                        for location: DataPoint in locationsDB where location.dateCreated <= Date.endOfDateInUnixTimeStamp(date: locationsToDate!)! && location.dateCreated >= Date.startOfDateInUnixTimeStamp(date: locationsFromDate!) {
                             
-                            var tempLoc = HATLocationsObject()
-                            tempLoc.data.latitude = Float(location.latitude)
-                            tempLoc.data.longitude = Float(location.longitude)
+                            var tempLoc: HATLocationsObject = HATLocationsObject()
+                            tempLoc.data.latitude = location.latitude
+                            tempLoc.data.longitude = location.longitude
                             tempLoc.data.dateCreated = location.dateCreated
                             
                             arrayToReturn.append(tempLoc)
@@ -63,12 +64,13 @@ internal struct LocationsWrapperHelper {
                 )
             }
             
-            let startOfDay = Date.startOfDateInUnixTimeStape(date: locationsFromDate!)
-            let endOfDay = Date.endOfDateInUnixTimeStape(date: locationsToDate!)
+            let startOfDay: Int = Date.startOfDateInUnixTimeStamp(date: locationsFromDate!)
+            let endOfDay: Int? = Date.endOfDateInUnixTimeStamp(date: locationsToDate!)
             
             HATAccountService.createCombinator(
                 userDomain: userDomain,
                 userToken: userToken,
+                endPoint: "rumpel/locations/ios",
                 combinatorName: "locationsfilter",
                 fieldToFilter: "dateCreated",
                 lowerValue: startOfDay,

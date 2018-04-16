@@ -85,18 +85,18 @@ internal class AuthoriseUserViewController: UIViewController, UserCredentialsPro
     private func dismissView(notif: Notification) {
         
         // get the url form the auth callback
-        if let url = notif.object as? NSURL {
+        if let url: NSURL = notif.object as? NSURL {
             
             // first of all, we close the safari vc
             self.safari?.dismissSafari(animated: true, completion: nil)
             
             // authorize with hat
             HATLoginService.loginToHATAuthorization(
-                userDomain: userDomain,
+                applicationName: Constants.AppName.name,
                 url: url,
-                success: { [weak self] token in
+                success: { [weak self] token, _ in
             
-                    if let weakSelf = self {
+                    if let weakSelf: AuthoriseUserViewController = self {
                         
                         KeychainHelper.setKeychainValue(key: Constants.Keychain.userToken, value: token!)
                         KeychainHelper.setKeychainValue(key: Constants.Keychain.logedIn, value: Constants.Keychain.Values.setTrue)
@@ -161,11 +161,11 @@ internal class AuthoriseUserViewController: UIViewController, UserCredentialsPro
         }
         
         // reset the stack to avoid allowing back
-        let result = KeychainHelper.getKeychainValue(key: Constants.Keychain.logedIn)
+        let result: String? = KeychainHelper.getKeychainValue(key: Constants.Keychain.logedIn)
         
         if result == "false" || userDomain == "" || userToken == "" {
             
-            if let loginViewController = viewController.storyboard?.instantiateViewController(withIdentifier: Constants.Segue.loginViewController) as? LoginViewController {
+            if let loginViewController: LoginViewController = viewController.storyboard?.instantiateViewController(withIdentifier: Constants.Segue.loginViewController) as? LoginViewController {
                 
                 viewController.navigationController?.pushViewController(loginViewController, animated: false)
             }

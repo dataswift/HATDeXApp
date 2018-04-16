@@ -98,7 +98,7 @@ public struct HATGoogleCalendarDataObject: HATObject {
     /// Whether this is a locked event copy where no changes can be made to the main event fields "summary", "description", "location", "start", "end" or "recurrence". The default is False. Read-Only.
     public var locked: Bool?
     /// Information about the event's reminders for the authenticated user.
-    public var reminders: HATGoogleCalendarRemindersObject = HATGoogleCalendarRemindersObject()
+    public var reminders: HATGoogleCalendarRemindersObject?
     /// Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the event.
     public var source: HATGoogleCalendarSourceObject?
     /// File attachments for the event. Currently only Google Drive attachments are supported.

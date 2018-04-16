@@ -54,18 +54,20 @@ public struct HATLoginService {
      - parameter success: A function to execute after finishing, returing the userToken
      - parameter failed: A function to execute after finishing, returning AuthenicationError
      */
-    public static func loginToHATAuthorization(userDomain: String, url: NSURL, success: ((String?) -> Void)?, failed: ((AuthenicationError) -> Void)?) {
+    public static func loginToHATAuthorization(applicationName: String, url: NSURL, success: ((String?, String?) -> Void)?, failed: ((AuthenicationError) -> Void)?) {
         
         // get token out
         if let token: String = HATNetworkHelper.getQueryStringParameter(url: url.absoluteString, param: RequestHeaders.tokenParamName) {
             
+            let decodedToken: JWT? = try? decode(jwt: token)
+            let userDomain: String? = decodedToken?.claim(name: "iss").string
             // make asynchronous call
             // parameters..
             let parameters: Dictionary<String, String> = [:]
             // auth header
             let headers: [String: String] = ["Accept": ContentType.text, "Content-Type": ContentType.text]
             
-            if let url: String = HATAccountService.theUserHATDomainPublicKeyURL(userDomain) {
+            if let url: String = HATAccountService.theUserHATDomainPublicKeyURL(userDomain!) {
                 
                 //. application/json
                 HATNetworkHelper.asynchronousStringRequest(url, method: HTTPMethod.get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.text, parameters: parameters as Dictionary<String, AnyObject>, headers: headers) { (response: HATNetworkHelper.ResultTypeString) -> Void in
@@ -89,9 +91,14 @@ public struct HATLoginService {
                                 return
                             }
                             
-                            let accessScope = jwt.claim(name: "accessScope").string
+                            let appName: String? = jwt.claim(name: "application").string
+                            let scope: String? = jwt.claim(name: "accessScope").string
                             
-                            if accessScope != "owner" {
+                            if appName != applicationName && scope == nil {
+                                
+                                failed?(.cannotDecodeToken(token))
+                                return
+                            } else if scope != "owner" && appName == nil {
                                 
                                 failed?(.cannotDecodeToken(token))
                                 return
@@ -131,7 +138,7 @@ public struct HATLoginService {
                                 
                                 if isSuccessful {
                                     
-                                    success?(token)
+                                    success?(userDomain, token)
                                 } else {
                                     
                                     failed?(.tokenValidationFailed(isSuccessful.description))

@@ -76,7 +76,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
      */
     @IBAction func joinOurCommunityButtonAction(_ sender: Any) {
         
-        if let url = URL(string: Constants.HATEndpoints.mailingList) {
+        if let url: URL = URL(string: Constants.HATEndpoints.mailingList) {
             
             UIApplication.shared.openURL(url)
         }
@@ -100,7 +100,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if self.inputUserHATDomain.text != "" {
             
-            if let config = Bundle.main.object(forInfoDictionaryKey: "Config") as? String {
+            if let config: String = Bundle.main.object(forInfoDictionaryKey: "Config") as? String {
                 
                 if config == "Beta" {
                     
@@ -152,7 +152,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
      */
     private func removeDomainFromUserEnteredText(domain: String) -> String {
         
-        let array = domain.components(separatedBy: ".")
+        let array: [String] = domain.components(separatedBy: ".")
         
         if !array.isEmpty {
             
@@ -203,7 +203,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     private func updateVersion() {
         
         // app version
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+        if let version: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             
             self.labelAppVersion.text = "v. " + version
         }
@@ -225,14 +225,12 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     private func createToolBar(toolBarTitle: String) {
         
         // Create a button bar for the number pad
-        let toolbar = UIToolbar()
+        let toolbar: UIToolbar = UIToolbar()
         toolbar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 35)
         
-        let barButtonTitle = toolBarTitle
-        
         // Setup the buttons to be put in the system.
-        let autofillButton = UIBarButtonItem(
-            title: barButtonTitle,
+        let autofillButton: UIBarButtonItem = UIBarButtonItem(
+            title: toolBarTitle,
             style: .done,
             target: self,
             action: #selector(self.autofillPHATA))
@@ -243,7 +241,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         toolbar.barTintColor = .black
         toolbar.setItems([autofillButton], animated: true)
         
-        if barButtonTitle != "" {
+        if toolBarTitle != "" {
             
             self.inputUserHATDomain.inputAccessoryView = toolbar
             self.inputUserHATDomain.inputAccessoryView?.backgroundColor = .black
@@ -265,7 +263,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
             color: .teal,
             cornerRadius: 15)
         
-        let label = UILabel().createLabel(
+        let label: UILabel = UILabel().createLabel(
             frame: CGRect(x: 0, y: 0, width: 120, height: 30),
             text: "Authenticating...",
             textColor: .white,
@@ -304,7 +302,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         // when the view appears clear the text field. The user might pressed sing out, this field must not contain the previous address
         self.inputUserHATDomain.text = ""
         
-        if let result = KeychainHelper.getKeychainValue(key: Constants.Keychain.hatDomainKey) {
+        if let result: String = KeychainHelper.getKeychainValue(key: Constants.Keychain.hatDomainKey) {
             
             self.createToolBar(toolBarTitle: result)
         }
@@ -318,7 +316,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc
     private func autofillPHATA() {
         
-        if let result = KeychainHelper.getKeychainValue(key: Constants.Keychain.hatDomainKey) {
+        if let result: String = KeychainHelper.getKeychainValue(key: Constants.Keychain.hatDomainKey) {
             
             self.inputUserHATDomain.text = result
         }
@@ -350,14 +348,14 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     private func hatLoginAuth(notification: NSNotification) {
         
         // get the url form the auth callback
-        if let url = notification.object as? NSURL {
+        if let url: NSURL = notification.object as? NSURL {
             
             // first of all, we close the safari vc
             self.safariVC?.dismissSafari(animated: true, completion: nil)
             
             self.createPopUp()
             
-            func success(token: String?) {
+            func success(userDomain: String?, token: String?) {
                 
                 self.hidePopUpLabel()
                 
@@ -366,7 +364,12 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
                     KeychainHelper.setKeychainValue(key: Constants.Keychain.userToken, value: token!)
                 }
                 
-                let userDomain = HATAccountService.theUserHATDomain()
+                if userDomain != "" || userDomain != nil {
+                    
+                    KeychainHelper.setKeychainValue(key: Constants.Keychain.hatDomainKey, value: userDomain!)
+                }
+                
+                let userDomain: String = HATAccountService.theUserHATDomain()
                 
                 self.enableLocationDataPlug(userDomain, userDomain)
                 _ = self.navigationController?.popToRootViewController(animated: false)
@@ -376,14 +379,14 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 self.hidePopUpLabel()
                 
-                let alert = CrashLoggerHelper.authenticationErrorLog(error: error)
+                let alert: UIAlertController = CrashLoggerHelper.authenticationErrorLog(error: error)
                 self.present(alert, animated: true, completion: nil)
             }
             
             // authorize with hat
             KeychainHelper.setKeychainValue(key: Constants.Keychain.hatDomainKey, value: self.inputUserHATDomain.text!)
             HATLoginService.loginToHATAuthorization(
-                userDomain: self.inputUserHATDomain.text!,
+                applicationName: Constants.AppName.name,
                 url: url,
                 success: success,
                 failed: failed)
@@ -414,7 +417,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         
         func failed(error: JSONParsingError) {
             
-            let alert = CrashLoggerHelper.JSONParsingErrorLog(error: error)
+            let alert: UIAlertController = CrashLoggerHelper.JSONParsingErrorLog(error: error)
             self.present(alert, animated: true, completion: nil)
         }
         

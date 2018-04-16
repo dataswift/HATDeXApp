@@ -18,10 +18,10 @@ extension Date {
 
     func getTimeOfDay() -> String {
         
-        let calendar = Calendar.current
+        let calendar: Calendar = Calendar.current
         
-        let hour = calendar.component(.hour, from: self)
-        let minutes = calendar.component(.minute, from: self)
+        let hour: Int = calendar.component(.hour, from: self)
+        let minutes: Int = calendar.component(.minute, from: self)
         return "\(hour):\(minutes)"
     }
     
@@ -35,13 +35,13 @@ extension Date {
     public func timeAgoSinceDate() -> String {
         
         // get calendar and now date
-        let calendar = Calendar.current
-        let dateNow = self
+        let calendar: Calendar = Calendar.current
+        let dateNow: Date = self
         
         // calculate the earliest
-        let earliestDate = (dateNow as NSDate).earlierDate(self)
+        let earliestDate: Date = (dateNow as NSDate).earlierDate(self)
         // calculate the latest
-        let latestDate = (earliestDate == dateNow) ? self : dateNow
+        let latestDate: Date = (earliestDate == dateNow) ? self : dateNow
         
         // set up the componenets
         let components: DateComponents = (calendar as NSCalendar).components(
@@ -101,23 +101,23 @@ extension Date {
     
     func endOfDate(date: Date = Date()) -> Date? {
         
-        var components = DateComponents()
+        var components: DateComponents = DateComponents()
         components.day = 1
         components.second = -1
-        let startOfDay = Date().startOfDate(date: date)
+        let startOfDay: Date = Date().startOfDate(date: date)
         return Calendar.current.date(byAdding: components, to: startOfDay)
     }
     
-    static func startOfDateInUnixTimeStape(date: Date = Date()) -> Int {
+    static func startOfDateInUnixTimeStamp(date: Date = Date()) -> Int {
         
         let date: Date = Date().startOfDate(date: date)
         return Int(date.timeIntervalSince1970)
     }
     
-    static func endOfDateInUnixTimeStape(date: Date = Date()) -> Int? {
+    static func endOfDateInUnixTimeStamp(date: Date = Date()) -> Int? {
         
         //For End Date
-        if let endOfDate = Date().endOfDate(date: date) {
+        if let endOfDate: Date = Date().endOfDate(date: date) {
             
             return Int(endOfDate.timeIntervalSince1970)
         }

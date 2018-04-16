@@ -11,6 +11,7 @@
  */
 
 import Alamofire
+import SwiftyJSON
 
 // MARK: Struct
 
@@ -132,7 +133,7 @@ public struct HATService {
         let url: String = "https://hatters.hubofallthings.com/api/products/hat/validate-email"
         
         let parameters: [String: String] = ["email": email,
-                          "cluster": cluster]
+                                            "cluster": cluster]
         
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
@@ -177,7 +178,7 @@ public struct HATService {
         let url: String = "https://hatters.hubofallthings.com/api/products/hat/validate-hat"
         
         let parameters: [String: String] = ["address": address,
-                          "cluster": cluster]
+                                            "cluster": cluster]
         
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
@@ -191,26 +192,32 @@ public struct HATService {
                     failCallBack(.noInternetConnection)
                 } else {
                     
-                    let message: String = "Invalid address. HAT with such address already exists"
+                    let message: String = "Connection error. Please try again later."
                     failCallBack(.generalError(message, statusCode, error))
                 }
             // in case of success call the succesfulCallBack
-            case .isSuccess(let isSuccess, let statusCode, _, let newToken):
+            case .isSuccess(let isSuccess, let statusCode, let result, let newToken):
                 
                 if isSuccess && statusCode == 200 {
                     
                     succesfulCallBack("valid address", newToken)
                 } else if statusCode == 400 {
                     
-                    let message: String = "Invalid hat address. HAT with such address already exists"
-                    failCallBack(.generalError(message, statusCode, nil))
+                    if let message = result["cause"].string {
+                        
+                        failCallBack(.generalError(message, statusCode, nil))
+                    } else {
+                        
+                        let message: String = "Invalid address. HAT with such address already exists"
+                        failCallBack(.generalError(message, statusCode, nil))
+                    }
                 }
             }
         })
     }
     
     // MARK: - Purchase
-
+    
     /**
      Confirms the hat purchase
      
@@ -222,9 +229,10 @@ public struct HATService {
         
         let url: String = "https://hatters.hubofallthings.com/api/products/hat/purchase"
         
-        let body: [String: Any] = PurchaseObject.encode(from: purchaseModel)!
+        let body = PurchaseObject.encode(from: purchaseModel)
+        let test = JSON(body!).dictionaryObject!
         
-        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: body, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
+        HATNetworkHelper.asynchronousRequest(url, method: .post, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: test, headers: [:], completion: {(response: HATNetworkHelper.ResultType) -> Void in
             
             switch response {
                 

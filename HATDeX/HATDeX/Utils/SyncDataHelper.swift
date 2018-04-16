@@ -46,7 +46,7 @@ internal class SyncDataHelper: UserCredentialsProtocol {
     class func getLastSuccessfulSyncDate() -> Date! {
         
         // get standard user defaults
-        let preferences = UserDefaults.standard
+        let preferences: UserDefaults = UserDefaults.standard
         
         // search for the particular key, if found return it
         if let successfulSyncDate: Date = preferences.object(forKey: Constants.Preferences.successfulSyncDate) as? Date {
@@ -71,19 +71,19 @@ internal class SyncDataHelper: UserCredentialsProtocol {
         RealmHelper.removeSyncedLocationsFromDB()
         RealmHelper().checkSyncingLocations()
 
-        guard let realm = RealmHelper.getRealm() else {
+        guard let realm: Realm = RealmHelper.getRealm() else {
             
             return
         }
 
         // predicate to check for nil sync field
-        let predicate = NSPredicate(format: "lastSynced == %@")
-        let sortProperties = [SortDescriptor(keyPath: "dateAdded", ascending: true)]
+        let predicate: NSPredicate = NSPredicate(format: "lastSynced == %@")
+        let sortProperties: [SortDescriptor] = [SortDescriptor(keyPath: "dateAdded", ascending: true)]
         let results: Results<DataPoint> = realm.objects(DataPoint.self).filter(predicate).sorted(by: sortProperties)
             
         var theBlockDataPoints: [DataPoint] = []
         
-        for dataPoint in results where dataPoint.longitude != 0 && dataPoint.latitude != 0 && dataPoint.verticalAccuracy != 0 && !dataPoint.isInvalidated && theBlockDataPoints.count < 100 {
+        for dataPoint: DataPoint in results where dataPoint.longitude != 0 && dataPoint.latitude != 0 && dataPoint.verticalAccuracy != 0 && !dataPoint.isInvalidated && theBlockDataPoints.count < 100 {
             
             // append
             theBlockDataPoints.append(dataPoint)
@@ -96,7 +96,7 @@ internal class SyncDataHelper: UserCredentialsProtocol {
                 
                 try realm.write {
                     
-                    for dataPoint in theBlockDataPoints {
+                    for dataPoint: DataPoint in theBlockDataPoints {
                         
                         dataPoint.syncStatus = "syncing"
                         dataPoint.dateSyncStatusChanged = Int(Date().timeIntervalSince1970)
@@ -115,7 +115,7 @@ internal class SyncDataHelper: UserCredentialsProtocol {
                         
                         try realm.write {
                             
-                            for dataPoint in theBlockDataPoints {
+                            for dataPoint: DataPoint in theBlockDataPoints {
                                 
                                 dataPoint.syncStatus = "synced"
                                 dataPoint.dateSyncStatusChanged = Int(Date().timeIntervalSince1970)
@@ -150,12 +150,12 @@ internal class SyncDataHelper: UserCredentialsProtocol {
         
         var locations: [HATLocationsDataObject] = []
         
-        for datapoint in dataPoints {
+        for datapoint: DataPoint in dataPoints {
             
-            var tempLocation = HATLocationsDataObject()
+            var tempLocation: HATLocationsDataObject = HATLocationsDataObject()
             
-            tempLocation.latitude = Float(datapoint.latitude)
-            tempLocation.longitude = Float(datapoint.longitude)
+            tempLocation.latitude = datapoint.latitude
+            tempLocation.longitude = datapoint.longitude
             tempLocation.altitude = Float(datapoint.altitude)
             tempLocation.verticalAccuracy = Float(datapoint.verticalAccuracy)
             tempLocation.horizontalAccuracy = Float(datapoint.horizontalAccuracy)

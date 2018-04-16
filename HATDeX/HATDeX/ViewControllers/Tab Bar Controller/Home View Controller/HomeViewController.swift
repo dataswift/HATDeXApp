@@ -70,11 +70,11 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(
+        let cell: HomeCollectionViewCell? = collectionView.dequeueReusableCell(
             withReuseIdentifier: Constants.CellReuseIDs.homeScreenCell,
             for: indexPath) as? HomeCollectionViewCell
         
-        let orientation = UIInterfaceOrientation(rawValue: UIDevice.current.orientation.rawValue)!
+        let orientation: UIInterfaceOrientation = UIInterfaceOrientation(rawValue: UIDevice.current.orientation.rawValue)!
         
         return HomeCollectionViewCell.setUp(
             cell: cell!,
@@ -90,8 +90,8 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let orientation = UIInterfaceOrientation(rawValue: UIDevice.current.orientation.rawValue)!
-        let model = UIDevice.current.model
+        let orientation: UIInterfaceOrientation = UIInterfaceOrientation(rawValue: UIDevice.current.orientation.rawValue)!
+        let model: String = UIDevice.current.model
         
         if model == "iPhone" {
             
@@ -117,7 +117,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if let headerView = collectionView.dequeueReusableSupplementaryView(
+        if let headerView: HomeHeaderCollectionReusableView = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: Constants.CellReuseIDs.homeHeader,
             for: indexPath) as? HomeHeaderCollectionReusableView {
@@ -153,7 +153,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
         
         if self.tiles[indexPath.row].serviceName == "Notables" {
             
-            guard let url = URL(string: "notables://") else {
+            guard let url: URL = URL(string: "notables://") else {
                 
                 return
             }
@@ -212,8 +212,8 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
         self.location.locationManager?.requestAlwaysAuthorization()
         
         // set up elements
-        let usersHAT = userDomain.components(separatedBy: ".")[0]
-        self.helloLabel.text = "Hello \(usersHAT)!" 
+        let usersHAT: String = userDomain.components(separatedBy: ".")[0]
+        self.helloLabel.text = "Hello \(usersHAT)!"
         
         SystemStatusWrapperHelper.getSystemStatus(userToken: userToken, userDomain: userDomain, successRespond: self.updateRingProgressBar, failRespond: CrashLoggerHelper.JSONParsingErrorLogWithoutAlert)
         
@@ -224,7 +224,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
         
         super.viewDidAppear(animated)
         
-        let result = KeychainHelper.getKeychainValue(key: Constants.Keychain.newUser)
+        let result: String? = KeychainHelper.getKeychainValue(key: Constants.Keychain.newUser)
         
         if result != Constants.Keychain.Values.setTrue {
             
@@ -251,7 +251,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
     private func showNewbieScreens() {
         
         // set up the created page view controller
-        if let pageViewController = self.storyboard!.instantiateViewController(withIdentifier: "firstTimeOnboarding") as? FirstOnboardingPageViewController {
+        if let pageViewController: FirstOnboardingPageViewController = self.storyboard!.instantiateViewController(withIdentifier: "firstTimeOnboarding") as? FirstOnboardingPageViewController {
             
             pageViewController.view.createFloatingView(
                 frame: CGRect(
@@ -276,7 +276,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
     private func showInfoViewController(text: String) {
         
         // set up page controller
-        let imagePopUpPageViewController = ImagePopUpViewController.customInit(from: self.storyboard!)
+        let imagePopUpPageViewController: ImagePopUpViewController? = ImagePopUpViewController.customInit(from: self.storyboard!)
         
         self.tabBarController?.tabBar.isUserInteractionEnabled = false
         
@@ -291,7 +291,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
         
         DispatchQueue.main.async { [weak self] () -> Void in
             
-            if let weakSelf = self {
+            if let weakSelf: HomeViewController = self {
                 
                 // add the page view controller to self
                 weakSelf.addBlurToView()
@@ -350,18 +350,18 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
             
             self.ringProgressBar.isHidden = false
 
-            var attributedString = NSAttributedString(string: self.helloLabel.text! + "\n")
+            var attributedString: NSAttributedString = NSAttributedString(string: self.helloLabel.text! + "\n")
             self.helloLabel.text = attributedString.combineWith(
                 attributedText: NSAttributedString(string: "Total space \(data[2].kind.metric) \(data[2].kind.units!)")).string
             attributedString = NSAttributedString(string: self.helloLabel.text! + "\n")
             self.helloLabel.text = attributedString.combineWith(
                 attributedText: NSAttributedString(string: "Used space \(String(describing: Int(Float(data[4].kind.metric)!.rounded()))) \(data[4].kind.units!)")).string
             
-            let fullCircle = 2.0 * CGFloat(Double.pi)
+            let fullCircle: CGFloat = 2.0 * CGFloat(Double.pi)
             self.ringProgressBar.startPoint = -0.25 * fullCircle
             self.ringProgressBar.animationDuration = 0.2
             
-            let endPoint = CGFloat(max(Float(data[6].kind.metric)!, 1.0)) / 100
+            let endPoint: CGFloat = CGFloat(max(Float(data[6].kind.metric)!, 1.0)) / 100
             
             self.ringProgressBar.endPoint = (endPoint * fullCircle) + self.ringProgressBar.startPoint
             
@@ -378,7 +378,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
         
         if segue.identifier == Constants.Segue.homeToDataOffers {
             
-            if let vc = segue.destination as? DataOffersViewController {
+            if let vc: DataOffersViewController = segue.destination as? DataOffersViewController {
                 
                 vc.prefferedTitle = self.segueObjectValues.titleToPassOnToTheNextView
                 vc.prefferedInfoMessage = self.segueObjectValues.infoPopUpToPassOnToTheNextView
@@ -386,7 +386,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
             }
         } else if segue.identifier == Constants.Segue.notesSegue {
             
-            if let vc = segue.destination as? NotablesViewController {
+            if let vc: NotablesViewController = segue.destination as? NotablesViewController {
                 
                 vc.prefferedTitle = self.segueObjectValues.titleToPassOnToTheNextView
                 vc.prefferedInfoMessage = self.segueObjectValues.infoPopUpToPassOnToTheNextView
@@ -394,7 +394,7 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
             }
         } else if segue.identifier == Constants.Segue.homeToEditNoteSegue {
             
-            if let vc = segue.destination as? ShareOptionsViewController {
+            if let vc: ShareOptionsViewController = segue.destination as? ShareOptionsViewController {
                 
                 vc.prefferedTitle = self.segueObjectValues.titleToPassOnToTheNextView
                 vc.prefferedInfoMessage = self.segueObjectValues.infoPopUpToPassOnToTheNextView
@@ -402,27 +402,27 @@ internal class HomeViewController: UIViewController, UICollectionViewDataSource,
             }
         } else if segue.identifier == Constants.Segue.homeToDataPlugs {
             
-            if let vc = segue.destination as? DataPlugsCollectionViewController {
+            if let vc: DataPlugsCollectionViewController = segue.destination as? DataPlugsCollectionViewController {
                 
                 vc.prefferedInfoMessage = self.segueObjectValues.infoPopUpToPassOnToTheNextView
             }
         } else if segue.identifier == Constants.Segue.homeToDataStore {
             
-            if let vc = segue.destination as? DataStoreTableViewController {
+            if let vc: DataStoreTableViewController = segue.destination as? DataStoreTableViewController {
                 
                 vc.prefferedTitle = self.segueObjectValues.titleToPassOnToTheNextView
                 vc.prefferedInfoMessage = self.segueObjectValues.infoPopUpToPassOnToTheNextView
             }
         } else if segue.identifier == Constants.Segue.phataSegue {
             
-            if let vc = segue.destination as? PhataTableViewController {
+            if let vc: PhataTableViewController = segue.destination as? PhataTableViewController {
                 
                 vc.prefferedTitle = self.segueObjectValues.titleToPassOnToTheNextView
                 vc.prefferedInfoMessage = self.segueObjectValues.infoPopUpToPassOnToTheNextView
             }
         } else if segue.identifier == Constants.Segue.homeToForDataOffersSettingsSegue {
             
-            if let vc = segue.destination as? DataStoreForDataOffersTableViewController {
+            if let vc: DataStoreForDataOffersTableViewController = segue.destination as? DataStoreForDataOffersTableViewController {
                 
                 vc.prefferedTitle = self.segueObjectValues.titleToPassOnToTheNextView
                 vc.prefferedInfoMessage = self.segueObjectValues.infoPopUpToPassOnToTheNextView

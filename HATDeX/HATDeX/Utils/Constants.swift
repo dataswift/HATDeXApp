@@ -196,6 +196,17 @@ internal class Constants {
         static let privacyPolicy: String = "https://s3-eu-west-1.amazonaws.com/developers.hubofallthings.com/legals/HATDeX-Privacy-Policy.md"
     }
     
+    // MARK: - AppName Struct
+    
+    /// A struct used to hold app specific variables
+    internal struct AppName {
+        
+        // MARK: - Variables
+        
+        /// The name of the app in the url schema
+        static let name: String = "rumpellocationtrackerapp"
+    }
+    
     /**
      The possible table names on HAT
      
@@ -584,14 +595,14 @@ internal class Constants {
         init() {
 
             // iterate over our RequestFields enum
-            for field in RequestFields.allValues {
+            for field: Constants.RequestFields in RequestFields.allValues {
                 
-                let f: JSONDataSourceRequestField = JSONDataSourceRequestField()
+                let tempField: JSONDataSourceRequestField = JSONDataSourceRequestField()
                 
-                f.name = field.rawValue
-                f.fieldEnum = field
+                tempField.name = field.rawValue
+                tempField.fieldEnum = field
                 
-                fields.append(f)
+                fields.append(tempField)
             }
         }
         
@@ -602,7 +613,7 @@ internal class Constants {
          */
         func toJSON() -> Dictionary<String, AnyObject> {
             
-            var dictionaries = [[String: String]]()
+            var dictionaries: [[String: String]] = [[String: String]]()
 
             for field: JSONDataSourceRequestField in self.fields {
                 
@@ -752,7 +763,20 @@ internal class Constants {
         struct DataBuyer {
             
             static let name: String = "DataBuyer"
-            static var source: String = "https://databuyer.hubat.net/"
+            static var source: String {
+                
+                if let config: String = Bundle.main.object(forInfoDictionaryKey: "Config") as? String {
+                
+                    if config == "Beta" {
+                        
+                        return "https://databuyer.hubat.net/"
+                    }
+                    
+                    return "https://databuyer.hubofallthings.com/"
+                }
+                
+                return "https://databuyer.hubofallthings.com/"
+            }
         }
     }
     

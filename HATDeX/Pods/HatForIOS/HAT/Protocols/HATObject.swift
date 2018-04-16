@@ -32,7 +32,7 @@ public protocol HATObject: Codable {
      
      - returns: An optional Dictionary<String, Any> encoded from the HATObject passed in as a parameter
      */
-    static func encode<T: HATObject>(from: T) -> Dictionary<String, Any>?
+    static func encode<T: HATObject>(from: T) -> Dictionary<String, Any?>?
     
     /**
      Encodes a HATObject to a JSON file
@@ -76,7 +76,7 @@ extension HATObject {
         }
     }
     
-    static public func encode<T: HATObject>(from: T) -> Dictionary<String, Any>? {
+    static public func encode<T: HATObject>(from: T) -> Dictionary<String, Any?>? {
         
         let encoder: JSONEncoder = JSONEncoder()
         

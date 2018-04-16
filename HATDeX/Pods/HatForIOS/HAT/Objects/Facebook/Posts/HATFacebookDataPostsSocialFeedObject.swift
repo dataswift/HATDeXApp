@@ -15,7 +15,7 @@ import SwiftyJSON
 // MARK: Class
 
 /// A class representing the actual data of the post
-public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable {
+public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATObject {
     
     // MARK: - Fields
     
@@ -38,6 +38,7 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable {
         static let objectID: String = "object_id"
         static let application: String = "application"
         static let caption: String = "caption"
+        static let place: String = "place"
     }
     
     // MARK: - Comparable protocol
@@ -120,6 +121,8 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable {
     
     /// The application details of the post
     public var application: HATFacebookDataPostsApplicationSocialFeedObject = HATFacebookDataPostsApplicationSocialFeedObject()
+    
+    public var place: HATFacebookDataPostsPlaceSocialFeedObject?
     
     // MARK: - Initialisers
     
@@ -231,7 +234,10 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable {
             
             caption = tempCaption
         }
-        
+        if let tempPlace = dict[Fields.place]?.dictionaryValue {
+            
+            place = HATFacebookDataPostsPlaceSocialFeedObject(from: tempPlace)
+        }
     }
     
     /**
@@ -271,7 +277,8 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable {
             Fields.description: self.description,
             Fields.objectID: self.objectID,
             Fields.application: self.application.toJSON(),
-            Fields.caption: self.caption
+            Fields.caption: self.caption,
+            Fields.place: self.place ?? HATFacebookDataPostsPlaceSocialFeedObject()
         ]
     }
 }

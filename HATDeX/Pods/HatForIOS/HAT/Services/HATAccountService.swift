@@ -54,8 +54,13 @@ public struct HATAccountService {
                     let message = NSLocalizedString("Server responded with error", comment: "")
                     errorCallback(.generalError(message, statusCode, error))
                 }
-            case .isSuccess(let isSuccess, _, let result, let token):
+            case .isSuccess(let isSuccess, let statusCode, let result, let token):
                 
+                if statusCode != nil && statusCode! == 401 {
+                    
+                    let message = NSLocalizedString("Token expired", comment: "")
+                    errorCallback(.generalError(message, statusCode, nil))
+                }
                 if isSuccess {
                     
                     if let array = result.array {
@@ -116,13 +121,17 @@ public struct HATAccountService {
                 if statusCode == 404 {
                     
                     errorCallback(.tableDoesNotExist)
+                } else if statusCode == 401 {
+                    
+                    let message = NSLocalizedString("Token expired", comment: "")
+                    errorCallback(.generalError(message, statusCode, nil))
                 }
             }
         })
     }
     
     // MARK: - Delete from hat
-
+    
     /**
      Deletes a record from hat using V2 API
      
@@ -323,14 +332,21 @@ public struct HATAccountService {
      - parameter successCallback: A function of type (Bool, String?) to call on success
      - parameter failCallback: A fuction of type (HATError) to call on fail
      */
-    public static func createCombinator(userDomain: String, userToken: String, combinatorName: String, fieldToFilter: String, lowerValue: Int, upperValue: Int, successCallback: @escaping (Bool, String?) -> Void, failCallback: @escaping (HATError) -> Void) {
+    public static func createCombinator(userDomain: String, userToken: String, endPoint: String, combinatorName: String, fieldToFilter: String, lowerValue: Int, upperValue: Int, transformationType: String? = nil, transformationPart: String? = nil, successCallback: @escaping (Bool, String?) -> Void, failCallback: @escaping (HATError) -> Void) {
         
         let url: String = "https://\(userDomain)/api/v2/combinator/\(combinatorName)"
         
         let bodyRequest: [BodyRequest] = [BodyRequest()]
+        bodyRequest[0].endpoint = endPoint
         bodyRequest[0].filters[0].field = fieldToFilter
         bodyRequest[0].filters[0].`operator`.lower = lowerValue
         bodyRequest[0].filters[0].`operator`.upper = upperValue
+        if transformationPart != nil && transformationType != nil {
+            
+            bodyRequest[0].filters[0].transformation = Transformation()
+            bodyRequest[0].filters[0].transformation?.part = transformationPart!
+            bodyRequest[0].filters[0].transformation?.transformation = transformationType!
+        }
         
         var urlRequest: URLRequest = URLRequest.init(url: URL(string: url)!)
         urlRequest.httpBody = BodyRequest.encode(from: bodyRequest)
@@ -346,7 +362,14 @@ public struct HATAccountService {
             switch response.result {
             case .success:
                 
-                successCallback(true, nil)
+                if response.response?.statusCode == 401 {
+                    
+                    let message = NSLocalizedString("Token expired", comment: "")
+                    failCallback(.generalError(message, 401, nil))
+                } else {
+                    
+                    successCallback(true, nil)
+                }
             // in case of failure return the error but check for internet connection or unauthorised status and let the user know
             case .failure(let error):
                 
@@ -391,14 +414,18 @@ public struct HATAccountService {
                         let message: String = NSLocalizedString("Server responded with error", comment: "")
                         failCallback(.generalError(message, statusCode, error))
                     }
-                case .isSuccess(let isSuccess, _, let result, let token):
+                case .isSuccess(let isSuccess, let statusCode, let result, let token):
                     
                     if isSuccess, let array: [JSON] = result.array {
                         
                         successCallback(array, token)
+                    } else {
+                        
+                        let message = NSLocalizedString("General Error", comment: "")
+                        failCallback(.generalError(message, statusCode, nil))
                     }
                 }
-            }
+        }
         )
     }
 }
@@ -415,6 +442,13 @@ private class Filter: HATObject {
     
     var field: String = ""
     var `operator`: Operator = Operator()
+    var transformation: Transformation?
+}
+/// The filter JSON format
+private class Transformation: HATObject {
+    
+    var transformation: String = ""
+    var part: String = ""
 }
 /// The combinator JSON format
 private class BodyRequest: HATObject {

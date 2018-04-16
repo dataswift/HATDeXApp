@@ -15,7 +15,7 @@ import SwiftyJSON
 // MARK: Class
 
 /// A class representing the privacy settings of the post
-public struct HATFacebookDataPostsPrivacySocialFeedObject: HatApiType, Comparable {
+public struct HATFacebookDataPostsPrivacySocialFeedObject: HatApiType, Comparable, HATObject {
     
     // MARK: - Fields
     

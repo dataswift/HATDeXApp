@@ -15,9 +15,13 @@
 public struct HATFeedContentObject: Codable {
     
     // MARK: - Variables
-
+    
     /// The content of the feed item
     public var text: String?
     /// The media of the feed item
     public var media: [HATFeedContentMediaObject]?
+    
+    public init() {
+        
+    }
 }

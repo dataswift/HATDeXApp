@@ -36,9 +36,9 @@ public struct HATLocationsDataObject: HATObject, HatApiType {
     // MARK: - Variables
     
     /// The location's latitude
-    public var latitude: Float = 0
+    public var latitude: Double = 0
     /// The location's longitude
-    public var longitude: Float = 0
+    public var longitude: Double = 0
     /// The location's date created as unix time stamp
     public var dateCreated: Int = 0
     /// The location's date created as an ISO format
@@ -88,12 +88,12 @@ public struct HATLocationsDataObject: HATObject, HatApiType {
             horizontalAccuracy = tempHorizontalAccuracy
         }
         
-        if let tempLatitude = dict[Fields.latitude]?.floatValue {
+        if let tempLatitude = dict[Fields.latitude]?.doubleValue {
             
             latitude = tempLatitude
         }
         
-        if let tempLongitude = dict[Fields.longitude]?.floatValue {
+        if let tempLongitude = dict[Fields.longitude]?.doubleValue {
             
             longitude = tempLongitude
         }

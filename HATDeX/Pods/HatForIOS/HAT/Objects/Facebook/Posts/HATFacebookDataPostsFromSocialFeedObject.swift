@@ -15,7 +15,7 @@ import SwiftyJSON
 // MARK: Class
 
 /// A class representing the user's details that made the post
-public struct HATFacebookDataPostsFromSocialFeedObject: HatApiType, Comparable {
+public struct HATFacebookDataPostsFromSocialFeedObject: HatApiType, Comparable, HATObject {
     
     // MARK: - Fields
     

@@ -15,7 +15,7 @@ import SwiftyJSON
 // MARK: Struct
 
 /// A class representing the system status object
-public struct HATSystemStatusObject: HatApiType {
+public struct HATSystemStatusObject: HatApiType, HATObject {
     
     // MARK: - Fields
     

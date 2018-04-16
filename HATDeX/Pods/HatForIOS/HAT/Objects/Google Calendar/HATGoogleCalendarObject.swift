@@ -11,10 +11,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/
  */
 
+import UIKit
+
 // MARK: Struct
 
-public struct HATGoogleCalendarObject: HATObject {
-
+public struct HATGoogleCalendarObject: HATObject, HATSocialFeedObject {
+    
     // MARK: - Variables
     
     /// The endpoint that gave the data
@@ -23,4 +25,9 @@ public struct HATGoogleCalendarObject: HATObject {
     public var recordId: String = ""
     /// The google calendar data
     public var data: HATGoogleCalendarDataObject = HATGoogleCalendarDataObject()
+    
+    // MARK: - HATSocialFeedObject protocol variables
+    
+    /// the last updated date, not used in that object
+    public var protocolLastUpdate: Date?
 }

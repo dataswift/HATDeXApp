@@ -11,6 +11,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/
  */
 
+import Alamofire
 import SwiftyJSON
 
 // MARK: Struct
@@ -75,6 +76,57 @@ public struct HATGoogleCalendarService {
             parameters: parameters,
             successCallback: sendObjectBack,
             errorCallback: errorCallback)
+    }
+    
+    public static func getStaticData(plugURL: String, calendarToken: String, successCallback: @escaping ([String], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
+        
+        let statusURL: String = GoogleCalendar.googleCalendarDataPlugStatusURL(googleDataPlugURL: plugURL)
+        let headers = ["x-auth-token": calendarToken]
+        
+        HATNetworkHelper.asynchronousRequest(
+            statusURL,
+            method: .get,
+            encoding: Alamofire.URLEncoding.default,
+            contentType: "application/json",
+            parameters: [:],
+            headers: headers,
+            completion: { response in
+                
+                switch response {
+                    
+                case .error(let error, let statusCode):
+                    
+                    if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
+                        
+                        errorCallback(.noInternetConnection)
+                    } else {
+                        
+                        let message = NSLocalizedString("Server responded with error", comment: "")
+                        errorCallback(.generalError(message, statusCode, error))
+                    }
+                case .isSuccess(let isSuccess, _, let result, let token):
+                    
+                    if isSuccess {
+                        
+                        if let array: [JSON] = result.array {
+                            
+                            var arrayToReturn: [String] = []
+                            
+                            for item in array {
+                                
+                                let calendarName = item["apiEndpoint"]["endpoint"]["name"].stringValue
+                                arrayToReturn.append(calendarName)
+                            }
+                            
+                            successCallback(arrayToReturn, token)
+                        } else {
+                            
+                            errorCallback(.noValuesFound)
+                        }
+                    }
+                }
+            }
+        )
     }
 
 }

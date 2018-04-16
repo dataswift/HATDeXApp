@@ -108,7 +108,7 @@ public struct HATNotablesService {
                 
                 HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: { () })
                 
-                let note = HATNotesObject(dict: jsonArray[0].dictionaryValue)
+                let note: HATNotesObject = HATNotesObject(dict: jsonArray[0].dictionaryValue)
                 success(note, newToken)
             },
             errorCallback: failed)
@@ -127,7 +127,7 @@ public struct HATNotablesService {
      */
     public static func postNote(userDomain: String, userToken: String, note: HATNotesObject, successCallBack: @escaping (HATNotesObject, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
-        var tempNote = note
+        var tempNote: HATNotesObject = note
         if tempNote.data.locationv1?.latitude == nil {
             
             tempNote.data.locationv1 = nil
@@ -138,7 +138,7 @@ public struct HATNotablesService {
         }
         
         // update JSON file with the values needed
-        let hatData: [String: Any] = HATNotesDataObject.encode(from: note.data)!
+        let hatData: [String: Any] = HATNotesDataObject.encode(from: tempNote.data)!
         
         HATAccountService.createTableValue(
             userToken: userToken,
@@ -150,7 +150,7 @@ public struct HATNotablesService {
                 
                 HATAccountService.triggerHatUpdate(userDomain: userDomain, completion: { () })
                 
-                let note = HATNotesObject(dict: notes[0].dictionaryValue)
+                let note: HATNotesObject = HATNotesObject(dict: notes[0].dictionaryValue)
                 successCallBack(note, newToken)
             },
             errorCallback: errorCallback)
@@ -174,7 +174,7 @@ public struct HATNotablesService {
         for note: HATNotesObject in array {
             
             // check if the arrayToReturn it contains that value and if not add it
-            let result = arrayToReturn.contains(where: {(note2: HATNotesObject) -> Bool in
+            let result: Bool = arrayToReturn.contains(where: {(note2: HATNotesObject) -> Bool in
                 
                 if note.recordId == note2.recordId {
                     

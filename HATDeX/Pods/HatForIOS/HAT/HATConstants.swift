@@ -44,6 +44,30 @@ public struct Twitter {
  - sourceName: The source name of the data
  - serviceName: The service, Plug, name
  */
+public struct Spotify {
+    
+    /**
+     Constructs the api/status endpoint for the plug according to the dataplug url returned from the HAT
+     
+     - parameter spotifyDataPlugURL: The plug url returned from HAT
+     
+     - returns: The spotifyDataPlugURL appended with /api/status
+     */
+    public static func spotifyDataPlugStatusURL(spotifyDataPlugURL: String) -> String {
+        
+        return "\(spotifyDataPlugURL)/api/status"
+    }
+    
+    public static let sourceName: String = "spotify"
+    public static let serviceName: String = "spotify"
+}
+
+/**
+ The strings needed for communicating with fitbit data plug
+ 
+ - sourceName: The source name of the data
+ - serviceName: The service, Plug, name
+ */
 public struct Fitbit {
     
     /**
@@ -134,8 +158,20 @@ public enum Notables {
  */
 public struct DataBuyer {
     
-    static let name: String = "DataBuyer"
-    static var source: String = "https://databuyer.hubat.net/"
+    public static let name: String = "DataBuyer"
+    public static var source: String = "https://databuyer.hubat.net/"
+}
+
+/**
+ The strings needed for generating Dex token
+ 
+ - name: The name of the service
+ - source: The source of the service
+ */
+public struct Dex {
+    
+    public static let name: String = "Dex"
+    public static var source: String = "https://dex.hubofallthings.com/"
 }
 
 /**

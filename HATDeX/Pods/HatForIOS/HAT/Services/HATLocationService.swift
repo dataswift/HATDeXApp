@@ -173,7 +173,7 @@ public struct HATLocationService {
         
         var urlRequest: URLRequest = URLRequest.init(url: URL(string: "https://\(userDomain)/api/v2/data/rumpel/locations/ios?skipErrors=true")!)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
-        urlRequest.addValue(HATDataPlugCredentials.locationDataPlugToken, forHTTPHeaderField: "x-auth-token")
+        urlRequest.addValue(userToken, forHTTPHeaderField: "x-auth-token")
         urlRequest.networkServiceType = .background
         urlRequest.httpBody = encoded
         
@@ -186,7 +186,6 @@ public struct HATLocationService {
             
             let header = response.response?.allHeaderFields
             let token: String? = header?["x-auth-token"] as? String
-            let tokenToReturn: String? = HATTokenHelper.checkTokenScope(token: token)
             
             var tempLocations = locations
             if locations.count > 100 {
@@ -200,10 +199,7 @@ public struct HATLocationService {
                 HATLocationService.failbackDuplicateSyncing(dbLocations: tempLocations, userDomain: userDomain, userToken: userToken, completion: completion)
             } else if response.response?.statusCode == 201 {
                 
-                completion?(true, tokenToReturn)
-            } else {
-                
-                completion?(false, nil)
+                completion?(true, token)
             }
         })
     }
@@ -248,14 +244,13 @@ public struct HATLocationService {
                 
                 let header = response.response?.allHeaderFields
                 let token: String? = header?["x-auth-token"] as? String
-                let tokenToReturn: String? = HATTokenHelper.checkTokenScope(token: token)
                 
                 if response.response?.statusCode == 400 && array.count > 1 {
                     
                     HATLocationService.failbackDuplicateSyncing(dbLocations: array, userDomain: userDomain, userToken: userToken, completion: completion)
                 } else {
                     
-                    completion?(true, tokenToReturn)
+                    completion?(true, token)
                 }
             })
         }

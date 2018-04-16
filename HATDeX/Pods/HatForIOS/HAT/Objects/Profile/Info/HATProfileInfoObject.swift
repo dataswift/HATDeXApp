@@ -14,7 +14,7 @@ import SwiftyJSON
 
 // MARK: Struct
 
-public struct HATProfileInfo: HatApiType, Comparable {
+public struct HATProfileInfo: HatApiType, HATObject, Comparable {
     
     // MARK: - Comparable protocol
     

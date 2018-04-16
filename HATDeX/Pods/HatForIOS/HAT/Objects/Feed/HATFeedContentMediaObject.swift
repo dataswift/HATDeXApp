@@ -15,7 +15,16 @@
 public struct HATFeedContentMediaObject: Codable {
     
     // MARK: - Variables
-
+    
     /// The URL of the media
     public var url: String = ""
+    
+    public init() {
+        
+    }
+    
+    public init(url: String) {
+        
+        self.url = url
+    }
 }

@@ -10,6 +10,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/
  */
 
+import Alamofire
 import SwiftyJSON
 
 // MARK: Struct
@@ -27,14 +28,14 @@ public struct HATFeedService {
      - parameter successCallback: A function of type ([HATFeedObject], String?) that executes on success
      - parameter failed: A function of type (HATTableError) that executes on failure
      */
-    static public func getFeed(userDomain: String, userToken: String, parameters: Dictionary<String, Any> = [:], successCallback: @escaping ([HATFeedObject], String?) -> Void, failed: @escaping (HATTableError) -> Void) {
+    static public func getFeed(userDomain: String, userToken: String, parameters: Dictionary<String, Any> = [:], hatSuffix: String = "", successCallback: @escaping ([HATFeedObject], String?) -> Void, failed: @escaping (HATTableError) -> Void) {
         
         func success(values: [JSON], newToken: String?) {
             
             var arrayToReturn: [HATFeedObject] = []
             for value: JSON in values {
                 
-                let dict: [String: JSON] = value["data"].dictionaryValue
+                let dict: [String: JSON] = value.dictionaryValue
                 if let object: HATFeedObject = HATFeedObject.decode(from: dict) {
                     
                     arrayToReturn.append(object)
@@ -44,13 +45,78 @@ public struct HATFeedService {
             successCallback(arrayToReturn, newToken)
         }
         
-        HATAccountService.getHatTableValues(
-            token: userToken,
+        // form the url
+        let url: String = "https://\(userDomain)/api/v2/she/feed\(hatSuffix)"
+        
+        // create parameters and headers
+        let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
+        
+        // make the request
+        HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.JSONEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
+            
+            switch response {
+                
+            case .error(let error, let statusCode):
+                
+                if error.localizedDescription == "The request timed out." || error.localizedDescription == "The Internet connection appears to be offline." {
+                    
+                    failed(.noInternetConnection)
+                } else {
+                    
+                    let message = NSLocalizedString("Server responded with error", comment: "")
+                    failed(.generalError(message, statusCode, error))
+                }
+            case .isSuccess(let isSuccess, let statusCode, let result, let token):
+                
+                if statusCode != nil && statusCode! == 401 {
+                    
+                    let message = NSLocalizedString("Token expired", comment: "")
+                    failed(.generalError(message, statusCode, nil))
+                }
+                if isSuccess {
+                    
+                    if let array = result.array {
+                        
+                        success(values: array, newToken: token)
+                    } else {
+                        
+                        failed(.noValuesFound)
+                    }
+                }
+            }
+        })
+    }
+    
+    // MARK: - Get she combinator
+    
+    /**
+     Gets the she combinator data from HAT
+     
+     - parameter userDomain: The user's domain
+     - parameter userToken: The user's authentication token
+     - parameter successCallback: A function of type ([HATFeedObject], String?) to call on success
+     - parameter failCallback: A fuction of type (HATError) to call on fail
+     */
+    static public func getFeedCombinator(userDomain: String, userToken: String, successCallback: @escaping ([HATFeedObject], String?) -> Void, failCallback: @escaping (HATError) -> Void) {
+        
+        HATAccountService.getCombinator(
             userDomain: userDomain,
-            namespace: "she",
-            scope: "feed",
-            parameters: parameters,
-            successCallback: success,
-            errorCallback: failed)
+            userToken: userToken,
+            combinatorName: "shefilter",
+            successCallback: { array, newToken in
+                
+                var arrayToReturn: [HATFeedObject] = []
+                for item: JSON in array {
+                    
+                    if let object: HATFeedObject = HATFeedObject.decode(from: item["data"].dictionaryValue) {
+                        
+                        arrayToReturn.append(object)
+                    }
+                }
+                
+                successCallback(arrayToReturn, newToken)
+        },
+            failCallback: failCallback
+        )
     }
 }

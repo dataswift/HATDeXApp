@@ -15,7 +15,7 @@ import SwiftyJSON
 // MARK: Struct
 
 /// A class representing the system status kind object
-public struct HATSystemStatusKindObject: Comparable {
+public struct HATSystemStatusKindObject: Comparable, HATObject {
     
     // MARK: - Fields
     

@@ -15,9 +15,9 @@ import JWTDecode
 // MARK: Struct
 
 public struct HATTokenHelper {
-
+    
     // MARK: - Check token scope
-
+    
     /**
      Checks if the token has owner scope and returns it, else returns nil
      
@@ -25,24 +25,25 @@ public struct HATTokenHelper {
      
      - returns: Returns the token if the scope of it is owner else nil
      */
-    public static func checkTokenScope(token: String?) -> String? {
-
-        if let unwrappedToken = token {
-
+    public static func checkTokenScope(token: String?, applicationName: String) -> String? {
+        
+        if let unwrappedToken: String = token {
+            
             do {
-
-                let jwt = try decode(jwt: unwrappedToken)
-                let scope = jwt.claim(name: "accessScope")
-
-                if scope.string == "owner" {
-
+                
+                let jwt: JWT = try decode(jwt: unwrappedToken)
+                let scope: Claim = jwt.claim(name: "accessScope")
+                let applications: Claim = jwt.claim(name: "application")
+                
+                if applications.string == applicationName || scope.string == "owner" {
+                    
                     return unwrappedToken
                 }
             } catch {
             }
         }
-
+        
         return nil
     }
-
+    
 }
