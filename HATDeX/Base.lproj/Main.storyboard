@@ -1315,22 +1315,22 @@
                         <viewLayoutGuide key="safeArea" id="Vk3-zE-fLR"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="NgE-WG-3FP"/>
+                                <exclude reference="btz-F6-lgD"/>
+                                <exclude reference="iXb-rM-7fw"/>
                                 <exclude reference="EIR-WN-Jbs"/>
                                 <exclude reference="JyW-wh-Op9"/>
                                 <exclude reference="Wkj-Gb-hTH"/>
                                 <exclude reference="m3R-hs-i1u"/>
                                 <exclude reference="vNd-Up-fD4"/>
                                 <exclude reference="wQS-5b-Kqi"/>
-                                <exclude reference="NgE-WG-3FP"/>
-                                <exclude reference="btz-F6-lgD"/>
-                                <exclude reference="iXb-rM-7fw"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="constraints">
-                                <exclude reference="vNd-Up-fD4"/>
                                 <include reference="NgE-WG-3FP"/>
                                 <exclude reference="iXb-rM-7fw"/>
+                                <exclude reference="vNd-Up-fD4"/>
                             </mask>
                         </variation>
                     </view>
@@ -6172,7 +6172,6 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-H0-WN6" customClass="CustomSwitch" customModule="HATDeX" customModuleProvider="target">
                                 <rect key="frame" x="254" y="228" width="50" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Dzb-a4-g6u"/>
                                     <constraint firstAttribute="height" constant="30" id="YGd-iP-lMQ"/>
@@ -8378,8 +8377,8 @@
         <segue reference="e1B-1l-W7u"/>
         <segue reference="1Da-p9-MTh"/>
         <segue reference="CgL-tV-CKg"/>
-        <segue reference="20A-Tm-Xb4"/>
-        <segue reference="2pJ-zd-y2w"/>
+        <segue reference="bLw-tk-kFC"/>
+        <segue reference="1e1-Vf-Wcg"/>
         <segue reference="o05-Rl-q0A"/>
         <segue reference="7kR-bZ-1RE"/>
         <segue reference="gao-fb-RHk"/>

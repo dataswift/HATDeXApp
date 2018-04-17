@@ -203,7 +203,6 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         isFetchingData = true
         
         self.fetchFacebookData()
-        self.getFacebookProfileImage()
         self.fetchTwitterData()
     }
     
@@ -855,35 +854,35 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
                 
                 if !viewController.posts.isEmpty {
                     
-                    for i in 0...viewController.posts.count - 1 {
+                    for index: Int in 0...viewController.posts.count - 1 {
                         
-                        viewController.cachedDataArray.append(viewController.posts[i] as HATSocialFeedObject)
+                        viewController.cachedDataArray.append(viewController.posts[index] as HATSocialFeedObject)
                     }
                 }
             } else if filter == "Twitter" {
                 
                 if !viewController.tweets.isEmpty {
                     
-                    for i in 0...viewController.tweets.count - 1 {
+                    for index: Int in 0...viewController.tweets.count - 1 {
                         
-                        viewController.cachedDataArray.append(viewController.tweets[i])
+                        viewController.cachedDataArray.append(viewController.tweets[index])
                     }
                 }
             } else {
                 
                 if !viewController.tweets.isEmpty {
                     
-                    for i in 0...viewController.tweets.count - 1 {
+                    for index: Int in 0...viewController.tweets.count - 1 {
                         
-                        viewController.cachedDataArray.append(viewController.tweets[i])
+                        viewController.cachedDataArray.append(viewController.tweets[index])
                     }
                 }
                 
                 if !viewController.posts.isEmpty {
                     
-                    for i in 0...viewController.posts.count - 1 {
+                    for index: Int in 0...viewController.posts.count - 1 {
                         
-                        viewController.cachedDataArray.append(viewController.posts[i] as HATSocialFeedObject)
+                        viewController.cachedDataArray.append(viewController.posts[index] as HATSocialFeedObject)
                     }
                 }
             }
@@ -894,34 +893,34 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         }
         
         // create alert
-        let alert = UIAlertController(title: "Filter by:", message: "", preferredStyle: .actionSheet)
+        let alert: UIAlertController = UIAlertController(title: "Filter by:", message: "", preferredStyle: .actionSheet)
         
         // create actions
-        let facebookAction = UIAlertAction(title: "Facebook", style: .default, handler: {[weak self] (_) -> Void in
+        let facebookAction: UIAlertAction = UIAlertAction(title: "Facebook", style: .default, handler: {[weak self] (_) -> Void in
             
-            if let weakSelf = self {
+            if let weakSelf: SocialFeedViewController = self {
                 
                 reloadCollectionViewBaseOnFilter("Facebook", viewController: weakSelf)
             }
         })
         
-        let twitterAction = UIAlertAction(title: "Twitter", style: .default, handler: {[weak self] (_) -> Void in
+        let twitterAction: UIAlertAction = UIAlertAction(title: "Twitter", style: .default, handler: {[weak self] (_) -> Void in
             
-             if let weakSelf = self {
+             if let weakSelf: SocialFeedViewController = self {
                 
                 reloadCollectionViewBaseOnFilter("Twitter", viewController: weakSelf)
             }
         })
         
-        let allNetworksAction = UIAlertAction(title: "All", style: .default, handler: {[weak self] (_) -> Void in
+        let allNetworksAction: UIAlertAction = UIAlertAction(title: "All", style: .default, handler: {[weak self] (_) -> Void in
             
-            if let weakSelf = self {
+            if let weakSelf: SocialFeedViewController = self {
                 
                 reloadCollectionViewBaseOnFilter("All", viewController: weakSelf)
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alert.addActions(actions: [facebookAction, twitterAction, allNetworksAction, cancelAction])
         alert.addiPadSupport(sourceRect: self.filterFeedButton.bounds, sourceView: self.filterFeedButton)
@@ -941,7 +940,7 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         
         DispatchQueue.main.async {[weak self] in
             
-            if let weakSelf = self {
+            if let weakSelf: SocialFeedViewController = self {
                 
                 if !(weakSelf.isTwitterAvailable) && !(weakSelf.isFacebookAvailable) {
                     
@@ -997,7 +996,7 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         }
         
         // set up page controller
-        let textPopUpViewController = TextPopUpViewController.customInit(
+        let textPopUpViewController: TextPopUpViewController? = TextPopUpViewController.customInit(
             stringToShow: text,
             isButtonHidden: true,
             from: self.storyboard!)
@@ -1015,7 +1014,7 @@ internal class SocialFeedViewController: UIViewController, UICollectionViewDataS
         
         DispatchQueue.main.async { [weak self] () -> Void in
             
-            if let weakSelf = self, textPopUpViewController != nil {
+            if let weakSelf: SocialFeedViewController = self, textPopUpViewController != nil {
                 
                 // add the page view controller to self
                 weakSelf.addBlurToView()

@@ -63,9 +63,9 @@ public struct HATFacebookProfileImageObject: HatApiType {
         imageWidth = 0
         imageHeight = 0
         lastUpdated = 0
-        recordID = nil
+        recordID = ""
         endPoint = "profile_picture"
-        image = nil
+        image = UIImage()
     }
 
     /**

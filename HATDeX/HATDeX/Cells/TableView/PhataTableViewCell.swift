@@ -21,7 +21,9 @@ internal class PhataTableViewCell: UITableViewCell, UITextFieldDelegate, UITextV
     
     /// The options of the picker view
     var dataSourceForPickerView: [String] = ["", "Mr.", "Mrs.", "Miss", "Dr."]
-    private var selectedDate: Date?
+    weak var delegate: TextFieldDelegate?
+    var indexPath: IndexPath?
+    var selectedDate: Date?
     
     // MARK: - IBOutlets
     
@@ -144,7 +146,10 @@ internal class PhataTableViewCell: UITableViewCell, UITextFieldDelegate, UITextV
                 textField.text = ""
             }
         }
+        
+        self.delegate?.textChangedOn(textField: textField, indexPath: self.indexPath!, date: self.selectedDate)
     }
+    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
@@ -154,15 +159,17 @@ internal class PhataTableViewCell: UITableViewCell, UITextFieldDelegate, UITextV
             
             let countries = self.getCountries()
             
-            for i in 0...countries.count - 1 {
+            for index in 0...countries.count - 1 {
                 
-                if countries[i].lowercased() == stringToFind?.lowercased() {
+                if countries[index].lowercased() == stringToFind?.lowercased() {
                     
-                    textField.text = countries[i]
+                    textField.text = countries[index]
                     break
                 }
             }
         }
+        
+        self.delegate?.textChangedOn(textField: textField, indexPath: self.indexPath!, date: self.selectedDate)
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -377,10 +384,7 @@ internal class PhataTableViewCell: UITableViewCell, UITextFieldDelegate, UITextV
         if self.textField != nil {
             
             self.textField.tag = tag
-            if tag == 5 {
-                
-                self.textField.addTarget(self, action: #selector(self.textFieldValueChanged(textField:)), for: UIControlEvents.allEditingEvents)
-            }
+            self.textField.addTarget(self, action: #selector(self.textFieldValueChanged(textField:)), for: UIControlEvents.allEditingEvents)
         } else if self.textView != nil {
             
             self.textView.tag = tag
@@ -416,6 +420,13 @@ internal class PhataTableViewCell: UITableViewCell, UITextFieldDelegate, UITextV
         
         self.textView.text = string
         self.textView.textColor = .teal
+    }
+    
+    func endTextFieldEditing() {
+        
+        self.textField.endEditing(true)
+        self.resignFirstResponder()
+        self.textField.resignFirstResponder()
     }
     
     // MARK: - Get countries

@@ -122,7 +122,7 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATO
     /// The application details of the post
     public var application: HATFacebookDataPostsApplicationSocialFeedObject = HATFacebookDataPostsApplicationSocialFeedObject()
     
-    public var place: HATFacebookDataPostsPlaceSocialFeedObject?
+    public var place: HATFacebookDataPostsPlaceSocialFeedObject = HATFacebookDataPostsPlaceSocialFeedObject()
     
     // MARK: - Initialisers
     
@@ -135,9 +135,9 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATO
         postID = ""
         statusType = ""
         privacy = HATFacebookDataPostsPrivacySocialFeedObject()
-        updatedTime = nil
+        updatedTime = Date()
         type = ""
-        createdTime = nil
+        createdTime = Date()
         message = ""
         
         fullPicture = ""
@@ -149,6 +149,7 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATO
         objectID = ""
         application = HATFacebookDataPostsApplicationSocialFeedObject()
         caption = ""
+        place = HATFacebookDataPostsPlaceSocialFeedObject()
     }
     
     /**
@@ -235,7 +236,7 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATO
             caption = tempCaption
         }
         if let tempPlace = dict[Fields.place]?.dictionaryValue {
-            
+
             place = HATFacebookDataPostsPlaceSocialFeedObject(from: tempPlace)
         }
     }
@@ -278,7 +279,7 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATO
             Fields.objectID: self.objectID,
             Fields.application: self.application.toJSON(),
             Fields.caption: self.caption,
-            Fields.place: self.place ?? HATFacebookDataPostsPlaceSocialFeedObject()
+            Fields.place: self.place.toJSON()
         ]
     }
 }

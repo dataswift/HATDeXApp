@@ -68,7 +68,7 @@ internal class DataStoreDietaryHabitsAndBehaviorsTableViewController: UITableVie
                     cell = weakSelf.setUpCell(cell: cell!, indexPath: indexPath) as? SurveyTableViewCell
                 }
                 
-                if weakSelf.surveyObjects.count < index {
+                if weakSelf.surveyObjects.count <= index {
                     
                     weakSelf.surveyObjects.append(SurveyObject())
                 }
@@ -142,7 +142,7 @@ internal class DataStoreDietaryHabitsAndBehaviorsTableViewController: UITableVie
         cell.selectionStyle = .none
         cell.setQuestionInLabel(question: self.sections[indexPath.section][indexPath.row])
         
-        if self.surveyObjects.count < indexPath.section {
+        if self.surveyObjects.count <= indexPath.section {
             
             var surveyObject = SurveyObject()
             surveyObject.question = self.sections[indexPath.section][indexPath.row]

@@ -392,6 +392,10 @@ internal class DetailsDataPlugViewController: UIViewController, UserCredentialsP
                     
                     vc.filterBy = "Facebook"
                     vc.prefferedTitle = "Facebook Plug"
+                } else if plug == "Fitbit" {
+                    
+                    vc.filterBy = "Fitbit"
+                    vc.prefferedTitle = "Fitbit Plug"
                 } else {
                     
                     vc.filterBy = "Twitter"

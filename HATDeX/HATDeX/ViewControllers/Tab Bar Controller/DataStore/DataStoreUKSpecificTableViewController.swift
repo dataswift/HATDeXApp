@@ -16,7 +16,45 @@ import SwiftyJSON
 // MARK: Class
 
 /// A class responsible for the profile name, in dataStore ViewController
-internal class DataStoreUKSpecificTableViewController: UITableViewController, UserCredentialsProtocol {
+internal class DataStoreUKSpecificTableViewController: UITableViewController, UserCredentialsProtocol, TextFieldDelegate {
+    
+    func textChangedOn(textField: UITextField, indexPath: IndexPath, date: Date?) {
+        
+        if indexPath.section == 0 {
+            
+            self.ukSpecificInfo?.nationalInsuranceNumber = textField.text ?? ""
+        } else if indexPath.section == 1 {
+            
+            self.ukSpecificInfo?.uniqueTaxReference = textField.text ?? ""
+        } else if indexPath.section == 2 {
+            
+            self.ukSpecificInfo?.nhsNumber = textField.text ?? ""
+        } else if indexPath.section == 3 {
+            
+            self.ukSpecificInfo?.drivingLicenseNumber = textField.text ?? ""
+        } else if indexPath.section == 4 {
+            
+            self.ukSpecificInfo?.passportNumber = textField.text ?? ""
+        } else if indexPath.section == 5 {
+            
+            if date != nil {
+                
+                self.ukSpecificInfo?.passportExpiryDate = date!
+            }
+        } else if indexPath.section == 6 {
+            
+            self.ukSpecificInfo?.placeOfBirth = textField.text ?? ""
+        } else if indexPath.section == 7 {
+            
+            self.ukSpecificInfo?.secondPassportNumber = textField.text ?? ""
+        } else if indexPath.section == 8 {
+            
+            if date != nil {
+                
+                self.ukSpecificInfo?.secondPassportExpiryDate = date!
+            }
+        }
+    }
     
     // MARK: - Variables
     
@@ -43,7 +81,16 @@ internal class DataStoreUKSpecificTableViewController: UITableViewController, Us
     @IBAction func saveButtonAction(_ sender: Any) {
         
         self.createPopUp()
-        self.updateModelFromUI()
+        //self.updateModelFromUI()
+        let numberOfSections = self.tableView.numberOfSections - 1
+        
+        for index in 0...numberOfSections {
+            
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: index)) as? PhataTableViewCell {
+                
+                cell.endTextFieldEditing()
+            }
+        }
         self.uploadInfoToHat()
     }
     
@@ -102,70 +149,6 @@ internal class DataStoreUKSpecificTableViewController: UITableViewController, Us
             userDomain: userDomain,
             successCallback: recordCreated,
             errorCallback: failedGettingInfo)
-    }
-    
-    // MARK: - Update Model
-    
-    /**
-     Maps the UI to the model in order to update the values
-     */
-    private func updateModelFromUI() {
-        
-        for index in self.headers.indices {
-            
-            var cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: index)) as? PhataTableViewCell
-            
-            if cell == nil {
-                
-                let indexPath = IndexPath(row: 0, section: index)
-                cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellReuseIDs.dataStoreUKSpecificInfoCell, for: indexPath) as? PhataTableViewCell
-                cell = self.setUpCell(cell: cell!, indexPath: indexPath) as? PhataTableViewCell
-            }
-            
-            // nationalInsuranceNumber
-            if index == 0 {
-                
-                self.ukSpecificInfo?.nationalInsuranceNumber = cell!.getTextFromTextField()
-            // Unique Tax Reference
-            } else if index == 1 {
-                
-                self.ukSpecificInfo?.uniqueTaxReference = cell!.getTextFromTextField()
-            // nhsNumber
-            } else if index == 2 {
-                
-                self.ukSpecificInfo?.nhsNumber = cell!.getTextFromTextField()
-            // drivingLicenseNumber
-            } else if index == 3 {
-                
-                self.ukSpecificInfo?.drivingLicenseNumber = cell!.getTextFromTextField()
-            // passportNumber
-            } else if index == 4 {
-                
-                self.ukSpecificInfo?.passportNumber = cell!.getTextFromTextField()
-            // passportExpiryDate
-            } else if index == 5 {
-                
-                if let date = cell?.getDateFromDatePicker() {
-                    
-                    self.ukSpecificInfo?.passportExpiryDate = date
-                }
-            // placeOfBirth
-            } else if index == 6 {
-                
-                self.ukSpecificInfo?.placeOfBirth = cell!.getTextFromTextField()
-            // secondPassportNumber
-            } else if index == 7 {
-                
-                self.ukSpecificInfo?.secondPassportNumber = cell!.getTextFromTextField()
-            // secondPassportExpiryDate
-            } else if index == 8 {
-                
-                if let date = cell?.getDateFromDatePicker() {
-                    
-                    self.ukSpecificInfo?.secondPassportExpiryDate = date
-                }
-            }
-        }
     }
     
     // MARK: - Create PopUp
@@ -258,7 +241,8 @@ internal class DataStoreUKSpecificTableViewController: UITableViewController, Us
     func setUpCell(cell: PhataTableViewCell, indexPath: IndexPath) -> UITableViewCell {
         
         cell.accessoryType = .none
-        
+        cell.delegate = self
+        cell.indexPath = indexPath
         guard self.ukSpecificInfo != nil else {
             
             cell.setTagInTextField(tag: 1)
@@ -293,6 +277,7 @@ internal class DataStoreUKSpecificTableViewController: UITableViewController, Us
                 dateStyle: .short,
                 timeStyle: .none)
             )
+            cell.selectedDate = self.ukSpecificInfo!.passportExpiryDate
             cell.setKeyboardType(.default)
             cell.setTagInTextField(tag: 12)
         } else if indexPath.section == 6 {
@@ -310,6 +295,7 @@ internal class DataStoreUKSpecificTableViewController: UITableViewController, Us
                     dateStyle: .short,
                     timeStyle: .none)
             )
+            cell.selectedDate = self.ukSpecificInfo!.passportExpiryDate
             cell.setKeyboardType(.default)
             cell.setTagInTextField(tag: 12)
         }

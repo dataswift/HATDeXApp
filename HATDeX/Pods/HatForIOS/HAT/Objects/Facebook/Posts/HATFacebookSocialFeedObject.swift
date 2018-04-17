@@ -105,7 +105,7 @@ public struct HATFacebookSocialFeedObject: HatApiType, HATSocialFeedObject, Comp
         endPoint = ""
         data = HATFacebookDataSocialFeedObject()
         recordIDv1 = -1
-        lastUpdated = nil
+        lastUpdated = Date()
     }
     
     /**
