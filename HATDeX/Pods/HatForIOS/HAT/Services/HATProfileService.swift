@@ -188,6 +188,7 @@ public struct HATProfileService {
             userToken: userToken,
             nameSpace: "rumpel",
             scope: "education",
+            parameters: ["orderBy":"unixTimeStamp", "ordering": "descending", "take": "1"],
             successCallback: successCallback,
             failCallback: failCallback)
     }
