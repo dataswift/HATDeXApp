@@ -79,7 +79,7 @@ public struct HATProfileService {
             successCallback: { (json, _) in
                 
                 successCallback(T(fromCache: json.dictionaryValue))
-            },
+        },
             errorCallback: failCallback)
     }
     

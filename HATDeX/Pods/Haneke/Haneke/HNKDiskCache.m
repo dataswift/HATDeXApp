@@ -347,21 +347,21 @@ NSString *const HNKExtendedFileAttributeKey = @"io.haneke.key";
 
 - (NSString*)hnk_valueForExtendedFileAttribute:(NSString*)attribute
 {
-	const char *attributeC = attribute.UTF8String;
+    const char *attributeC = attribute.UTF8String;
     const char *path = self.fileSystemRepresentation;
     
-	const ssize_t length = getxattr(path, attributeC, NULL, 0, 0, 0);
+    const ssize_t length = getxattr(path, attributeC, NULL, 0, 0, 0);
     
-	if (length <= 0) return nil;
+    if (length <= 0) return nil;
     
-	char *buffer = malloc(length);
-	getxattr(path, attributeC, buffer, length, 0, 0);
+    char *buffer = malloc(length);
+    getxattr(path, attributeC, buffer, length, 0, 0);
     
-	NSString *value = [[NSString alloc] initWithBytes:buffer length:length encoding:NSUTF8StringEncoding];
+    NSString *value = [[NSString alloc] initWithBytes:buffer length:length encoding:NSUTF8StringEncoding];
     
-	free(buffer);
+    free(buffer);
     
-	return value;
+    return value;
 }
 
 @end

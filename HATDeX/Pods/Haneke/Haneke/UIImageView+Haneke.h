@@ -45,7 +45,7 @@
  @discussion If no success block is provided, the requested image will be set with a short fade transition, or synchronously and without transition when retrieved from the memory cache.
  @discussion If needed, the least recently used images in the cache will be evicted in background.
  @discussion If the success block is nil, the image will be set with a short fade transition, or inmmediatly if the image was retrieved from the memory cache.
- @warning If a success block is provided you will be responsible for setting the image.  
+ @warning If a success block is provided you will be responsible for setting the image.
  */
 - (void)hnk_setImageFromFile:(NSString*)path placeholder:(UIImage*)placeholder success:(void (^)(UIImage *image))successBlock failure:(void (^)(NSError *error))failureBlock;
 
@@ -134,7 +134,7 @@
 - (void)hnk_cancelSetImage;
 
 /**
- The cache format used by the image view. 
+ The cache format used by the image view.
  @discussion Each image view has a default format created on demand. The default format size matches the bounds of the image view and will scale images based on the contentMode of the the image view.
  @discussion Modifying the default format is discouraged. Instead, you can set your own custom format. To apply the same custom format to various image views you must use the same format instance.
  */

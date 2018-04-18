@@ -236,7 +236,7 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATO
             caption = tempCaption
         }
         if let tempPlace = dict[Fields.place]?.dictionaryValue {
-
+            
             place = HATFacebookDataPostsPlaceSocialFeedObject(from: tempPlace)
         }
     }

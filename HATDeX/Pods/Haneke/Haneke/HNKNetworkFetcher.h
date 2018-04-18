@@ -45,7 +45,7 @@ enum
  Image URL.
  */
 @property (nonatomic, readonly) NSURL *URL;
-    
+
 @property (nonatomic, retain) NSMutableData *dataToDownload;
 @property (nonatomic) float downloadSize;
 @property (nonatomic) NSDictionary *dict;
@@ -55,7 +55,7 @@ typedef void(^successCompletion)(UIImage *image);
 typedef void(^failedCompletion)(NSError *error);
 @property (nonatomic, copy) successCompletion successBlock;
 @property (nonatomic, copy) failedCompletion failedBlock;
-    
+
 /**
  Cancels the current fetch. When a fetch is cancelled it should not call any of the provided blocks.
  @discussion This will be typically used by UI logic to cancel fetches during view reuse.

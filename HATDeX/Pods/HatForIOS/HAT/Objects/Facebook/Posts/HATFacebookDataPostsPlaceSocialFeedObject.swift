@@ -86,5 +86,5 @@ public struct HATFacebookDataPostsPlaceSocialFeedObject: HATObject, HatApiType {
         let dictionary = JSON(fromCache)
         self.inititialize(dict: dictionary.dictionaryValue)
     }
-
+    
 }

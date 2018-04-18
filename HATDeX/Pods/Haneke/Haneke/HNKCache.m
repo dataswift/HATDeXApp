@@ -24,14 +24,14 @@
 NSString *const HNKErrorDomain = @"com.hpique.haneke";
 
 #define hnk_dispatch_sync_main_queue_if_needed(block)\
-    if ([NSThread isMainThread])\
-    {\
-        block();\
-    }\
-    else\
-    {\
-        dispatch_sync(dispatch_get_main_queue(), block);\
-    }
+if ([NSThread isMainThread])\
+{\
+block();\
+}\
+else\
+{\
+dispatch_sync(dispatch_get_main_queue(), block);\
+}
 
 @interface UIImage (Haneke)
 

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		535A8C241793901034F750ED /* Pods_HATDeXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E39B227B04EF804225B4A97 /* Pods_HATDeXTests.framework */; };
+		575C4603CF61560198271894 /* Pods_HATDeX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025EE634DC435D5315277493 /* Pods_HATDeX.framework */; };
 		600015541EAE62AE000A084F /* ResetPasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600015531EAE62AE000A084F /* ResetPasswordTableViewController.swift */; };
 		600015561EAE63CD000A084F /* ResetPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600015551EAE63CD000A084F /* ResetPasswordTableViewCell.swift */; };
 		6000CE5D1DE728580076E173 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6000CE531DE728580076E173 /* OpenSans-Bold.ttf */; };
@@ -592,8 +592,7 @@
 		60FB24061F3A0C75001A5EFD /* GoDeepObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB24051F3A0C75001A5EFD /* GoDeepObject.swift */; };
 		60FB24081F3A0F99001A5EFD /* GoDeepCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB24071F3A0F99001A5EFD /* GoDeepCollectionViewCell.swift */; };
 		60FC6F4B204324EA007A85EE /* mapstogpx20170220_154311.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 60FC6F4A204324EA007A85EE /* mapstogpx20170220_154311.gpx */; };
-		7DDE79ADA898F4961733EEC5 /* Pods_HATDeXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C645BB3A94E669867354068A /* Pods_HATDeXUITests.framework */; };
-		95ADA004C97262D0E0E2414E /* Pods_HATDeX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5B39F59CF757EC7480103A /* Pods_HATDeX.framework */; };
+		854D0B2FB1685B967D901548 /* Pods_HATDeXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5789234119B48B25EA7FC71B /* Pods_HATDeXUITests.framework */; };
 		B5138ACE1D1ECA2C00CD1530 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5138ACD1D1ECA2C00CD1530 /* NetworkHelper.swift */; };
 		B51CC9241D1D5749000C9E48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CC9231D1D5749000C9E48 /* SettingsViewController.swift */; };
 		B51CC9261D1D620C000C9E48 /* MapSettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CC9251D1D620C000C9E48 /* MapSettingsDelegate.swift */; };
@@ -612,6 +611,7 @@
 		B59136851D19D3BB00E9EDD0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59136841D19D3BB00E9EDD0 /* Constants.swift */; };
 		B591368A1D19DE6C00E9EDD0 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59136891D19DE6C00E9EDD0 /* RealmHelper.swift */; };
 		B591368C1D19F13500E9EDD0 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591368B1D19F13500E9EDD0 /* DataViewController.swift */; };
+		E1B55867B433CA0B4A0210E6 /* Pods_HATDeXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1010C7074EA31A7027B0DC /* Pods_HATDeXTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -632,9 +632,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		145371C2F27A94F7FB8598C2 /* Pods-HATDeX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX.debug.xcconfig"; sourceTree = "<group>"; };
-		1E39B227B04EF804225B4A97 /* Pods_HATDeXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		217A8294D0322E416DA227C5 /* Pods-HATDeXUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		025EE634DC435D5315277493 /* Pods_HATDeX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07F6AF2FDB0DF5175D73FF92 /* Pods-HATDeX.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeX.beta.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX.beta.xcconfig"; sourceTree = "<group>"; };
+		4682E4D87A4CF868678833E9 /* Pods-HATDeXTests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXTests.beta.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests.beta.xcconfig"; sourceTree = "<group>"; };
+		564524F1A267667534AEA1D1 /* Pods-HATDeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeX.release.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX.release.xcconfig"; sourceTree = "<group>"; };
+		5789234119B48B25EA7FC71B /* Pods_HATDeXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		600015531EAE62AE000A084F /* ResetPasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordTableViewController.swift; sourceTree = "<group>"; };
 		600015551EAE63CD000A084F /* ResetPasswordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordTableViewCell.swift; sourceTree = "<group>"; };
 		6000CE531DE728580076E173 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -829,12 +831,9 @@
 		60FB24051F3A0C75001A5EFD /* GoDeepObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoDeepObject.swift; sourceTree = "<group>"; };
 		60FB24071F3A0F99001A5EFD /* GoDeepCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoDeepCollectionViewCell.swift; sourceTree = "<group>"; };
 		60FC6F4A204324EA007A85EE /* mapstogpx20170220_154311.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapstogpx20170220_154311.gpx; path = ../../HATApp/HATApp/HATApp/mapstogpx20170220_154311.gpx; sourceTree = "<group>"; };
-		6E179F656EAC20F840A9A87B /* Pods-HATDeXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7AD3B1195D19AF412C2EB870 /* Pods-HATDeXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests.release.xcconfig"; sourceTree = "<group>"; };
-		7E4E8148AE275A0D3AD63B64 /* Pods-HATDeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeX.release.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX.release.xcconfig"; sourceTree = "<group>"; };
-		81D5EC1B706DEAF8A66FA587 /* Pods-HATDeXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests.release.xcconfig"; sourceTree = "<group>"; };
-		9660834466060963E07ABBD6 /* Pods-HATDeXTests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXTests.beta.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests.beta.xcconfig"; sourceTree = "<group>"; };
-		9F4CF63380B8A9C1A53DB15A /* Pods-HATDeXUITests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXUITests.beta.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests.beta.xcconfig"; sourceTree = "<group>"; };
+		697B527EB6A2107EF8599CCD /* Pods-HATDeXUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7B458172F03477AD64930C5A /* Pods-HATDeXUITests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXUITests.beta.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests.beta.xcconfig"; sourceTree = "<group>"; };
+		9F767611AB9A0F13F9460A5D /* Pods-HATDeXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests.release.xcconfig"; sourceTree = "<group>"; };
 		B5138ACD1D1ECA2C00CD1530 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		B51CC9231D1D5749000C9E48 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B51CC9251D1D620C000C9E48 /* MapSettingsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSettingsDelegate.swift; sourceTree = "<group>"; };
@@ -859,9 +858,10 @@
 		B59136871D19DC2700E9EDD0 /* DataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
 		B59136891D19DE6C00E9EDD0 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		B591368B1D19F13500E9EDD0 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		C645BB3A94E669867354068A /* Pods_HATDeXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF5B39F59CF757EC7480103A /* Pods_HATDeX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4FC15E5C8C7719008C6A03E /* Pods-HATDeX.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeX.beta.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX.beta.xcconfig"; sourceTree = "<group>"; };
+		C81E41750C8E5D26E6EC184C /* Pods-HATDeX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX.debug.xcconfig"; sourceTree = "<group>"; };
+		CD1010C7074EA31A7027B0DC /* Pods_HATDeXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBDCD865669AC426CD4C4BC3 /* Pods-HATDeXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DCDC95C1A91D857BA78F4470 /* Pods-HATDeXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HATDeXUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -870,7 +870,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B564E9971D1984CF00EDB8F1 /* MapKit.framework in Frameworks */,
-				95ADA004C97262D0E0E2414E /* Pods_HATDeX.framework in Frameworks */,
+				575C4603CF61560198271894 /* Pods_HATDeX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,7 +878,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				535A8C241793901034F750ED /* Pods_HATDeXTests.framework in Frameworks */,
+				E1B55867B433CA0B4A0210E6 /* Pods_HATDeXTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,25 +886,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DDE79ADA898F4961733EEC5 /* Pods_HATDeXUITests.framework in Frameworks */,
+				854D0B2FB1685B967D901548 /* Pods_HATDeXUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		020006BB009D2232B3B7282D /* Pods */ = {
+		017E27A1B245C158112AB006 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				145371C2F27A94F7FB8598C2 /* Pods-HATDeX.debug.xcconfig */,
-				7E4E8148AE275A0D3AD63B64 /* Pods-HATDeX.release.xcconfig */,
-				F4FC15E5C8C7719008C6A03E /* Pods-HATDeX.beta.xcconfig */,
-				6E179F656EAC20F840A9A87B /* Pods-HATDeXTests.debug.xcconfig */,
-				7AD3B1195D19AF412C2EB870 /* Pods-HATDeXTests.release.xcconfig */,
-				9660834466060963E07ABBD6 /* Pods-HATDeXTests.beta.xcconfig */,
-				217A8294D0322E416DA227C5 /* Pods-HATDeXUITests.debug.xcconfig */,
-				81D5EC1B706DEAF8A66FA587 /* Pods-HATDeXUITests.release.xcconfig */,
-				9F4CF63380B8A9C1A53DB15A /* Pods-HATDeXUITests.beta.xcconfig */,
+				C81E41750C8E5D26E6EC184C /* Pods-HATDeX.debug.xcconfig */,
+				564524F1A267667534AEA1D1 /* Pods-HATDeX.release.xcconfig */,
+				07F6AF2FDB0DF5175D73FF92 /* Pods-HATDeX.beta.xcconfig */,
+				DBDCD865669AC426CD4C4BC3 /* Pods-HATDeXTests.debug.xcconfig */,
+				9F767611AB9A0F13F9460A5D /* Pods-HATDeXTests.release.xcconfig */,
+				4682E4D87A4CF868678833E9 /* Pods-HATDeXTests.beta.xcconfig */,
+				697B527EB6A2107EF8599CCD /* Pods-HATDeXUITests.debug.xcconfig */,
+				DCDC95C1A91D857BA78F4470 /* Pods-HATDeXUITests.release.xcconfig */,
+				7B458172F03477AD64930C5A /* Pods-HATDeXUITests.beta.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -914,9 +914,9 @@
 			children = (
 				60CD68431E47C71300E60429 /* SwiftyJSON.framework */,
 				B564E9961D1984CF00EDB8F1 /* MapKit.framework */,
-				DF5B39F59CF757EC7480103A /* Pods_HATDeX.framework */,
-				1E39B227B04EF804225B4A97 /* Pods_HATDeXTests.framework */,
-				C645BB3A94E669867354068A /* Pods_HATDeXUITests.framework */,
+				025EE634DC435D5315277493 /* Pods_HATDeX.framework */,
+				CD1010C7074EA31A7027B0DC /* Pods_HATDeXTests.framework */,
+				5789234119B48B25EA7FC71B /* Pods_HATDeXUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1298,7 +1298,7 @@
 				6041B2031E49CECA00534955 /* Launch Screen2.storyboard */,
 				B564E9981D19862200EDB8F1 /* Localizable.strings */,
 				B564E96C1D19717900EDB8F1 /* Main.storyboard */,
-				020006BB009D2232B3B7282D /* Pods */,
+				017E27A1B245C158112AB006 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1432,14 +1432,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B564E98D1D19717900EDB8F1 /* Build configuration list for PBXNativeTarget "HATDeX" */;
 			buildPhases = (
-				EEFAF575AB836F0EF28FE018 /* [CP] Check Pods Manifest.lock */,
+				B4756537278DA0BD7A77E9DD /* [CP] Check Pods Manifest.lock */,
 				B564E9611D19717900EDB8F1 /* Sources */,
 				B564E9621D19717900EDB8F1 /* Frameworks */,
 				B564E9631D19717900EDB8F1 /* Resources */,
 				6076A5971DEFACA700D83D42 /* ShellScript */,
 				604E45FE1EFBD4CC0071347E /* ShellScript */,
-				FEC55952390FA76D7A23B2CB /* [CP] Embed Pods Frameworks */,
-				998736ACD453EF08BEB7F1E7 /* [CP] Copy Pods Resources */,
+				B8D176186B846EEFDD5047B0 /* [CP] Embed Pods Frameworks */,
+				E655F71709BABD456AB79338 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1454,12 +1454,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B564E9901D19717900EDB8F1 /* Build configuration list for PBXNativeTarget "HATDeXTests" */;
 			buildPhases = (
-				87FC1D4457FAF7EB30C076AA /* [CP] Check Pods Manifest.lock */,
+				ACF0ABD2865B29BF95CF0990 /* [CP] Check Pods Manifest.lock */,
 				B564E9751D19717900EDB8F1 /* Sources */,
 				B564E9761D19717900EDB8F1 /* Frameworks */,
 				B564E9771D19717900EDB8F1 /* Resources */,
-				7E0A93CCDEB17E93DDE7F700 /* [CP] Embed Pods Frameworks */,
-				01593F06EFD8509B1139232C /* [CP] Copy Pods Resources */,
+				5935C4627A88146123111832 /* [CP] Embed Pods Frameworks */,
+				5AF2F6418A090205E51BC9C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1475,13 +1475,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B564E9931D19717900EDB8F1 /* Build configuration list for PBXNativeTarget "HATDeXUITests" */;
 			buildPhases = (
-				A94BC8D9FB6930CE966FB1FC /* [CP] Check Pods Manifest.lock */,
+				73AD113C9B4479A13B00F367 /* [CP] Check Pods Manifest.lock */,
 				B564E9801D19717900EDB8F1 /* Sources */,
 				B564E9811D19717900EDB8F1 /* Frameworks */,
 				B564E9821D19717900EDB8F1 /* Resources */,
 				60905BD61F6482F3004EBB63 /* ShellScript */,
-				D61E49C40BABCA2CF60F1A99 /* [CP] Embed Pods Frameworks */,
-				7D1B10DE245AB24DFD1B035D /* [CP] Copy Pods Resources */,
+				22A413CE3357C421F00240BE /* [CP] Embed Pods Frameworks */,
+				CD98776D2725974397319117 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1645,7 +1645,99 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01593F06EFD8509B1139232C /* [CP] Copy Pods Resources */ = {
+		22A413CE3357C421F00240BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
+				"${BUILT_PRODUCTS_DIR}/FBAnnotationClusteringSwift/FBAnnotationClusteringSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Haneke/Haneke.framework",
+				"${BUILT_PRODUCTS_DIR}/HatForIOS/HatForIOS.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework",
+				"${BUILT_PRODUCTS_DIR}/zxcvbn-ios/zxcvbn_ios.framework",
+				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
+				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAnnotationClusteringSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HatForIOS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyRSA.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/zxcvbn_ios.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5935C4627A88146123111832 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
+				"${BUILT_PRODUCTS_DIR}/FBAnnotationClusteringSwift/FBAnnotationClusteringSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Haneke/Haneke.framework",
+				"${BUILT_PRODUCTS_DIR}/HatForIOS/HatForIOS.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework",
+				"${BUILT_PRODUCTS_DIR}/zxcvbn-ios/zxcvbn_ios.framework",
+				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
+				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAnnotationClusteringSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HatForIOS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyRSA.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/zxcvbn_ios.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AF2F6418A090205E51BC9C4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1699,101 +1791,7 @@
 			shellPath = /bin/sh;
 			shellScript = "";
 		};
-		7D1B10DE245AB24DFD1B035D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7E0A93CCDEB17E93DDE7F700 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
-				"${BUILT_PRODUCTS_DIR}/FBAnnotationClusteringSwift/FBAnnotationClusteringSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Haneke/Haneke.framework",
-				"${BUILT_PRODUCTS_DIR}/HatForIOS/HatForIOS.framework",
-				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework",
-				"${BUILT_PRODUCTS_DIR}/zxcvbn-ios/zxcvbn_ios.framework",
-				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
-				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAnnotationClusteringSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HatForIOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyRSA.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/zxcvbn_ios.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXTests/Pods-HATDeXTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		87FC1D4457FAF7EB30C076AA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HATDeXTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		998736ACD453EF08BEB7F1E7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A94BC8D9FB6930CE966FB1FC /* [CP] Check Pods Manifest.lock */ = {
+		73AD113C9B4479A13B00F367 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1811,53 +1809,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D61E49C40BABCA2CF60F1A99 /* [CP] Embed Pods Frameworks */ = {
+		ACF0ABD2865B29BF95CF0990 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
-				"${BUILT_PRODUCTS_DIR}/FBAnnotationClusteringSwift/FBAnnotationClusteringSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Haneke/Haneke.framework",
-				"${BUILT_PRODUCTS_DIR}/HatForIOS/HatForIOS.framework",
-				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework",
-				"${BUILT_PRODUCTS_DIR}/zxcvbn-ios/zxcvbn_ios.framework",
-				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
-				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAnnotationClusteringSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HatForIOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyRSA.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/zxcvbn_ios.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
+				"$(DERIVED_FILE_DIR)/Pods-HATDeXTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EEFAF575AB836F0EF28FE018 /* [CP] Check Pods Manifest.lock */ = {
+		B4756537278DA0BD7A77E9DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1875,7 +1845,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FEC55952390FA76D7A23B2CB /* [CP] Embed Pods Frameworks */ = {
+		B8D176186B846EEFDD5047B0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1915,6 +1885,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD98776D2725974397319117 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeXUITests/Pods-HATDeXUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E655F71709BABD456AB79338 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HATDeX/Pods-HATDeX-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2572,7 +2572,7 @@
 		};
 		60BAC1B61FA7242500E79C75 /* Beta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4FC15E5C8C7719008C6A03E /* Pods-HATDeX.beta.xcconfig */;
+			baseConfigurationReference = 07F6AF2FDB0DF5175D73FF92 /* Pods-HATDeX.beta.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_NAME = "HATDeX Testing";
@@ -2604,7 +2604,7 @@
 		};
 		60BAC1B71FA7242500E79C75 /* Beta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9660834466060963E07ABBD6 /* Pods-HATDeXTests.beta.xcconfig */;
+			baseConfigurationReference = 4682E4D87A4CF868678833E9 /* Pods-HATDeXTests.beta.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2630,7 +2630,7 @@
 		};
 		60BAC1B81FA7242500E79C75 /* Beta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F4CF63380B8A9C1A53DB15A /* Pods-HATDeXUITests.beta.xcconfig */;
+			baseConfigurationReference = 7B458172F03477AD64930C5A /* Pods-HATDeXUITests.beta.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2762,7 +2762,7 @@
 		};
 		B564E98E1D19717900EDB8F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 145371C2F27A94F7FB8598C2 /* Pods-HATDeX.debug.xcconfig */;
+			baseConfigurationReference = C81E41750C8E5D26E6EC184C /* Pods-HATDeX.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_NAME = HATDeX;
@@ -2792,7 +2792,7 @@
 		};
 		B564E98F1D19717900EDB8F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E4E8148AE275A0D3AD63B64 /* Pods-HATDeX.release.xcconfig */;
+			baseConfigurationReference = 564524F1A267667534AEA1D1 /* Pods-HATDeX.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_NAME = HATDeX;
@@ -2822,7 +2822,7 @@
 		};
 		B564E9911D19717900EDB8F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E179F656EAC20F840A9A87B /* Pods-HATDeXTests.debug.xcconfig */;
+			baseConfigurationReference = DBDCD865669AC426CD4C4BC3 /* Pods-HATDeXTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2848,7 +2848,7 @@
 		};
 		B564E9921D19717900EDB8F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AD3B1195D19AF412C2EB870 /* Pods-HATDeXTests.release.xcconfig */;
+			baseConfigurationReference = 9F767611AB9A0F13F9460A5D /* Pods-HATDeXTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2874,7 +2874,7 @@
 		};
 		B564E9941D19717900EDB8F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 217A8294D0322E416DA227C5 /* Pods-HATDeXUITests.debug.xcconfig */;
+			baseConfigurationReference = 697B527EB6A2107EF8599CCD /* Pods-HATDeXUITests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2890,7 +2890,7 @@
 		};
 		B564E9951D19717900EDB8F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81D5EC1B706DEAF8A66FA587 /* Pods-HATDeXUITests.release.xcconfig */;
+			baseConfigurationReference = DCDC95C1A91D857BA78F4470 /* Pods-HATDeXUITests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;

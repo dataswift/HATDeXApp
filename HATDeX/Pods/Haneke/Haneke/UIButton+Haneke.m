@@ -150,7 +150,7 @@
     const BOOL didSetImage = [[HNKCache sharedCache] fetchImageForFetcher:fetcher formatName:format.name success:^(UIImage *image) {
         __typeof__(weakSelf) strongSelf = weakSelf;
         if ([strongSelf hnk_shouldCancelSetImageForKey:fetcher.key]) return;
-
+        
         [strongSelf hnk_setImage:image forState:state animated:animated success:successBlock];
     } failure:^(NSError *error) {
         __typeof__(weakSelf) strongSelf = weakSelf;
@@ -314,12 +314,12 @@
     const BOOL didSetImage = [[HNKCache sharedCache] fetchImageForFetcher:fetcher formatName:format.name success:^(UIImage *image) {
         __typeof__(weakSelf) strongSelf = weakSelf;
         if ([strongSelf hnk_shouldCancelSetBackgroundImageForKey:fetcher.key]) return;
-
+        
         [strongSelf hnk_setBackgroundImage:image forState:state animated:animated success:successBlock];
     } failure:^(NSError *error) {
         __typeof__(weakSelf) strongSelf = weakSelf;
         if ([strongSelf hnk_shouldCancelSetBackgroundImageForKey:fetcher.key]) return;
-
+        
         strongSelf.hnk_backgroundImageFetcher = nil;
         
         if (failureBlock) failureBlock(error);

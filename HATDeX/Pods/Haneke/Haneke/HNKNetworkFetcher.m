@@ -42,7 +42,7 @@
 {
     return _URL.absoluteString;
 }
-    
+
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
     
     _downloadSize=[response expectedContentLength];
@@ -56,7 +56,7 @@
     [_dataToDownload appendData:data];
     
     if (_progressUpdate) {
-
+        
         float value = _dataToDownload.length / _downloadSize;
         _progressUpdate(value);
     }
@@ -64,59 +64,59 @@
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     
-        if (error)
-        {
-            if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) return;
-
-            HanekeLog(@"Request %@ failed with error %@", URL.absoluteString, error);
-            if (!_failedBlock) return;
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _failedBlock(error);
-            });
-            return;
-        }
-
-        if (![task.response isKindOfClass:NSHTTPURLResponse.class])
-        {
-            HanekeLog(@"Request %@ received unknown response %@", URL.absoluteString, response);
-            return;
-        }
-
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)task.response;
-        if (httpResponse.statusCode != 200 && httpResponse.statusCode != 201)
-        {
-            NSString *errorDescription = [NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode];
-            [self failWithLocalizedDescription:errorDescription code:HNKErrorNetworkFetcherInvalidStatusCode block:_failedBlock];
-            return;
-        }
-
-        const long long expectedContentLength = task.response.expectedContentLength;
-        if (expectedContentLength > -1)
-        {
-            const NSUInteger dataLength = _dataToDownload.length;
-            if (dataLength < expectedContentLength)
-            {
-                NSString *errorDescription = [NSString stringWithFormat:NSLocalizedString(@"Request %@ received %ld out of %ld bytes", @""), _URL.absoluteString, (long)dataLength, (long)expectedContentLength];
-                [self failWithLocalizedDescription:errorDescription code:HNKErrorNetworkFetcherMissingData block:_failedBlock];
-                return;
-            }
-        }
-
-        UIImage *image = [UIImage imageWithData:_dataToDownload];
-
-        if (!image)
-        {
-            NSString *errorDescription = [NSString stringWithFormat:NSLocalizedString(@"Failed to load image from data at URL %@", @""), _URL];
-            [self failWithLocalizedDescription:errorDescription code:HNKErrorNetworkFetcherInvalidData block:_failedBlock];
-            return;
-        }
+    if (error)
+    {
+        if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) return;
+        
+        HanekeLog(@"Request %@ failed with error %@", URL.absoluteString, error);
+        if (!_failedBlock) return;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            _successBlock(image);
+            _failedBlock(error);
         });
-}
+        return;
+    }
     
+    if (![task.response isKindOfClass:NSHTTPURLResponse.class])
+    {
+        HanekeLog(@"Request %@ received unknown response %@", URL.absoluteString, response);
+        return;
+    }
+    
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)task.response;
+    if (httpResponse.statusCode != 200 && httpResponse.statusCode != 201)
+    {
+        NSString *errorDescription = [NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode];
+        [self failWithLocalizedDescription:errorDescription code:HNKErrorNetworkFetcherInvalidStatusCode block:_failedBlock];
+        return;
+    }
+    
+    const long long expectedContentLength = task.response.expectedContentLength;
+    if (expectedContentLength > -1)
+    {
+        const NSUInteger dataLength = _dataToDownload.length;
+        if (dataLength < expectedContentLength)
+        {
+            NSString *errorDescription = [NSString stringWithFormat:NSLocalizedString(@"Request %@ received %ld out of %ld bytes", @""), _URL.absoluteString, (long)dataLength, (long)expectedContentLength];
+            [self failWithLocalizedDescription:errorDescription code:HNKErrorNetworkFetcherMissingData block:_failedBlock];
+            return;
+        }
+    }
+    
+    UIImage *image = [UIImage imageWithData:_dataToDownload];
+    
+    if (!image)
+    {
+        NSString *errorDescription = [NSString stringWithFormat:NSLocalizedString(@"Failed to load image from data at URL %@", @""), _URL];
+        [self failWithLocalizedDescription:errorDescription code:HNKErrorNetworkFetcherInvalidData block:_failedBlock];
+        return;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _successBlock(image);
+    });
+}
+
 - (void)fetchImageWithSuccess:(void (^)(UIImage *image))successBlock failure:(void (^)(NSError *error))failureBlock
 {
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -149,7 +149,7 @@
 {
     HanekeLog(@"%@", localizedDescription);
     if (!failureBlock) return;
-
+    
     NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : localizedDescription , NSURLErrorKey : _URL};
     NSError *error = [NSError errorWithDomain:HNKErrorDomain code:code userInfo:userInfo];
     dispatch_async(dispatch_get_main_queue(), ^{
