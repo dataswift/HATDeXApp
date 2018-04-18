@@ -591,7 +591,6 @@
 		60FB24041F3A0B6C001A5EFD /* GoDeepCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB24031F3A0B6C001A5EFD /* GoDeepCollectionViewController.swift */; };
 		60FB24061F3A0C75001A5EFD /* GoDeepObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB24051F3A0C75001A5EFD /* GoDeepObject.swift */; };
 		60FB24081F3A0F99001A5EFD /* GoDeepCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB24071F3A0F99001A5EFD /* GoDeepCollectionViewCell.swift */; };
-		60FC6F4B204324EA007A85EE /* mapstogpx20170220_154311.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 60FC6F4A204324EA007A85EE /* mapstogpx20170220_154311.gpx */; };
 		854D0B2FB1685B967D901548 /* Pods_HATDeXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5789234119B48B25EA7FC71B /* Pods_HATDeXUITests.framework */; };
 		B5138ACE1D1ECA2C00CD1530 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5138ACD1D1ECA2C00CD1530 /* NetworkHelper.swift */; };
 		B51CC9241D1D5749000C9E48 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CC9231D1D5749000C9E48 /* SettingsViewController.swift */; };
@@ -1578,7 +1577,6 @@
 				6000CE5F1DE728580076E173 /* OpenSans-ExtraBold.ttf in Resources */,
 				6000CE701DE7288A0076E173 /* ss-glyphish-outlined.ttf in Resources */,
 				B564E9991D19862200EDB8F1 /* Localizable.strings in Resources */,
-				60FC6F4B204324EA007A85EE /* mapstogpx20170220_154311.gpx in Resources */,
 				6000CE631DE728580076E173 /* OpenSans-LightItalic.ttf in Resources */,
 				6000CE6A1DE728640076E173 /* OpenSans-CondBold.ttf in Resources */,
 				6000CE6E1DE728770076E173 /* ss-glyphish-filled.ttf in Resources */,
