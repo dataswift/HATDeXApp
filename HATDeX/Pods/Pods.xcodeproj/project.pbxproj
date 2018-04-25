@@ -954,22 +954,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00E57367BD854C15AD25984CC7E5AF0F /* RLMQueryUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMQueryUtil.mm; path = Realm/RLMQueryUtil.mm; sourceTree = "<group>"; };
+		00E57367BD854C15AD25984CC7E5AF0F /* RLMQueryUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMQueryUtil.mm; path = Realm/RLMQueryUtil.mm; sourceTree = "<group>"; };
 		017BBB1D66057726ED269B23ADDD9324 /* HATFeedLocationAddressObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFeedLocationAddressObject.swift; path = HAT/Objects/Feed/HATFeedLocationAddressObject.swift; sourceTree = "<group>"; };
 		01BE8E7C7072B2C877895D553B3B2671 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0325BC54B90BDC5264BCE5CD7EFC5BD7 /* JWTDecode.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWTDecode.xcconfig; sourceTree = "<group>"; };
-		03C968AE6102A9C064EA62BAFCF6B775 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Realm.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		03C968AE6102A9C064EA62BAFCF6B775 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04783BCF74EA6201C75CB1770C7BF805 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05774353EED3A0F6C5DEE812F0004465 /* RLMConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RLMConstants.m; path = Realm/RLMConstants.m; sourceTree = "<group>"; };
-		0619CC8C4A1665BA102C544F21E6818F /* RLMObjectBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectBase.mm; path = Realm/RLMObjectBase.mm; sourceTree = "<group>"; };
+		0619CC8C4A1665BA102C544F21E6818F /* RLMObjectBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObjectBase.mm; path = Realm/RLMObjectBase.mm; sourceTree = "<group>"; };
 		06329B3F16C832E896C846E1DE0F37F7 /* JWTDecode-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWTDecode-prefix.pch"; sourceTree = "<group>"; };
 		06E70C141D8DBCFB9B5D3320B132A87C /* HATErrorHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATErrorHelper.swift; path = HAT/Helpers/HATErrorHelper.swift; sourceTree = "<group>"; };
 		0734ED52ED6CDBBB4A9F045B8E084FBF /* FileUploadObjectStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileUploadObjectStatus.swift; path = "HAT/Objects/File Upload Object/FileUploadObjectStatus.swift"; sourceTree = "<group>"; };
-		077AE60320101520474DA6A2A91CB11F /* Pods_HATDeX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HATDeX.framework; path = "Pods-HATDeX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07FDEFBC4787E3D74A2B591F6EAE8406 /* collection_change_builder.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = collection_change_builder.cpp; path = Realm/ObjectStore/src/impl/collection_change_builder.cpp; sourceTree = "<group>"; };
+		077AE60320101520474DA6A2A91CB11F /* Pods_HATDeX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07FDEFBC4787E3D74A2B591F6EAE8406 /* collection_change_builder.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = collection_change_builder.cpp; path = Realm/ObjectStore/src/impl/collection_change_builder.cpp; sourceTree = "<group>"; };
 		08CC144533EB851F03EF676A954BC821 /* HATExternalAppsInfoDescriptionObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsInfoDescriptionObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsInfoDescriptionObject.swift"; sourceTree = "<group>"; };
 		0984C4835DED4348DBC0991EC1E57A8F /* Haneke.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Haneke.xcconfig; sourceTree = "<group>"; };
-		09A64EC4E103521EE013A2528DBF403A /* list.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = list.cpp; path = Realm/ObjectStore/src/list.cpp; sourceTree = "<group>"; };
+		09A64EC4E103521EE013A2528DBF403A /* list.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = list.cpp; path = Realm/ObjectStore/src/list.cpp; sourceTree = "<group>"; };
 		09E1F4370B78741BC783EA93A9B6B40C /* zxcvbn-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "zxcvbn-ios-dummy.m"; sourceTree = "<group>"; };
 		09FC97BDFBAE33DC9A701B53088AA2EA /* JWT.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWT.swift; path = JWTDecode/JWT.swift; sourceTree = "<group>"; };
 		0B6B59DC8C7845103A460FA9B198B5AF /* Realm-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Realm-prefix.pch"; sourceTree = "<group>"; };
@@ -981,18 +981,18 @@
 		0E0790E3FAC7178D6298F227ADE7882E /* librealmcore-ios.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "librealmcore-ios.a"; path = "core/librealmcore-ios.a"; sourceTree = "<group>"; };
 		0E2CD1199498AA4F526AA311641D9867 /* SwiftyRSA+ObjC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwiftyRSA+ObjC.swift"; path = "SwiftyRSA/SwiftyRSA+ObjC.swift"; sourceTree = "<group>"; };
 		0E5A4FE0D9AB1ECFA0DB66F8A32209E3 /* LinkingObjects.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LinkingObjects.swift; path = RealmSwift/LinkingObjects.swift; sourceTree = "<group>"; };
-		0E5C46FF0F3AB526A943C4158A51B248 /* shared_realm.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = shared_realm.cpp; path = Realm/ObjectStore/src/shared_realm.cpp; sourceTree = "<group>"; };
+		0E5C46FF0F3AB526A943C4158A51B248 /* shared_realm.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = shared_realm.cpp; path = Realm/ObjectStore/src/shared_realm.cpp; sourceTree = "<group>"; };
 		0E644A03FE9CE9F0B9AA41C62939F471 /* HAT.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HAT.h; path = HAT/HAT.h; sourceTree = "<group>"; };
 		0F23C87838B6317322F3A407FBCB977F /* RLMSyncConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncConfiguration.h; path = include/RLMSyncConfiguration.h; sourceTree = "<group>"; };
 		106355BF986CB8EA726DDEDCFA5875FB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
-		111A1A70DFEF0D13B5BDAD74599D0EC7 /* RLMOptionalBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMOptionalBase.mm; path = Realm/RLMOptionalBase.mm; sourceTree = "<group>"; };
+		111A1A70DFEF0D13B5BDAD74599D0EC7 /* RLMOptionalBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMOptionalBase.mm; path = Realm/RLMOptionalBase.mm; sourceTree = "<group>"; };
 		11301D1116C9C49D935E21B2AAA1FB7F /* HATExternalAppsInfoGraphicsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsInfoGraphicsObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsInfoGraphicsObject.swift"; sourceTree = "<group>"; };
 		113181BC59664D369E3FD29B53FC8099 /* HatForIOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HatForIOS.xcconfig; sourceTree = "<group>"; };
 		1174AA2877C5C0D2AACA4004CF866902 /* HATNotesDataObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATNotesDataObject.swift; path = HAT/Objects/Notes/HATNotesDataObject.swift; sourceTree = "<group>"; };
 		12263EC64C2ADD5F841223A055360B6F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1317ED676316DD40B4FCDA2E5B1125F0 /* HATTwitterDataSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATTwitterDataSocialFeedObject.swift; path = HAT/Objects/Twitter/HATTwitterDataSocialFeedObject.swift; sourceTree = "<group>"; };
 		14094FE44EF72C78FF0C43B7D6D3739C /* BEMCheckBox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BEMCheckBox-umbrella.h"; sourceTree = "<group>"; };
-		1415EE43935D206F44A447BDCB08D4BC /* object_schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = object_schema.cpp; path = Realm/ObjectStore/src/object_schema.cpp; sourceTree = "<group>"; };
+		1415EE43935D206F44A447BDCB08D4BC /* object_schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = object_schema.cpp; path = Realm/ObjectStore/src/object_schema.cpp; sourceTree = "<group>"; };
 		14C8DDA7E738128742DAC3DDF2AF06C5 /* HATProfileBundleDataObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileBundleDataObject.swift; path = HAT/Objects/Phatav2/HATProfileBundleDataObject.swift; sourceTree = "<group>"; };
 		1549FD180CD81B08BCC075E18A2E6CC2 /* Pods-HATDeXUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HATDeXUITests.release.xcconfig"; sourceTree = "<group>"; };
 		15C744215FAB5D7CC60021F7A23E60A0 /* RLMMigration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMMigration.h; path = include/RLMMigration.h; sourceTree = "<group>"; };
@@ -1008,11 +1008,11 @@
 		1977A350694F54987287E70E3C21E0B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19786D929D514B57AA42AA6F7E75FD39 /* KeychainSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KeychainSwift-dummy.m"; sourceTree = "<group>"; };
 		19AD6F0BBA9D24A142951D02C2A19390 /* HATGoogleCalendarConferenceDataConferenceSolutionObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarConferenceDataConferenceSolutionObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarConferenceDataConferenceSolutionObject.swift"; sourceTree = "<group>"; };
-		1A27A3AD28BF2E4B500F4C5E5DD23464 /* object.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = object.cpp; path = Realm/ObjectStore/src/object.cpp; sourceTree = "<group>"; };
+		1A27A3AD28BF2E4B500F4C5E5DD23464 /* object.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = object.cpp; path = Realm/ObjectStore/src/object.cpp; sourceTree = "<group>"; };
 		1A9283C2A159B7002FE6AA8F31165B68 /* RLMSyncSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncSession.h; path = include/RLMSyncSession.h; sourceTree = "<group>"; };
 		1B3A5852F5B18D7E4A2357EB268C557D /* Object.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Object.swift; path = RealmSwift/Object.swift; sourceTree = "<group>"; };
-		1B4F476217F5F615C35692FA30AC5C00 /* Pods-HATDeXTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-HATDeXTests.modulemap"; sourceTree = "<group>"; };
-		1CAEA32BBCCA7AE6E2614112C3CC4C10 /* binding_callback_thread_observer.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = binding_callback_thread_observer.cpp; path = Realm/ObjectStore/src/binding_callback_thread_observer.cpp; sourceTree = "<group>"; };
+		1B4F476217F5F615C35692FA30AC5C00 /* Pods-HATDeXTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-HATDeXTests.modulemap"; sourceTree = "<group>"; };
+		1CAEA32BBCCA7AE6E2614112C3CC4C10 /* binding_callback_thread_observer.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = binding_callback_thread_observer.cpp; path = Realm/ObjectStore/src/binding_callback_thread_observer.cpp; sourceTree = "<group>"; };
 		1D61678827AA4479606BA9110C4E92AD /* HATExternalAppsSetupObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsSetupObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsSetupObject.swift"; sourceTree = "<group>"; };
 		1DD88A29E30FE5618A179252EDAEB15A /* HATFitbitWeightObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitWeightObject.swift; path = HAT/Objects/Fitbit/HATFitbitWeightObject.swift; sourceTree = "<group>"; };
 		1E1300DBF4D7DDFE0F54D83AFA55950F /* HATSpotifyProfileExternalURLObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATSpotifyProfileExternalURLObject.swift; path = HAT/Objects/Spotify/HATSpotifyProfileExternalURLObject.swift; sourceTree = "<group>"; };
@@ -1026,17 +1026,17 @@
 		227610AC31B0C3E4FBEA8FC57A4F0852 /* HATDataPlugProviderObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATDataPlugProviderObject.swift; path = "HAT/Objects/Data Plugs/HATDataPlugProviderObject.swift"; sourceTree = "<group>"; };
 		233F3891B3FCD4F0B223631D7E7AF777 /* HATFitbitDailyActivityDistanceObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitDailyActivityDistanceObject.swift; path = HAT/Objects/Fitbit/HATFitbitDailyActivityDistanceObject.swift; sourceTree = "<group>"; };
 		235B96749DA8A390B421E415E3CB029A /* HATFitbitStatsLifetimeStatsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitStatsLifetimeStatsObject.swift; path = HAT/Objects/Fitbit/HATFitbitStatsLifetimeStatsObject.swift; sourceTree = "<group>"; };
-		23E6455AC98B0116A59ABBB6916DED05 /* Realm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Realm.modulemap; sourceTree = "<group>"; };
+		23E6455AC98B0116A59ABBB6916DED05 /* Realm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Realm.modulemap; sourceTree = "<group>"; };
 		23E90F80D0B205315FA57457FB945715 /* DataOfferClaimObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferClaimObject.swift; path = "HAT/Objects/Data Offers/DataOfferClaimObject.swift"; sourceTree = "<group>"; };
 		242733A8105491DFC097FF9208E415DA /* HATGoogleCalendarObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarObject.swift"; sourceTree = "<group>"; };
-		250334121E95E4C4305BD56D39E07C4E /* Pods_HATDeXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HATDeXTests.framework; path = "Pods-HATDeXTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		250334121E95E4C4305BD56D39E07C4E /* Pods_HATDeXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2514C130EB19DCDFE89D0CCC2BEBB81B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		2547E7E4F562760E6B35579F400BEE27 /* Realm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Realm.swift; path = RealmSwift/Realm.swift; sourceTree = "<group>"; };
 		257818E79371A3979C55ED2C51466039 /* Pods-HATDeXUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HATDeXUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		25BD928FFF8C80BE65377FF34A9F7166 /* work_queue.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = work_queue.cpp; path = Realm/ObjectStore/src/sync/impl/work_queue.cpp; sourceTree = "<group>"; };
+		25BD928FFF8C80BE65377FF34A9F7166 /* work_queue.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = work_queue.cpp; path = Realm/ObjectStore/src/sync/impl/work_queue.cpp; sourceTree = "<group>"; };
 		26944C81A4D34BB087C035DD8520BD75 /* JWTDecode-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWTDecode-umbrella.h"; sourceTree = "<group>"; };
 		26EA4C201395F1988B22E07A57725837 /* HATSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATSocialFeedObject.swift; path = HAT/Objects/HATSocialFeedObject.swift; sourceTree = "<group>"; };
-		26EB7100B2AEBE49B923F55D3CC82D55 /* RLMListBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMListBase.mm; path = Realm/RLMListBase.mm; sourceTree = "<group>"; };
+		26EB7100B2AEBE49B923F55D3CC82D55 /* RLMListBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMListBase.mm; path = Realm/RLMListBase.mm; sourceTree = "<group>"; };
 		272DFDFA655AA938C2F2A4DBE27FCB1B /* NSError+RLMSync.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+RLMSync.m"; path = "Realm/NSError+RLMSync.m"; sourceTree = "<group>"; };
 		2741CC2F86062180CDA24326BEF93564 /* HATSpotifyService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATSpotifyService.swift; path = HAT/Services/HATSpotifyService.swift; sourceTree = "<group>"; };
 		277C587ACC45479AE7FCD28A6BCC7C9A /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
@@ -1044,7 +1044,7 @@
 		28616392F3D722085954D7D8A7F0EACF /* HATConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATConstants.swift; path = HAT/HATConstants.swift; sourceTree = "<group>"; };
 		28ADE026B081C1B17A5365DD2E19CE02 /* SortDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SortDescriptor.swift; path = RealmSwift/SortDescriptor.swift; sourceTree = "<group>"; };
 		291E2644D362F896E430D00A52DB2B81 /* FBClusteringManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBClusteringManager.swift; path = Pod/Classes/FBClusteringManager.swift; sourceTree = "<group>"; };
-		2A1D1EE5E708E987439C65D7BA3AA6BC /* RLMSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSchema.mm; path = Realm/RLMSchema.mm; sourceTree = "<group>"; };
+		2A1D1EE5E708E987439C65D7BA3AA6BC /* RLMSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSchema.mm; path = Realm/RLMSchema.mm; sourceTree = "<group>"; };
 		2A890099953D7AF172CABD7971202C07 /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = JWTDecode/Errors.swift; sourceTree = "<group>"; };
 		2AA42AA495945C46FFC13F7BE27C1A5D /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		2B28AC4445164AB0F91916E7D00B339E /* Pods-HATDeXUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HATDeXUITests-umbrella.h"; sourceTree = "<group>"; };
@@ -1055,31 +1055,31 @@
 		2C46A517E2D47376983CBAD2C618F6EA /* RLMSchema_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSchema_Private.h; path = include/RLMSchema_Private.h; sourceTree = "<group>"; };
 		2C76A3A6ED7B4490A5EBAF6870E65010 /* HATFormatterHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFormatterHelper.swift; path = HAT/Helpers/HATFormatterHelper.swift; sourceTree = "<group>"; };
 		2CB87390F276A225C77940AA6F4594CA /* HATProfileInfoObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileInfoObject.swift; path = HAT/Objects/Profile/Info/HATProfileInfoObject.swift; sourceTree = "<group>"; };
-		2D74059C68810D543F6E22B7043F88DD /* SwiftyRSA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyRSA.framework; path = SwiftyRSA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DCA89D134254DE6E0430F99804065CF /* results.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = results.cpp; path = Realm/ObjectStore/src/results.cpp; sourceTree = "<group>"; };
+		2D74059C68810D543F6E22B7043F88DD /* SwiftyRSA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyRSA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DCA89D134254DE6E0430F99804065CF /* results.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = results.cpp; path = Realm/ObjectStore/src/results.cpp; sourceTree = "<group>"; };
 		2F0BB701B0E02445DBFC2B981EDFA657 /* Crashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Crashlytics.h; path = iOS/Crashlytics.framework/Headers/Crashlytics.h; sourceTree = "<group>"; };
 		301233FAA356E8709391FAEEFAA82AC2 /* ObjectiveCSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjectiveCSupport.swift; path = RealmSwift/ObjectiveCSupport.swift; sourceTree = "<group>"; };
 		303018DA8D4A5E590D684BA62F543C44 /* Pods-HATDeXTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HATDeXTests-dummy.m"; sourceTree = "<group>"; };
 		30A377B9A98F22445ADA772D248BF468 /* HATDataPlugsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATDataPlugsService.swift; path = HAT/Services/HATDataPlugsService.swift; sourceTree = "<group>"; };
 		312A4579CFEC254E023F16641D6C8AD9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3161B97E8D8E1C6D00252319C62ABD4F /* realm_coordinator.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = realm_coordinator.cpp; path = Realm/ObjectStore/src/impl/realm_coordinator.cpp; sourceTree = "<group>"; };
+		3161B97E8D8E1C6D00252319C62ABD4F /* realm_coordinator.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = realm_coordinator.cpp; path = Realm/ObjectStore/src/impl/realm_coordinator.cpp; sourceTree = "<group>"; };
 		32556F40881FBBCF7009235EB5C1E2BF /* Realm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Realm.h; path = include/Realm.h; sourceTree = "<group>"; };
 		326BD88E7F421FD2204E3B58F4D21125 /* RLMRealm_Dynamic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealm_Dynamic.h; path = include/RLMRealm_Dynamic.h; sourceTree = "<group>"; };
-		33040C82C30DFE38A47B17A1E434B45E /* sync_metadata.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = sync_metadata.cpp; path = Realm/ObjectStore/src/sync/impl/sync_metadata.cpp; sourceTree = "<group>"; };
+		33040C82C30DFE38A47B17A1E434B45E /* sync_metadata.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = sync_metadata.cpp; path = Realm/ObjectStore/src/sync/impl/sync_metadata.cpp; sourceTree = "<group>"; };
 		3321F3C6837A813DDBF38E4A25761B45 /* DataOfferRewardsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferRewardsObject.swift; path = "HAT/Objects/Data Offers/DataOfferRewardsObject.swift"; sourceTree = "<group>"; };
 		33CF4C2C5268BC6C019E6E480E7513CE /* RLMSyncUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncUtil.h; path = include/RLMSyncUtil.h; sourceTree = "<group>"; };
 		3452F27720695FF105C20968A58440FC /* HATProviderKindObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProviderKindObject.swift; path = "HAT/Objects/HAT Provider/HATProviderKindObject.swift"; sourceTree = "<group>"; };
 		3486AB426FEC424F17CA8EE4641967E4 /* SwiftVersion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftVersion.swift; path = RealmSwift/SwiftVersion.swift; sourceTree = "<group>"; };
 		34B12E480EE115F834ED20FBD6E2E767 /* Migration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Migration.swift; path = RealmSwift/Migration.swift; sourceTree = "<group>"; };
-		34DF806D1AF132DD26A00CC3591B1188 /* thread_safe_reference.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = thread_safe_reference.cpp; path = Realm/ObjectStore/src/thread_safe_reference.cpp; sourceTree = "<group>"; };
-		35B984BCDD62DE18238767BEF7316103 /* RLMRealm.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMRealm.mm; path = Realm/RLMRealm.mm; sourceTree = "<group>"; };
+		34DF806D1AF132DD26A00CC3591B1188 /* thread_safe_reference.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = thread_safe_reference.cpp; path = Realm/ObjectStore/src/thread_safe_reference.cpp; sourceTree = "<group>"; };
+		35B984BCDD62DE18238767BEF7316103 /* RLMRealm.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMRealm.mm; path = Realm/RLMRealm.mm; sourceTree = "<group>"; };
 		35D16277BD303DF5ED574A2BAB20DAC6 /* KeychainSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainSwift-prefix.pch"; sourceTree = "<group>"; };
 		361441B6BFE0FFD80677729B2F828716 /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = iOS/Fabric.framework/Headers/Fabric.h; sourceTree = "<group>"; };
 		36640892F62CEAFE8FB61138797A82C7 /* HATExternalAppsInfoObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsInfoObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsInfoObject.swift"; sourceTree = "<group>"; };
-		375CE0E1F888D4E95020189E707D001D /* frequency_lists.json */ = {isa = PBXFileReference; includeInIndex = 1; name = frequency_lists.json; path = Zxcvbn/generated/frequency_lists.json; sourceTree = "<group>"; };
-		39B1268D35406261591CF23A05C9A9B5 /* RLMManagedArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMManagedArray.mm; path = Realm/RLMManagedArray.mm; sourceTree = "<group>"; };
+		375CE0E1F888D4E95020189E707D001D /* frequency_lists.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = frequency_lists.json; path = Zxcvbn/generated/frequency_lists.json; sourceTree = "<group>"; };
+		39B1268D35406261591CF23A05C9A9B5 /* RLMManagedArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMManagedArray.mm; path = Realm/RLMManagedArray.mm; sourceTree = "<group>"; };
 		39BC9EC423D636B11F9F0264F1A8FBB8 /* Mockingjay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Mockingjay.h; path = Sources/Mockingjay/Mockingjay.h; sourceTree = "<group>"; };
-		3A1D83AE8F68A5B8B7A53B7ED5422E59 /* Pods-HATDeXUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-HATDeXUITests.modulemap"; sourceTree = "<group>"; };
+		3A1D83AE8F68A5B8B7A53B7ED5422E59 /* Pods-HATDeXUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-HATDeXUITests.modulemap"; sourceTree = "<group>"; };
 		3B2DF7E8BDDD005930CFBC65BC4B473C /* TegKeychainConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TegKeychainConstants.swift; path = Sources/TegKeychainConstants.swift; sourceTree = "<group>"; };
 		3C0AEC66B94D71AC82EBEDCD165EB576 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
 		3C75FB24487BDE1D363CBBC0021CCDC5 /* HATGoogleCalendarExtendedPropertiesObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarExtendedPropertiesObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarExtendedPropertiesObject.swift"; sourceTree = "<group>"; };
@@ -1089,21 +1089,21 @@
 		3EC6C14105382C50838086B0F874D66F /* RealmSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RealmSwift.xcconfig; sourceTree = "<group>"; };
 		3EDF7BFC219EB1527202541E85EBA966 /* MarkdownView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarkdownView-dummy.m"; sourceTree = "<group>"; };
 		3F7C61B9EB5E12846A9FEE9F5157CCD0 /* RealmSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RealmSwift-prefix.pch"; sourceTree = "<group>"; };
-		3FC372D224663587530DF117CF045F2B /* zxcvbn_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = zxcvbn_ios.framework; path = "zxcvbn-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FC372D224663587530DF117CF045F2B /* zxcvbn_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = zxcvbn_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40414F5FCC8B16BE6F1383182006EEB1 /* DataOfferRequiredDataDefinitionBundleKeyEndpointsV2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferRequiredDataDefinitionBundleKeyEndpointsV2.swift; path = "HAT/Objects/Data Offers/DataOfferRequiredDataDefinitionBundleKeyEndpointsV2.swift"; sourceTree = "<group>"; };
 		40519A23A168AC4E84B1DD0181AE1CD3 /* NSData+SHA.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+SHA.m"; path = "SwiftyRSA/NSData+SHA.m"; sourceTree = "<group>"; };
 		4098B3FB5443061882A41F0266C08F30 /* HATFitbitSleepLevelsSummaryCountObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitSleepLevelsSummaryCountObject.swift; path = HAT/Objects/Fitbit/HATFitbitSleepLevelsSummaryCountObject.swift; sourceTree = "<group>"; };
 		417ABA2E91392E8B3C0E970A75D1E240 /* NSError+RLMSync.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+RLMSync.h"; path = "include/NSError+RLMSync.h"; sourceTree = "<group>"; };
-		418689109166E454DD124BE0765FA376 /* Pods_HATDeXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HATDeXUITests.framework; path = "Pods-HATDeXUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		418689109166E454DD124BE0765FA376 /* Pods_HATDeXUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HATDeXUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4199F4A729D82CF9A0C649B538A7F869 /* HATGoogleCalendarAttendeesObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarAttendeesObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarAttendeesObject.swift"; sourceTree = "<group>"; };
-		41F61F724653AB8897D59923858FD405 /* RLMObjectStore.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectStore.mm; path = Realm/RLMObjectStore.mm; sourceTree = "<group>"; };
+		41F61F724653AB8897D59923858FD405 /* RLMObjectStore.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObjectStore.mm; path = Realm/RLMObjectStore.mm; sourceTree = "<group>"; };
 		421652FA416DB0F6F4AC0085786ABB48 /* HATExternalAppsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsObject.swift"; sourceTree = "<group>"; };
 		42AB972B7D71205ED2ECF7AE3EC95ADE /* HatForIOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HatForIOS-umbrella.h"; sourceTree = "<group>"; };
-		434703CFC6EE694E2C02FF30FC8AB34B /* Pods-HATDeX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-HATDeX.modulemap"; sourceTree = "<group>"; };
+		434703CFC6EE694E2C02FF30FC8AB34B /* Pods-HATDeX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-HATDeX.modulemap"; sourceTree = "<group>"; };
 		4359FE8283909AD1FFBF40E2155D5D14 /* HATProviderCategoryObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProviderCategoryObject.swift; path = "HAT/Objects/HAT Provider/HATProviderCategoryObject.swift"; sourceTree = "<group>"; };
 		43838AADE37042579FDC04154D783122 /* HATFileService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFileService.swift; path = HAT/Services/HATFileService.swift; sourceTree = "<group>"; };
 		442C69A288F54B335DC1AA4E2B19E4E6 /* RLMResults_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMResults_Private.h; path = include/RLMResults_Private.h; sourceTree = "<group>"; };
-		45FC9003F59BAB9500090D5C7BE26E45 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45FC9003F59BAB9500090D5C7BE26E45 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F279CBAFC17DF0E6413541B1AA3950 /* Pods-HATDeXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HATDeXTests.debug.xcconfig"; sourceTree = "<group>"; };
 		478DDBD8283F6CF0657A29787DE2C216 /* RLMRealm_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealm_Private.h; path = include/RLMRealm_Private.h; sourceTree = "<group>"; };
 		47A9F01489FE9D4971B4271DFE7FE361 /* URITemplate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URITemplate.swift; path = Sources/URITemplate.swift; sourceTree = "<group>"; };
@@ -1113,14 +1113,14 @@
 		48F763BB9B9FBF22E980512DD390D8A1 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		492B6683189EC1AC21A8E78CA769A481 /* HATTwitterSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATTwitterSocialFeedObject.swift; path = HAT/Objects/Twitter/HATTwitterSocialFeedObject.swift; sourceTree = "<group>"; };
 		4A3BEF3C8E8CBB7B6E45ECBE7E76CC00 /* JWTDecode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWTDecode.swift; path = JWTDecode/JWTDecode.swift; sourceTree = "<group>"; };
-		4A5DBFFE8B585ACE3AC188A1D35351A3 /* partial_sync.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = partial_sync.cpp; path = Realm/ObjectStore/src/sync/partial_sync.cpp; sourceTree = "<group>"; };
+		4A5DBFFE8B585ACE3AC188A1D35351A3 /* partial_sync.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = partial_sync.cpp; path = Realm/ObjectStore/src/sync/partial_sync.cpp; sourceTree = "<group>"; };
 		4B090594BAC9DB3CAA16A84896449DB6 /* DataOfferRequiredDataDefinitionBundleFiltersV2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferRequiredDataDefinitionBundleFiltersV2.swift; path = "HAT/Objects/Data Offers/DataOfferRequiredDataDefinitionBundleFiltersV2.swift"; sourceTree = "<group>"; };
-		4BD2C9649AB64D40266934EF76D5A379 /* RealmSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RealmSwift.modulemap; sourceTree = "<group>"; };
-		4BFBC8B810B75A2D230E1DE9A309636A /* schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = schema.cpp; path = Realm/ObjectStore/src/schema.cpp; sourceTree = "<group>"; };
+		4BD2C9649AB64D40266934EF76D5A379 /* RealmSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RealmSwift.modulemap; sourceTree = "<group>"; };
+		4BFBC8B810B75A2D230E1DE9A309636A /* schema.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = schema.cpp; path = Realm/ObjectStore/src/schema.cpp; sourceTree = "<group>"; };
 		4C41DE993BAA62E2F15ECBC3345FD090 /* Builders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Builders.swift; path = Sources/Mockingjay/Builders.swift; sourceTree = "<group>"; };
 		4C82374A8165E8B9A6D196038798469B /* Pods-HATDeX-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HATDeX-acknowledgements.plist"; sourceTree = "<group>"; };
-		4CDDB1F7D4CC3679D47D585E37684CC0 /* RLMObject.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObject.mm; path = Realm/RLMObject.mm; sourceTree = "<group>"; };
-		4CEF76E07A8B998F073C0A4E82D90CCF /* JWTDecode.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JWTDecode.modulemap; sourceTree = "<group>"; };
+		4CDDB1F7D4CC3679D47D585E37684CC0 /* RLMObject.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObject.mm; path = Realm/RLMObject.mm; sourceTree = "<group>"; };
+		4CEF76E07A8B998F073C0A4E82D90CCF /* JWTDecode.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = JWTDecode.modulemap; sourceTree = "<group>"; };
 		4D29EE12F71847620A060F4D21C75DFF /* HATFacebookSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFacebookSocialFeedObject.swift; path = HAT/Objects/Facebook/Posts/HATFacebookSocialFeedObject.swift; sourceTree = "<group>"; };
 		4D595EF5F22A01E45803A1FD0E0A70CC /* HNKDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HNKDiskCache.m; path = Haneke/HNKDiskCache.m; sourceTree = "<group>"; };
 		4DB00FAE9576768048DB70F4CCB94754 /* MarkdownView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownView-prefix.pch"; sourceTree = "<group>"; };
@@ -1129,18 +1129,18 @@
 		4FEDDFD4D2B67728FAE336575D05525F /* KeychainSwift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainSwift.swift; path = Sources/KeychainSwift.swift; sourceTree = "<group>"; };
 		500BF6F20A7BFE2035D2E86C2E96C85E /* HATFitbitDailyActivityObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitDailyActivityObject.swift; path = HAT/Objects/Fitbit/HATFitbitDailyActivityObject.swift; sourceTree = "<group>"; };
 		503B1DDDD91E05E9932AD15D57EE3A03 /* HATFeedService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFeedService.swift; path = HAT/Services/HATFeedService.swift; sourceTree = "<group>"; };
-		504871D5508B40C1B9286689D6441DD3 /* index_set.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = index_set.cpp; path = Realm/ObjectStore/src/index_set.cpp; sourceTree = "<group>"; };
+		504871D5508B40C1B9286689D6441DD3 /* index_set.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = index_set.cpp; path = Realm/ObjectStore/src/index_set.cpp; sourceTree = "<group>"; };
 		5066384E5481341D9070FBF9B908C2C1 /* MockingjayProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockingjayProtocol.swift; path = Sources/Mockingjay/MockingjayProtocol.swift; sourceTree = "<group>"; };
 		50D4334D165D726D7969C23CF4D4E380 /* UIView+Haneke.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+Haneke.h"; path = "Haneke/UIView+Haneke.h"; sourceTree = "<group>"; };
 		512201D86E5053DCA1578556A793C9A4 /* SwiftyRSA.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyRSA.h; path = SwiftyRSA/SwiftyRSA.h; sourceTree = "<group>"; };
-		518780882A2F8F9CF2CFE1D7F4450BE1 /* Haneke.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Haneke.modulemap; sourceTree = "<group>"; };
-		51E2614F8467C0D28B3A6BFBE8CB82F2 /* RLMClassInfo.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMClassInfo.mm; path = Realm/RLMClassInfo.mm; sourceTree = "<group>"; };
+		518780882A2F8F9CF2CFE1D7F4450BE1 /* Haneke.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Haneke.modulemap; sourceTree = "<group>"; };
+		51E2614F8467C0D28B3A6BFBE8CB82F2 /* RLMClassInfo.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMClassInfo.mm; path = Realm/RLMClassInfo.mm; sourceTree = "<group>"; };
 		51FB069593BE2E06EB51C5815B2B609B /* HATSystemStatusKindObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATSystemStatusKindObject.swift; path = "HAT/Objects/System Status/HATSystemStatusKindObject.swift"; sourceTree = "<group>"; };
 		52281E40BD41B7E5B162C9FA3DADFDF5 /* KeychainSwiftAccessOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainSwiftAccessOptions.swift; path = Sources/KeychainSwiftAccessOptions.swift; sourceTree = "<group>"; };
 		52D69FB1CBB6B9528FE0577F945CCD48 /* BEMCheckBoxGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMCheckBoxGroup.m; path = Classes/BEMCheckBoxGroup.m; sourceTree = "<group>"; };
 		535479EE3CC48C0ABDAC45887E5A01D9 /* FBAnnotationClusterViewConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBAnnotationClusterViewConfiguration.swift; path = Pod/Classes/FBAnnotationClusterViewConfiguration.swift; sourceTree = "<group>"; };
 		535DAFC5C6CADC4FB16FE47E66138708 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53B60552F410877F8F483CC8975E8131 /* weak_realm_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = weak_realm_notifier.cpp; path = Realm/ObjectStore/src/impl/weak_realm_notifier.cpp; sourceTree = "<group>"; };
+		53B60552F410877F8F483CC8975E8131 /* weak_realm_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = weak_realm_notifier.cpp; path = Realm/ObjectStore/src/impl/weak_realm_notifier.cpp; sourceTree = "<group>"; };
 		53DEA63B39898F27686B782E8091C4E1 /* HATDataDebitsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATDataDebitsService.swift; path = HAT/Services/HATDataDebitsService.swift; sourceTree = "<group>"; };
 		53E5C5490532AB6861E4BD844D0DC188 /* Asn1Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Asn1Parser.swift; path = SwiftyRSA/Asn1Parser.swift; sourceTree = "<group>"; };
 		541A09769E9B6AD68AB9DBBE1FB68767 /* HATFitbitActivityLevelObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitActivityLevelObject.swift; path = HAT/Objects/Fitbit/HATFitbitActivityLevelObject.swift; sourceTree = "<group>"; };
@@ -1149,13 +1149,13 @@
 		560505B3BF332219886C15B4BFCB90F1 /* HATFitbitActivityObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitActivityObject.swift; path = HAT/Objects/Fitbit/HATFitbitActivityObject.swift; sourceTree = "<group>"; };
 		5661CDFBC894ED63B7892EF8052D30B9 /* HATDataPlugPlugObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATDataPlugPlugObject.swift; path = "HAT/Objects/Data Plugs/HATDataPlugPlugObject.swift"; sourceTree = "<group>"; };
 		5672A058F2BFD816DA365336C3A73A6D /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		5699CDF17F88FDE67C1A58B658E6A578 /* list_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = list_notifier.cpp; path = Realm/ObjectStore/src/impl/list_notifier.cpp; sourceTree = "<group>"; };
+		5699CDF17F88FDE67C1A58B658E6A578 /* list_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = list_notifier.cpp; path = Realm/ObjectStore/src/impl/list_notifier.cpp; sourceTree = "<group>"; };
 		5760B3CF913E867CDB9CF69391B3E7A5 /* DBZxcvbn.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBZxcvbn.m; path = Zxcvbn/DBZxcvbn.m; sourceTree = "<group>"; };
 		5873B3867C1820DE2363A003A21DB1BA /* RLMAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMAccessor.h; path = include/RLMAccessor.h; sourceTree = "<group>"; };
 		589F06A835FB1491F851D1468E0F1208 /* HNKSimpleFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HNKSimpleFetcher.m; path = Haneke/HNKSimpleFetcher.m; sourceTree = "<group>"; };
 		59968D970B7B49ACA82E1C69524308DE /* RLMSchema.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSchema.h; path = include/RLMSchema.h; sourceTree = "<group>"; };
-		59A4964D2919D868F53A98A8089E47AC /* MarkdownView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MarkdownView.bundle; path = "MarkdownView-MarkdownView.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AC2DDED3DE56597E7783736FA88F0FD /* RLMCollection.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMCollection.mm; path = Realm/RLMCollection.mm; sourceTree = "<group>"; };
+		59A4964D2919D868F53A98A8089E47AC /* MarkdownView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarkdownView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AC2DDED3DE56597E7783736FA88F0FD /* RLMCollection.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMCollection.mm; path = Realm/RLMCollection.mm; sourceTree = "<group>"; };
 		5C65CFFABC25E031EC1C930101663B57 /* zxcvbn-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "zxcvbn-ios.xcconfig"; sourceTree = "<group>"; };
 		5CF523097BCC420A5199ECEE13FEF6E3 /* URITemplate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "URITemplate-dummy.m"; sourceTree = "<group>"; };
 		5DD3EAE2BC01365F13BC4E5127DC64F3 /* HNKCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HNKCache.m; path = Haneke/HNKCache.m; sourceTree = "<group>"; };
@@ -1163,14 +1163,14 @@
 		5F4DC5D25210D8EB8777592577BA7D62 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		5F62890B8B6E27F373E986EBCCB9504E /* ObjectSchema.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjectSchema.swift; path = RealmSwift/ObjectSchema.swift; sourceTree = "<group>"; };
 		5F6F1D21F3C97503F5BEB16E05B34CE2 /* HATDataOffersService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATDataOffersService.swift; path = HAT/Services/HATDataOffersService.swift; sourceTree = "<group>"; };
-		5F834ED90174C2051F26F7552163E7CB /* adjacency_graphs.json */ = {isa = PBXFileReference; includeInIndex = 1; name = adjacency_graphs.json; path = Zxcvbn/generated/adjacency_graphs.json; sourceTree = "<group>"; };
+		5F834ED90174C2051F26F7552163E7CB /* adjacency_graphs.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = adjacency_graphs.json; path = Zxcvbn/generated/adjacency_graphs.json; sourceTree = "<group>"; };
 		602BA664EAD1FDCF80B0023E22E36672 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		610E732F1B7D8B664A62DA95DC425528 /* HNKSimpleFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKSimpleFetcher.h; path = Haneke/HNKSimpleFetcher.h; sourceTree = "<group>"; };
 		62A9194E9FCF9192A0AA9D36AC1DEE57 /* Realm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Realm-dummy.m"; sourceTree = "<group>"; };
 		62CC277EF324543A1874DE8B48CF2A2D /* Pods-HATDeXTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HATDeXTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		63789D6037F83A56DBACE87ED26E3B91 /* FBAnnotationCluster.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBAnnotationCluster.swift; path = Pod/Classes/FBAnnotationCluster.swift; sourceTree = "<group>"; };
 		6414120EA9050AA01D9B7212B8710693 /* RLMArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMArray.h; path = include/RLMArray.h; sourceTree = "<group>"; };
-		6427F643EFB6201A3BDC7B8CC5661D85 /* RLMNetworkClient.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMNetworkClient.mm; path = Realm/RLMNetworkClient.mm; sourceTree = "<group>"; };
+		6427F643EFB6201A3BDC7B8CC5661D85 /* RLMNetworkClient.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMNetworkClient.mm; path = Realm/RLMNetworkClient.mm; sourceTree = "<group>"; };
 		652B8AF568610DBBB8BC8543EC3F5677 /* NSData+SHA.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+SHA.h"; path = "SwiftyRSA/NSData+SHA.h"; sourceTree = "<group>"; };
 		653FBB4E03858385BC2718DED3213BB6 /* BEMCheckBox.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMCheckBox.h; path = Classes/BEMCheckBox.h; sourceTree = "<group>"; };
 		65AEC7B6AD15840805B396D79E30187D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1181,15 +1181,15 @@
 		683B085FFE83A3317B3694FE5DCECCC7 /* HATGoogleCalendarEndObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarEndObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarEndObject.swift"; sourceTree = "<group>"; };
 		689355CE715524E59584ABE6B7ED3F38 /* RLMArray_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMArray_Private.h; path = include/RLMArray_Private.h; sourceTree = "<group>"; };
 		68B113D02BCD452FAA346BBB73F5BCA0 /* DataDebitClientObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataDebitClientObject.swift; path = "HAT/Objects/Data Debits/DataDebitClientObject.swift"; sourceTree = "<group>"; };
-		696DC454CCBDBBAAB281FDC88D780299 /* RLMRealmUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMRealmUtil.mm; path = Realm/RLMRealmUtil.mm; sourceTree = "<group>"; };
+		696DC454CCBDBBAAB281FDC88D780299 /* RLMRealmUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMRealmUtil.mm; path = Realm/RLMRealmUtil.mm; sourceTree = "<group>"; };
 		69B6CB6A1814562A9B735869BE7B871C /* URITemplate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "URITemplate-prefix.pch"; sourceTree = "<group>"; };
 		6A16FBFE2558A400EEED4B132227DE41 /* RLMMigration_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMMigration_Private.h; path = include/RLMMigration_Private.h; sourceTree = "<group>"; };
-		6A8AE82B1C3AED533EC0050DA4D2AF0B /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RealmSwift.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AD17CA53C98643BED672EB7C2B8FDC0 /* SwiftyRSA.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyRSA.modulemap; sourceTree = "<group>"; };
+		6A8AE82B1C3AED533EC0050DA4D2AF0B /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AD17CA53C98643BED672EB7C2B8FDC0 /* SwiftyRSA.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyRSA.modulemap; sourceTree = "<group>"; };
 		6AF638484768BD7C43CCD4D5B057A056 /* HATGoogleCalendarConferenceDataConferenceSolutionKeyObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarConferenceDataConferenceSolutionKeyObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarConferenceDataConferenceSolutionKeyObject.swift"; sourceTree = "<group>"; };
 		6BFF156755FD84287BBF8E8C1299E76A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CB09320F71622AD3027119ADCFA2151 /* HATGoogleCalendarConferenceDataCreateRequestObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarConferenceDataCreateRequestObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarConferenceDataCreateRequestObject.swift"; sourceTree = "<group>"; };
-		6D77A19CDE5EEBBDB5C2AFF9746F5297 /* transact_log_handler.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = transact_log_handler.cpp; path = Realm/ObjectStore/src/impl/transact_log_handler.cpp; sourceTree = "<group>"; };
+		6D77A19CDE5EEBBDB5C2AFF9746F5297 /* transact_log_handler.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = transact_log_handler.cpp; path = Realm/ObjectStore/src/impl/transact_log_handler.cpp; sourceTree = "<group>"; };
 		6D7A3EEB1753F7FA381F4B186EE2BECF /* HATFacebookDataPostsSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFacebookDataPostsSocialFeedObject.swift; path = HAT/Objects/Facebook/Posts/HATFacebookDataPostsSocialFeedObject.swift; sourceTree = "<group>"; };
 		6DB61242D047AA77AB766FF700275585 /* HATProviderObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProviderObject.swift; path = "HAT/Objects/HAT Provider/HATProviderObject.swift"; sourceTree = "<group>"; };
 		6DF8111647FCE2B45ED4A559B798D2C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1210,10 +1210,10 @@
 		75C4AD99FA62E8B595643BE91E2D4713 /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
 		761A5B6394361C3DBE43131729F6A2D0 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = RealmSwift/Error.swift; sourceTree = "<group>"; };
 		7751F9CCEF12B50CC375675D4F9F1BBE /* HATNotesLocationObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATNotesLocationObject.swift; path = HAT/Objects/Notes/HATNotesLocationObject.swift; sourceTree = "<group>"; };
-		7769FAF21927AF7BD7F94F8C7F4AB624 /* Haneke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Haneke.framework; path = Haneke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7769FAF21927AF7BD7F94F8C7F4AB624 /* Haneke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Haneke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		778A8CD992BA2399589CCED34866EE13 /* UIImageView+Haneke.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Haneke.m"; path = "Haneke/UIImageView+Haneke.m"; sourceTree = "<group>"; };
 		77C6A8E3735A6ABC572907214759CC23 /* HATFacebookDataPostsApplicationSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFacebookDataPostsApplicationSocialFeedObject.swift; path = HAT/Objects/Facebook/Posts/HATFacebookDataPostsApplicationSocialFeedObject.swift; sourceTree = "<group>"; };
-		78EB513E90DA68148B8991DB9C74A414 /* BEMCheckBox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BEMCheckBox.modulemap; sourceTree = "<group>"; };
+		78EB513E90DA68148B8991DB9C74A414 /* BEMCheckBox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BEMCheckBox.modulemap; sourceTree = "<group>"; };
 		791AB5C54BC8788FA8262A6C9D5A3F28 /* RLMObjectSchema_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObjectSchema_Private.h; path = include/RLMObjectSchema_Private.h; sourceTree = "<group>"; };
 		79849FF523526165816B18A72239F571 /* HATLocationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATLocationService.swift; path = HAT/Services/HATLocationService.swift; sourceTree = "<group>"; };
 		79D080D4F7863BF461F6C8692DE67E7E /* HATFitbitSleepLevelsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitSleepLevelsObject.swift; path = HAT/Objects/Fitbit/HATFitbitSleepLevelsObject.swift; sourceTree = "<group>"; };
@@ -1225,15 +1225,15 @@
 		7C25BA90CA928FA5272152024B486A50 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C9050936BE1BE79354244CCD6B17BBA /* DBPasswordStrengthMeterView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBPasswordStrengthMeterView.h; path = Zxcvbn/DBPasswordStrengthMeterView.h; sourceTree = "<group>"; };
 		7CB0F88AE1C7C627F424E7122FD71696 /* HATFacebookDataPostsPrivacySocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFacebookDataPostsPrivacySocialFeedObject.swift; path = HAT/Objects/Facebook/Posts/HATFacebookDataPostsPrivacySocialFeedObject.swift; sourceTree = "<group>"; };
-		7CBDCCA00A1776F109EACD2853065277 /* results_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = results_notifier.cpp; path = Realm/ObjectStore/src/impl/results_notifier.cpp; sourceTree = "<group>"; };
-		7CC600D92F1EBAC4CF68959AAE1BADE1 /* sync_manager.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = sync_manager.cpp; path = Realm/ObjectStore/src/sync/sync_manager.cpp; sourceTree = "<group>"; };
+		7CBDCCA00A1776F109EACD2853065277 /* results_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = results_notifier.cpp; path = Realm/ObjectStore/src/impl/results_notifier.cpp; sourceTree = "<group>"; };
+		7CC600D92F1EBAC4CF68959AAE1BADE1 /* sync_manager.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = sync_manager.cpp; path = Realm/ObjectStore/src/sync/sync_manager.cpp; sourceTree = "<group>"; };
 		7D033A68C3E9455B755E116CCED02725 /* BEMPathManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMPathManager.m; path = Classes/BEMPathManager.m; sourceTree = "<group>"; };
-		7DAF6ABEB85D1FB82F0C5E1BCA275764 /* main.js */ = {isa = PBXFileReference; includeInIndex = 1; name = main.js; path = webassets/dist/main.js; sourceTree = "<group>"; };
+		7DAF6ABEB85D1FB82F0C5E1BCA275764 /* main.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = main.js; path = webassets/dist/main.js; sourceTree = "<group>"; };
 		7DC0FB1C0DCBAB754CB45CCA91D0F9FC /* HATProfileObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileObject.swift; path = HAT/Objects/Phatav2/HATProfileObject.swift; sourceTree = "<group>"; };
 		7DEED9FBDB93CD4A204E0D0B7C5E4E3B /* HNKNetworkFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HNKNetworkFetcher.m; path = Haneke/HNKNetworkFetcher.m; sourceTree = "<group>"; };
 		7F4791C07A3F9BC14CBB2244FBC8752A /* Pods-HATDeXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HATDeXTests.release.xcconfig"; sourceTree = "<group>"; };
 		806F689D04B31A401A40AF369B1E3E9C /* RLMRealm+Sync.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RLMRealm+Sync.h"; path = "include/RLMRealm+Sync.h"; sourceTree = "<group>"; };
-		80C2165BC94F69B76EE85FF34010EB41 /* sync_session.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = sync_session.cpp; path = Realm/ObjectStore/src/sync/sync_session.cpp; sourceTree = "<group>"; };
+		80C2165BC94F69B76EE85FF34010EB41 /* sync_session.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = sync_session.cpp; path = Realm/ObjectStore/src/sync/sync_session.cpp; sourceTree = "<group>"; };
 		81D536A6AA3ECBA41E1A18C2E4DFA781 /* HATGoogleCalendarRemindersOverridesObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarRemindersOverridesObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarRemindersOverridesObject.swift"; sourceTree = "<group>"; };
 		826F7A44A8B50A5F50125AB590CDC359 /* Pods-HATDeX-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HATDeX-frameworks.sh"; sourceTree = "<group>"; };
 		82DB679B518FF409562BE0A35D719626 /* FBAnnotationClusteringSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBAnnotationClusteringSwift-umbrella.h"; sourceTree = "<group>"; };
@@ -1243,12 +1243,12 @@
 		852C13745A01C5C7D0821B4585F2C996 /* MarkdownView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownView.swift; path = MarkdownView/MarkdownView.swift; sourceTree = "<group>"; };
 		858CAC1ACEB0D17554829D07F50A4528 /* UIButton+Haneke.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+Haneke.h"; path = "Haneke/UIButton+Haneke.h"; sourceTree = "<group>"; };
 		862A361E1B9716A26BD4B92C71D1C803 /* HATFitbitStatsLifetimeObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitStatsLifetimeObject.swift; path = HAT/Objects/Fitbit/HATFitbitStatsLifetimeObject.swift; sourceTree = "<group>"; };
-		862E6CB4DBF300B251F7DF1CE4FC292A /* primitive_list_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = primitive_list_notifier.cpp; path = Realm/ObjectStore/src/impl/primitive_list_notifier.cpp; sourceTree = "<group>"; };
+		862E6CB4DBF300B251F7DF1CE4FC292A /* primitive_list_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = primitive_list_notifier.cpp; path = Realm/ObjectStore/src/impl/primitive_list_notifier.cpp; sourceTree = "<group>"; };
 		872168A80EB45FD904C0D186249477F4 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		87B2FC5BE98B7B2994413B857BF90976 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		87BBA7E9C99C4A45011470E99E7EF28C /* RLMCollection_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMCollection_Private.h; path = include/RLMCollection_Private.h; sourceTree = "<group>"; };
 		87C4AC9BA0B986188CB6055E365B3D2D /* UIButton+Haneke.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Haneke.m"; path = "Haneke/UIButton+Haneke.m"; sourceTree = "<group>"; };
-		87D255F6ED105FD22F6849F981B489BE /* RLMRealm+Sync.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = "RLMRealm+Sync.mm"; path = "Realm/RLMRealm+Sync.mm"; sourceTree = "<group>"; };
+		87D255F6ED105FD22F6849F981B489BE /* RLMRealm+Sync.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = "RLMRealm+Sync.mm"; path = "Realm/RLMRealm+Sync.mm"; sourceTree = "<group>"; };
 		8845C746B1AB6160DABB4CBDC6B9F64B /* HATGoogleCalendarCreatorObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarCreatorObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarCreatorObject.swift"; sourceTree = "<group>"; };
 		88587D41EBF39B438D40547EE1A1E5D3 /* Haneke-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Haneke-prefix.pch"; sourceTree = "<group>"; };
 		88FDEABB0441C75FEFE5C83C4D5B6C70 /* CLSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSLogging.h; path = iOS/Crashlytics.framework/Headers/CLSLogging.h; sourceTree = "<group>"; };
@@ -1264,27 +1264,27 @@
 		8E94337E04B556DDA775704BD8FF19DC /* Pods-HATDeXTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HATDeXTests-umbrella.h"; sourceTree = "<group>"; };
 		8F1AEFF8B67FC8A68ACC09C7F377735F /* HATNetworkHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATNetworkHelper.swift; path = HAT/Helpers/HATNetworkHelper.swift; sourceTree = "<group>"; };
 		8FB6FF88ADE199B440BB0B4B65ED2D34 /* RealmConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RealmConfiguration.swift; path = RealmSwift/RealmConfiguration.swift; sourceTree = "<group>"; };
-		9086269FAA2FE18D7B7C8495479A9D8B /* RLMUpdateChecker.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMUpdateChecker.mm; path = Realm/RLMUpdateChecker.mm; sourceTree = "<group>"; };
+		9086269FAA2FE18D7B7C8495479A9D8B /* RLMUpdateChecker.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMUpdateChecker.mm; path = Realm/RLMUpdateChecker.mm; sourceTree = "<group>"; };
 		90AFBE420891724DB0774710F571B17B /* SwiftyRSA.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyRSA.xcconfig; sourceTree = "<group>"; };
-		91023AFEECCBB485941F682D71F6FBD5 /* RLMUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMUtil.mm; path = Realm/RLMUtil.mm; sourceTree = "<group>"; };
+		91023AFEECCBB485941F682D71F6FBD5 /* RLMUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMUtil.mm; path = Realm/RLMUtil.mm; sourceTree = "<group>"; };
 		91776FB0099ABE04687545737A6EB999 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92466A4B6D4F76524F919BA239533BE9 /* FBQuadTreeNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBQuadTreeNode.swift; path = Pod/Classes/FBQuadTreeNode.swift; sourceTree = "<group>"; };
-		925DDACAED8A73037429E82D4AFEAB86 /* RLMArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMArray.mm; path = Realm/RLMArray.mm; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		925DDACAED8A73037429E82D4AFEAB86 /* RLMArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMArray.mm; path = Realm/RLMArray.mm; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		942E3C14FCCB81508AEC1C8BD884F387 /* HATProfileAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileAddress.swift; path = HAT/Objects/Profile/HATProfileAddress.swift; sourceTree = "<group>"; };
 		94C52D972906A1EA65FAA62C29D0C9D7 /* Property.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Property.swift; path = RealmSwift/Property.swift; sourceTree = "<group>"; };
-		960F707AFD018190A8D5779FF7FF3533 /* RLMObservation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObservation.mm; path = Realm/RLMObservation.mm; sourceTree = "<group>"; };
+		960F707AFD018190A8D5779FF7FF3533 /* RLMObservation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObservation.mm; path = Realm/RLMObservation.mm; sourceTree = "<group>"; };
 		96D728394893B5535492D8700EA96606 /* DataOfferRequiredDataDefinitionDataSetsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferRequiredDataDefinitionDataSetsObject.swift; path = "HAT/Objects/Data Offers/DataOfferRequiredDataDefinitionDataSetsObject.swift"; sourceTree = "<group>"; };
 		96DEBF077908AC7C0FB27EE4CBD5EEB8 /* StuffToRememberObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StuffToRememberObject.swift; path = "HAT/Objects/Stuff To Remember/StuffToRememberObject.swift"; sourceTree = "<group>"; };
 		9703B0A7ACABFF611D372A47893DFA40 /* RLMSyncPermission.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncPermission.h; path = include/RLMSyncPermission.h; sourceTree = "<group>"; };
 		97495FD16883BC67A7031F79C19CFB47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		975F8BD13EE3A9309B35ECC80510C00F /* sync_permission.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = sync_permission.cpp; path = Realm/ObjectStore/src/sync/sync_permission.cpp; sourceTree = "<group>"; };
+		975F8BD13EE3A9309B35ECC80510C00F /* sync_permission.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = sync_permission.cpp; path = Realm/ObjectStore/src/sync/sync_permission.cpp; sourceTree = "<group>"; };
 		97C8035569C0D526041D7E1AAA6A4445 /* HATGoogleCalendarDataObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarDataObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarDataObject.swift"; sourceTree = "<group>"; };
-		97CEB09F21A2578B83FE6A081526BE13 /* KeychainSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = KeychainSwift.modulemap; sourceTree = "<group>"; };
-		984B371E076164921337DA069198270E /* RLMResults.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMResults.mm; path = Realm/RLMResults.mm; sourceTree = "<group>"; };
-		98649880F35E191E8C1FCFC2E2226889 /* network_reachability_observer.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = network_reachability_observer.cpp; path = Realm/ObjectStore/src/sync/impl/apple/network_reachability_observer.cpp; sourceTree = "<group>"; };
+		97CEB09F21A2578B83FE6A081526BE13 /* KeychainSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = KeychainSwift.modulemap; sourceTree = "<group>"; };
+		984B371E076164921337DA069198270E /* RLMResults.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMResults.mm; path = Realm/RLMResults.mm; sourceTree = "<group>"; };
+		98649880F35E191E8C1FCFC2E2226889 /* network_reachability_observer.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = network_reachability_observer.cpp; path = Realm/ObjectStore/src/sync/impl/apple/network_reachability_observer.cpp; sourceTree = "<group>"; };
 		988D966C73838A1F14F34BCC0722CBF7 /* Mockingjay.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Mockingjay.xcconfig; sourceTree = "<group>"; };
-		9891F045A2BBE2EAEAAB4751365605F6 /* sync_user.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = sync_user.cpp; path = Realm/ObjectStore/src/sync/sync_user.cpp; sourceTree = "<group>"; };
+		9891F045A2BBE2EAEAAB4751365605F6 /* sync_user.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = sync_user.cpp; path = Realm/ObjectStore/src/sync/sync_user.cpp; sourceTree = "<group>"; };
 		99DF250B7AEE51FF9B5312C5E7769F94 /* SwiftyRSAError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyRSAError.swift; path = SwiftyRSA/SwiftyRSAError.swift; sourceTree = "<group>"; };
 		99E25B2BDB8ABA4C0329386358B11720 /* DataOfferObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferObject.swift; path = "HAT/Objects/Data Offers/DataOfferObject.swift"; sourceTree = "<group>"; };
 		9A6C76FC63E8024CBB7118BB2E1CD74E /* PurchaseObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PurchaseObject.swift; path = HAT/Objects/Purchase/PurchaseObject.swift; sourceTree = "<group>"; };
@@ -1293,60 +1293,60 @@
 		9BCB13A4F15896C6BF046D7D7B5A23BD /* NSURLSessionConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSURLSessionConfiguration.swift; path = Sources/Mockingjay/NSURLSessionConfiguration.swift; sourceTree = "<group>"; };
 		9C4EFDAA75A66E3BB1E00D4501D7CCA4 /* Mockingjay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mockingjay-dummy.m"; sourceTree = "<group>"; };
 		9CCE588D30B3CFB76C0EFC005D981A71 /* HATNotesObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATNotesObject.swift; path = HAT/Objects/Notes/HATNotesObject.swift; sourceTree = "<group>"; };
-		9CF6CC2FCC7AED2D71881CA3E6B9DCDE /* RLMThreadSafeReference.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMThreadSafeReference.mm; path = Realm/RLMThreadSafeReference.mm; sourceTree = "<group>"; };
+		9CF6CC2FCC7AED2D71881CA3E6B9DCDE /* RLMThreadSafeReference.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMThreadSafeReference.mm; path = Realm/RLMThreadSafeReference.mm; sourceTree = "<group>"; };
 		9DB87AF62E3139543F227F35EFAA2939 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DD97F83691DF8C275CBA80A8DB5FCC8 /* RLMAccessor.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMAccessor.mm; path = Realm/RLMAccessor.mm; sourceTree = "<group>"; };
+		9DD97F83691DF8C275CBA80A8DB5FCC8 /* RLMAccessor.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMAccessor.mm; path = Realm/RLMAccessor.mm; sourceTree = "<group>"; };
 		9F8183D88A55628250AE068D759EE78F /* HATFeedContentObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFeedContentObject.swift; path = HAT/Objects/Feed/HATFeedContentObject.swift; sourceTree = "<group>"; };
 		9F9794D7D2DC60318076F23E7C81AAB2 /* RLMListBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMListBase.h; path = include/RLMListBase.h; sourceTree = "<group>"; };
 		9F99F017FDA66E610542A4000B1857C1 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		9FBC693B1A56BF00846BA78A2852AE37 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FF4606B063A817E77A59F18499314FC /* JWTDecode-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JWTDecode-dummy.m"; sourceTree = "<group>"; };
 		A201993CD3406E4E6BABCB144187EA70 /* HATFitbitStatsTotalObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitStatsTotalObject.swift; path = HAT/Objects/Fitbit/HATFitbitStatsTotalObject.swift; sourceTree = "<group>"; };
-		A25FCDBB3EF5A0E3EC81A949DAFD1F45 /* HatForIOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HatForIOS.modulemap; sourceTree = "<group>"; };
+		A25FCDBB3EF5A0E3EC81A949DAFD1F45 /* HatForIOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HatForIOS.modulemap; sourceTree = "<group>"; };
 		A28AB470B954C61D2960A21396C2FC3B /* UKSpecificInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UKSpecificInfo.swift; path = "HAT/Objects/Profile/UK Specific/UKSpecificInfo.swift"; sourceTree = "<group>"; };
 		A2DD6F1F0E724558E551356EB658E361 /* HATFitbitStatsBestObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitStatsBestObject.swift; path = HAT/Objects/Fitbit/HATFitbitStatsBestObject.swift; sourceTree = "<group>"; };
 		A36F1B704054B38743C2682FB3A7B731 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		A388F4A0A3879289C29398D2953E304D /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		A39F49992DE4D1A4CC49454DAB7680FF /* HATProfileDataProfilePersonalObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileDataProfilePersonalObject.swift; path = HAT/Objects/Phatav2/HATProfileDataProfilePersonalObject.swift; sourceTree = "<group>"; };
 		A482849F6E0F582A30B5BDE28251F354 /* RLMSyncConfiguration_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncConfiguration_Private.h; path = include/RLMSyncConfiguration_Private.h; sourceTree = "<group>"; };
-		A554E378E9C5CC0C796E43984F862041 /* RLMSyncPermission.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncPermission.mm; path = Realm/RLMSyncPermission.mm; sourceTree = "<group>"; };
+		A554E378E9C5CC0C796E43984F862041 /* RLMSyncPermission.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncPermission.mm; path = Realm/RLMSyncPermission.mm; sourceTree = "<group>"; };
 		A55FC43FC801050A4F48711576214A95 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
 		A6E3F39C0D34AF6DE47D67248B3FCC79 /* HATFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFeedObject.swift; path = HAT/Objects/Feed/HATFeedObject.swift; sourceTree = "<group>"; };
 		A766C830D0AFCD8DB75F1FC3CA5EF2DA /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		A7CDDED93CBE0BE24E4CB25B58DE67B0 /* HATTwitterDataTweetsSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATTwitterDataTweetsSocialFeedObject.swift; path = HAT/Objects/Twitter/HATTwitterDataTweetsSocialFeedObject.swift; sourceTree = "<group>"; };
-		A84596E8DAD779B84C9B1575747F252C /* RLMSyncUser.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncUser.mm; path = Realm/RLMSyncUser.mm; sourceTree = "<group>"; };
+		A84596E8DAD779B84C9B1575747F252C /* RLMSyncUser.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncUser.mm; path = Realm/RLMSyncUser.mm; sourceTree = "<group>"; };
 		A8F5916F684F94A73AAE88123673F0FA /* MarkdownView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarkdownView.xcconfig; sourceTree = "<group>"; };
 		A903B510D7575B61ED11D144D82C89C0 /* DBPasswordStrengthMeterView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBPasswordStrengthMeterView.m; path = Zxcvbn/DBPasswordStrengthMeterView.m; sourceTree = "<group>"; };
 		A983A5CC03352C4D2EEEA398881421B0 /* HNKNetworkFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKNetworkFetcher.h; path = Haneke/HNKNetworkFetcher.h; sourceTree = "<group>"; };
 		A9D048D4CAA07A9997A7055E6C0BCABF /* HATNotificationsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATNotificationsService.swift; path = HAT/Services/HATNotificationsService.swift; sourceTree = "<group>"; };
 		AA1EE44435EB1CFACFAFB39A3CE70018 /* RLMThreadSafeReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMThreadSafeReference.h; path = include/RLMThreadSafeReference.h; sourceTree = "<group>"; };
-		AA6377602F40041FB10F8C1DBBAE8616 /* object_store.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = object_store.cpp; path = Realm/ObjectStore/src/object_store.cpp; sourceTree = "<group>"; };
+		AA6377602F40041FB10F8C1DBBAE8616 /* object_store.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = object_store.cpp; path = Realm/ObjectStore/src/object_store.cpp; sourceTree = "<group>"; };
 		AA8C39000075F2F1EA3BC5EACAB45DE7 /* DBScorer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBScorer.m; path = Zxcvbn/DBScorer.m; sourceTree = "<group>"; };
-		AAC23D3128E985E5F6E7752FA4B4C241 /* URITemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = URITemplate.framework; path = URITemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC23D3128E985E5F6E7752FA4B4C241 /* URITemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = URITemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB445CD33BBA683D4E2716AB56F5615D /* HATSpotifyProfileObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATSpotifyProfileObject.swift; path = HAT/Objects/Spotify/HATSpotifyProfileObject.swift; sourceTree = "<group>"; };
 		AB68D625DCD96A635868506AFCB8935B /* HATExternalAppsPermissionsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsPermissionsObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsPermissionsObject.swift"; sourceTree = "<group>"; };
 		AB81A9906F3B1D8576CFB7CFEDA1496B /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		AB903546274740F76466ACE448A5028D /* Pods-HATDeXTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HATDeXTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		ABBE4DFDDAAA2E0169AF49F05832730C /* RLMAnalytics.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMAnalytics.mm; path = Realm/RLMAnalytics.mm; sourceTree = "<group>"; };
+		ABBE4DFDDAAA2E0169AF49F05832730C /* RLMAnalytics.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMAnalytics.mm; path = Realm/RLMAnalytics.mm; sourceTree = "<group>"; };
 		ABF1D6DFA84E1CB20DA0AB5718C2AF4B /* Key.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Key.swift; path = SwiftyRSA/Key.swift; sourceTree = "<group>"; };
-		AC33D1AE507FC577170D8D5CDF67F7A5 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = webassets/dist/index.html; sourceTree = "<group>"; };
+		AC33D1AE507FC577170D8D5CDF67F7A5 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = index.html; path = webassets/dist/index.html; sourceTree = "<group>"; };
 		AC426F427A6D7B008608D4811922B219 /* Schema.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Schema.swift; path = RealmSwift/Schema.swift; sourceTree = "<group>"; };
 		ACD12ADC5DB3ED4863484BF7C2731704 /* HATProfileBundleEndpointsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileBundleEndpointsObject.swift; path = HAT/Objects/Phatav2/HATProfileBundleEndpointsObject.swift; sourceTree = "<group>"; };
-		AE7CED403750B0A4E41D2620834759D9 /* RLMRealmConfiguration.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMRealmConfiguration.mm; path = Realm/RLMRealmConfiguration.mm; sourceTree = "<group>"; };
-		AEB503BC5CE3B07417367DF6BD26C025 /* placeholder.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = placeholder.cpp; path = Realm/ObjectStore/src/placeholder.cpp; sourceTree = "<group>"; };
+		AE7CED403750B0A4E41D2620834759D9 /* RLMRealmConfiguration.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMRealmConfiguration.mm; path = Realm/RLMRealmConfiguration.mm; sourceTree = "<group>"; };
+		AEB503BC5CE3B07417367DF6BD26C025 /* placeholder.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = placeholder.cpp; path = Realm/ObjectStore/src/placeholder.cpp; sourceTree = "<group>"; };
 		B0B9BC02D163F0877F018C3319106A15 /* Haneke.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Haneke.h; path = Haneke/Haneke.h; sourceTree = "<group>"; };
 		B10E149C5F2321B18ADEE7268B6C5870 /* RLMSyncManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncManager.h; path = include/RLMSyncManager.h; sourceTree = "<group>"; };
 		B14EB39AF242AE6D079A95937186C1CC /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		B15A97C15E695B70F3FD1215B52D2BF8 /* CLSAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSAttributes.h; path = iOS/Crashlytics.framework/Headers/CLSAttributes.h; sourceTree = "<group>"; };
 		B1FF632FFE5B8BFBA4897831AB546ECF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
-		B2180507C440D16C0BBF96AC66EF9D77 /* collection_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = collection_notifier.cpp; path = Realm/ObjectStore/src/impl/collection_notifier.cpp; sourceTree = "<group>"; };
+		B2180507C440D16C0BBF96AC66EF9D77 /* collection_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = collection_notifier.cpp; path = Realm/ObjectStore/src/impl/collection_notifier.cpp; sourceTree = "<group>"; };
 		B259998F9E630D35E971BF337AC9E492 /* HATProfileDataProfileAboutObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileDataProfileAboutObject.swift; path = HAT/Objects/Phatav2/HATProfileDataProfileAboutObject.swift; sourceTree = "<group>"; };
 		B2B7CDDB7B059F8A204AF1AB03A4B748 /* HATApplicationObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATApplicationObject.swift; path = "HAT/Objects/External Apps/HATApplicationObject.swift"; sourceTree = "<group>"; };
 		B3A4D043D6A8E98FA94ED683C842D650 /* HATSpotifyProfileFollowersObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATSpotifyProfileFollowersObject.swift; path = HAT/Objects/Spotify/HATSpotifyProfileFollowersObject.swift; sourceTree = "<group>"; };
 		B462F880F4CE5AFE1817432457706957 /* Optional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Optional.swift; path = RealmSwift/Optional.swift; sourceTree = "<group>"; };
 		B5D548E0042E2AF9BB8EE54D8D7E3792 /* HNKDiskFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HNKDiskFetcher.m; path = Haneke/HNKDiskFetcher.m; sourceTree = "<group>"; };
-		B6B9DA3D7AADA9C6E526F0E0BA319605 /* Mockingjay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Mockingjay.framework; path = Mockingjay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6C8B2839C02FC0F485E434FD6E203C2 /* object_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = object_notifier.cpp; path = Realm/ObjectStore/src/impl/object_notifier.cpp; sourceTree = "<group>"; };
+		B6B9DA3D7AADA9C6E526F0E0BA319605 /* Mockingjay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mockingjay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6C8B2839C02FC0F485E434FD6E203C2 /* object_notifier.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = object_notifier.cpp; path = Realm/ObjectStore/src/impl/object_notifier.cpp; sourceTree = "<group>"; };
 		B7B4D27512664141BB645B697CBDE533 /* HATFitbitSleepObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitSleepObject.swift; path = HAT/Objects/Fitbit/HATFitbitSleepObject.swift; sourceTree = "<group>"; };
 		B7BA8631A5CE44176434F90325851D92 /* RLMSyncUtil_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncUtil_Private.h; path = include/RLMSyncUtil_Private.h; sourceTree = "<group>"; };
 		B864D36CFCCD85205B77FDB28D7E52CC /* DBMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBMatcher.m; path = Zxcvbn/DBMatcher.m; sourceTree = "<group>"; };
@@ -1356,26 +1356,26 @@
 		B9D406322E3FB96464A0A06629A9787A /* FBQuadTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBQuadTree.swift; path = Pod/Classes/FBQuadTree.swift; sourceTree = "<group>"; };
 		BA14FB413DAF1EE00801EF5523321740 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		BA676560117E8823230EFB31A141CA86 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAFEE1408C106E4CD3CCE0840C835BD4 /* zxcvbn-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "zxcvbn-ios.modulemap"; sourceTree = "<group>"; };
+		BAFEE1408C106E4CD3CCE0840C835BD4 /* zxcvbn-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "zxcvbn-ios.modulemap"; sourceTree = "<group>"; };
 		BBDA0727513BBCD38A48933E66C1B19F /* HATAccountService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATAccountService.swift; path = HAT/Services/HATAccountService.swift; sourceTree = "<group>"; };
 		BC2E22E67462F7C24726F3E63ACEB096 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD1C7D675122430EC55760143B1D9780 /* DataDebitObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataDebitObject.swift; path = "HAT/Objects/Data Debits/DataDebitObject.swift"; sourceTree = "<group>"; };
 		BD222C24E78005B4E995C78643E862A6 /* RLMSyncSubscription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncSubscription.h; path = include/RLMSyncSubscription.h; sourceTree = "<group>"; };
 		BD3FCD916033AAE1AFE941B5E7EC856B /* DataOfferRequiredDataDefinitionObjectV2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferRequiredDataDefinitionObjectV2.swift; path = "HAT/Objects/Data Offers/DataOfferRequiredDataDefinitionObjectV2.swift"; sourceTree = "<group>"; };
 		BD57267885189F467266FA70D52C80B3 /* HATTwitterDataTweetsUsersSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATTwitterDataTweetsUsersSocialFeedObject.swift; path = HAT/Objects/Twitter/HATTwitterDataTweetsUsersSocialFeedObject.swift; sourceTree = "<group>"; };
-		BDA7143C7A75692B3A514814FE1EBE3F /* system_configuration.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = system_configuration.cpp; path = Realm/ObjectStore/src/sync/impl/apple/system_configuration.cpp; sourceTree = "<group>"; };
+		BDA7143C7A75692B3A514814FE1EBE3F /* system_configuration.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = system_configuration.cpp; path = Realm/ObjectStore/src/sync/impl/apple/system_configuration.cpp; sourceTree = "<group>"; };
 		BE31183A284BDAF341125BE29B0DDC1F /* RLMSwiftSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RLMSwiftSupport.m; path = Realm/RLMSwiftSupport.m; sourceTree = "<group>"; };
-		BE78CF071941F3FCEE246BE37D841A32 /* FBAnnotationClusteringSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FBAnnotationClusteringSwift.modulemap; sourceTree = "<group>"; };
+		BE78CF071941F3FCEE246BE37D841A32 /* FBAnnotationClusteringSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FBAnnotationClusteringSwift.modulemap; sourceTree = "<group>"; };
 		BE9E7CF0FD50C22B58A04CD0643073E0 /* HATFacebookProfileImageObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFacebookProfileImageObject.swift; path = "HAT/Objects/Facebook/Profile Image/HATFacebookProfileImageObject.swift"; sourceTree = "<group>"; };
 		BED03B6D3C23D8FB44F7DC76B002D337 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		BF26E3F4456B8962C2C7B576F2D8B521 /* HATFeedDateObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFeedDateObject.swift; path = HAT/Objects/Feed/HATFeedDateObject.swift; sourceTree = "<group>"; };
 		BF60DF363F799D818F1E14A5112C33BC /* RLMProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMProperty.h; path = include/RLMProperty.h; sourceTree = "<group>"; };
 		BFE9D390B408D16347C3CEB0CBA81715 /* DBZxcvbn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBZxcvbn.h; path = Zxcvbn/DBZxcvbn.h; sourceTree = "<group>"; };
-		C001DA0EA83835D7358008DD7F2525B9 /* RLMRealmConfiguration+Sync.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = "RLMRealmConfiguration+Sync.mm"; path = "Realm/RLMRealmConfiguration+Sync.mm"; sourceTree = "<group>"; };
-		C01DB66C2E769D4E92DC1042172B08BE /* MarkdownView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MarkdownView.modulemap; sourceTree = "<group>"; };
+		C001DA0EA83835D7358008DD7F2525B9 /* RLMRealmConfiguration+Sync.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = "RLMRealmConfiguration+Sync.mm"; path = "Realm/RLMRealmConfiguration+Sync.mm"; sourceTree = "<group>"; };
+		C01DB66C2E769D4E92DC1042172B08BE /* MarkdownView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MarkdownView.modulemap; sourceTree = "<group>"; };
 		C080BA7A623AA02F30E3FBB5A699A442 /* DataOfferRequiredDataDefinitionObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferRequiredDataDefinitionObject.swift; path = "HAT/Objects/Data Offers/DataOfferRequiredDataDefinitionObject.swift"; sourceTree = "<group>"; };
-		C142A8BDCBEF7D66C75F413BEB454F7A /* FBAnnotationClusteringSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBAnnotationClusteringSwift.framework; path = FBAnnotationClusteringSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1C91265D8230DE3F8EEC32DD4855D06 /* RLMSyncSessionRefreshHandle.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncSessionRefreshHandle.mm; path = Realm/RLMSyncSessionRefreshHandle.mm; sourceTree = "<group>"; };
+		C142A8BDCBEF7D66C75F413BEB454F7A /* FBAnnotationClusteringSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBAnnotationClusteringSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1C91265D8230DE3F8EEC32DD4855D06 /* RLMSyncSessionRefreshHandle.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncSessionRefreshHandle.mm; path = Realm/RLMSyncSessionRefreshHandle.mm; sourceTree = "<group>"; };
 		C1DE80FD3C4FCEE829C8538FE323848E /* Pods-HATDeXTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HATDeXTests-frameworks.sh"; sourceTree = "<group>"; };
 		C344564151BABA94EA7951BBCB8DB823 /* JWTDecode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JWTDecode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B349D131D403FD7A9E15C164A98096 /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = HAT/Helpers/StringExtension.swift; sourceTree = "<group>"; };
@@ -1385,43 +1385,43 @@
 		C5986318B4860561CC5AF45EF4FB9ADF /* HATFacebookDataPostsPlaceSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFacebookDataPostsPlaceSocialFeedObject.swift; path = HAT/Objects/Facebook/Posts/HATFacebookDataPostsPlaceSocialFeedObject.swift; sourceTree = "<group>"; };
 		C5FA4F1EA5515CD710D5105C31CB3993 /* HATFacebookDataSocialFeedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFacebookDataSocialFeedObject.swift; path = HAT/Objects/Facebook/Posts/HATFacebookDataSocialFeedObject.swift; sourceTree = "<group>"; };
 		C61FC8C396D0C2EC78EC25C19E20539D /* HATProfileDataProfileAddressObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileDataProfileAddressObject.swift; path = HAT/Objects/Phatav2/HATProfileDataProfileAddressObject.swift; sourceTree = "<group>"; };
-		C6CCD6802C134D00940316D472D89219 /* MarkdownView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarkdownView.framework; path = MarkdownView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6CCD6802C134D00940316D472D89219 /* MarkdownView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarkdownView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C793C2DCFFBB12F1D0B959BC365FC5DE /* MarkdownView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownView-umbrella.h"; sourceTree = "<group>"; };
 		C82B2E76807F06793CC7A59D0E5C91A3 /* URITemplate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "URITemplate-umbrella.h"; sourceTree = "<group>"; };
 		C8AA2E9FA16C965BB4F57F58D156F753 /* HATFacebookService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFacebookService.swift; path = HAT/Services/HATFacebookService.swift; sourceTree = "<group>"; };
-		C8C704AE5BAC1662C395AD0D12CEA3BF /* sync_file.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = sync_file.cpp; path = Realm/ObjectStore/src/sync/impl/sync_file.cpp; sourceTree = "<group>"; };
+		C8C704AE5BAC1662C395AD0D12CEA3BF /* sync_file.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = sync_file.cpp; path = Realm/ObjectStore/src/sync/impl/sync_file.cpp; sourceTree = "<group>"; };
 		CA17AD605EB31E1A9D57B94476A6EF78 /* HATProfileDataProfilePhotoObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileDataProfilePhotoObject.swift; path = HAT/Objects/Phatav2/HATProfileDataProfilePhotoObject.swift; sourceTree = "<group>"; };
 		CA53426BE71CF598F9054A4E100A8FBD /* Mockingjay-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mockingjay-prefix.pch"; sourceTree = "<group>"; };
 		CA63DBEBDAEACE308D87C6005852718B /* FBAnnotation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBAnnotation.swift; path = Pod/Classes/FBAnnotation.swift; sourceTree = "<group>"; };
 		CA7BA7AB36E594E20BD3E275AB756F43 /* Pods-HATDeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HATDeX.release.xcconfig"; sourceTree = "<group>"; };
 		CAA124719EEBC92100FD09938212D911 /* Pods-HATDeX.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HATDeX.beta.xcconfig"; sourceTree = "<group>"; };
-		CB434830AABED0E031CEB496AAFACBEF /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		CB434830AABED0E031CEB496AAFACBEF /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		CB52595FCFB52DC3460A1E7CE81FB1B3 /* SwiftyRSA-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyRSA-dummy.m"; sourceTree = "<group>"; };
 		CC828F2440370B81B0874A659796F827 /* BEMPathManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMPathManager.h; path = Classes/BEMPathManager.h; sourceTree = "<group>"; };
 		CDC8C7185C17E069C893599515EF3521 /* BEMAnimationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMAnimationManager.h; path = Classes/BEMAnimationManager.h; sourceTree = "<group>"; };
-		CE489C595BDB2867CF3B796CB493BE4F /* RLMSyncSession.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncSession.mm; path = Realm/RLMSyncSession.mm; sourceTree = "<group>"; };
+		CE489C595BDB2867CF3B796CB493BE4F /* RLMSyncSession.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncSession.mm; path = Realm/RLMSyncSession.mm; sourceTree = "<group>"; };
 		CEB368989D5B5AADA702F292A894BC90 /* DBScorer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBScorer.h; path = Zxcvbn/DBScorer.h; sourceTree = "<group>"; };
 		CEE668488F0C9ACE3601575E67D91E8C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF12C292AE8E8823B1C12CDD115FB247 /* Answers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Answers.h; path = iOS/Crashlytics.framework/Headers/Answers.h; sourceTree = "<group>"; };
-		D093F65F0A81D776BBB6DEA57ABC84BB /* RLMSyncManager.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncManager.mm; path = Realm/RLMSyncManager.mm; sourceTree = "<group>"; };
+		D093F65F0A81D776BBB6DEA57ABC84BB /* RLMSyncManager.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncManager.mm; path = Realm/RLMSyncManager.mm; sourceTree = "<group>"; };
 		D0C87BB4CF6D396853DDEED409EACA57 /* HATFitbitStatsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitStatsObject.swift; path = HAT/Objects/Fitbit/HATFitbitStatsObject.swift; sourceTree = "<group>"; };
 		D0FB23DAD269CDEF4C4BD0FE14E87413 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		D1321DD42C083F18D5244843CE22B7F9 /* FBAnnotationClusterTemplate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBAnnotationClusterTemplate.swift; path = Pod/Classes/FBAnnotationClusterTemplate.swift; sourceTree = "<group>"; };
 		D1A49C80EFF18D9A13D87152D5C1293A /* DataOfferRequiredDataDefinitionDataSetsFieldsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferRequiredDataDefinitionDataSetsFieldsObject.swift; path = "HAT/Objects/Data Offers/DataOfferRequiredDataDefinitionDataSetsFieldsObject.swift"; sourceTree = "<group>"; };
 		D1BCA1F08A95372E1C1ACB7DEA18EEE3 /* HATGoogleCalendarAttachmentsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarAttachmentsObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarAttachmentsObject.swift"; sourceTree = "<group>"; };
 		D2C5FC63D5D82B81DECF4C30A8C79B43 /* HATGoogleCalendarConferenceDataObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarConferenceDataObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarConferenceDataObject.swift"; sourceTree = "<group>"; };
-		D2D87AC84F61C830F54B0C43BC4269D7 /* main.css */ = {isa = PBXFileReference; includeInIndex = 1; name = main.css; path = webassets/dist/main.css; sourceTree = "<group>"; };
-		D2E9A0E84448FA498C5EA8FFA4CED314 /* JWTDecode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JWTDecode.framework; path = JWTDecode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2D87AC84F61C830F54B0C43BC4269D7 /* main.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = main.css; path = webassets/dist/main.css; sourceTree = "<group>"; };
+		D2E9A0E84448FA498C5EA8FFA4CED314 /* JWTDecode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JWTDecode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35CDF89331D8662DE782E1E4CFAB68B /* DataOfferRewardsCashValueObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataOfferRewardsCashValueObject.swift; path = "HAT/Objects/Data Offers/DataOfferRewardsCashValueObject.swift"; sourceTree = "<group>"; };
 		D3872A9DB99FA22D6DD5FE129A83EA62 /* HATGoogleCalendarRemindersObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarRemindersObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarRemindersObject.swift"; sourceTree = "<group>"; };
-		D3EA7B1E13A197429AF1F9972A95BEB9 /* collection_notifications.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = collection_notifications.cpp; path = Realm/ObjectStore/src/collection_notifications.cpp; sourceTree = "<group>"; };
+		D3EA7B1E13A197429AF1F9972A95BEB9 /* collection_notifications.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = collection_notifications.cpp; path = Realm/ObjectStore/src/collection_notifications.cpp; sourceTree = "<group>"; };
 		D40A0EB43020AA75593F26D0E63083D4 /* A0JWT.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = A0JWT.swift; path = JWTDecode/A0JWT.swift; sourceTree = "<group>"; };
 		D4206A26CC8AD91EB3EA26DB0168B6DA /* Pods-HATDeXUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HATDeXUITests-frameworks.sh"; sourceTree = "<group>"; };
 		D473477FF04CCE59E0F92AD78D2AE517 /* DBMatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBMatcher.h; path = Zxcvbn/DBMatcher.h; sourceTree = "<group>"; };
-		D4C99CB5BD712DCD443C0ACA1E8309AE /* RLMSyncPermissionResults.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncPermissionResults.mm; path = Realm/RLMSyncPermissionResults.mm; sourceTree = "<group>"; };
+		D4C99CB5BD712DCD443C0ACA1E8309AE /* RLMSyncPermissionResults.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncPermissionResults.mm; path = Realm/RLMSyncPermissionResults.mm; sourceTree = "<group>"; };
 		D4E49174CF58238FDBEE36636C6DBCA2 /* FBBoundingBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FBBoundingBox.swift; path = Pod/Classes/FBBoundingBox.swift; sourceTree = "<group>"; };
 		D555E3E81E113A1838CC7DCDB01D728E /* Sync.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sync.swift; path = RealmSwift/Sync.swift; sourceTree = "<group>"; };
-		D653749F73C12C5955EBC72A977A83FE /* Mockingjay.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Mockingjay.modulemap; sourceTree = "<group>"; };
+		D653749F73C12C5955EBC72A977A83FE /* Mockingjay.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Mockingjay.modulemap; sourceTree = "<group>"; };
 		D6C8D31CDF1284F9EEDDC55DD5B5EB3A /* HATFitbitActivityHeartRateZoneObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitActivityHeartRateZoneObject.swift; path = HAT/Objects/Fitbit/HATFitbitActivityHeartRateZoneObject.swift; sourceTree = "<group>"; };
 		D7018D20C3124236FD767C541E5FACD1 /* RLMRealm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealm.h; path = include/RLMRealm.h; sourceTree = "<group>"; };
 		D71840DA352C935D3426A52BE2F4AFBB /* Mockingjay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mockingjay.swift; path = Sources/Mockingjay/Mockingjay.swift; sourceTree = "<group>"; };
@@ -1434,9 +1434,9 @@
 		D94AEF6AA6B823BB0033818E66439B12 /* FileUploadObjectPermissions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileUploadObjectPermissions.swift; path = "HAT/Objects/File Upload Object/FileUploadObjectPermissions.swift"; sourceTree = "<group>"; };
 		DB120E1322014BDF8858E61E2FC1BE9F /* HATDataPlugObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATDataPlugObject.swift; path = "HAT/Objects/Data Plugs/HATDataPlugObject.swift"; sourceTree = "<group>"; };
 		DB13750A531AA71B4511B1675B1480CD /* zxcvbn-ios-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "zxcvbn-ios-umbrella.h"; sourceTree = "<group>"; };
-		DB2F92AD8D02E51861B67145AFB91499 /* RLMSyncSubscription.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncSubscription.mm; path = Realm/RLMSyncSubscription.mm; sourceTree = "<group>"; };
+		DB2F92AD8D02E51861B67145AFB91499 /* RLMSyncSubscription.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncSubscription.mm; path = Realm/RLMSyncSubscription.mm; sourceTree = "<group>"; };
 		DBCE9010E5A935AC148167BE87FFF9B9 /* HATLocationsDataObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATLocationsDataObject.swift; path = HAT/Objects/Locations/HATLocationsDataObject.swift; sourceTree = "<group>"; };
-		DBCEEB37103A159553952A1D4FAE06BC /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainSwift.framework; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBCEEB37103A159553952A1D4FAE06BC /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF2B3553B18C3D709C32777FBB8FEF4 /* Aliases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Aliases.swift; path = RealmSwift/Aliases.swift; sourceTree = "<group>"; };
 		DC07877565523642FAF61632244BC91E /* HATExternalAppsIllustrationObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsIllustrationObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsIllustrationObject.swift"; sourceTree = "<group>"; };
 		DC5AAD6E2903A21F2ACC11F087104613 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
@@ -1447,16 +1447,16 @@
 		DEC4B6E1C321CB9C68B13DE5341A1A57 /* Pods-HATDeXUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HATDeXUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E010B098AB3596EEF17CA92DE0FE7331 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		E0A467E24795A0EF52D55F5225CD208D /* RLMSyncCredentials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSyncCredentials.h; path = include/RLMSyncCredentials.h; sourceTree = "<group>"; };
-		E0B8B153C66C7691940E14F8290701EE /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0B8B153C66C7691940E14F8290701EE /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E155F504A62B510976A9452979CD3460 /* RLMJSONModels.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RLMJSONModels.m; path = Realm/RLMJSONModels.m; sourceTree = "<group>"; };
 		E18E5F48291CEAC0A859277744DEA052 /* Pods-HATDeX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HATDeX-dummy.m"; sourceTree = "<group>"; };
 		E2722C4F9082F8F56B485473D32DC144 /* HATLocationsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATLocationsObject.swift; path = HAT/Objects/Locations/HATLocationsObject.swift; sourceTree = "<group>"; };
-		E3401C752A383661A8C530F3165F30F2 /* external_commit_helper.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = external_commit_helper.cpp; path = Realm/ObjectStore/src/impl/apple/external_commit_helper.cpp; sourceTree = "<group>"; };
+		E3401C752A383661A8C530F3165F30F2 /* external_commit_helper.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = external_commit_helper.cpp; path = Realm/ObjectStore/src/impl/apple/external_commit_helper.cpp; sourceTree = "<group>"; };
 		E37BC721A8B6F4AE86EBD0D699167FF1 /* HATProfileEducationObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileEducationObject.swift; path = HAT/Objects/Profile/Education/HATProfileEducationObject.swift; sourceTree = "<group>"; };
 		E3A7205BD165A26137C9EED9A319C8B6 /* HNKDiskCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKDiskCache.h; path = Haneke/HNKDiskCache.h; sourceTree = "<group>"; };
 		E45C8F8E131F3729A746797F4E06D80D /* RLMRealmConfiguration+Sync.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RLMRealmConfiguration+Sync.h"; path = "include/RLMRealmConfiguration+Sync.h"; sourceTree = "<group>"; };
-		E46D100E606396E1469EDA058CA8AFFA /* RLMObjectSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectSchema.mm; path = Realm/RLMObjectSchema.mm; sourceTree = "<group>"; };
-		E49E9FC9088B4D5D4B85127981885C9A /* RLMSyncUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncUtil.mm; path = Realm/RLMSyncUtil.mm; sourceTree = "<group>"; };
+		E46D100E606396E1469EDA058CA8AFFA /* RLMObjectSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMObjectSchema.mm; path = Realm/RLMObjectSchema.mm; sourceTree = "<group>"; };
+		E49E9FC9088B4D5D4B85127981885C9A /* RLMSyncUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncUtil.mm; path = Realm/RLMSyncUtil.mm; sourceTree = "<group>"; };
 		E5D372A639D5222ACD4AFF91147FC637 /* NotificationObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NotificationObject.swift; path = HAT/Objects/NotificationObject.swift; sourceTree = "<group>"; };
 		E67237E084E82584E65B71237E3097D3 /* HATFeedContentMediaObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFeedContentMediaObject.swift; path = HAT/Objects/Feed/HATFeedContentMediaObject.swift; sourceTree = "<group>"; };
 		E6940863C714BD614192DC26AE4FF6C7 /* Pods-HATDeX-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HATDeX-resources.sh"; sourceTree = "<group>"; };
@@ -1464,8 +1464,8 @@
 		E7334D2728C4AAA9806B2A6AF3B3394F /* HATNotableService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATNotableService.swift; path = HAT/Services/HATNotableService.swift; sourceTree = "<group>"; };
 		E764698C0E0A91E07DB63864DD1C4505 /* HATProfileDataObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileDataObject.swift; path = HAT/Objects/Phatav2/HATProfileDataObject.swift; sourceTree = "<group>"; };
 		E7ABCD7304C3956EA6C69394A06E0FC8 /* HATGoogleCalendarSourceObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarSourceObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarSourceObject.swift"; sourceTree = "<group>"; };
-		E882CBF58B0384B3B97451698D68CD67 /* sync_config.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = sync_config.cpp; path = Realm/ObjectStore/src/sync/sync_config.cpp; sourceTree = "<group>"; };
-		E90C04C5F4C9600F27B0AA23C42A0413 /* RLMMigration.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMMigration.mm; path = Realm/RLMMigration.mm; sourceTree = "<group>"; };
+		E882CBF58B0384B3B97451698D68CD67 /* sync_config.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = sync_config.cpp; path = Realm/ObjectStore/src/sync/sync_config.cpp; sourceTree = "<group>"; };
+		E90C04C5F4C9600F27B0AA23C42A0413 /* RLMMigration.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMMigration.mm; path = Realm/RLMMigration.mm; sourceTree = "<group>"; };
 		EA924BF802757225EFD6B63773CEEB51 /* HATProfileBundleObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileBundleObject.swift; path = HAT/Objects/Phatav2/HATProfileBundleObject.swift; sourceTree = "<group>"; };
 		EA941C01D037895C4EAF8B3AA634E7B5 /* ClearMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClearMessage.swift; path = SwiftyRSA/ClearMessage.swift; sourceTree = "<group>"; };
 		EABDBF76FFCAAB48CF7FFA8A28530526 /* SwiftyRSA-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyRSA-prefix.pch"; sourceTree = "<group>"; };
@@ -1478,10 +1478,10 @@
 		EE3A18F356D8FC55CE83E0372035DD56 /* HATTokenHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATTokenHelper.swift; path = HAT/Helpers/HATTokenHelper.swift; sourceTree = "<group>"; };
 		EE62E7E6FADF8EB21F3247153BA0E1F6 /* BEMCheckBoxGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMCheckBoxGroup.h; path = Classes/BEMCheckBoxGroup.h; sourceTree = "<group>"; };
 		EEFEEF7DAB104725B84A759669662937 /* HNKCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKCache.h; path = Haneke/HNKCache.h; sourceTree = "<group>"; };
-		EEFFE59E90A05C8F463A8C19602620A4 /* BEMCheckBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BEMCheckBox.framework; path = BEMCheckBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEFFE59E90A05C8F463A8C19602620A4 /* BEMCheckBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BEMCheckBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1ED40437817DD64D6543268E48A0E8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EF9F8C5D129B29BA961AB478AEFA5C7C /* RLMSyncConfiguration.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSyncConfiguration.mm; path = Realm/RLMSyncConfiguration.mm; sourceTree = "<group>"; };
-		EFAA152396D8083CF7DFFF73F27BAECD /* uuid.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = uuid.cpp; path = Realm/ObjectStore/src/util/uuid.cpp; sourceTree = "<group>"; };
+		EF9F8C5D129B29BA961AB478AEFA5C7C /* RLMSyncConfiguration.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSyncConfiguration.mm; path = Realm/RLMSyncConfiguration.mm; sourceTree = "<group>"; };
+		EFAA152396D8083CF7DFFF73F27BAECD /* uuid.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = uuid.cpp; path = Realm/ObjectStore/src/util/uuid.cpp; sourceTree = "<group>"; };
 		EFDBA187386AACAAC121B69D995348D5 /* EncryptedMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EncryptedMessage.swift; path = SwiftyRSA/EncryptedMessage.swift; sourceTree = "<group>"; };
 		F0C15A5D8B0AEA1DDCC8ED0995A77863 /* HATGoogleCalendarConferenceDataEntryPointsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarConferenceDataEntryPointsObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarConferenceDataEntryPointsObject.swift"; sourceTree = "<group>"; };
 		F0D68C04B64E34474E2B340877779F7A /* FBAnnotationClusteringSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBAnnotationClusteringSwift-dummy.m"; sourceTree = "<group>"; };
@@ -1493,13 +1493,13 @@
 		F22D64D1418F2A66CD96B58BC5193B39 /* HATSpotifyProfileImagesObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATSpotifyProfileImagesObject.swift; path = HAT/Objects/Spotify/HATSpotifyProfileImagesObject.swift; sourceTree = "<group>"; };
 		F28D12855B7AC890C3A5729316C8BEDB /* HATFitbitSleepLevelsSummaryObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFitbitSleepLevelsSummaryObject.swift; path = HAT/Objects/Fitbit/HATFitbitSleepLevelsSummaryObject.swift; sourceTree = "<group>"; };
 		F2B6BC7B937D20F753D98DFDDB57535E /* RLMOptionalBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMOptionalBase.h; path = include/RLMOptionalBase.h; sourceTree = "<group>"; };
-		F373A3608C69C63AF37E17462D0B81E9 /* HatForIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HatForIOS.framework; path = HatForIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F373A3608C69C63AF37E17462D0B81E9 /* HatForIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HatForIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3AD1803DCAC93B1976710CF719978AC /* HATExternalAppsStatusObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsStatusObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsStatusObject.swift"; sourceTree = "<group>"; };
 		F3F011E540C6BB4B392E4B8EFA8D4616 /* HATFeedLocationObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATFeedLocationObject.swift; path = HAT/Objects/Feed/HATFeedLocationObject.swift; sourceTree = "<group>"; };
 		F44176F016EFFF86F8FA4E452BB968EA /* RealmSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RealmSwift-umbrella.h"; sourceTree = "<group>"; };
 		F519C58D280BBCA298C00D2F03249CA5 /* List.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = List.swift; path = RealmSwift/List.swift; sourceTree = "<group>"; };
-		F51E9F6D36EA86836922091562848B56 /* RLMPredicateUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMPredicateUtil.mm; path = Realm/RLMPredicateUtil.mm; sourceTree = "<group>"; };
-		F5862BFE25CCB4325E4A83FD501F7D49 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		F51E9F6D36EA86836922091562848B56 /* RLMPredicateUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMPredicateUtil.mm; path = Realm/RLMPredicateUtil.mm; sourceTree = "<group>"; };
+		F5862BFE25CCB4325E4A83FD501F7D49 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		F5AAEA65CCBBB820D48832A5C9EAA743 /* HATGoogleCalendarStartObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATGoogleCalendarStartObject.swift; path = "HAT/Objects/Google Calendar/HATGoogleCalendarStartObject.swift"; sourceTree = "<group>"; };
 		F5FB0D838129E715CCA2EB6715AB7C60 /* UIImageView+Haneke.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Haneke.h"; path = "Haneke/UIImageView+Haneke.h"; sourceTree = "<group>"; };
 		F65B0E155C38812F54DD32EC3A7A588A /* HATProfileDataProfileEmergencyContactObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATProfileDataProfileEmergencyContactObject.swift; path = HAT/Objects/Phatav2/HATProfileDataProfileEmergencyContactObject.swift; sourceTree = "<group>"; };
@@ -1515,7 +1515,7 @@
 		F852011055A5284B59E0C02677FBDEA7 /* HATExternalAppsPermissionsRolesGrantedObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATExternalAppsPermissionsRolesGrantedObject.swift; path = "HAT/Objects/External Apps/HATExternalAppsPermissionsRolesGrantedObject.swift"; sourceTree = "<group>"; };
 		FAEE0E8360A5D6979B3403039C779437 /* HATObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATObject.swift; path = HAT/Protocols/HATObject.swift; sourceTree = "<group>"; };
 		FB49F8D3268D6EE64644E34791BCDB74 /* HATLoginService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HATLoginService.swift; path = HAT/Services/HATLoginService.swift; sourceTree = "<group>"; };
-		FBDF9E9B28C4378D6D91BB4E71DD45D7 /* URITemplate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = URITemplate.modulemap; sourceTree = "<group>"; };
+		FBDF9E9B28C4378D6D91BB4E71DD45D7 /* URITemplate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = URITemplate.modulemap; sourceTree = "<group>"; };
 		FC07EE8D90A116907B04661BB0FF58C9 /* Mockingjay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mockingjay-umbrella.h"; sourceTree = "<group>"; };
 		FC0B7B8D5F1808A6B6C023FBE92F91E2 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		FC26A23B030D2E53412CDD217637E8FE /* FBAnnotationClusteringSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBAnnotationClusteringSwift-prefix.pch"; sourceTree = "<group>"; };
@@ -1524,9 +1524,9 @@
 		FD5BC49C3D47EF73EAE880948DDE8694 /* Matchers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Matchers.swift; path = Sources/Mockingjay/Matchers.swift; sourceTree = "<group>"; };
 		FF7957091B6C5EE2996B73337A211861 /* FileUploadObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileUploadObject.swift; path = "HAT/Objects/File Upload Object/FileUploadObject.swift"; sourceTree = "<group>"; };
 		FFB53BC02ADAC9E85B4749DD2FA95BF8 /* RLMProperty_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMProperty_Private.h; path = include/RLMProperty_Private.h; sourceTree = "<group>"; };
-		FFBF5E42A6A87A9C68E85F04C7431A20 /* keychain_helper.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = keychain_helper.cpp; path = Realm/ObjectStore/src/impl/apple/keychain_helper.cpp; sourceTree = "<group>"; };
+		FFBF5E42A6A87A9C68E85F04C7431A20 /* keychain_helper.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = keychain_helper.cpp; path = Realm/ObjectStore/src/impl/apple/keychain_helper.cpp; sourceTree = "<group>"; };
 		FFC18C9E97328614B632EF0685BE1614 /* RLMResults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMResults.h; path = include/RLMResults.h; sourceTree = "<group>"; };
-		FFEEC4CF985A1F6D8C3DB619CA4BF1D3 /* RLMProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMProperty.mm; path = Realm/RLMProperty.mm; sourceTree = "<group>"; };
+		FFEEC4CF985A1F6D8C3DB619CA4BF1D3 /* RLMProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMProperty.mm; path = Realm/RLMProperty.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1798,7 +1798,6 @@
 				877BD0713DEE4004E088A8B5CA7BE3EF /* Headers */,
 				76A4BA02E24C63C92158FB17F68E696A /* Support Files */,
 			);
-			name = Realm;
 			path = Realm;
 			sourceTree = "<group>";
 		};
@@ -1829,7 +1828,6 @@
 				7D033A68C3E9455B755E116CCED02725 /* BEMPathManager.m */,
 				B187E01BA61D870D3A1DE5FC39DA4BD2 /* Support Files */,
 			);
-			name = BEMCheckBox;
 			path = BEMCheckBox;
 			sourceTree = "<group>";
 		};
@@ -1842,7 +1840,6 @@
 				4A3BEF3C8E8CBB7B6E45ECBE7E76CC00 /* JWTDecode.swift */,
 				247C8D8F7F45B02B5720A3248DF9C883 /* Support Files */,
 			);
-			name = JWTDecode;
 			path = JWTDecode;
 			sourceTree = "<group>";
 		};
@@ -1852,7 +1849,6 @@
 				EE09739104200CF1212958D83BDEED23 /* SwiftyJSON.swift */,
 				1DBE4DA561A3D8C80042B7F7DCE655B3 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -1875,7 +1871,6 @@
 				CB8ADF6EDA2A06478208FAF3795796A7 /* ObjC */,
 				9BBD6B2B02B2619755D9F47D2B4999A9 /* Support Files */,
 			);
-			name = SwiftyRSA;
 			path = SwiftyRSA;
 			sourceTree = "<group>";
 		};
@@ -1929,7 +1924,6 @@
 				87B2FC5BE98B7B2994413B857BF90976 /* Validation.swift */,
 				3E66C834B8461EC7414FB7278BC8D893 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1972,7 +1966,6 @@
 				0D8D03C6C052D2AE77EA74961A66871C /* FBZoomLevel.swift */,
 				37025E617D7372B016120FA355910E14 /* Support Files */,
 			);
-			name = FBAnnotationClusteringSwift;
 			path = FBAnnotationClusteringSwift;
 			sourceTree = "<group>";
 		};
@@ -2015,7 +2008,6 @@
 				F721565A6FF2A6BD159A9DA11C7EB336 /* Util.swift */,
 				F6B4305AB620522D8420E9BF02B7499C /* Support Files */,
 			);
-			name = RealmSwift;
 			path = RealmSwift;
 			sourceTree = "<group>";
 		};
@@ -2023,7 +2015,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -2034,7 +2025,6 @@
 				97BB3BCE9A2C037B8B83575E8EF50B1D /* Resources */,
 				70C68D84D19F42B27EC9B07B5B484A1D /* Support Files */,
 			);
-			name = MarkdownView;
 			path = MarkdownView;
 			sourceTree = "<group>";
 		};
@@ -2044,7 +2034,6 @@
 				47A9F01489FE9D4971B4271DFE7FE361 /* URITemplate.swift */,
 				ACD1CB8C611CAF0D50EC8EF040CED113 /* Support Files */,
 			);
-			name = URITemplate;
 			path = URITemplate;
 			sourceTree = "<group>";
 		};
@@ -2218,7 +2207,6 @@
 				A28AB470B954C61D2960A21396C2FC3B /* UKSpecificInfo.swift */,
 				0731B3562ACADB1EDF98C80263853A8C /* Support Files */,
 			);
-			name = HatForIOS;
 			path = HatForIOS;
 			sourceTree = "<group>";
 		};
@@ -2271,7 +2259,6 @@
 				361441B6BFE0FFD80677729B2F828716 /* Fabric.h */,
 				9E7932B5908B0B4509E06124B564591D /* Frameworks */,
 			);
-			name = Fabric;
 			path = Fabric;
 			sourceTree = "<group>";
 		};
@@ -2306,7 +2293,6 @@
 				AE3724ADEC00ADD6931D42F813BF9CBD /* Support Files */,
 				E90BCAF0FDA6A49EC3269D7B398FB846 /* XCTest */,
 			);
-			name = Mockingjay;
 			path = Mockingjay;
 			sourceTree = "<group>";
 		};
@@ -2353,7 +2339,6 @@
 				3B2DF7E8BDDD005930CFBC65BC4B473C /* TegKeychainConstants.swift */,
 				E3D0B62D39D224FCE4D79A52C88412A8 /* Support Files */,
 			);
-			name = KeychainSwift;
 			path = KeychainSwift;
 			sourceTree = "<group>";
 		};
@@ -2448,7 +2433,6 @@
 				2F0BB701B0E02445DBFC2B981EDFA657 /* Crashlytics.h */,
 				615983D866BD12CA17FE42C7FD5A2E48 /* Frameworks */,
 			);
-			name = Crashlytics;
 			path = Crashlytics;
 			sourceTree = "<group>";
 		};
@@ -2527,7 +2511,6 @@
 				3A01E443ED1D9EB0318D338F35FD3A8D /* Resources */,
 				A65BC0C9B465F03F43A87D653C6CF8AF /* Support Files */,
 			);
-			name = "zxcvbn-ios";
 			path = "zxcvbn-ios";
 			sourceTree = "<group>";
 		};
@@ -2639,7 +2622,6 @@
 				7439A7E638BF02A7F254B7F9CAFAE70F /* UIView+Haneke.m */,
 				FEF5DA29F0C2586B00792E2DE59E4AE7 /* Support Files */,
 			);
-			name = Haneke;
 			path = Haneke;
 			sourceTree = "<group>";
 		};
@@ -3311,7 +3293,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -5154,6 +5136,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -5161,6 +5144,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -5191,6 +5175,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -5449,6 +5434,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -5456,6 +5442,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -5718,6 +5705,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -5725,6 +5713,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

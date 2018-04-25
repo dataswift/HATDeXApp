@@ -864,7 +864,7 @@ internal class Constants {
         
         static func hatLoginURL(userDomain: String) -> String {
             
-            return "https://\(userDomain)/hatlogin?name=\(Constants.Auth.serviceName)&redirect=\(Constants.Auth.urlScheme)://\(Constants.Auth.localAuthHost)"
+            return "https://\(userDomain)/#/hatlogin?name=\(Constants.Auth.serviceName)&redirect=\(Constants.Auth.urlScheme)://\(Constants.Auth.localAuthHost)"
         }
         
         static func fileInfoURL(fileID: String, userDomain: String) -> String {

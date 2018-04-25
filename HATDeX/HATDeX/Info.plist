@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.4.3.3</string>
+	<string>2.4.3.4</string>
 	<key>Config</key>
 	<string>$(CONFIGURATION)</string>
 	<key>Fabric</key>
@@ -66,6 +66,8 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Store your images on your HAT for private sorting and analysis</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Push location data into your app even when you’re not using it so that you can look back and view the history of where you have been</string>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Push location data into your app even when you’re not using it so that you can look back and view the history of where you have been</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Push location data into your app even when you’re not using it so that you can look back and view the history of where you have been</string>

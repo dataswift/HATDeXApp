@@ -87,21 +87,10 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
-        let startDate = Date()
         let taskID = beginBackgroundUpdateTask()
         let syncHelper = SyncDataHelper()
         syncHelper.checkNextBlockToSync(completion: { [weak self] result in
             
-            let endDate = Date()
-            let executionTime = endDate.timeIntervalSince(startDate)
-            
-            let notification = UILocalNotification()
-            notification.fireDate = Date(timeIntervalSinceNow: 5)
-            notification.alertBody = "Performed fetch"
-            notification.alertAction = "Total time: \(String(describing: executionTime))"
-            UIApplication.shared.scheduleLocalNotification(notification)
-            
-            CrashLoggerHelper.customErrorLog(error: HATError.generalError("", nil, nil), userInfo: ["duration": executionTime])
             if result {
                 
                 completionHandler(.newData)

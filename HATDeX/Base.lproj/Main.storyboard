@@ -164,7 +164,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1N-SX-weh">
-                                <rect key="frame" x="8" y="476" width="25" height="25"/>
+                                <rect key="frame" x="8" y="475.5" width="25" height="25"/>
                                 <state key="normal" image="Mail"/>
                                 <connections>
                                     <action selector="contactUsActionButton:" destination="Vvb-vK-6GZ" eventType="touchUpInside" id="gXy-uk-Qd9"/>
@@ -1567,25 +1567,25 @@
                                                                     <rect key="frame" x="20" y="96" width="240" height="76"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claimed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9s-eg-1ZI">
-                                                                            <rect key="frame" x="0.0" y="15" width="74" height="23.5"/>
+                                                                            <rect key="frame" x="0.0" y="7.5" width="76" height="27.5"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0Y-Aq-OxG">
-                                                                            <rect key="frame" x="10" y="46.5" width="54" height="22.5"/>
+                                                                            <rect key="frame" x="10" y="43" width="56" height="26"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="19"/>
                                                                             <color key="textColor" red="0.50318163633346558" green="0.74303877353668213" blue="0.30777576565742493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKP-8x-R86">
-                                                                            <rect key="frame" x="165.5" y="15" width="74.5" height="23.5"/>
+                                                                            <rect key="frame" x="163.5" y="7.5" width="76.5" height="27.5"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWv-4f-2Hh">
-                                                                            <rect key="frame" x="179.5" y="46.5" width="46.5" height="22.5"/>
+                                                                            <rect key="frame" x="177.5" y="43" width="48.5" height="26"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="19"/>
                                                                             <color key="textColor" red="0.93801254034042358" green="0.47121840715408325" blue="0.037007637321949005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -1607,7 +1607,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFB-vJ-UEV">
-                                                                    <rect key="frame" x="127" y="25" width="61.5" height="21"/>
+                                                                    <rect key="frame" x="127" y="25" width="63" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="P5c-bV-cYr"/>
                                                                     </constraints>
@@ -1616,7 +1616,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czp-Qh-Lmp">
-                                                                    <rect key="frame" x="127" y="54" width="37" height="21"/>
+                                                                    <rect key="frame" x="127" y="54" width="38" height="21"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -1867,7 +1867,7 @@
                                                         <rect key="frame" x="17" y="8" width="251" height="105"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYu-LI-amZ">
-                                                        <rect key="frame" x="123.5" y="124" width="40.5" height="29"/>
+                                                        <rect key="frame" x="124" y="124" width="40.5" height="29"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -3020,7 +3020,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accessing your HAT..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqK-nY-8Dr">
-                                <rect key="frame" x="8" y="248.5" width="305" height="23.5"/>
+                                <rect key="frame" x="8" y="248" width="305" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3289,7 +3289,7 @@
                                 </connections>
                             </tableView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEm-cT-lG1">
-                                <rect key="frame" x="145" y="291.5" width="30" height="30"/>
+                                <rect key="frame" x="145" y="291" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="QeO-7o-UAY"/>
                                     <constraint firstAttribute="height" constant="30" id="qB5-Qq-Hws"/>

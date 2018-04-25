@@ -32,7 +32,7 @@ internal struct KeychainHelper {
         
         if value != nil && key != nil && value != "" {
             
-            return KeychainSwift().set(value!, forKey: key!, withAccess: .accessibleWhenUnlocked)
+            return KeychainSwift().set(value!, forKey: key!, withAccess: .accessibleAfterFirstUnlockThisDeviceOnly)
         }
         
         return false
