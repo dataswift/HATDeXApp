@@ -105,11 +105,7 @@ public struct HATProfileEducationObject: HatApiType, Comparable {
      */
     public mutating func initialize(fromCache: Dictionary<String, Any>) {
         
-        let json = JSON(fromCache)
-        if let tempQualification = json[Fields.data][Fields.highestAcademicQualification].string {
-            
-            self.highestAcademicQualification = tempQualification
-        } else if let tempQualification = fromCache[Fields.highestAcademicQualification] {
+        if let tempQualification = fromCache[Fields.highestAcademicQualification] {
             
             self.highestAcademicQualification = String(describing: tempQualification)
         }

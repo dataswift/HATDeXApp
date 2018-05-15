@@ -21,4 +21,6 @@ public struct HATExternalAppsPermissionsObject: HATObject {
     public var rolesGranted: [HATExternalAppsPermissionsRolesGrantedObject] = []
     /// The bundle info required for this app
     public var dataRequired: HATExternalAppsDataRequiredObject?
+    /// The bundle info required for this app
+    public var dataRetrieved: DataOfferRequiredDataDefinitionObjectV2?
 }

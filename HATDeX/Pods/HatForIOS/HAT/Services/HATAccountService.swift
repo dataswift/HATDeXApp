@@ -34,7 +34,7 @@ public struct HATAccountService {
     public static func getHatTableValues(token: String, userDomain: String, namespace: String, scope: String, parameters: Dictionary<String, Any>, successCallback: @escaping ([JSON], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // form the url
-        let url: String = "https://\(userDomain)/api/v2/data/\(namespace)/\(scope)"
+        let url: String = "https://\(userDomain)/api/v2.6/data/\(namespace)/\(scope)"
         
         // create parameters and headers
         let headers: [String: String] = [RequestHeaders.xAuthToken: token]
@@ -91,7 +91,7 @@ public struct HATAccountService {
     public static func createTableValue(userToken: String, userDomain: String, namespace: String, scope: String, parameters: Dictionary<String, Any>, successCallback: @escaping (JSON, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // form the url
-        let url: String = "https://\(userDomain)/api/v2/data/\(namespace)/\(scope)"
+        let url: String = "https://\(userDomain)/api/v2.6/data/\(namespace)/\(scope)"
         
         // create parameters and headers
         let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
@@ -144,7 +144,7 @@ public struct HATAccountService {
     public static func deleteHatRecord(userDomain: String, userToken: String, recordIds: [String], success: @escaping (String) -> Void, failed: @ escaping (HATTableError) -> Void) {
         
         // form the url
-        var url: String = "https://\(userDomain)/api/v2/data"
+        var url: String = "https://\(userDomain)/api/v2.6/data"
         
         let firstRecord: String? = recordIds.first
         url.append("?records=\(firstRecord!)")
@@ -202,7 +202,7 @@ public struct HATAccountService {
     public static func updateHatRecord(userDomain: String, userToken: String, parameters: Dictionary<String, Any>, successCallback: @escaping ([JSON], String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // form the url
-        let url: String = "https://\(userDomain)/api/v2/data"
+        let url: String = "https://\(userDomain)/api/v2.6/data"
         
         // create parameters and headers
         let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
@@ -249,11 +249,14 @@ public struct HATAccountService {
         // define the url to connect to
         let url: String = "https://notables.hubofallthings.com/api/bulletin/tickle"
         
+        let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        
         // make the request
-        Alamofire.request(url, method: .get, parameters: ["phata": userDomain], encoding: Alamofire.URLEncoding.default, headers: nil).responseString { _ in
+        manager.request(url, method: .get, parameters: ["phata": userDomain], encoding: Alamofire.URLEncoding.default, headers: nil).responseString { _ in
             
             completion()
-        }
+        }.session.finishTasksAndInvalidate()
     }
     
     // MARK: - Get public key
@@ -334,7 +337,7 @@ public struct HATAccountService {
      */
     public static func createCombinator(userDomain: String, userToken: String, endPoint: String, combinatorName: String, fieldToFilter: String, lowerValue: Int, upperValue: Int, transformationType: String? = nil, transformationPart: String? = nil, successCallback: @escaping (Bool, String?) -> Void, failCallback: @escaping (HATError) -> Void) {
         
-        let url: String = "https://\(userDomain)/api/v2/combinator/\(combinatorName)"
+        let url: String = "https://\(userDomain)/api/v2.6/combinator/\(combinatorName)"
         
         let bodyRequest: [BodyRequest] = [BodyRequest()]
         bodyRequest[0].endpoint = endPoint
@@ -357,7 +360,10 @@ public struct HATAccountService {
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         
-        Alamofire.request(urlRequest).responseJSON(completionHandler: { response in
+        let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        
+        manager.request(urlRequest).responseJSON(completionHandler: { response in
             
             switch response.result {
             case .success:
@@ -375,7 +381,7 @@ public struct HATAccountService {
                 
                 failCallback(HATError.generalError("", nil, error))
             }
-        })
+        }).session.finishTasksAndInvalidate()
     }
     
     /**
@@ -389,7 +395,7 @@ public struct HATAccountService {
      */
     public static func getCombinator(userDomain: String, userToken: String, combinatorName: String, successCallback: @escaping ([JSON], String?) -> Void, failCallback: @escaping (HATError) -> Void) {
         
-        let url: String = "https://\(userDomain)/api/v2/combinator/\(combinatorName)"
+        let url: String = "https://\(userDomain)/api/v2.6/combinator/\(combinatorName)"
         
         let headers: [String: String] = [RequestHeaders.xAuthToken: userToken]
         

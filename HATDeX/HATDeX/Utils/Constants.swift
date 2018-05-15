@@ -695,6 +695,7 @@ internal class Constants {
         static let imagePopUp2: String = "Image-2"
         static let imagePopUp3: String = "Image-3"
         static let imagePopUp4: String = "Image-4"
+        static let dataDebitPlaceholder: String = "Data Debits"
     }
     
     // MARK: - Data Plug

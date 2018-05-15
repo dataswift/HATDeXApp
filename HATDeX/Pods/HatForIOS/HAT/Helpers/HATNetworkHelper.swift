@@ -72,8 +72,11 @@ public class HATNetworkHelper: NSObject {
         headers: Dictionary<String, String>,
         completion: @escaping (_ r: HATNetworkHelper.ResultType) -> Void) {
         
+        let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        
         // do a post
-        Alamofire.request(
+        manager.request(
             url, /* request url */
             method: method, /* GET, POST, etc*/
             parameters: parameters, /* parameters to POST*/
@@ -90,6 +93,14 @@ public class HATNetworkHelper: NSObject {
                 case .success:
                     
                     let header: [AnyHashable: Any]? = response.response?.allHeaderFields
+                    
+                    if let stringHeaders: [String: String] = header as? [String: String], let url = (response.response?.url!) {
+                        
+                        let cookies: [HTTPCookie] = HTTPCookie.cookies(withResponseHeaderFields: stringHeaders, for: url)
+                        manager.session.configuration.httpCookieStorage?.setCookies(cookies, for: url, mainDocumentURL: nil)
+
+                    }
+                    
                     let token: String? = header?["x-auth-token"] as? String
                     
                     if response.response?.statusCode == 401 {
@@ -126,7 +137,7 @@ public class HATNetworkHelper: NSObject {
                     
                     completion(HATNetworkHelper.ResultType.error(error: error, statusCode: response.response?.statusCode))
                 }
-            }
+            }.session.finishTasksAndInvalidate()
     }
     
     /**
@@ -151,8 +162,11 @@ public class HATNetworkHelper: NSObject {
         headers: Dictionary<String, String>,
         completion: @escaping (_ r: HATNetworkHelper.ResultTypeString) -> Void) {
         
+        let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        
         // do a post
-        Alamofire.request(
+        manager.request(
             url, /* request url */
             method: method, /* GET, POST, etc*/
             parameters: parameters, /* parameters to POST*/
@@ -199,7 +213,7 @@ public class HATNetworkHelper: NSObject {
                     
                     completion(HATNetworkHelper.ResultTypeString.error(error: error, statusCode: response.response?.statusCode))
                 }
-            }
+            }.session.finishTasksAndInvalidate()
     }
     
     // MARK: - Upload file
@@ -215,7 +229,10 @@ public class HATNetworkHelper: NSObject {
         
         let headers: [String: String] = ["x-amz-server-side-encryption": "AES256"]
         
-        Alamofire.upload(image, to: URL(string: url)!, method: .put, headers: headers).uploadProgress(closure: {(progress) -> Void in
+        let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        
+        manager.upload(image, to: URL(string: url)!, method: .put, headers: headers).uploadProgress(closure: {(progress) -> Void in
             
             if let updateFunc: ((Double) -> Void) = progressUpdateHandler {
                 
@@ -255,7 +272,7 @@ public class HATNetworkHelper: NSObject {
                 
                 completion(HATNetworkHelper.ResultType.error(error: error, statusCode: response.response?.statusCode))
             }
-        })
+        }).session.finishTasksAndInvalidate()
     }
     
     // MARK: - Query from string

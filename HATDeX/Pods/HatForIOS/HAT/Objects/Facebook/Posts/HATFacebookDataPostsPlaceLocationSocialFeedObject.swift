@@ -39,13 +39,6 @@ public struct HATFacebookDataPostsPlaceLocationSocialFeedObject: HatApiType, HAT
 
     public init() {
         
-        
-        zip = ""
-        city = ""
-        street = ""
-        country = ""
-        latitude = 0
-        longitude = 0
     }
     
     /**
@@ -54,8 +47,6 @@ public struct HATFacebookDataPostsPlaceLocationSocialFeedObject: HatApiType, HAT
      - dictionary: The JSON file received
      */
     public init(from dictionary: Dictionary<String, JSON>) {
-        
-        self.init()
         
         self.inititialize(dict: dictionary)
     }

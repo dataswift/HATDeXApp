@@ -171,7 +171,7 @@ public struct HATLocationService {
         
         let encoded: Data? = HATLocationsDataObject.encode(from: tempLocations)
         
-        var urlRequest: URLRequest = URLRequest.init(url: URL(string: "https://\(userDomain)/api/v2/data/rumpel/locations/ios?skipErrors=true")!)
+        var urlRequest: URLRequest = URLRequest.init(url: URL(string: "https://\(userDomain)/api/v2.6/data/rumpel/locations/ios?skipErrors=true")!)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
         urlRequest.addValue(userToken, forHTTPHeaderField: "x-auth-token")
         urlRequest.networkServiceType = .background
@@ -182,7 +182,10 @@ public struct HATLocationService {
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         
-        Alamofire.request(urlRequest).responseJSON(completionHandler: { response in
+        let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        
+        manager.request(urlRequest).responseJSON(completionHandler: { response in
             
             let header = response.response?.allHeaderFields
             let token: String? = header?["x-auth-token"] as? String
@@ -201,7 +204,7 @@ public struct HATLocationService {
                 
                 completion?(true, token)
             }
-        })
+        }).session.finishTasksAndInvalidate()
     }
     
     /**
@@ -225,7 +228,7 @@ public struct HATLocationService {
         let splitArray1: [HATLocationsDataObject] = Array(dbLocations[...midPoint])
         let splitArray2: [HATLocationsDataObject] = Array(dbLocations[midPointNext...])
         
-        var urlRequest: URLRequest = URLRequest.init(url: URL(string: "https://\(userDomain)/api/v2/data/rumpel/locations/ios?skipErrors=true")!)
+        var urlRequest: URLRequest = URLRequest.init(url: URL(string: "https://\(userDomain)/api/v2.6/data/rumpel/locations/ios?skipErrors=true")!)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
         urlRequest.addValue(userToken, forHTTPHeaderField: "x-auth-token")
         
@@ -240,7 +243,10 @@ public struct HATLocationService {
             let encoded: Data? = HATLocationsDataObject.encode(from: array)
             urlRequest.httpBody = encoded
             
-            Alamofire.request(urlRequest).responseJSON(completionHandler: { response in
+            let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+            let manager = Alamofire.SessionManager(configuration: configuration)
+            
+            manager.request(urlRequest).responseJSON(completionHandler: { response in
                 
                 let header = response.response?.allHeaderFields
                 let token: String? = header?["x-auth-token"] as? String
@@ -252,7 +258,7 @@ public struct HATLocationService {
                     
                     completion?(true, token)
                 }
-            })
+            }).session.finishTasksAndInvalidate()
         }
         
         if !splitArray1.isEmpty {

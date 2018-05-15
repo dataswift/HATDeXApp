@@ -20,4 +20,6 @@ public struct HATExternalAppsDataRequiredObject: HATObject {
     public var rolling: Bool = false
     /// The bundle info definition for this app
     public var bundle: DataOfferRequiredDataDefinitionObjectV2 = DataOfferRequiredDataDefinitionObjectV2()
+    public var startDate: String?
+    public var endDate: String?
 }

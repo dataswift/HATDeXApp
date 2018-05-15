@@ -414,9 +414,12 @@ public struct HATProfileService {
      */
     public static func getPhataStructureBundle(userDomain: String, userToken: String, parameters: Dictionary<String, Any> = [:], success: @escaping (Dictionary<String, JSON>) -> Void, fail: @escaping (HATTableError) -> Void) {
         
-        if let url: URLConvertible = URL(string: "https://\(userDomain)/api/v2/data-bundle/phata/structure") {
+        if let url: URLConvertible = URL(string: "https://\(userDomain)/api/v2.6/data-bundle/phata/structure") {
             
-            Alamofire.request(
+            let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+            let manager = Alamofire.SessionManager(configuration: configuration)
+            
+            manager.request(
                 url,
                 method: .get,
                 parameters: parameters,
@@ -452,7 +455,7 @@ public struct HATProfileService {
                         fail(HATTableError.generalError("", nil, error))
                     }
                 }
-            )
+            ).session.finishTasksAndInvalidate()
         }
     }
     
@@ -559,7 +562,7 @@ public struct HATProfileService {
      */
     public static func createPhataStructureBundle(userDomain: String, userToken: String, parameters: Dictionary<String, Any>? = nil, success: @escaping (Bool) -> Void, fail: @escaping (HATTableError) -> Void) {
         
-        if let url: URLConvertible = URL(string: "https://\(userDomain)/api/v2/data-bundle/phata") {
+        if let url: URLConvertible = URL(string: "https://\(userDomain)/api/v2.6/data-bundle/phata") {
             
             let parametersToSend: Dictionary<String, Any>
             
@@ -579,7 +582,10 @@ public struct HATProfileService {
                 parametersToSend = tempDict
             }
             
-            Alamofire.request(
+            let configuration: URLSessionConfiguration = URLSessionConfiguration.default
+            let manager = Alamofire.SessionManager(configuration: configuration)
+            
+            manager.request(
                 url,
                 method: .post,
                 parameters: parametersToSend,
@@ -601,7 +607,7 @@ public struct HATProfileService {
                         fail(HATTableError.generalError("", nil, error))
                     }
                 }
-            )
+            ).session.finishTasksAndInvalidate()
         }
     }
     

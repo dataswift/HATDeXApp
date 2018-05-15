@@ -16,6 +16,20 @@ import UIKit
 
 public struct DataOfferRequiredDataDefinitionBundleFiltersV2: Codable {
     
+    private enum CodingKeys: String, CodingKey {
+        
+        case `operator`
+        case field
+        case transformation
+    }
+    
+    enum HATOperatorTypes: String, Decodable {
+        
+        case find
+        case contains
+        case between
+    }
+    
     // MARK: - Variables
     
     /// the field to filter
@@ -23,8 +37,70 @@ public struct DataOfferRequiredDataDefinitionBundleFiltersV2: Codable {
     /// The transformation to be done on the field
     public var transformation: Dictionary<String, String>?
     /// The operator of the filter
-    public var `operator`: Dictionary<String, String>? {
+    public var `operator`: HATOperator?
+    
+    public init(from decoder: Decoder) throws {
         
-        return (NSKeyedUnarchiver().decodeDecodable(Dictionary<String, String>?.self, forKey: "operator"))!
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.field = try container.decode(String.self, forKey: .field)
+        do {
+            
+            self.transformation = try container.decode(Dictionary<String, String>?.self, forKey: .transformation)
+        } catch {
+            
+            self.transformation = nil
+        }
+        
+        do {
+            
+            let test = try container.decode(HATOperator?.self, forKey: .`operator`)
+            
+            switch test?.operator {
+                
+            case .find?:
+                
+                do {
+                    
+                    self.operator = try container.decode(OperatorFind.self, forKey: .`operator`)
+
+                } catch {
+                    
+                    self.operator = nil
+                }
+            case .between?:
+                
+                do {
+                    
+                    self.operator = try container.decode(OperatorBetween.self, forKey: .`operator`)
+                } catch {
+                    
+                    self.operator = nil
+                }
+            case .contains?:
+                
+                do {
+                    
+                    self.operator = try container.decode(OperatorContains.self, forKey: .`operator`)
+                } catch {
+                    
+                    self.operator = nil
+                }
+            case .`in`?:
+                
+                do {
+                    
+                    self.operator = try container.decode(OperatorIn.self, forKey: .`operator`)
+                } catch {
+                    
+                    self.operator = nil
+                }
+            case .none:
+                
+                self.operator = nil
+            }
+        } catch {
+            
+            self.operator = nil
+        }
     }
 }

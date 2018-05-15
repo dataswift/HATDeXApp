@@ -17,4 +17,8 @@ public struct HATFeedLocationAddressObject: HATObject {
 
     /// Tha name of the address, in case it's just a string like google calendar
     public var name: String?
+    /// Tha name of the city, in case it's just a string like google calendar
+    public var city: String?
+    /// Tha name of the country, in case it's just a string like google calendar
+    public var country: String?
 }

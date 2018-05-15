@@ -18,7 +18,9 @@ public struct HATExternalAppsSetupObject: HATObject {
     // MARK: - Variables
     
     /// The url needed to launch the app from another app
-    public var iosUrl: String = ""
+    public var iosUrl: String?
+    /// The url needed to open in safari
+    public var url: String?
     /// The kind of app this is
     public var kind: String = ""
     public var preferences: String?

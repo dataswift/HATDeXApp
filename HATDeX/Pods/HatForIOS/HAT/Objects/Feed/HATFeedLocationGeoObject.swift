@@ -13,14 +13,12 @@
 
 // MARK: Struct
 
-public struct HATExternalAppsKindObject: HATObject {
-
-    // MARK: - Variables
+public struct HATFeedLocationGeoObject: HATObject {
     
-    /// The iTunes url of the app
-    public var url: String = ""
-    /// The iOS url to launch the app
-    public var iosUrl: String?
-    /// The kind of the app
-    public var kind: String = ""
+    // MARK: - Variables
+
+    /// The latitude of the geolocation
+    public var latitude: Float = 0
+    /// The longitude of the geolocation
+    public var longitude: Float = 0
 }

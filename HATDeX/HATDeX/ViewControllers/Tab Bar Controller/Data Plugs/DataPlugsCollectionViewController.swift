@@ -21,7 +21,7 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
     // MARK: - Variables
     
     /// An array with the available data plugs
-    private var dataPlugs: [HATDataPlugObject] = []
+    private var dataPlugs: [HATApplicationObject] = []
     
     /// A dark view covering the collection view cell
     private var darkView: UIVisualEffectView?
@@ -102,15 +102,17 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
     private func getDataPlugs() {
         
         /// method to execute on a successful callback
-        func successfullCallBack(data: [HATDataPlugObject], renewedUserToken: String?) {
+        func successfullCallBack(data: [HATApplicationObject], renewedUserToken: String?) {
             
             // remove the loading screen from the view
             self.loadingView.removeFromSuperview()
             
             self.dataPlugs.removeAll()
 
-            // remove the existing dataplugs from array
-            self.dataPlugs = HATDataPlugsService.filterAvailableDataPlugs(dataPlugs: data)
+            for plug in data where plug.application.kind.kind == "DataPlug" && plug.application.id != "spotify" && plug.application.id != "calendar" {
+                
+                self.dataPlugs.append(plug)
+            }
             
             self.collectionView?.reloadData()
             
@@ -119,7 +121,7 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
         }
         
         /// method to execute on a failed callback
-        func failureCallBack(error: DataPlugError) {
+        func failureCallBack(error: HATTableError) {
             
             // remove the loading screen from the view
             self.loadingView.removeFromSuperview()
@@ -134,7 +136,7 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
                     proceedCompletion: {})
             default:
                 
-                CrashLoggerHelper.dataPlugErrorLog(error: error)
+                CrashLoggerHelper.hatTableErrorLog(error: error)
             }
         }
         
@@ -148,10 +150,7 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
             textColor: .white,
             font: UIFont(name: Constants.FontNames.openSans, size: 12)!)
         
-        // get available data plugs from server
-        HATDataPlugsService.getAvailableDataPlugs(
-            succesfulCallBack: successfullCallBack,
-            failCallBack: failureCallBack)
+        HATExternalAppsService.getExternalApps(userToken: self.userToken, userDomain: self.userDomain, completion: successfullCallBack, failCallBack: failureCallBack)
     }
     
     // MARK: - Notification observer method
@@ -194,17 +193,6 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        func appToken(appToken: String, newUserToken: String?) {
-            
-            plugURL = HATDataPlugsService.createURLBasedOn(socialServiceName: self.dataPlugs[indexPath.row].plug.name, socialServiceURL: self.dataPlugs[indexPath.row].plug.url, appToken: appToken)!
-            self.performSegue(withIdentifier: "details", sender: self)
-        }
-        
-        func error(error: JSONParsingError) {
-            
-            CrashLoggerHelper.JSONParsingErrorLog(error: error)
-        }
-        
         if let cell = self.collectionView?.cellForItem(at: indexPath) as? DataPlugCollectionViewCell {
             
             guard let dataPlug = cell.getCellPlugObject() else {
@@ -212,18 +200,13 @@ internal class DataPlugsCollectionViewController: UICollectionViewController, UI
                 return
             }
             
-            selectedlPlug = dataPlug.plug.name
-            
-            if dataPlug.plug.name == "facebook" {
+            selectedlPlug = dataPlug.application.id
+            if let appURL = URL(string: dataPlug.application.setup.url!) {
                 
-                HATFacebookService.getAppTokenForFacebook(plug: dataPlug, token: userToken, userDomain: userDomain, successful: appToken, failed: error)
-            } else if dataPlug.plug.name == "twitter" {
-                
-                HATTwitterService.getAppTokenForTwitter(plug: dataPlug, userDomain: userDomain, userToken: userToken, successful: appToken, failed: error)
-            } else if dataPlug.plug.name == "Fitbit" {
-                
-                HATFitbitService.getApplicationTokenForFitbit(userDomain: userDomain, userToken: userToken, dataPlugURL: dataPlug.plug.url, successCallback: appToken, errorCallback: error)
+                plugURL = "https://\(self.userDomain)/#/hatlogin?name=\(selectedlPlug)&redirect=\(appURL)&fallback=hatapp://dismisssafari"
             }
+
+            self.performSegue(withIdentifier: "details", sender: self)
         }
     }
 

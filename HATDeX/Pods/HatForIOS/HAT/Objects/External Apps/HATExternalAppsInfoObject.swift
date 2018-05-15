@@ -29,6 +29,9 @@ public struct HATExternalAppsInfoObject: HATObject {
     /// The headline text to describe the app
     public var headline: String = ""
     
+    /// The rating of the app
+    public var rating: HATExternalAppsInfoRatingObject?
+    
     /// The description text of the app
     public var description: HATExternalAppsInfoDescriptionObject = HATExternalAppsInfoDescriptionObject()
     

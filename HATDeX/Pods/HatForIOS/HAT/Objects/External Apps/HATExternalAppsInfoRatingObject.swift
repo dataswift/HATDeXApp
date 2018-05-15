@@ -1,3 +1,4 @@
+//
 /**
  * Copyright (C) 2018 HAT Data Exchange Ltd
  *
@@ -12,18 +13,11 @@
 
 // MARK: Struct
 
-public struct DataDebitClientObject: HATObject {
+public struct HATExternalAppsInfoRatingObject: HATObject {
     
     // MARK: - Variables
+    
+    /// The score of the app, determined during app review
+    public var score: String = ""
 
-    /// The user id of the client
-    public var userId: String = ""
-    /// The email of the client
-    public var email: String = ""
-    /// The pass of the client
-    public var pass: String = ""
-    /// The name of the client
-    public var name: String = ""
-    /// The role of the client
-    public var role: String = ""
 }

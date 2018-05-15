@@ -33,10 +33,10 @@ public struct HATDataOffersService {
         
         if userDomain.contains("hubofallthings") {
             
-            mutableURL = "https://databuyer.hubofallthings.com/api/v2/offersWithClaims"
+            mutableURL = "https://databuyer.hubofallthings.com/api/v2.6/offersWithClaims"
         } else {
             
-            mutableURL = "https://databuyer.hubat.net/api/v2/offersWithClaims"
+            mutableURL = "https://databuyer.hubat.net/api/v2.6/offersWithClaims"
         }
         
         if merchants != nil {
@@ -112,10 +112,10 @@ public struct HATDataOffersService {
         
         if userDomain.contains("hubofallthings") {
             
-            url = "https://databuyer.hubofallthings.com/api/v2/offer/\(offerID)/claim"
+            url = "https://databuyer.hubofallthings.com/api/v2.6/offer/\(offerID)/claim"
         } else {
             
-            url = "https://databuyer.hubat.net/api/v2/offer/\(offerID)/claim"
+            url = "https://databuyer.hubat.net/api/v2.6/offer/\(offerID)/claim"
         }
         
         let headers: Dictionary<String, String> = ["X-Auth-Token": applicationToken]
@@ -175,10 +175,10 @@ public struct HATDataOffersService {
         
         if userDomain.contains("hubofallthings") {
             
-            url = "https://databuyer.hubofallthings.com/api/v2/user/redeem/cash"
+            url = "https://databuyer.hubofallthings.com/api/v2.6/user/redeem/cash"
         } else {
             
-            url = "https://databuyer.hubat.net/api/v2/user/redeem/cash"
+            url = "https://databuyer.hubat.net/api/v2.6/user/redeem/cash"
         }
         
         HATNetworkHelper.asynchronousRequest(
@@ -229,7 +229,7 @@ public struct HATDataOffersService {
      */
     public static func getMerchants(userToken: String, userDomain: String, succesfulCallBack: @escaping ([String], String?) -> Void, failCallBack: @escaping (DataPlugError) -> Void) {
         
-        let url: String = "https://\(userDomain)/api/v2/data/dex/databuyer"
+        let url: String = "https://\(userDomain)/api/v2.6/data/dex/databuyer"
         
         HATNetworkHelper.asynchronousRequest(
             url,

@@ -274,7 +274,7 @@ public struct HATService {
      */
     public static func getSystemStatus(userDomain: String, userToken: String, completion: @escaping ([HATSystemStatusObject], String?) -> Void, failCallBack: @escaping (JSONParsingError) -> Void) {
         
-        let url: String = "https://\(userDomain)/api/v2/system/status"
+        let url: String = "https://\(userDomain)/api/v2.6/system/status"
         let headers: [String: String] = ["X-Auth-Token": userToken]
         
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: {(response: HATNetworkHelper.ResultType) -> Void in

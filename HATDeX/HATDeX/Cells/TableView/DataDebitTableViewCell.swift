@@ -50,10 +50,47 @@ internal class DataDebitTableViewCell: UITableViewCell {
      */
     func setUpCell(cell: DataDebitTableViewCell, dataDebit: DataDebitObject) -> DataDebitTableViewCell {
         
-        let date: Date? = HATFormatterHelper.formatStringToDate(string: dataDebit.bundles[0].endDate)
-        cell.titleLabel.text = dataDebit.client.name
-        cell.dateLabel.text =
-        "Expires: \(String(describing: FormatterHelper.formatDateStringToUsersDefinedDate(date: date!, dateStyle: .short, timeStyle: .none)))"
+        let endDate: String?
+        if dataDebit.permissionsActive != nil {
+            
+            endDate = dataDebit.permissionsActive!.end
+        } else {
+            
+            endDate = dataDebit.permissionsLatest.end
+        }
+        
+        cell.titleLabel.text = dataDebit.requestClientName
+
+        if endDate == nil {
+            
+            cell.dateLabel.text = "Expires: Never"
+        } else {
+            
+            let date: Date? = HATFormatterHelper.formatStringToDate(string: endDate!)
+            cell.dateLabel.text =
+            "Expires: \(String(describing: FormatterHelper.formatDateStringToUsersDefinedDate(date: date!, dateStyle: .short, timeStyle: .none)))"
+        }
+        
+        cell.dataDebitImage.layer.masksToBounds = true
+        cell.dataDebitImage.layer.cornerRadius = cell.dataDebitImage.frame.width / 2
+        
+        if let url = URL(string: dataDebit.requestClientLogoUrl) {
+            
+            let placeholderImage = UIImage(named: Constants.ImageNames.dataDebitPlaceholder)
+            cell.dataDebitImage.hnk_setImage(
+                from: url,
+                placeholder: placeholderImage,
+                headers: [:],
+                success: { image in
+                    
+                    if image != nil {
+                        
+                        cell.dataDebitImage.image = image
+                    }
+                },
+                failure: { _ in return },
+                update: { _ in return })
+        }
         
         return cell
     }

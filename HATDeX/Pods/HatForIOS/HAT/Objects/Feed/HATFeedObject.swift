@@ -29,6 +29,8 @@ public struct HATFeedObject: HATObject {
     /// The title of the feed item
     public var location: HATFeedLocationObject?
     
+    // MARK: - Initialisers
+    
     public init() {
         
     }

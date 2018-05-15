@@ -122,7 +122,7 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATO
     /// The application details of the post
     public var application: HATFacebookDataPostsApplicationSocialFeedObject = HATFacebookDataPostsApplicationSocialFeedObject()
     
-    public var place: HATFacebookDataPostsPlaceSocialFeedObject = HATFacebookDataPostsPlaceSocialFeedObject()
+    public var place: HATFacebookDataPostsPlaceSocialFeedObject?
     
     // MARK: - Initialisers
     
@@ -279,7 +279,7 @@ public struct HATFacebookDataPostsSocialFeedObject: HatApiType, Comparable, HATO
             Fields.objectID: self.objectID,
             Fields.application: self.application.toJSON(),
             Fields.caption: self.caption,
-            Fields.place: self.place.toJSON()
+            Fields.place: self.place?.toJSON() ?? [:]
         ]
     }
 }

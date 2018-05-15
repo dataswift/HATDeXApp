@@ -86,7 +86,7 @@ public struct HATDataPlugsService {
         let headers: [String: String] = ["X-Auth-Token": appToken]
         
         // contruct the url
-        let url: String = "https://dex.hubofallthings.com/api/v2/offer/\(offerID)/userClaim"
+        let url: String = "https://dex.hubofallthings.com/api/v2.6/offer/\(offerID)/userClaim"
         
         // make async request
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
@@ -151,7 +151,7 @@ public struct HATDataPlugsService {
         let headers: [String: String] = ["X-Auth-Token": appToken]
         
         // contruct the url
-        let url: String = "https://dex.hubofallthings.com/api/v2/offer/\(offerID)/claim"
+        let url: String = "https://dex.hubofallthings.com/api/v2.6/offer/\(offerID)/claim"
         
         // make async request
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
@@ -211,7 +211,7 @@ public struct HATDataPlugsService {
         let headers: [String: String] = ["X-Auth-Token": userToken]
         
         // contruct the url
-        let url: String = "https://\(userDomain)/api/v2/data-debit/\(dataDebitID)/enable"
+        let url: String = "https://\(userDomain)/api/v2.6/data-debit/\(dataDebitID)/enable"
         
         // make async request
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
@@ -264,7 +264,7 @@ public struct HATDataPlugsService {
         let headers: [String: String] = ["X-Auth-Token": userToken]
         
         // contruct the url
-        let url: String = "https://\(userDomain)/api/v2/data-debit/\(dataDebitID)"
+        let url: String = "https://\(userDomain)/api/v2.6/data-debit/\(dataDebitID)"
         
         // make async request
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: parameters, headers: headers, completion: { (response: HATNetworkHelper.ResultType) -> Void in
@@ -297,7 +297,7 @@ public struct HATDataPlugsService {
                     return
                 }
                 
-                succesfulCallBack(dataDebit.bundles[0].enabled)
+                succesfulCallBack(dataDebit.active)
             }
         })
     }

@@ -18,6 +18,8 @@ public struct HATFeedContentMediaObject: Codable {
     
     /// The URL of the media
     public var url: String = ""
+    /// The url of the media but in thumbnail size
+    public var thumbnail: String?
     
     public init() {
         

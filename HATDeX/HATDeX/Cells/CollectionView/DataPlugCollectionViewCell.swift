@@ -19,7 +19,7 @@ internal class DataPlugCollectionViewCell: UICollectionViewCell, UserCredentials
     
     // MARK: - Variables
     
-    private var dataPlug: HATDataPlugObject?
+    private var dataPlug: HATApplicationObject?
     
     // MARK: - IBOutlets
     
@@ -45,14 +45,14 @@ internal class DataPlugCollectionViewCell: UICollectionViewCell, UserCredentials
      
      - returns: An UICollectionViewCell
      */
-    class func setUp(cell: DataPlugCollectionViewCell, indexPath: IndexPath, dataPlug: HATDataPlugObject, orientation: UIInterfaceOrientation) -> UICollectionViewCell {
+    class func setUp(cell: DataPlugCollectionViewCell, indexPath: IndexPath, dataPlug: HATApplicationObject, orientation: UIInterfaceOrientation) -> UICollectionViewCell {
         
         // Configure the cell
         cell.checkMarkImage.isHidden = true
-        cell.dataPlugTitleLabel.text = dataPlug.plug.name
-        cell.dataPlugDetailsLabel.text = dataPlug.plug.description
+        cell.dataPlugTitleLabel.text = dataPlug.application.id.capitalized
+        cell.dataPlugDetailsLabel.text = dataPlug.application.info.description.text
         cell.dataPlug = dataPlug
-        if let url = URL(string: dataPlug.plug.illustrationUrl) {
+        if let url = URL(string: dataPlug.application.info.graphics.logo.normal) {
             
             cell.dataPlugImage.downloadedFrom(
                 url: url,
@@ -75,21 +75,19 @@ internal class DataPlugCollectionViewCell: UICollectionViewCell, UserCredentials
      */
     private func checkDataPlugsIfActive() {
         
-        HATDataPlugsService.checkStatusOfPlug(
-            dataPlug: self.dataPlug!,
-            userDomain: userDomain,
-            userToken: userToken,
-            completion: { [weak self] result, _ in
-                
-                if result {
-                    
-                    self?.checkMarkImage.isHidden = false
-                } else {
-                    
-                    self?.checkMarkImage.isHidden = true
-                }
-            }
-        )
+        guard let plug = self.dataPlug else {
+            
+            self.checkMarkImage.isHidden = true
+            return
+        }
+        
+        if plug.active && plug.setup && !(plug.needsUpdating ?? false) {
+            
+            self.checkMarkImage.isHidden = false
+        } else {
+            
+            self.checkMarkImage.isHidden = true
+        }
     }
     
     // MARK: - Decide background color
@@ -153,7 +151,7 @@ internal class DataPlugCollectionViewCell: UICollectionViewCell, UserCredentials
      
      - returns: The dataPlug object of the cell
      */
-    func getCellPlugObject() -> HATDataPlugObject? {
+    func getCellPlugObject() -> HATApplicationObject? {
         
         return self.dataPlug
     }

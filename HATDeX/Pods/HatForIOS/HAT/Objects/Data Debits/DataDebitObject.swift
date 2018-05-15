@@ -22,8 +22,26 @@ public struct DataDebitObject: HATObject {
     public var dataDebitKey: String = ""
     /// The date created of the data debit
     public var dateCreated: String = ""
-    /// The client object of the data debit
-    public var client: DataDebitClientObject
-    /// The bundles included in Data Debit
-    public var bundles: [DataDebitBundleObject] = []
+    /// The permissions of the data debit
+    public var permissions: [DataDebitPermissionsObject] = []
+    /// The client name of the data debit
+    public var requestClientName: String = ""
+    /// The client url of the data debit
+    public var requestClientUrl: String = ""
+    /// The client logo URL of the data debit
+    public var requestClientLogoUrl: String = ""
+    /// The description of the data debit
+    public var requestDescription: String?
+    /// The id of the application, if the data debit is an application
+    public var requestApplicationId: String?
+    /// Is data debit active?
+    public var active: Bool = false
+    /// The start date of the data debit
+    public var start: String?
+    /// The end date of the data debit
+    public var end: String?
+    /// Are permissions still active
+    public var permissionsActive: DataDebitPermissionsObject?
+    /// The last permission set
+    public var permissionsLatest: DataDebitPermissionsObject = DataDebitPermissionsObject()
 }

@@ -31,7 +31,7 @@ public struct HATFileService {
      */
     public static func searchFiles(userDomain: String, token: String, status: String? = "Completed", name: String = "", tags: [String]? = [""], successCallback: @escaping ([FileUploadObject], String?) -> Void, errorCallBack: @escaping (HATError) -> Void) {
         
-        let url: String = "https://\(userDomain)/api/v2/files/search"
+        let url: String = "https://\(userDomain)/api/v2.6/files/search"
         let headers: [String: String] = ["X-Auth-Token": token]
         
         var parameters: Dictionary <String, Any> = ["source": "iPhone",
@@ -102,7 +102,7 @@ public struct HATFileService {
      */
     public static func deleteFile(fileID: String, token: String, userDomain: String, successCallback: @escaping (Bool, String?) -> Void, errorCallBack: @escaping (HATError) -> Void) {
         
-        let url: String = "https://\(userDomain)/api/v2/files/file/\(fileID)"
+        let url: String = "https://\(userDomain)/api/v2.6/files/file/\(fileID)"
         let headers: [String: String] = ["X-Auth-Token": token]
         
         HATNetworkHelper.asynchronousRequest(url, method: .delete, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: { (response) -> Void in
@@ -154,7 +154,7 @@ public struct HATFileService {
      */
     public static func makeFilePublic(fileID: String, token: String, userDomain: String, successCallback: @escaping (Bool) -> Void, errorCallBack: @escaping (HATError) -> Void) {
         
-        let url: String = "https://\(userDomain)/api/v2/files/allowAccessPublic/\(fileID)"
+        let url: String = "https://\(userDomain)/api/v2.6/files/allowAccessPublic/\(fileID)"
         let headers: [String: String] = ["X-Auth-Token": token]
         
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: { (response) -> Void in
@@ -204,7 +204,7 @@ public struct HATFileService {
      */
     public static func makeFilePrivate(fileID: String, token: String, userDomain: String, successCallback: @escaping (Bool) -> Void, errorCallBack: @escaping (HATError) -> Void) {
         
-        let url: String = "https://\(userDomain)/api/v2/files/restrictAccessPublic/\(fileID)"
+        let url: String = "https://\(userDomain)/api/v2.6/files/restrictAccessPublic/\(fileID)"
         let headers: [String: String] = ["X-Auth-Token": token]
         
         HATNetworkHelper.asynchronousRequest(url, method: .get, encoding: Alamofire.URLEncoding.default, contentType: ContentType.json, parameters: [:], headers: headers, completion: { (response) -> Void in
@@ -258,7 +258,7 @@ public struct HATFileService {
     public static func completeUploadFileToHAT(fileID: String, token: String, tags: [String], userDomain: String, completion: @escaping (FileUploadObject, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // create the url
-        let uploadURL: String = "https://\(userDomain)/api/v2/files/file/\(fileID)/complete"
+        let uploadURL: String = "https://\(userDomain)/api/v2.6/files/file/\(fileID)/complete"
         
         // create parameters and headers
         let header: [String: String] = ["X-Auth-Token": token]
@@ -321,7 +321,7 @@ public struct HATFileService {
     public static func uploadFileToHAT(fileName: String, token: String, userDomain: String, tags: [String], completion: @escaping (FileUploadObject, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // create the url
-        let uploadURL: String = "https://\(userDomain)/api/v2/files/upload"
+        let uploadURL: String = "https://\(userDomain)/api/v2.6/files/upload"
         
         // create parameters and headers
         let parameters: Dictionary<String, Any> = HATJSONHelper.createFileUploadingJSONFrom(fileName: fileName, tags: tags)
@@ -386,7 +386,7 @@ public struct HATFileService {
     public static func updateParametersOfFile(fileID: String, fileName: String, token: String, userDomain: String, tags: [String], completion: @escaping (FileUploadObject, String?) -> Void, errorCallback: @escaping (HATTableError) -> Void) {
         
         // create the url
-        let updateURL: String = "https://\(userDomain)/api/v2/files/file/\(fileID)"
+        let updateURL: String = "https://\(userDomain)/api/v2.6/files/file/\(fileID)"
         
         // create parameters and headers
         let parameters: Dictionary<String, Any> = HATJSONHelper.createFileUploadingJSONFrom(fileName: fileName, tags: tags)

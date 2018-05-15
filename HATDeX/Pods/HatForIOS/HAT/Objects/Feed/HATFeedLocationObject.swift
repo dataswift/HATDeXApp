@@ -14,7 +14,12 @@
 // MARK: Struct
 
 public struct HATFeedLocationObject: HATObject {
+    
+    // MARK: - Variables
 
     /// The address of the location
     public var address: HATFeedLocationAddressObject?
+    
+    /// The geolocation of the location
+    public var geo: HATFeedLocationGeoObject?
 }
